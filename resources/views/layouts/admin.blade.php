@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,30 +9,47 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('admins/assets/css/tailwind.output.css') }}" />
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="{{ asset('admins/assets/js/main.js') }}"></script>
+    <link rel="shortcut icon" href="{{ asset('admins/assets/images/favicon.ico') }}">
 
-    @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('admins/assets/libs/gridjs/theme/mermaid.min.css') }}">
+
+    <script src="{{ asset('admins/assets/js/layout.js') }}"></script>
+    <link href="{{ asset('admins/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admins/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admins/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admins/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+    @vite(['resources/sass/app.scss'])
     @livewireStyles
 </head>
+
 <body>
-    <div
-        class="flex h-screen bg-gray-50 dark:bg-gray-900"
-        :class="{ 'overflow-hidden': isSideMenuOpen }"
-    >
-        @include('admin.partials.aside')
+    <div id="layout-wrapper">
 
-        <div class="flex flex-col flex-1 w-full">
-            @include('admin.partials.header')
+        @include('admin.partials.header')
 
-            <main class="h-full overflow-y-auto">
-                @yield('content')
-            </main>
+        @include('admin.partials.sidebar')
+
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    @yield('content')
+
+                </div>
+            </div>
         </div>
     </div>
 
+    <script src="{{ asset('admins/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admins/assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('admins/assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('admins/assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('admins/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
+    <script src="{{ asset('admins/assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('admins/assets/libs/gridjs/gridjs.umd.js') }}"></script>
+    <script src="{{ asset('admins/assets/js/pages/dashboard-job.init.js') }}"></script>
+    <script src="{{ asset('admins/assets/js/app.js') }}"></script>
     @livewireScripts
 </body>
+
 </html>

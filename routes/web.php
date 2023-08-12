@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\GithubLoginController;
@@ -59,4 +62,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /* Admin */
 Route::group(['prefix' => '/', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+    Route::get('/job', [JobController::class, 'index'])->name('job.index');
+
+    Route::get('/activity-log', [ActivityLogController::class, 'index'])->name('activity-log.index');
 });

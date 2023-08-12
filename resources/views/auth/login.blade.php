@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -10,13 +10,13 @@
                     <img
                         aria-hidden="true"
                         class="object-cover w-full h-full dark:hidden"
-                        src="{{ asset('admins/assets/img/login-office.jpeg') }}"
+                        src="{{ asset('auths/img/login-office.jpeg') }}"
                         alt="Office"
                     />
                     <img
                         aria-hidden="true"
                         class="hidden object-cover w-full h-full dark:block"
-                        src="{{ asset('admins/assets/img/login-office-dark.jpeg') }}"
+                        src="{{ asset('auths/img/login-office-dark.jpeg') }}"
                         alt="Office"
                     />
                 </div>
