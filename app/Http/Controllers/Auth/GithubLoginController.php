@@ -39,8 +39,6 @@ class GithubLoginController extends Controller
 
             Auth::login($user);
 
-            toast(__('Login success'), 'success');
-
             return redirect('/');
         } catch (\Exception $exception) {
             return $exception->getMessage();
