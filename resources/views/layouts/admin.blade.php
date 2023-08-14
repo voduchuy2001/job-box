@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="{{ asset('admins/assets/libs/gridjs/theme/mermaid.min.css') }}">
 
-    <script src="{{ asset('admins/assets/js/layout.js') }}"></script>
     <link href="{{ asset('admins/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admins/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admins/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
@@ -40,6 +39,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('admins/assets/js/layout.js') }}"></script>
     <script src="{{ asset('admins/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admins/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('admins/assets/libs/node-waves/waves.min.js') }}"></script>

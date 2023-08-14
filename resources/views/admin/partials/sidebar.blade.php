@@ -74,9 +74,12 @@
                 <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Components</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
-                        <i class="ri-honour-line"></i> <span data-key="t-widgets">Widgets</span>
-                    </a>
+                    <x-link
+                        class="nav-link menu-link"
+                        to="{{ route('user.index') }}"
+                    >
+                        <i class="ri-user-line"></i>{{ __('User') }}<span data-key="t-widgets"></span>
+                    </x-link>
                 </li>
 
                 <li class="nav-item">

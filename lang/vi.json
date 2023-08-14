@@ -71,12 +71,9 @@
     "Setting Website": "Cài Đặt Trang Web",
     "Go To Website": "Đi Đến Trang Web",
     "User": "Người Dùng",
-    "Activity Log": "Người Dùng Đăng Nhập",
-    "List Of Jobs": "Danh Sách Việc Làm",
-    "Unapproved": "Chưa được duyệt",
-    "New Jobs": "Việc làm mới",
-    "New Contacts": "Liên hệ mới",
-    "New Comments": "Bình luận mới",
     "Remember me": "Ghi nhớ",
-    "Login success": "Đăng nhập thành công"
+    "Sign In with": "Đăng nhập với",
+    "Sign in to continue": "Đăng nhập để tiếp tục",
+    "Enter your email": "Nhập địa chỉ email của bạn",
+    "Enter your name": "Nhập họ và tên của bạn"
 }

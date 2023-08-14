@@ -71,11 +71,9 @@
     "Go To Website": "Go To Website",
     "User": "User",
     "Activity Log": "Activity Log",
-    "List Of Jobs": "List Of Jobs",
-    "Unapproved": "Unapproved",
-    "New Jobs": "New Job",
-    "New Contacts": "New Contact",
-    "New Comments": "New Commnet",
     "Remember me": "Remember me",
-    "Login success": "Login success"
+    "Sign In with": "Sign In with",
+    "Sign in to continue": "Sign in to continue",
+    "Enter your email": "Enter your email",
+    "Enter your name": "Enter your name"
 }

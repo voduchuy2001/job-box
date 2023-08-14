@@ -23,14 +23,6 @@
             </div>
         </div>
 
-        <ul class="buy-button list-none mb-0">
-            <li class="inline-block ps-1 mb-0">
-                @if(! Auth::user())
-                    <a href="{{ route('login') }}" class="btn btn-icon rounded-full bg-emerald-600 hover:bg-emerald-700 hover:border-emerald-700 text-white"><img src="{{ asset('users/assets/images/team/05.png') }}" class="rounded-full" alt=""></a>
-                @endif
-            </li>
-        </ul>
-
         <div id="navigation">
             <ul class="navigation-menu justify-end">
                 <li class="has-submenu parent-menu-item">

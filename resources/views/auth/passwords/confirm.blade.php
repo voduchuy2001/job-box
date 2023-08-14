@@ -1,55 +1,85 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
-        <div
-            class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
-        >
-            <div class="flex flex-col overflow-y-auto md:flex-row">
-                <div class="h-32 md:h-auto md:w-1/2">
-                    <img
-                        aria-hidden="true"
-                        class="object-cover w-full h-full dark:hidden"
-                        src="{{ asset('auths/img/login-office.jpeg') }}"
-                        alt="Office"
-                    />
-                    <img
-                        aria-hidden="true"
-                        class="hidden object-cover w-full h-full dark:block"
-                        src="{{ asset('auths/img/login-office-dark.jpeg') }}"
-                        alt="Office"
-                    />
-                </div>
-                <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-                    <div class="w-full">
-                        <h1
-                            class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
-                        >
-                            {{ __('Please confirm your password before continuing.') }}
-                        </h1>
+    <div class="auth-page-content overflow-hidden pt-lg-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="p-lg-5 p-4 auth-one-bg h-100">
+                                    <div class="bg-overlay"></div>
+                                    <div class="position-relative h-100 d-flex flex-column">
+                                        <div class="mb-4">
+                                            <a href="{{ route('home') }}" class="d-block">
+                                                <img src="{{ asset('admins/assets/images/logo-light.png') }}" alt="" height="18">
+                                            </a>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="mb-3">
+                                                <i class="ri-double-quotes-l display-4 text-success"></i>
+                                            </div>
 
-                        <x-form method="POST" action="{{ route('password.confirm') }}">
-                            <x-input
-                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                label="{{ __('Password') }}"
-                                placeholder="********"
-                                name="password"
-                                id="password"
-                                model="password"
-                                type="password"
-                                required
-                            ></x-input>
-                            <x-button class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">{{ __('Confirm Password') }}</x-button>
-                        </x-form>
+                                            <div id="qoutescarouselIndicators" class="carousel slide" data-bs-ride="carousel">
+                                                <div class="carousel-indicators">
+                                                    <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                    <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                    <button type="button" data-bs-target="#qoutescarouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                </div>
+                                                <div class="carousel-inner text-center text-white-50 pb-5">
+                                                    <div class="carousel-item active">
+                                                        <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <p class="fs-15 fst-italic">" The theme is really great with an amazing customer support."</p>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <hr class="my-8" />
+                            <div class="col-lg-6">
+                                <div class="p-lg-5 p-4">
+                                    <div>
+                                        <h5 class="text-primary">{{ __('Please confirm your password before continuing.') }}</h5>
+                                    </div>
 
-                        <p class="mt-4">
-                            <x-link
-                                class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                                to="{{ route('password.request') }}"
-                            >{{ __('Forgot your password?') }}</x-link>
-                        </p>
+                                    @if (session('status'))
+                                        <div class="alert alert-secondary" role="alert">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
+
+                                    <div class="mt-4">
+                                        <x-form method="POST" action="{{ route('password.confirm') }}">
+                                            <x-admin.input
+                                                label="{{ __('Password') }}"
+                                                class="form-control"
+                                                type="password"
+                                                name="password"
+                                                model="password"
+                                                id="password"
+                                                placeholder="{{ __('Enter your password') }}"
+                                                required
+                                            ></x-admin.input>
+
+                                            <div class="mt-4">
+                                                <x-button
+                                                    class="btn btn-success w-100"
+                                                    type="submit">{{ __('Confirm Password') }}
+                                                </x-button>
+                                            </div>
+                                        </x-form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
