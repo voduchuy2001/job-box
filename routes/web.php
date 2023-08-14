@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /* Admin */
 Route::group(['prefix' => '/', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
