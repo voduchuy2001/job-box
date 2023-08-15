@@ -78,7 +78,7 @@
                         class="nav-link menu-link"
                         to="{{ route('user.index') }}"
                     >
-                        <i class="ri-user-line"></i>{{ __('User') }}<span data-key="t-widgets"></span>
+                        <i class="ri-user-line"></i><span data-key="t-widgets">{{ __('User') }}</span>
                     </x-link>
                 </li>
 

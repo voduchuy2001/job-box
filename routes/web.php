@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\ActivityLogController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\JobController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\GithubLoginController;
@@ -12,8 +8,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HomeController;
+use App\Livewire\Admin\Home\DashBoard;
+use App\Livewire\Admin\User\UserList;
+use App\Livewire\Admin\User\UserProfile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,13 +60,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /* Admin */
 Route::group(['prefix' => '/', 'middleware' => ['auth', 'admin']], function () {
-    Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-
-    Route::get('/user', [UserController::class, 'index'])->name('user.index');
-
-    Route::get('/job', [JobController::class, 'index'])->name('job.index');
-
-    Route::get('/activity-log', [ActivityLogController::class, 'index'])->name('activity-log.index');
+    Route::get('/admin', DashBoard::class)->name('dashboard');
+    Route::get('/profile', UserProfile::class)->name('profile.index');
+    Route::get('/user', UserList::class)->name('user.index');
 });
