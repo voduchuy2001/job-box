@@ -61,6 +61,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /* Admin */
 Route::group(['prefix' => '/', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/admin', DashBoard::class)->name('dashboard');
-    Route::get('/profile', UserProfile::class)->name('profile.index');
+    Route::get('/profile/{id}', UserProfile::class)->name('user.profile');
     Route::get('/user', UserList::class)->name('user.index');
 });

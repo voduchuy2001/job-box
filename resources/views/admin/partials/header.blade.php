@@ -290,7 +290,7 @@
                         <h6 class="dropdown-header">{{ __('Welcome :name!', ['name' => Auth::user()->name]) }}</h6>
                         <x-link
                             class="dropdown-item"
-                            to="{{ route('profile.index') }}">
+                            to="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
                             <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                             <span class="align-middle">{{ __('Profile') }}</span></x-link>
                         <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Change Password') }}</span></a>

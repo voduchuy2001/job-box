@@ -17,10 +17,7 @@
     @livewireStyles
 </head>
 <body>
-    @include('sweetalert::alert')
-
     <div id="layout-wrapper">
-
         @include('admin.partials.header')
 
         @include('admin.partials.sidebar')

@@ -40,4 +40,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'status' => UserStatus::class,
         'role' => UserRole::class,
     ];
+
+    public static function getUsers(int $itemPerPage, string $searchTerm)
+    {
+        return User::where('name', 'like', $searchTerm)
+            ->where('email', 'like', $searchTerm)
+            ->where('role', '!=', 'company')
+            ->orderByDesc('created_at')
+            ->paginate($itemPerPage);
+    }
+
+    public static function getUserById(int $id)
+    {
+        return User::findOrFail($id);
+    }
 }
