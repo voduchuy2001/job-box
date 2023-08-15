@@ -1,7 +1,27 @@
 <div>
     <div class="position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg profile-setting-img">
-            <img src="{{ asset('admins/assets/images/profile-bg.jpg') }}" class="profile-wid-img" alt="">
+            @if($coverImage)
+                <img src="{{ $coverImage->temporaryUrl() }}" class="profile-wid-img" alt="">
+            @else
+                <img src="{{ $user->coverImage === null ? asset('admins/assets/images/profile-bg.jpg') : asset($user->coverImage->url) }}" class="profile-wid-img" alt="">
+            @endif
+            <div class="overlay-content">
+                <div class="text-end p-3">
+                    <div class="p-0 ms-auto rounded-circle profile-photo-edit">
+                        <x-admin.input
+                            id="profile-foreground-img-file-input"
+                            type="file"
+                            class="profile-foreground-img-file-input"
+                            name="coverImage"
+                            model="coverImage"
+                            accept="image/*"></x-admin.input>
+                        <label for="profile-foreground-img-file-input" class="profile-photo-edit btn btn-light">
+                            <i class="ri-image-edit-line align-bottom me-1"></i> Change Cover
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -10,11 +30,11 @@
             <div class="card mt-n5">
                 <div class="card-body p-4">
                     <div class="text-center">
-                        <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-                            @if($image)
-                                <img src="{{ $image->temporaryUrl() }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
+                        <div class="profile-user position-relative d-inline-block mx-auto mb-4">
+                            @if($avatar)
+                                <img src="{{ $avatar->temporaryUrl() }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
                             @else
-                                <img src="{{ asset('admins/assets/images/users/avatar-1.jpg') }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
+                                <img src="{{ $user->avatar === null ? asset('admins/assets/images/users/avatar-1.jpg') : asset($user->avatar->url) }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
                             @endif
                             <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
                                 <x-admin.input
@@ -22,8 +42,8 @@
                                     id="profile-img-file-input"
                                     type="file"
                                     accept="image/*"
-                                    name="image"
-                                    model="image"
+                                    name="avatar"
+                                    model="avatar"
                                 ></x-admin.input>
 
                                 <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">

@@ -42,9 +42,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'role' => UserRole::class,
     ];
 
-    public function image(): MorphOne
+    public function avatar(): MorphOne
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'imageable')
+            ->where('type', '=', 'avatar');
+    }
+
+    public function coverImage(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable')
+            ->where('type', '=', 'cover');
     }
 
     public static function getUsers(int $itemPerPage, string $searchTerm)
