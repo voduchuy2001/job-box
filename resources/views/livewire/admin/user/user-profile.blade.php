@@ -1,7 +1,7 @@
 <div>
     <div class="profile-foreground position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg">
-            <img src="{{ asset('admins/assets/images/profile-bg.jpg') }}" alt="" class="profile-wid-img" />
+            <img src="{{ asset('admins/assets/images/profile-bg.jpg') }}" alt="{{ $user->name }}" class="profile-wid-img" />
         </div>
     </div>
 
@@ -51,7 +51,9 @@
                         </li>
                     </ul>
                     <div class="flex-shrink-0">
-                        <a href="pages-profile-settings.html" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i>{{ __('Edit Profile') }}</a>
+                        <x-link
+                            to="{{ route('user-edit.profile', ['id' => $user->id]) }}"
+                            class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i>{{ __('Edit Profile') }}</x-link>
                     </div>
                 </div>
                 <div class="tab-content pt-4 text-muted">
