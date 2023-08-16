@@ -81,7 +81,7 @@
                                                 name="password"
                                                 model="password"
                                                 id="password"
-                                                placeholder="{{ __('************************') }}"
+                                                placeholder="{{ __('*****************') }}"
                                                 required
                                             >
                                                 <div class="float-end">
@@ -96,7 +96,7 @@
                                                 name="password_confirmation"
                                                 model="password_confirmation"
                                                 id="password_confirmation"
-                                                placeholder="{{ __('************************') }}"
+                                                placeholder="{{ __('*****************') }}"
                                                 required
                                             ></x-admin.input>
 

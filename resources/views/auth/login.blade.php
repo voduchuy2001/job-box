@@ -71,7 +71,7 @@
                                                 name="password"
                                                 model="password"
                                                 id="password"
-                                                placeholder="{{ __('************************') }}"
+                                                placeholder="{{ __('*****************') }}"
                                                 required
                                             >
                                                 <div class="float-end">

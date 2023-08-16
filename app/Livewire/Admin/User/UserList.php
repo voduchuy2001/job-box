@@ -19,8 +19,7 @@ class UserList extends Component
     public string $email;
     public UserRole $role;
     public UserStatus $status;
-
-    protected string $searchTerm = '';
+    public string $searchTerm = '';
     public int $itemPerPage = 1;
 
     public function updateUserStatus(int $id): void
