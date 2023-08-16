@@ -10,7 +10,7 @@
 ])
 
 <div class="mb-3">
-    @if($label) <label for="username" class="form-label">{{ $label }}</label> @endif
+    @if($label) <label for="{{ $id }}" class="form-label">{{ $label }}</label> @endif
     <input
         @if($type) type="{{ $type }}" @endif
         @if($class) class="{{ $class }}" @endif

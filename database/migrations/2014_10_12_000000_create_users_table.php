@@ -11,11 +11,11 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role')->default('user');
-            $table->string('status')->default('isActive');
+            $table->string('role')->default('User');
+            $table->string('status')->default('Is Active');
             $table->string('is_root')->default(0);
             $table->string('github_id')->nullable();
-            $table->string('auth_type')->nullable();
+            $table->string('auth_type')->default('Email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

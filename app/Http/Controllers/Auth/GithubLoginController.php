@@ -31,7 +31,7 @@ class GithubLoginController extends Controller
                 'email' => $githubUser->getEmail(),
                 'name' => $githubUser->getName(),
                 'github_id'=> $githubUser->getId(),
-                'auth_type'=> 'github',
+                'auth_type'=> 'Github',
                 'status' => UserStatus::IsActive,
                 'password' => Hash::make(Str::random(10)),
                 'email_verified_at' => Carbon::now(),

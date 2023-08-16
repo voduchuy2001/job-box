@@ -19,66 +19,23 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <li class="menu-title"><span>{{ __('Menu') }}</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarDashboards">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> Analytics </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> CRM </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="index.html" class="nav-link" data-key="t-ecommerce"> Ecommerce </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="dashboard-crypto.html" class="nav-link" data-key="t-crypto"> Crypto </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="dashboard-projects.html" class="nav-link" data-key="t-projects"> Projects </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="dashboard-nft.html" class="nav-link" data-key="t-nft"> NFT</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="dashboard-job.html" class="nav-link"><span data-key="t-job">Job</span> <span class="badge badge-pill bg-success" data-key="t-new">New</span></a>
-                            </li>
-                        </ul>
-                    </div>
+                    <x-link
+                        class="nav-link menu-link @if(request()->routeIs('user')) active @endif"
+                        to="{{ route('user.index') }}"
+                    >
+                        <i class="ri-user-line"></i><span>{{ __('Users') }}</span>
+                    </x-link>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
-                        <i class="ri-rocket-line"></i> <span data-key="t-landing">Landing</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarLanding">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="landing.html" class="nav-link" data-key="t-one-page"> One Page </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="nft-landing.html" class="nav-link" data-key="t-nft-landing"> NFT Landing </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="job-landing.html" class="nav-link"><span data-key="t-job">Job</span> <span class="badge badge-pill bg-success" data-key="t-new">New</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Components</span></li>
 
                 <li class="nav-item">
                     <x-link
                         class="nav-link menu-link"
                         to="{{ route('user.index') }}"
                     >
-                        <i class="ri-user-line"></i><span data-key="t-widgets">{{ __('User') }}</span>
+                        <i class="ri-user-line"></i><span>{{ __('Companies') }}</span>
                     </x-link>
                 </li>
 
@@ -88,52 +45,21 @@
                         class="nav-link menu-link"
                         href="{{ route('elfinder.index') }}"
                     >
-                        <i class="ri-image-line"></i><span data-key="t-widgets">{{ __('Media File') }}</span>
+                        <i class="ri-image-line"></i><span data-key="t-widgets">{{ __('Media Files') }}</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
-                        <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Tables</span>
+                    <a class="nav-link menu-link" href="#jobs" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                        <i class="ri-layout-grid-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarTables">
+                    <div class="collapse menu-dropdown" id="jobs">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="tables-basic.html" class="nav-link" data-key="t-basic-tables">Basic Tables</a>
+                                <a href="tables-basic.html" class="nav-link" data-key="job-list">{{ __('List Of Jobs') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="tables-gridjs.html" class="nav-link" data-key="t-grid-js">Grid Js</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="tables-listjs.html" class="nav-link" data-key="t-list-js">List Js</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="tables-datatables.html" class="nav-link" data-key="t-datatables">Datatables</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaps">
-                        <i class="ri-map-pin-line"></i> <span data-key="t-maps">Maps</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarMaps">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="maps-google.html" class="nav-link" data-key="t-google">
-                                    Google
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="maps-vector.html" class="nav-link" data-key="t-vector">
-                                    Vector
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="maps-leaflet.html" class="nav-link" data-key="t-leaflet">
-                                    Leaflet
-                                </a>
+                                <a href="tables-gridjs.html" class="nav-link" data-key="comments">{{ __('Comments') }}</a>
                             </li>
                         </ul>
                     </div>

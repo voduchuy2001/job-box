@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -16,8 +18,8 @@ class UserTableSeeder extends Seeder
             'name' => 'Vo Duc Huy',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
-            'role' => 'admin',
-            'status' => 'isActive',
+            'role' => UserRole::Admin,
+            'status' => UserStatus::IsActive,
             'is_root' => 1,
             'email_verified_at' => Carbon::now(),
             'remember_token' => Str::random(10),

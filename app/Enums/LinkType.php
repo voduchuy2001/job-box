@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum LinkType: string
 {
-    case Github = 'github';
-    case LinkedIn = 'linkedin';
-    case Website = 'website';
+    case Github = 'Github';
+    case LinkedIn = 'LinkedIn';
+    case Website = 'Website';
 }

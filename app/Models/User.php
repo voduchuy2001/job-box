@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ImageType;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -51,13 +52,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function avatar(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable')
-            ->where('type', '=', 'avatar');
+            ->where('type', '=', ImageType::Avatar);
     }
 
     public function coverImage(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable')
-            ->where('type', '=', 'cover');
+            ->where('type', '=', ImageType::Cover);
     }
 
     public static function getUsers(int $itemPerPage, string $searchTerm)

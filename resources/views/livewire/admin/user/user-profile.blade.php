@@ -156,9 +156,6 @@
                                                     <p class="fs-13 text-muted mb-0">{{ Date::dateFormat($user->lastLoginAt()) }}</p>
                                                 </div>
                                             </div>
-                                            <div class="flex-shrink-0 ms-2">
-                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="ri-delete-bin-line align-middle"></i></button>
-                                            </div>
                                         </div>
                                         @endif
 
@@ -172,9 +169,6 @@
                                                     <h5 class="fs-14 mb-1">{{ __('Previous login at') }}</h5>
                                                     <p class="fs-13 text-muted mb-0"> {{ Date::dateFormat($user->previousLoginAt()) }}</p>
                                                 </div>
-                                            </div>
-                                            <div class="flex-shrink-0 ms-2">
-                                                <button type="button" class="btn btn-sm btn-outline-danger"><i class="ri-delete-bin-line align-middle"></i></button>
                                             </div>
                                         </div>
                                         @endif

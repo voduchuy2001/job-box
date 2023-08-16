@@ -3,9 +3,14 @@
 namespace App\Livewire\Admin\User;
 
 use App\Enums\ImageType;
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
+use App\Helpers\AlertHelper;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
@@ -18,16 +23,50 @@ class EditProfile extends Component
 
     public User $user;
 
-    #[Rule('image|max:2048')]
+    #[Rule('nullable|image|max:2048')]
     public ?UploadedFile $avatar = null;
 
-    #[Rule('image|max:2048')]
+    #[Rule('nullable|image|max:2048')]
     public ?UploadedFile $coverImage = null;
+
+    #[Rule('required|string|max:32')]
+    public string $name;
+
+    #[Rule('required|email')]
+    public string $email;
+
+    #[Rule(new Enum(UserStatus::class))]
+    public UserStatus $userStatus;
+
+    #[Rule(new Enum(UserRole::class))]
+    public UserRole $userRole;
 
     public function mount(int $id): void
     {
         $user = User::getUserById($id);
         $this->user = $user;
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->userRole = $user->role;
+        $this->userStatus = $user->status;
+    }
+
+    public function updateProfile(): void
+    {
+        $validated = $this->validate();
+
+        if ($this->user->is_root == 1) {
+            AlertHelper::flash('warning', __('You can not update personal details for this account'));
+            return;
+        }
+
+        AlertHelper::flash('success', __('Update success'));
+
+        $this->user->update([
+            'name' => $validated['name'],
+            'role' => $validated['userRole'],
+            'status' => $validated['userStatus'],
+        ]);
     }
 
     public function updatedAvatar(): void
@@ -39,6 +78,8 @@ class EditProfile extends Component
 
         if ($this->avatar) {
             $avatarUrl = $this->avatar->store('upload');
+
+            AlertHelper::flash('success', __('Update success'));
 
             $this->user->avatar()->create([
                 'url' => $avatarUrl,
@@ -56,6 +97,8 @@ class EditProfile extends Component
 
         if ($this->coverImage) {
             $avatarUrl = $this->coverImage->store('upload');
+
+            AlertHelper::flash('success', __('Update success'));
 
             $this->user->coverImage()->create([
                 'url' => $avatarUrl,
