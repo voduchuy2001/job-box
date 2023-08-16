@@ -39,7 +39,7 @@ return array(
     */
 
     'route' => [
-        'prefix' => 'elfinder',
+        'prefix' => 'media-file',
         'middleware' => array('web', 'admin'), //Set to null to disable middleware filter
     ],
 

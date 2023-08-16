@@ -84,6 +84,7 @@
 
                 <li class="nav-item">
                     <a
+                        target="_blank"
                         class="nav-link menu-link"
                         href="{{ route('elfinder.index') }}"
                     >
