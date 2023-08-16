@@ -7,16 +7,17 @@ use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Helpers\AlertHelper;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
+#[Title('Edit User Profile')]
 class EditProfile extends Component
 {
     use WithFileUploads;
@@ -41,7 +42,7 @@ class EditProfile extends Component
     #[Rule(new Enum(UserRole::class))]
     public UserRole $userRole;
 
-    public function mount(int $id): void
+    public function mount(int|string $id): void
     {
         $user = User::getUserById($id);
         $this->user = $user;

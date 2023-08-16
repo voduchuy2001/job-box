@@ -1,4 +1,3 @@
-@php use App\Enums\UserRole;use App\Enums\UserStatus; @endphp
 <div>
     @include('admin.partials.page-title')
 
@@ -19,13 +18,10 @@
                 <td class="fw-medium">{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td><span class="badge badge-soft-secondary">{{ $user->email }}</span></td>
-                <td>
-                    <span wire:click="updateUserStatus({{ $user->id }})"
-                          class="btn badge badge-soft-{{ $user->status->value === UserStatus::IsActive->value ? 'success' : 'dark' }}">{{ $user->status->value === UserStatus::IsActive->value ? UserStatus::IsActive : UserStatus::Blocked }}</span>
-                </td>
+                <td><span class="badge badge-soft-warning">{{ $user->status->value }}</span></td>
                 <td>
                     <span
-                        class="badge badge-soft-{{ $user->role->value == UserRole::Admin->value ? 'success' : 'warning' }}">{{ $user->role->value == UserRole::Admin->value ? UserRole::Admin : UserRole::User }}</span>
+                        class="badge badge-soft-danger">{{ $user->role->value }}</span>
                 </td>
                 <td>
                     <div class="hstack gap-3 fs-15">

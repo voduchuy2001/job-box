@@ -3,7 +3,7 @@
     'placeholder' => null,
     'name' => null,
     'id' => null,
-])
+    ])
 
 <div class="card">
     <div class="card-body border border-dashed border-end-0 border-start-0">

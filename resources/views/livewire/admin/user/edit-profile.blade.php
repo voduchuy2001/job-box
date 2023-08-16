@@ -1,4 +1,8 @@
-@php use App\Enums\UserRole;use App\Enums\UserStatus; @endphp
+@php
+    use App\Enums\UserRole;
+    use App\Enums\UserStatus;
+@endphp
+
 <div>
     <div class="position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg profile-setting-img">

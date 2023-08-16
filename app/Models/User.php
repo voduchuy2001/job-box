@@ -65,12 +65,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return User::where('name', 'like', $searchTerm)
             ->orWhere('email', 'like', $searchTerm)
-            ->where('role', '!=', 'company')
             ->orderByDesc('created_at')
             ->paginate($itemPerPage);
     }
 
-    public static function getUserById(int $id)
+    public static function getUserById(int|string $id)
     {
         return User::findOrFail($id);
     }

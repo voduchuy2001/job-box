@@ -2,7 +2,7 @@
     'class' => null,
     'to' => null,
     'navigate' => true,
-])
+    ])
 
 <a
     @if($navigate === true)

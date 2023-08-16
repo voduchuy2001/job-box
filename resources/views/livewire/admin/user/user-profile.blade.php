@@ -84,7 +84,7 @@
                                             </tr>
                                             <tr>
                                                 <th class="ps-0" scope="row">{{ __('Joining Date') }}</th>
-                                                <td class="text-muted">{{ Date::dateFormat($user->created_at) }}</td>
+                                                <td class="text-muted">{{ DateHelper::dateFormat($user->created_at) }}</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -92,7 +92,7 @@
                                 </x-admin.card>
 
                                 <x-admin.card>
-                                    <h5 class="card-title mb-4">Portfolio</h5>
+                                    <h5 class="card-title mb-4">{{ __('Portfolio') }}</h5>
                                     <div class="d-flex flex-wrap gap-2">
                                         <div>
                                             <a href="javascript:void(0);" class="avatar-xs d-block">
@@ -153,7 +153,7 @@
                                             <div class="flex-grow-1">
                                                 <div>
                                                     <h5 class="fs-14 mb-1">{{ __('Last login at') }}</h5>
-                                                    <p class="fs-13 text-muted mb-0">{{ Date::dateFormat($user->lastLoginAt()) }}</p>
+                                                    <p class="fs-13 text-muted mb-0">{{ DateHelper::dateFormat($user->lastLoginAt()) }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +167,7 @@
                                             <div class="flex-grow-1">
                                                 <div>
                                                     <h5 class="fs-14 mb-1">{{ __('Previous login at') }}</h5>
-                                                    <p class="fs-13 text-muted mb-0"> {{ Date::dateFormat($user->previousLoginAt()) }}</p>
+                                                    <p class="fs-13 text-muted mb-0"> {{ DateHelper::dateFormat($user->previousLoginAt()) }}</p>
                                                 </div>
                                             </div>
                                         </div>

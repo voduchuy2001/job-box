@@ -1,6 +1,6 @@
 @props([
     'labels' => [],
-])
+    ])
 
 <x-admin.card>
     <div class="table-responsive">

@@ -2,7 +2,7 @@
     'id' => null,
     'name' => null,
     'formData' => false,
-])
+    ])
 
 <form
     @if($id) id="{{ $id }}" @endif

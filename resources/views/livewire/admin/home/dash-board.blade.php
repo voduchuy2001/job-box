@@ -1,3 +1,3 @@
 <div>
-    {{-- Stop trying to control. --}}
+    @include('admin.partials.page-title')
 </div>

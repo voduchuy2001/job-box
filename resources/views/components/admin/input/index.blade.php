@@ -7,13 +7,13 @@
     'name' => null,
     'id' => null,
     'value' => null,
-])
+    ])
 
 <div class="mb-3">
     @if($label) <label for="{{ $id }}" class="form-label">{{ $label }}</label> @endif
     <input
         @if($type) type="{{ $type }}" @endif
-        @if($class) class="{{ $class }}" @endif
+    @if($class) class="{{ $class }}" @endif
         @if($id) id="{{ $id }}" @endif
         @if($placeholder) placeholder="{{ $placeholder }}" @endif
         @if($model) wire:model="{{ $model }}" @endif
@@ -22,10 +22,10 @@
         {{ $attributes }}
     >
 
-        {{ $slot }}
+    {{ $slot }}
 
     @error($model)
-        <span class="text-danger">
+    <span class="text-danger">
             {{ $message }}
         </span>
     @enderror

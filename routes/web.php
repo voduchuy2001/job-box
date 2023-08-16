@@ -57,8 +57,8 @@ Route::get('auth/github/callback', [GithubLoginController::class, 'callback'])->
 Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('language.__invoke');
 
 /* Admin */
-Route::group(['prefix' => '/', 'middleware' => ['auth', 'admin']], function () {
-    Route::get('/admin', DashBoard::class)->name('dashboard');
+Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('/', DashBoard::class)->name('dashboard');
     Route::get('/profile/{id}', UserProfile::class)->name('user.profile');
     Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile');
     Route::get('/user', UserList::class)->name('user.index');

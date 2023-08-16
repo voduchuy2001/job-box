@@ -1,7 +1,7 @@
 @props([
     'type' => 'submit',
     'class' => null,
-])
+    ])
 
 <button
     type="{{ $type }}"

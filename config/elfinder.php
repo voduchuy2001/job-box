@@ -40,7 +40,7 @@ return array(
 
     'route' => [
         'prefix' => 'media-file',
-        'middleware' => array('web', 'admin'), //Set to null to disable middleware filter
+        'middleware' => array('web', 'auth', 'admin'), //Set to null to disable middleware filter
     ],
 
     /*
