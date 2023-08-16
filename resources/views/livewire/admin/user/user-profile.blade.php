@@ -1,7 +1,7 @@
 <div>
     <div class="profile-foreground position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg">
-            <img src="{{ asset('admins/assets/images/profile-bg.jpg') }}" alt="{{ $user->name }}" class="profile-wid-img" />
+            <img src="{{ $user->coverImage === null ? asset('admins/assets/images/profile-bg.jpg') : asset($user->coverImage->url) }}" alt="{{ $user->name }}" class="profile-wid-img" />
         </div>
     </div>
 
@@ -9,7 +9,7 @@
         <div class="row g-4">
             <div class="col-auto">
                 <div class="avatar-lg">
-                    <img src="{{ asset('admins/assets/images/users/avatar-1.jpg') }}" alt="{{ $user->name }}" class="img-thumbnail rounded-circle" />
+                    <img src="{{ $user->avatar === null ? asset('admins/assets/images/users/avatar-1.jpg') : asset($user->avatar->url) }}" alt="{{ $user->name }}" class="img-thumbnail rounded-circle" />
                 </div>
             </div>
 

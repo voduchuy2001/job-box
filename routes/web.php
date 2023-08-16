@@ -8,11 +8,11 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
-use App\Http\Controllers\User\HomeController;
 use App\Livewire\Admin\Home\DashBoard;
 use App\Livewire\Admin\User\EditProfile;
 use App\Livewire\Admin\User\UserList;
 use App\Livewire\Admin\User\UserProfile;
+use App\Livewire\User\Home\HomePage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,9 +56,6 @@ Route::get('auth/github/callback', [GithubLoginController::class, 'callback'])->
 /* Lang */
 Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('language.__invoke');
 
-/* User */
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
 /* Admin */
 Route::group(['prefix' => '/', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/admin', DashBoard::class)->name('dashboard');
@@ -66,3 +63,5 @@ Route::group(['prefix' => '/', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile');
     Route::get('/user', UserList::class)->name('user.index');
 });
+
+Route::get('/', HomePage::class)->name('home');

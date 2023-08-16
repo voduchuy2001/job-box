@@ -20,7 +20,7 @@ class UserList extends Component
     public UserRole $role;
     public UserStatus $status;
     public string $searchTerm = '';
-    public int $itemPerPage = 1;
+    public int $itemPerPage = 20;
 
     public function updateUserStatus(int $id): void
     {

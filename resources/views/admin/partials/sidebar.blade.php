@@ -83,6 +83,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a
+                        class="nav-link menu-link"
+                        href="{{ route('elfinder.index') }}"
+                    >
+                        <i class="ri-image-line"></i><span data-key="t-widgets">{{ __('Media File') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
                         <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Tables</span>
                     </a>
