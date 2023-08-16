@@ -67,9 +67,10 @@
             </x-admin.card>
         </div>
 
-        <x-admin.alert></x-admin.alert>
-
         <div class="col-xxl-9">
+
+            <x-admin.alert></x-admin.alert>
+
             <x-admin.card
                 class="mt-xxl-n5"
             >
