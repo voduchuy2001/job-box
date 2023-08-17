@@ -8,7 +8,6 @@
 
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
-    <link rel="shortcut icon" href="{{ asset('admins/assets/images/favicon.ico') }}">
     <link href="{{ asset('admins/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admins/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admins/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
