@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
 use App\Livewire\Admin\Home\DashBoard;
+use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\EditProfile;
 use App\Livewire\Admin\User\UserList;
 use App\Livewire\Admin\User\UserProfile;
@@ -62,6 +63,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], function
     Route::get('/profile/{id}', UserProfile::class)->name('user.profile');
     Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile');
     Route::get('/user', UserList::class)->name('user.index');
+    Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');
 });
 
 Route::get('/', HomePage::class)->name('home');

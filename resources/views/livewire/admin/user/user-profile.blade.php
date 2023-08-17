@@ -137,43 +137,6 @@
                                         <a href="javascript:void(0);" class="badge badge-soft-primary">Python</a>
                                     </div>
                                 </x-admin.card>
-
-                                <x-admin.card>
-                                    <div class="d-flex align-items-center mb-4">
-                                        <div class="flex-grow-1">
-                                            <h5 class="card-title mb-0">{{ __('Activity Logs') }}</h5>
-                                        </div>
-                                    </div>
-                                    @if($user->lastLoginAt())
-                                    <div>
-                                        <div class="d-flex align-items-center py-3">
-                                            <div class="avatar-xs flex-shrink-0 me-3">
-                                                <img src="{{ asset('admins/assets/images/users/avatar-3.jpg') }}" alt="{{ $user->name }}" class="img-fluid rounded-circle" />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <div>
-                                                    <h5 class="fs-14 mb-1">{{ __('Last login at') }}</h5>
-                                                    <p class="fs-13 text-muted mb-0">{{ DateHelper::dateFormat($user->lastLoginAt()) }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endif
-
-                                        @if($user->previousLoginAt())
-                                        <div class="d-flex align-items-center py-3">
-                                            <div class="avatar-xs flex-shrink-0 me-3">
-                                                <img src="{{ asset('admins/assets/images/users/avatar-4.jpg') }}" alt="" class="img-fluid rounded-circle" />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <div>
-                                                    <h5 class="fs-14 mb-1">{{ __('Previous login at') }}</h5>
-                                                    <p class="fs-13 text-muted mb-0"> {{ DateHelper::dateFormat($user->previousLoginAt()) }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endif
-                                    </div>
-                                </x-admin.card>
                             </div>
 
                             <div class="col-xxl-9">
