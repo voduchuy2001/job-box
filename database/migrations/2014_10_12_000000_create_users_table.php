@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,8 +13,8 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('role')->default('User');
-            $table->string('status')->default('Is Active');
+            $table->string('role')->default(UserRole::User->value);
+            $table->string('status')->default(UserStatus::IsActive->value);
             $table->string('is_root')->default(0);
             $table->string('github_id')->nullable();
             $table->string('auth_type')->default('Email');
