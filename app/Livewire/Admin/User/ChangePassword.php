@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Change Password')]
 class ChangePassword extends Component
 {
     #[Rule('required')]
