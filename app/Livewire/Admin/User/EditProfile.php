@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\User;
 use App\Enums\ImageType;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
@@ -43,6 +44,22 @@ class EditProfile extends Component
 
     #[Rule(new Enum(UserRole::class))]
     public UserRole $userRole;
+
+    protected $listeners = [
+        'createAddress' => 'createAddress',
+    ];
+
+    public function createAddress(string $longitude, string $latitude): void
+    {
+        Address::updateOrCreate([
+            'user_id' => $this->user->id,
+        ],[
+            'name' => '123',
+            'user_id' => $this->user->id,
+            'longitude' => $longitude,
+            'latitude' => $latitude,
+        ]);
+    }
 
     public function mount(int|string $id): void
     {

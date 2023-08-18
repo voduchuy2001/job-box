@@ -87,6 +87,12 @@
                                 <i class="far fa-envelope"></i> {{ __('Experience') }}
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#addresses" role="tab">
+                                <i class="far fa-envelope"></i> {{ __('Addresses') }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="p-4">
@@ -264,9 +270,45 @@
                                 </div>
                             </form>
                         </div>
+
+                        <div wire:ignore class="tab-pane" id="addresses" role="tabpanel">
+                            <div id="map"></div>
+                        </div>
                     </div>
                 </div>
             </x-admin.card>
         </div>
     </div>
 </div>
+@pushonce('scripts')
+    <script>
+        document.addEventListener('livewire:init', function () {
+            var map = L.map('map').setView([10.045162, 105.746857], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; OpenStreetMap contributors',
+                maxZoom: 19,
+            }).addTo(map);
+
+            var markers = L.layerGroup().addTo(map);
+
+            map.on('click', function (e) {
+                markers.clearLayers();
+
+                L.marker(e.latlng).addTo(markers);
+                Livewire.dispatch('createAddress', {
+                    latitude: e.latlng.lat,
+                    longitude: e.latlng.lng
+                });
+            });
+        })
+    </script>
+@endpushonce
+
+@pushonce('styles')
+    <style>
+        #map {
+            min-height: 500px;
+        }
+    </style>
+@endpushonce

@@ -11,10 +11,10 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->foreignId('user_id');
-            $table->foreignId('job_id');
-            $table->foreignId('ward_id');
-            $table->foreignId('district_id');
-            $table->foreignId('province_id');
+            $table->foreignId('job_id')->nullable();
+            $table->foreignId('ward_id')->nullable();
+            $table->foreignId('district_id')->nullable();
+            $table->foreignId('province_id')->nullable();
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->timestamps();
