@@ -10,6 +10,7 @@
         "barryvdh/laravel-elfinder": "^0.5.2",
         "guzzlehttp/guzzle": "^7.2",
         "irazasyed/telegram-bot-sdk": "^3.13",
+        "jantinnerezo/livewire-alert": "3.0@beta",
         "josiasmontag/laravel-recaptchav3": "^1.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
@@ -18,8 +19,7 @@
         "laravel/ui": "^4.2",
         "livewire/livewire": "3.0.*@beta",
         "maatwebsite/excel": "^3.1",
-        "rappasoft/laravel-authentication-log": "^3.0",
-        "realrashid/sweet-alert": "^7.1"
+        "rappasoft/laravel-authentication-log": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

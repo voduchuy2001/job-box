@@ -8,10 +8,10 @@
 
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
-    <link href="{{ asset('admins/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admins/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admins/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admins/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     @vite(['resources/sass/app.scss'])
     @livewireStyles
 </head>
@@ -32,12 +32,14 @@
         </div>
     </div>
 
-    <script data-navigate-once src="{{ asset('admins/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script data-navigate-once src="{{ asset('admins/assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script data-navigate-once src="{{ asset('admins/assets/libs/node-waves/waves.min.js') }}"></script>
-    <script data-navigate-once src="{{ asset('admins/assets/libs/feather-icons/feather.min.js') }}"></script>
-    <script data-navigate-once src="{{ asset('admins/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
-    <script src="{{ asset('admins/assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/sweetalert2@11.js') }}"></script>
+    <x-livewire-alert::scripts />
+    <script data-navigate-once src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script data-navigate-once src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
     @livewireScripts
 </body>
 </html>

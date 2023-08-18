@@ -7,7 +7,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-4 text-center">
                         <div class="error-500 position-relative">
-                            <img src="{{ asset('admins/assets/images/error.png') }}" alt="" class="img-fluid error-500-img error-img" />
+                            <img src="{{ asset('assets/images/error.png') }}" alt="" class="img-fluid error-500-img error-img" />
                             <h1 class="title text-muted">{{ __('500') }}</h1>
                         </div>
                         <div>

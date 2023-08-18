@@ -1,6 +1,4 @@
 <div>
-    <x-admin.alert></x-admin.alert>
-
     <x-admin.card>
         <x-form wire:click.prevent="updatePassword">
             <div class="row g-2">

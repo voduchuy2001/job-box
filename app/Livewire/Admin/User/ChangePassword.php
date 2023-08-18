@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Admin\User;
 
-use App\Helpers\BaseHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
@@ -14,6 +14,8 @@ use Livewire\Component;
 #[Title('Change Password')]
 class ChangePassword extends Component
 {
+    use LivewireAlert;
+
     #[Rule('required')]
     public string|null $oldPassword;
 
@@ -28,7 +30,7 @@ class ChangePassword extends Component
         $validated = $this->validate();
 
         if (! Hash::check($validated['oldPassword'], Auth::user()->password)) {
-            BaseHelper::flash('danger', __('Password does not match'));
+            $this->alert('warning', __('Old password does not match!'));
             $this->reset();
             return;
         }
@@ -37,7 +39,7 @@ class ChangePassword extends Component
             'password' => Hash::make($validated['password']),
         ]);
 
-        BaseHelper::flash('success', __('Update success'));
+        $this->alert('success', __('Update success!'));
 
         $this->reset();
     }
