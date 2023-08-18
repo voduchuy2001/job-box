@@ -8,8 +8,6 @@
         model="searchTerm"
     ></x-admin.input.search>
 
-    <x-admin.alert></x-admin.alert>
-
     <x-admin.table
         :labels="[__('Id'), __('Name'), __('Email'), __('Status'), __('Role')]"
     >

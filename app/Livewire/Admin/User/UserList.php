@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\User;
 
-use App\Helpers\PageTitleHelper;
+use App\Helpers\BaseHelper;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
@@ -21,7 +21,7 @@ class UserList extends Component
     #[Layout('layouts.admin')]
     public function render(): View
     {
-        PageTitleHelper::set( __('List Of Users'), __('Users'));
+        BaseHelper::setPageTitle( __('List Of Users'), __('Users'));
 
         $searchTerm = '%' . $this->searchTerm . '%';
         $users = User::getUsers($this->itemPerPage, $searchTerm);

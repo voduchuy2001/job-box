@@ -5,7 +5,7 @@ namespace App\Livewire\Admin\User;
 use App\Enums\ImageType;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
-use App\Helpers\AlertHelper;
+use App\Helpers\BaseHelper;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
@@ -57,11 +57,11 @@ class EditProfile extends Component
         $validated = $this->validate();
 
         if ($this->user->is_root == 1) {
-            AlertHelper::flash('warning', __('You can not update personal details for this account'));
+            BaseHelper::flash('warning', __('You can not update personal details for this account'));
             return;
         }
 
-        AlertHelper::flash('success', __('Update success'));
+        BaseHelper::flash('success', __('Update success'));
 
         $this->user->update([
             'name' => $validated['name'],
@@ -80,7 +80,7 @@ class EditProfile extends Component
         if ($this->avatar) {
             $avatarUrl = $this->avatar->store('upload');
 
-            AlertHelper::flash('success', __('Update success'));
+            BaseHelper::flash('success', __('Update success'));
 
             $this->user->avatar()->create([
                 'url' => $avatarUrl,
@@ -99,7 +99,7 @@ class EditProfile extends Component
         if ($this->coverImage) {
             $avatarUrl = $this->coverImage->store('upload');
 
-            AlertHelper::flash('success', __('Update success'));
+            BaseHelper::flash('success', __('Update success'));
 
             $this->user->coverImage()->create([
                 'url' => $avatarUrl,

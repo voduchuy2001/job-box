@@ -84,7 +84,7 @@
                                             </tr>
                                             <tr>
                                                 <th class="ps-0" scope="row">{{ __('Joining Date') }}</th>
-                                                <td class="text-muted">{{ DateHelper::dateFormat($user->created_at) }}</td>
+                                                <td class="text-muted">{{ BaseHelper::dateFormat($user->created_at) }}</td>
                                             </tr>
                                             </tbody>
                                         </table>

@@ -187,9 +187,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'AlertHelper' => \App\Helpers\AlertHelper::class,
-        'DateHelper' => \App\Helpers\DateHelper::class,
-        'PageTitleHelper' => \App\Helpers\PageTitleHelper::class,
+        'BaseHelper' => \App\Helpers\BaseHelper::class,
     ])->toArray(),
 
 ];

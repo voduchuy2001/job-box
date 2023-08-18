@@ -74,7 +74,7 @@
                 <div class="flex-grow-1 ms-3">
                     <h6>{{ $log->user_agent }}</h6>
                     @if($log->login_at)
-                        <p class="text-muted mb-0">{{ __('Login at: :at, with IP address: :ip', ['at' => DateHelper::dateFormat($log->login_at), 'ip' => $log->ip_address]) }}</p>
+                        <p class="text-muted mb-0">{{ __('Login at: :at, with IP address: :ip', ['at' => BaseHelper::dateFormat($log->login_at), 'ip' => $log->ip_address]) }}</p>
                     @endif
                 </div>
             </div>

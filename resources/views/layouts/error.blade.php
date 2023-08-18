@@ -18,6 +18,8 @@
 
 <body>
 
+    @include('sweetalert::alert')
+
     @yield('content')
 
 </body>
