@@ -53,7 +53,7 @@ class EditProfile extends Component
     {
         Address::updateOrCreate([
             'user_id' => $this->user->id,
-        ],[
+        ], [
             'name' => '123',
             'user_id' => $this->user->id,
             'longitude' => $longitude,
