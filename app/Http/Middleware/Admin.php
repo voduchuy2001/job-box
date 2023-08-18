@@ -13,6 +13,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user() && Auth::user()->role !== UserRole::Admin) {
+            toast(__('Access Denied'), 'danger');
             abort(403);
         }
         return $next($request);
