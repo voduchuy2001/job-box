@@ -257,7 +257,7 @@
                             class="dropdown-item"
                             :to="route('user-edit.profile', ['id' => Auth::user()->id])">
                             <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
-                            <span class="align-middle">{{ __('Profile') }}</span></x-link>
+                            <span class="align-middle">{{ __('Your Profile') }}</span></x-link>
 
                         <x-link
                             class="dropdown-item"

@@ -2,13 +2,10 @@
 
 namespace App\Livewire\Admin\User;
 
-use App\Enums\ImageType;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Models\Address;
 use App\Models\User;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -26,12 +23,6 @@ class EditProfile extends Component
     use LivewireAlert;
 
     public User $user;
-
-    #[Rule('nullable|image|max:2048')]
-    public ?UploadedFile $avatar = null;
-
-    #[Rule('nullable|image|max:2048')]
-    public ?UploadedFile $coverImage = null;
 
     #[Rule('required|string|max:32')]
     public string $name;
@@ -87,44 +78,6 @@ class EditProfile extends Component
             'role' => $validated['userRole'],
             'status' => $validated['userStatus'],
         ]);
-    }
-
-    public function updatedAvatar(): void
-    {
-        if ($this->user->avatar) {
-            $this->user->avatar()->delete();
-            File::delete($this->user->avatar->url);
-        }
-
-        if ($this->avatar) {
-            $avatarUrl = $this->avatar->store('upload');
-
-            $this->alert('success', __('Update success'));
-
-            $this->user->avatar()->create([
-                'url' => $avatarUrl,
-                'type' => ImageType::Avatar,
-            ]);
-        }
-    }
-
-    public function updatedCoverImage(): void
-    {
-        if ($this->user->coverImage) {
-            $this->user->coverImage()->delete();
-            File::delete($this->user->coverImage->url);
-        }
-
-        if ($this->coverImage) {
-            $avatarUrl = $this->coverImage->store('upload');
-
-            $this->alert('success', __('Update success'));
-
-            $this->user->coverImage()->create([
-                'url' => $avatarUrl,
-                'type' => ImageType::Cover,
-            ]);
-        }
     }
 
     #[Layout('layouts.admin')]
