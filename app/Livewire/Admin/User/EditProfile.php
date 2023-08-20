@@ -2,15 +2,9 @@
 
 namespace App\Livewire\Admin\User;
 
-use App\Enums\UserRole;
-use App\Enums\UserStatus;
-use App\Models\Address;
 use App\Models\User;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -20,64 +14,11 @@ class EditProfile extends Component
 {
     use WithFileUploads;
 
-    use LivewireAlert;
-
     public User $user;
-
-    #[Rule('required|string|max:32')]
-    public string $name;
-
-    #[Rule('required|email')]
-    public string $email;
-
-    #[Rule(new Enum(UserStatus::class))]
-    public UserStatus $userStatus;
-
-    #[Rule(new Enum(UserRole::class))]
-    public UserRole $userRole;
-
-    protected $listeners = [
-        'createAddress' => 'createAddress',
-    ];
-
-    public function createAddress(string $longitude, string $latitude): void
-    {
-        Address::updateOrCreate([
-            'user_id' => $this->user->id,
-        ], [
-            'name' => '123',
-            'user_id' => $this->user->id,
-            'longitude' => $longitude,
-            'latitude' => $latitude,
-        ]);
-    }
 
     public function mount(int|string $id): void
     {
-        $user = User::getUserById($id);
-        $this->user = $user;
-        $this->name = $user->name;
-        $this->email = $user->email;
-        $this->userRole = $user->role;
-        $this->userStatus = $user->status;
-    }
-
-    public function updateProfile(): void
-    {
-        $validated = $this->validate();
-
-        if ($this->user->is_root == 1) {
-            $this->alert('warning', __('You can not update personal details for this account'));
-            return;
-        }
-
-        $this->alert('success', __('Update success'));
-
-        $this->user->update([
-            'name' => $validated['name'],
-            'role' => $validated['userRole'],
-            'status' => $validated['userStatus'],
-        ]);
+        $this->user = User::getUserById($id);
     }
 
     #[Layout('layouts.admin')]
