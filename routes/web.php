@@ -12,7 +12,6 @@ use App\Livewire\Admin\Home\DashBoard;
 use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\EditProfile;
 use App\Livewire\Admin\User\UserList;
-use App\Livewire\Admin\User\UserProfile;
 use App\Livewire\User\Home\HomePage;
 use Illuminate\Support\Facades\Route;
 
@@ -60,7 +59,6 @@ Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('lang
 /* Admin */
 Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', DashBoard::class)->name('dashboard');
-    Route::get('/profile/{id}', UserProfile::class)->name('user.profile');
     Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile');
     Route::get('/user', UserList::class)->name('user.index');
     Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');

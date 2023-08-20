@@ -24,7 +24,7 @@
                 <td>
                     <div class="hstack gap-3 fs-15">
                         <x-link
-                            to="{{ route('user.profile', ['id' => $user->id]) }}"
+                            to="{{ route('user-edit.profile', ['id' => $user->id]) }}"
                             class="link-primary"><i class="ri-settings-4-line"></i></x-link>
                     </div>
                 </td>

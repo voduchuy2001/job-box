@@ -255,7 +255,7 @@
                         <h6 class="dropdown-header">{{ __('Welcome :name!', ['name' => Auth::user()->name]) }}</h6>
                         <x-link
                             class="dropdown-item"
-                            :to="route('user.profile', ['id' => Auth::user()->id])">
+                            :to="route('user-edit.profile', ['id' => Auth::user()->id])">
                             <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                             <span class="align-middle">{{ __('Profile') }}</span></x-link>
 
