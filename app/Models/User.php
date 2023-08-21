@@ -27,8 +27,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'status',
         'is_root',
         'password',
-        'github_id',
+        'provider_id',
         'auth_type',
+        'email_verified_at',
     ];
 
     protected $hidden = [

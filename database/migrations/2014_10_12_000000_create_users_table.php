@@ -16,8 +16,8 @@ return new class () extends Migration {
             $table->string('role')->default(UserRole::User->value);
             $table->string('status')->default(UserStatus::IsActive->value);
             $table->string('is_root')->default(0);
-            $table->string('github_id')->nullable();
-            $table->string('auth_type')->default('Email');
+            $table->string('provider_id')->nullable();
+            $table->string('auth_type')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

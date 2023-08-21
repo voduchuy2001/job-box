@@ -25,11 +25,11 @@ class SocialiteController extends Controller
             $socialAccount = Socialite::driver($provider)->user();
 
             $user = User::updateOrCreate([
-                'github_id' => $socialAccount->getId(),
+                'provider_id' => $socialAccount->getId(),
             ], [
                 'email' => $socialAccount->getEmail(),
                 'name' => $socialAccount->getName(),
-                'github_id'=> $socialAccount->getId(),
+                'provider_id'=> $socialAccount->getId(),
                 'auth_type'=> $provider,
                 'status' => UserStatus::IsActive,
                 'password' => Hash::make(Str::random(10)),
