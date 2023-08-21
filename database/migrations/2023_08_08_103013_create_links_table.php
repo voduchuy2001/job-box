@@ -10,10 +10,10 @@ return new class () extends Migration {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->string('type');
-            $table->foreignId('user_id');
-            $table->string('title');
-            $table->text('description');
+            $table->morphs('linkable');
+            $table->string('type')->nullable();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

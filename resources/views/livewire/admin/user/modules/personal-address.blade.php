@@ -44,7 +44,7 @@
                 @enderror
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 mb-3">
                 <label class="form-label">{{ __('Wards') }}</label>
                 <select class="form-select" wire:model.live="wardId">
                     @foreach($wards as $ward)
@@ -63,7 +63,7 @@
                 <div class="hstack gap-2 justify-content-end">
                     <x-button
                         type="submit"
-                        class="btn btn-primary">{{ __('Create New') }}</x-button>
+                        class="btn btn-primary">{{ __('Creates') }}</x-button>
                 </div>
             </div>
         </div>

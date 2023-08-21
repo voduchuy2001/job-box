@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Address extends Model
 {
@@ -10,12 +11,17 @@ class Address extends Model
 
     protected $fillable = [
         'name',
-        'user_id',
-        'job_id',
+        'addressable_type',
+        'addressable_id',
         'ward_id',
         'district_id',
         'province_id',
         'longitude',
         'latitude',
     ];
+
+    public function addressable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }

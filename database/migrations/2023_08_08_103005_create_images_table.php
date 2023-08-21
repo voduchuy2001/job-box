@@ -10,8 +10,7 @@ return new class () extends Migration {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->string('imageable_id');
-            $table->string('imageable_type');
+            $table->morphs('imageable');
             $table->string('type')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();

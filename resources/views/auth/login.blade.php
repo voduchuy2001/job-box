@@ -115,7 +115,8 @@
                                             </div>
 
                                             <div>
-                                                <a href="{{ route('github.redirect') }}" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></a>
+                                                <a href="{{ route('socialite.redirect', ['provider' => 'github']) }}" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></a>
+                                                <a href="{{ route('socialite.redirect', ['provider' => 'google']) }}" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></a>
                                             </div>
                                         </div>
                                     </div>

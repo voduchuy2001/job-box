@@ -12,25 +12,25 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
-class GithubLoginController extends Controller
+class SocialiteController extends Controller
 {
-    public function redirect(): RedirectResponse
+    public function redirect(string $provider): RedirectResponse
     {
-        return Socialite::driver('github')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
-    public function callback(): RedirectResponse|string
+    public function callback(string $provider): RedirectResponse|string
     {
         try {
-            $githubUser = Socialite::driver('github')->user();
+            $socialAccount = Socialite::driver($provider)->user();
 
             $user = User::updateOrCreate([
-                'github_id' => $githubUser->getId(),
+                'github_id' => $socialAccount->getId(),
             ], [
-                'email' => $githubUser->getEmail(),
-                'name' => $githubUser->getName(),
-                'github_id'=> $githubUser->getId(),
-                'auth_type'=> 'Github',
+                'email' => $socialAccount->getEmail(),
+                'name' => $socialAccount->getName(),
+                'github_id'=> $socialAccount->getId(),
+                'auth_type'=> $provider,
                 'status' => UserStatus::IsActive,
                 'password' => Hash::make(Str::random(10)),
                 'email_verified_at' => Carbon::now(),

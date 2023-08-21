@@ -2,7 +2,7 @@
     <div class="position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg profile-setting-img">
             <img
-                src="{{ $user->coverImage === null ? asset('admins/assets/images/profile-bg.jpg') : asset($user->coverImage->url) }}"
+                src="{{ $user->coverImage === null ? asset('assets/images/profile-bg.jpg') : asset($user->coverImage->url) }}"
                 class="profile-wid-img" alt="">
             <div class="overlay-content">
                 <div class="text-end p-3">

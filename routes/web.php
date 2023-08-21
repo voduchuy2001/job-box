@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\GithubLoginController;
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -50,8 +50,8 @@ Route::get('email/verify', [VerificationController::class, 'show'])->name('verif
 Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 Route::get('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 
-Route::get('auth/github', [GithubLoginController::class, 'redirect'])->name('github.redirect');
-Route::get('auth/github/callback', [GithubLoginController::class, 'callback'])->name('github.callback');
+Route::get('auth/{provider}/redirect', [SocialiteController::class, 'redirect'])->name('socialite.redirect');
+Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback'])->name('socialite.callback');
 
 /* Lang */
 Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('language.__invoke');

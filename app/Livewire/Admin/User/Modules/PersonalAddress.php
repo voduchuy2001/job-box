@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin\User\Modules;
 
-use App\Models\Address;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\User;
@@ -40,12 +39,11 @@ class PersonalAddress extends Component
     {
         $validated = $this->validate();
 
-        Address::create([
+        $this->user->address()->create([
             'name' => $validated['houseNumber'],
             'province_id' => $validated['provinceId'],
             'district_id' => $validated['districtId'],
             'ward_id' => $validated['wardId'],
-            'user_id' => $this->user->id,
         ]);
 
         $this->alert('success', __('Create success!'));
