@@ -85,5 +85,8 @@
     "Categories": "Categories",
     "Blog": "Blog",
     "Login & Register": "Login & Register",
-    "Hello :name": "Hello :name"
+    "Hello :name": "Hello :name",
+    "List Of Blogs": "List Of Blogs",
+    "BLogs": "BLogs",
+    "Search by title, content or something": "Search by title, content or something"
 }

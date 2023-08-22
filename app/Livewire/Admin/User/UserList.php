@@ -10,12 +10,13 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-#[Title('User List')]
+#[Title('List Of Users')]
 class UserList extends Component
 {
     use WithPagination;
 
     public string $searchTerm = '';
+
     public int $itemPerPage = 20;
 
     #[Layout('layouts.admin')]

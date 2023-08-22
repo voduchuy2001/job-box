@@ -7,16 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class () extends Migration {
     public function up(): void
     {
-        Schema::create('user_activities', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('activity_id');
+            $table->string('name');
+            $table->string('type');
+            $table->morphs('categoryable');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('user_activities');
+        Schema::dropIfExists('categories');
     }
 };

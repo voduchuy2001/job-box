@@ -13,6 +13,7 @@ return new class () extends Migration {
             $table->string('type');
             $table->date('completion_time');
             $table->text('description');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

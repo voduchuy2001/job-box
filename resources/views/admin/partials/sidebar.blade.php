@@ -17,7 +17,6 @@
 
     <div id="scrollbar">
         <div class="container-fluid">
-
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
@@ -29,6 +28,15 @@
                         to="{{ route('user.index') }}"
                     >
                         <i class="ri-user-line"></i><span>{{ __('Users') }}</span>
+                    </x-link>
+                </li>
+
+                <li class="nav-item">
+                    <x-link
+                        class="nav-link menu-link"
+                        to="{{ route('blog.index') }}"
+                    >
+                        <i class="ri-user-line"></i><span>{{ __('Blogs') }}</span>
                     </x-link>
                 </li>
 

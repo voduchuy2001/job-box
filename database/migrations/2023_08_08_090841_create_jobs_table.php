@@ -16,10 +16,9 @@ return new class () extends Migration {
             $table->string('industry');
             $table->string('vacancy');
             $table->string('status');
-            $table->date('deadline_for_filing');
+            $table->timestamp('deadline_for_filing');
+            $table->string('type');
             $table->foreignId('user_id');
-            $table->foreignId('job_category_id');
-            $table->foreignId('job_type_id');
             $table->timestamps();
         });
     }

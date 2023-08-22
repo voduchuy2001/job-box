@@ -18,6 +18,11 @@ return new class () extends Migration {
             $table->string('is_root')->default(0);
             $table->string('provider_id')->nullable();
             $table->string('auth_type')->nullable();
+            $table->string('position')->nullable();
+            $table->string('sex')->nullable();
+            $table->timestamp('date_of_birth')->nullable();
+            $table->text('present')->nullable();
+            $table->integer('view')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

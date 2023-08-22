@@ -14,6 +14,7 @@ return new class () extends Migration {
             $table->string('issued_on')->nullable();
             $table->string('expires_on')->nullable();
             $table->text('description');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
