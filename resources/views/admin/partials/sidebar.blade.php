@@ -36,7 +36,7 @@
                         class="nav-link menu-link"
                         to="{{ route('blog.index') }}"
                     >
-                        <i class="ri-user-line"></i><span>{{ __('Blogs') }}</span>
+                        <i class="ri-book-line"></i><span>{{ __('Blogs') }}</span>
                     </x-link>
                 </li>
 
@@ -52,7 +52,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#jobs" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
-                        <i class="ri-layout-grid-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
+                        <i class="ri-file-2-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
                     </a>
                     <div class="collapse menu-dropdown" id="jobs">
                         <ul class="nav nav-sm flex-column">

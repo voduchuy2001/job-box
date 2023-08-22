@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Blog;
 
 use App\Helpers\BaseHelper;
+use App\Models\Post;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -23,6 +24,11 @@ class BlogList extends Component
     {
         BaseHelper::setPageTitle(__('List Of Blogs'), __('Blogs'));
 
-        return view('livewire.admin.blog.blog-list');
+        $searchTerm = '%' . $this->searchTerm . '%';
+        $posts = Post::getUsers($this->itemPerPage, $searchTerm);
+
+        return view('livewire.admin.blog.blog-list', [
+            'posts' => $posts,
+        ]);
     }
 }

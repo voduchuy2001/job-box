@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
 use App\Livewire\Admin\Blog\BlogList;
+use App\Livewire\Admin\Blog\CreateBlog;
+use App\Livewire\Admin\Blog\EditBlog;
 use App\Livewire\Admin\Home\DashBoard;
 use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\EditProfile;
@@ -61,6 +63,8 @@ Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('lang
 Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', DashBoard::class)->name('dashboard');
     Route::get('/blog', BlogList::class)->name('blog.index');
+    Route::get('/create-blog', CreateBlog::class)->name('blog.create');
+    Route::get('/edit-blog/{id}', EditBlog::class)->name('blog.edit');
     Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile');
     Route::get('/user', UserList::class)->name('user.index');
     Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');

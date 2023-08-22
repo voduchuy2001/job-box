@@ -88,5 +88,8 @@
     "Hello :name": "Hello :name",
     "List Of Blogs": "List Of Blogs",
     "BLogs": "BLogs",
-    "Search by title, content or something": "Search by title, content or something"
+    "Search by title, content or something": "Search by title, content or something",
+    "Title": "Title",
+    "Content": "Content",
+    "Create Blog": "Create Blog"
 }

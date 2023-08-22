@@ -88,5 +88,8 @@
     "Hello :name": "Xin chào :name",
     "List Of Blogs": "Danh Sách Bài Viết",
     "Blogs": "Bài Viết",
-    "Search by title, content or something": "Tìm kiếm bằng tiêu đề, nội dung hoặc một thứ gì đó"
+    "Search by title, content or something": "Tìm kiếm bằng tiêu đề, nội dung hoặc một thứ gì đó",
+    "Title": "Tiêu Đề",
+    "Content": "Nội dung",
+    "Create Blog": "Thêm Bài Viết"
 }
