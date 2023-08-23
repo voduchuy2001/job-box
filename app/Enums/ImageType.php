@@ -6,4 +6,5 @@ enum ImageType: string
 {
     case Avatar = 'Avatar';
     case Cover = 'Cover';
+    case Post = 'Post';
 }

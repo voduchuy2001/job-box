@@ -91,5 +91,10 @@
     "Search by title, content or something": "Tìm kiếm bằng tiêu đề, nội dung hoặc một thứ gì đó",
     "Title": "Tiêu Đề",
     "Content": "Nội dung",
-    "Create Blog": "Thêm Bài Viết"
+    "Create Blog": "Thêm Bài Viết",
+    "Edit Blog": "Chỉnh Sửa Bài Viết",
+    "Create New": "Thêm mới",
+    "Enter title": "Nhập tiêu đề",
+    "Create success": "Thêm mới thành công",
+    "Delete success :name": "Xóa :name thành công"
 }

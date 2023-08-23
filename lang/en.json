@@ -91,5 +91,10 @@
     "Search by title, content or something": "Search by title, content or something",
     "Title": "Title",
     "Content": "Content",
-    "Create Blog": "Create Blog"
+    "Create Blog": "Create Blog",
+    "Edit Blog": "Edit Blog",
+    "Create New": "Create New",
+    "Enter title": "Enter title",
+    "Create success": "Create success",
+    "Delete success :name": "Delete success :name"
 }

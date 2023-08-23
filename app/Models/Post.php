@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Post extends Model
 {
@@ -13,6 +14,10 @@ class Post extends Model
         'content',
     ];
 
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
     public static function getUsers(int $itemPerPage, string $searchTerm)
     {
         return Post::where('title', 'like', $searchTerm)
@@ -21,7 +26,7 @@ class Post extends Model
             ->paginate($itemPerPage);
     }
 
-    public static function getUserById(int|string $id)
+    public static function getPostById(int|string $id)
     {
         return Post::findOrFail($id);
     }

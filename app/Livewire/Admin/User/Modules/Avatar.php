@@ -24,9 +24,9 @@ class Avatar extends Component
 
     public function updatedAvatar(): void
     {
-        $validate = $this->validate();
+        $validated = $this->validate();
 
-        if (! $validate['avatar']) {
+        if (! $validated['avatar']) {
             return;
         }
 

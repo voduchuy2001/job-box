@@ -4,7 +4,9 @@ namespace App\Livewire\Admin\Blog;
 
 use App\Helpers\BaseHelper;
 use App\Models\Post;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -14,10 +16,28 @@ use Livewire\WithPagination;
 class BlogList extends Component
 {
     use WithPagination;
+    use LivewireAlert;
 
     public string $searchTerm = '';
 
     public int $itemPerPage = 20;
+
+    public int $check = 0;
+
+    public function change(): void
+    {
+        $this->check = $this->check === 0 ? 1 : 0;
+    }
+
+    public function delete(string|int $id): void
+    {
+        $post = Post::getPostById($id);
+
+        File::delete($post->image->url);
+        $post->image()->delete();
+        $post->delete();
+        $this->alert('success', __('Delete success :name', ['name' => $post->title]));
+    }
 
     #[Layout('layouts.admin')]
     public function render(): View

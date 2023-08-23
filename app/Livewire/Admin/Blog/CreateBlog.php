@@ -2,33 +2,50 @@
 
 namespace App\Livewire\Admin\Blog;
 
+use App\Enums\ImageType;
 use App\Helpers\BaseHelper;
+use App\Models\Post;
 use Illuminate\Http\UploadedFile;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreateBlog extends Component
 {
+    use WithFileUploads;
     use LivewireAlert;
 
-//    #[Rule('required|image|max:2048')]
-//    public ?UploadedFile $image;
+    #[Rule('required|image|max:2048')]
+    public ?UploadedFile $image = null;
 
     #[Rule('required|string')]
-    public string $content = '';
+    public string $content;
 
     #[Rule('required|string|max:255')]
-    public string $title = '';
+    public string $title;
 
-    public function createPost()
+    public function create()
     {
-        dd($this->content);
         $validated = $this->validate();
 
-        dd($validated);
+        $imageUrl = $this->image->store('upload');
+
+        $post = Post::create([
+            'title' => $validated['title'],
+            'content' => $validated['content'],
+        ]);
+
+        $post->image()->create([
+            'url' => $imageUrl,
+            'type' => ImageType::Post,
+        ]);
+
+        $this->alert('success', __('Create success'));
+
+        return $this->redirect(BlogList::class, navigate: true);
     }
 
     #[Layout('layouts.admin')]

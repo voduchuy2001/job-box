@@ -24,9 +24,9 @@ class CoverImage extends Component
 
     public function updatedCoverImage(): void
     {
-        $validate = $this->validate();
+        $validated = $this->validate();
 
-        if (! $validate['coverImage']) {
+        if (! $validated['coverImage']) {
             return;
         }
 
