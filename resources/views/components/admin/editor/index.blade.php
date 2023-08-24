@@ -45,21 +45,21 @@
                 onMessage: function (dialogApi, details) {
                     if (details.mceAction === 'fileSelected') {
                         const file = details.data.file;
-
                         const info = file.name;
-
                         if (meta.filetype === 'file') {
-                            callback(file.url, {text: info, title: info});
+                            callback(file.url, {
+                                text: info,
+                                title: info
+                            });
                         }
-
                         if (meta.filetype === 'image') {
-                            callback(file.url, {alt: info});
+                            callback(file.url, {
+                                alt: info
+                            });
                         }
-
                         if (meta.filetype === 'media') {
                             callback(file.url);
                         }
-
                         dialogApi.close();
                     }
                 }

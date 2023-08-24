@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Blog;
 use App\Enums\ImageType;
 use App\Helpers\BaseHelper;
 use App\Models\Post;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -24,7 +23,7 @@ class EditBlog extends Component
     public string $oldImage;
 
     #[Rule('nullable|image|max:2048')]
-    public ?UploadedFile $image = null;
+    public mixed $image = null;
 
     #[Rule('required|string')]
     public string $content;

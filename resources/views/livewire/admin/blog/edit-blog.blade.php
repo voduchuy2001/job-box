@@ -5,24 +5,20 @@
         <x-form wire:submit.prevent="update">
             <div class="row g-2">
                 <div class="col-lg-12">
-                    <x-admin.filepond
+                    <x-admin.image
                         name="image"
-                        id="image"
                         model="image"
-                    ></x-admin.filepond>
-
-                    @error('image')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="d-flex mb-3 align-items-center justify-content-center">
-                    <figure class="figure">
-                        <img src="{{ asset($oldImage) }}" class="rounded-circle avatar-xl mb-3" alt="{{ $title }}">
-                        <figcaption class="figure-caption text-center">{{ __('Old Image') }}</figcaption>
-                    </figure>
+                    >
+                        @if(! $image)
+                            <img
+                                src="{{ asset($oldImage) }}"
+                                class="profile-wid-img" alt="">
+                        @else
+                            <img
+                                src="{{ $image->temporaryUrl() }}"
+                                class="profile-wid-img" alt="">
+                        @endif
+                    </x-admin.image>
                 </div>
 
                 <div class="col-lg-12">

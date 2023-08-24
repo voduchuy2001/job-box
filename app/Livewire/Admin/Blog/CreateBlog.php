@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Blog;
 use App\Enums\ImageType;
 use App\Helpers\BaseHelper;
 use App\Models\Post;
-use Illuminate\Http\UploadedFile;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -19,7 +18,7 @@ class CreateBlog extends Component
     use LivewireAlert;
 
     #[Rule('required|image|max:2048')]
-    public ?UploadedFile $image = null;
+    public mixed $image = null;
 
     #[Rule('required|string')]
     public string $content;
@@ -27,7 +26,7 @@ class CreateBlog extends Component
     #[Rule('required|string|max:255')]
     public string $title;
 
-    public function create()
+    public function create(): void
     {
         $validated = $this->validate();
 
@@ -45,7 +44,7 @@ class CreateBlog extends Component
 
         $this->alert('success', __('Create success'));
 
-        return $this->redirect(BlogList::class, navigate: true);
+        $this->redirect(BlogList::class);
     }
 
     #[Layout('layouts.admin')]

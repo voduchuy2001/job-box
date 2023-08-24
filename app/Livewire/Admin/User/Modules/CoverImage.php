@@ -4,10 +4,10 @@ namespace App\Livewire\Admin\User\Modules;
 
 use App\Enums\ImageType;
 use App\Models\User;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -20,7 +20,13 @@ class CoverImage extends Component
     public User $user;
 
     #[Rule('nullable|image|max:2048')]
-    public ?UploadedFile $coverImage = null;
+    public mixed $coverImage = null;
+
+    #[On('refresh')]
+    public function mount(): void
+    {
+        $this->coverImage = $this->user->coverImage->url;
+    }
 
     public function updatedCoverImage(): void
     {
@@ -43,6 +49,8 @@ class CoverImage extends Component
             'url' => $avatarUrl,
             'type' => ImageType::Cover,
         ]);
+
+        $this->dispatch('refresh');
     }
 
     public function render(): View

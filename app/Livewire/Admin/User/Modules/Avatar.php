@@ -4,10 +4,10 @@ namespace App\Livewire\Admin\User\Modules;
 
 use App\Enums\ImageType;
 use App\Models\User;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -20,7 +20,13 @@ class Avatar extends Component
     public User $user;
 
     #[Rule('nullable|image|max:2048')]
-    public ?UploadedFile $avatar = null;
+    public mixed $avatar = null;
+
+    #[On('refresh')]
+    public function mount(): void
+    {
+        $this->avatar = $this->user->avatar->url;
+    }
 
     public function updatedAvatar(): void
     {
@@ -43,6 +49,8 @@ class Avatar extends Component
             'url' => $avatarUrl,
             'type' => ImageType::Avatar,
         ]);
+
+        $this->dispatch('refresh');
     }
 
     public function render(): View

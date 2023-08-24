@@ -5,17 +5,14 @@
         <x-form wire:submit.prevent="create">
             <div class="row g-2">
                 <div class="col-lg-12">
-                    <x-admin.filepond
+                    <x-admin.image
                         name="image"
-                        id="image"
                         model="image"
-                    ></x-admin.filepond>
-
-                    @error('image')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                    @enderror
+                    >
+                        <img
+                            src="{{ $image != null ? $image->temporaryUrl() : asset('assets/images/profile-bg.jpg')}}"
+                            class="profile-wid-img" alt="">
+                    </x-admin.image>
                 </div>
 
                 <div class="col-lg-12">
