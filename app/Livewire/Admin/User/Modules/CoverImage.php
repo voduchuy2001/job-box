@@ -25,7 +25,9 @@ class CoverImage extends Component
     #[On('refresh')]
     public function mount(): void
     {
-        $this->coverImage = $this->user->coverImage->url;
+        if ($this->user->coverImage) {
+            $this->coverImage = $this->user->coverImage->url;
+        }
     }
 
     public function updatedCoverImage(): void

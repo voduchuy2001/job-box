@@ -2,10 +2,10 @@
     @include('admin.partials.page-title')
 
     <div class="mb-3">
-        <a
-            href="{{ route('blog.create') }}"
+        <x-link
+            to="{{ route('blog.create') }}"
             class="btn btn-primary">
-            <i class="ri-add-line align-bottom me-1"></i>{{ __('Create Blog') }}</a>
+            <i class="ri-add-line align-bottom me-1"></i>{{ __('Create Blog') }}</x-link>
     </div>
 
     <x-admin.input.search
@@ -27,11 +27,11 @@
                 <td>{{ $post->title }}</td>
                 <td>
                     <div class="hstack gap-3 fs-15">
-                        <a
-                            href="{{ route('blog.edit', ['id' => $post->id]) }}"
-                            class="link-primary"><i class="ri-settings-4-line"></i></a>
+                        <x-link
+                            to="{{ route('blog.edit', ['id' => $post->id]) }}"
+                            class="link-primary"><i class="ri-settings-4-line"></i></x-link>
 
-                        @if($check === 0)
+                        @if(! $check)
                             <span
                                 wire:click="change"
                                 style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>

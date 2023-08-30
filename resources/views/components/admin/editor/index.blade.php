@@ -17,6 +17,8 @@
 
 @pushonce('scripts')
     <script>
+        tinyMCE.remove();
+
         tinymce.init({
             selector: '#{{ $id }}',
             language: '{{ app()->getLocale() }}',

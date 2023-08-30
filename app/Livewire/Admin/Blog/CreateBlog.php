@@ -44,7 +44,7 @@ class CreateBlog extends Component
 
         $this->alert('success', __('Create success'));
 
-        $this->redirect(BlogList::class);
+        $this->redirect(BlogList::class, navigate: true);
     }
 
     #[Layout('layouts.admin')]

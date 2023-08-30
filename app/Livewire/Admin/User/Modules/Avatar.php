@@ -25,7 +25,9 @@ class Avatar extends Component
     #[On('refresh')]
     public function mount(): void
     {
-        $this->avatar = $this->user->avatar->url;
+        if ($this->user->avatar) {
+            $this->avatar = $this->user->avatar->url;
+        }
     }
 
     public function updatedAvatar(): void

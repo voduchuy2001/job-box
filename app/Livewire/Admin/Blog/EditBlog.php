@@ -54,6 +54,8 @@ class EditBlog extends Component
 
             $this->alert('success', __('Update success'));
 
+            $this->redirect(BlogList::class, navigate: true);
+
             return;
         }
 
@@ -75,6 +77,8 @@ class EditBlog extends Component
         ]);
 
         $this->alert('success', __('Update success'));
+
+        $this->redirect(BlogList::class, navigate: true);
     }
 
     #[Layout('layouts.admin')]
