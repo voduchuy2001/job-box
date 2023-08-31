@@ -29,8 +29,8 @@ class SocialiteController extends Controller
             ], [
                 'email' => $socialAccount->getEmail(),
                 'name' => $socialAccount->getName(),
-                'provider_id'=> $socialAccount->getId(),
-                'auth_type'=> $provider,
+                'provider_id' => $socialAccount->getId(),
+                'auth_type' => $provider,
                 'status' => UserStatus::IsActive,
                 'password' => Hash::make(Str::random(10)),
                 'email_verified_at' => Carbon::now(),

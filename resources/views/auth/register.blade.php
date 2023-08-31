@@ -84,9 +84,6 @@
                                                 placeholder="{{ __('*****************') }}"
                                                 required
                                             >
-                                                <div class="float-end">
-                                                    <a href="{{ route('password.request') }}" class="text-muted">{{ __('Forgot your password?') }}</a>
-                                                </div>
                                             </x-admin.input>
 
                                             <x-admin.input
