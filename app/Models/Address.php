@@ -24,4 +24,9 @@ class Address extends Model
     {
         return $this->morphTo();
     }
+
+    public static function getAddressById(string|int $id)
+    {
+        return Address::findOrFail($id);
+    }
 }

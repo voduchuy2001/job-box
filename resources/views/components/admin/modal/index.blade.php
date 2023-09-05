@@ -3,7 +3,6 @@
     'type' => null,
     ])
 
-
 <div wire:ignore id="{{ $id }}"
      class="modal fade"
      tabindex="-1"
@@ -11,8 +10,18 @@
     <div class="modal-dialog {{ $type ?: 'modal-dialog-centered' }}">
         <div class="modal-content">
 
-           {{ $slot }}
+            {{ $slot }}
 
         </div>
     </div>
 </div>
+
+@pushonce('scripts')
+    <script>
+        document.addEventListener('livewire:initialized', () => {
+            @this.on('hiddenModal', (event) => {
+                $('#{{ $id }}').modal('hide')
+            });
+        });
+    </script>
+@endpushonce

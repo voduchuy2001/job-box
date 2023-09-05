@@ -39,7 +39,7 @@ class PersonalAddress extends Component
     {
         $validated = $this->validate();
 
-        $this->user->address()->create([
+        $this->user->addresses()->updateOrCreate([
             'name' => $validated['houseNumber'],
             'province_id' => $validated['provinceId'],
             'district_id' => $validated['districtId'],
@@ -56,6 +56,9 @@ class PersonalAddress extends Component
             'wardId',
             'wards'
         ]);
+
+        $this->dispatch('hiddenModal');
+        $this->dispatch('refresh');
     }
 
     public function render(): View

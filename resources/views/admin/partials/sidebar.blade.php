@@ -32,15 +32,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <x-link
-                        class="nav-link menu-link"
-                        to="{{ route('blog.index') }}"
-                    >
-                        <i class="ri-book-line"></i><span>{{ __('Blogs') }}</span>
-                    </x-link>
-                </li>
-
-                <li class="nav-item">
                     <a
                         target="_blank"
                         class="nav-link menu-link"

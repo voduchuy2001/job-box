@@ -32,6 +32,7 @@
             <div class="col-lg-6">
                 <label class="form-label">{{ __('Districts') }}</label>
                 <select class="form-select" wire:model.live="districtId">
+                    <option value="">{{ __('Choose A District') }}</option>
                     @foreach($districts as $district)
                         <option value="{{ $district->id }}">{{ $district->name }}</option>
                     @endforeach
@@ -47,6 +48,7 @@
             <div class="col-lg-6 mb-3">
                 <label class="form-label">{{ __('Wards') }}</label>
                 <select class="form-select" wire:model.live="wardId">
+                    <option value="">{{ __('Choose A Ward') }}</option>
                     @foreach($wards as $ward)
                         <option value="{{ $ward->id }}">{{ $ward->name }}</option>
                     @endforeach
