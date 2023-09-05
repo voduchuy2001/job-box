@@ -31,17 +31,17 @@
                             to="{{ route('blog.edit', ['id' => $post->id]) }}"
                             class="link-primary"><i class="ri-settings-4-line"></i></x-link>
 
-                        @if(! $check)
-                            <span
-                                wire:click="change"
-                                style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
-                        @else
+                        @if($check == $post->id)
                             <span
                                 wire:click="delete({{ $post->id }})"
                                 style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
                             <span
-                                wire:click="change"
+                                wire:click="change({{ $post->id }})"
                                 style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                        @else
+                            <span
+                                wire:click="change({{ $post->id }})"
+                                style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
                         @endif
                     </div>
                 </td>

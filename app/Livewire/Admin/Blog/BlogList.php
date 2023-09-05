@@ -22,11 +22,11 @@ class BlogList extends Component
 
     public int $itemPerPage = 20;
 
-    public int $check = 0;
+    public mixed $check = null;
 
-    public function change(): void
+    public function change(int|string $id): void
     {
-        $this->check = $this->check === 0 ? 1 : 0;
+        $this->check = $this->check === $id ? null : $id;
     }
 
     public function delete(string|int $id): void
