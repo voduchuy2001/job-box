@@ -56,7 +56,7 @@
                     </div>
                 @endforeach
 
-                @if(count($addresses) > $limit)
+                @if($userAddresses > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button wire:click="loadMore"
@@ -109,7 +109,7 @@
                     </div>
                 @endforeach
 
-                @if(count($addresses) > $limit)
+                @if($userAddresses > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button wire:click="loadMore"

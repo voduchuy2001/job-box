@@ -55,8 +55,11 @@ class EditProfile extends Component
     {
         $addresses = $this->user->addresses()->orderByDesc('created_at')->limit($this->limit)->get();
 
+        $userAddresses = $this->user->addresses()->count();
+
         return view('livewire.admin.user.edit-profile', [
             'addresses' => $addresses,
+            'userAddresses' => $userAddresses,
         ]);
     }
 }
