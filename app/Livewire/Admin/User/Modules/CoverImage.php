@@ -45,7 +45,7 @@ class CoverImage extends Component
 
         $avatarUrl = $this->coverImage->store('upload');
 
-        $this->alert('success', __('Update success'));
+        $this->alert('success', trans('Update success'));
 
         $this->user->coverImage()->create([
             'url' => $avatarUrl,

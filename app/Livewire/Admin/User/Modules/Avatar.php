@@ -45,7 +45,7 @@ class Avatar extends Component
 
         $avatarUrl = $this->avatar->store('upload');
 
-        $this->alert('success', __('Update success'));
+        $this->alert('success', trans('Update success'));
 
         $this->user->avatar()->create([
             'url' => $avatarUrl,

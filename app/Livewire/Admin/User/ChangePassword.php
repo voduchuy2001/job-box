@@ -29,8 +29,14 @@ class ChangePassword extends Component
     {
         $validated = $this->validate();
 
+        if (Auth::user()->auth_type) {
+            $this->alert('warning', trans('Not support to change password'));
+            $this->reset();
+            return;
+        }
+
         if (! Hash::check($validated['oldPassword'], Auth::user()->password)) {
-            $this->alert('warning', __('Old password does not match!'));
+            $this->alert('warning', trans('Old password does not match!'));
             $this->reset();
             return;
         }
@@ -39,7 +45,7 @@ class ChangePassword extends Component
             'password' => Hash::make($validated['password']),
         ]);
 
-        $this->alert('success', __('Update success!'));
+        $this->alert('success', trans('Update success!'));
 
         $this->reset();
     }

@@ -22,7 +22,7 @@ class UserList extends Component
     #[Layout('layouts.admin')]
     public function render(): View
     {
-        BaseHelper::setPageTitle(__('List Of Users'), __('Users'));
+        BaseHelper::setPageTitle(trans('List Of Users'), trans('Users'));
 
         $searchTerm = '%' . $this->searchTerm . '%';
         $users = User::getUsers($this->itemPerPage, $searchTerm);

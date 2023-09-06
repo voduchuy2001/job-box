@@ -22,10 +22,18 @@ class EditProfile extends Component
 
     public mixed $confirm = null;
 
+    public int $limit = 3;
+
     public function mount(int|string $id): void
     {
         $user = User::getUserById($id);
         $this->user = $user;
+    }
+
+    public function loadMore(): void
+    {
+        $this->limit += 3;
+        $this->dispatch('refresh');
     }
 
     public function confirmDelete(int|string $id): void
@@ -37,7 +45,7 @@ class EditProfile extends Component
     {
         $address = Address::getAddressById($id);
         $address->delete();
-        $this->alert('success', __('Delete success :name', ['name' => $address->name]));
+        $this->alert('success', trans('Delete success :name', ['name' => $address->name]));
         $this->dispatch('refresh');
     }
 
@@ -45,7 +53,7 @@ class EditProfile extends Component
     #[Layout('layouts.admin')]
     public function render(): View
     {
-        $addresses = $this->user->addresses;
+        $addresses = $this->user->addresses()->orderByDesc('created_at')->limit($this->limit)->get();
 
         return view('livewire.admin.user.edit-profile', [
             'addresses' => $addresses,

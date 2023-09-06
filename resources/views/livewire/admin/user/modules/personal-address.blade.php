@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <x-admin.input
-                    :label="__('Hosue number')"
+                    :label="__('House number')"
                     class="form-control"
                     type="text"
                     id="houseNumber"
@@ -65,7 +65,7 @@
                 <div class="hstack gap-2 justify-content-end">
                     <x-button
                         type="submit"
-                        class="btn btn-primary">{{ __('Creates') }}</x-button>
+                        class="btn btn-primary">{{ __('Create New') }}</x-button>
                 </div>
             </div>
         </div>

@@ -46,7 +46,7 @@ class PersonalAddress extends Component
             'ward_id' => $validated['wardId'],
         ]);
 
-        $this->alert('success', __('Create success!'));
+        $this->alert('success', trans('Create success!'));
         $this->reset([
             'houseNumber',
             'provinceId',

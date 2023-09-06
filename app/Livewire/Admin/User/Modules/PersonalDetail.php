@@ -42,11 +42,11 @@ class PersonalDetail extends Component
         $validated = $this->validate();
 
         if ($this->user->is_root == 1) {
-            $this->alert('warning', __('You can not update personal details for this account'));
+            $this->alert('warning', trans('You can not update personal details for this account'));
             return;
         }
 
-        $this->alert('success', __('Update success'));
+        $this->alert('success', trans('Update success'));
 
         $this->user->update([
             'name' => $validated['name'],
