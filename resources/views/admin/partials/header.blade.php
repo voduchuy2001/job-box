@@ -259,11 +259,10 @@
                             <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                             <span class="align-middle">{{ __('Your Profile') }}</span></x-link>
 
-                        @if(! Auth::user()->auth_type)
-                            <x-link
-                                class="dropdown-item"
-                                :to="route('user-change-password.index')"><i class="mdi mdi-account-key-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Change Password') }}</span></x-link>
-                        @endif
+                        <x-link
+                            class="dropdown-item"
+                            :to="route('user-change-password.index')"><i class="mdi mdi-account-key-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Change Password') }}</span></x-link>
+
                         <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item" href="#"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Site Settings') }}</span></a>
