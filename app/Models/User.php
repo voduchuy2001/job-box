@@ -7,6 +7,7 @@ use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,6 +49,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function addresses(): MorphMany
     {
         return $this->morphMany(Address::class, 'addressable');
+    }
+
+    public function educations(): HasMany
+    {
+        return $this->hasMany(Education::class, 'user_id');
+    }
+
+    public function skills(): MorphMany
+    {
+        return $this->morphMany(Skill::class, 'skillable');
     }
 
     public function avatar(): MorphOne

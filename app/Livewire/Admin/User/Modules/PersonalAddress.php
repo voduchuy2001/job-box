@@ -37,13 +37,13 @@ class PersonalAddress extends Component
 
     public function saveAddress(): void
     {
-        $validated = $this->validate();
+        $validatedData = $this->validate();
 
         $this->user->addresses()->updateOrCreate([
-            'name' => $validated['houseNumber'],
-            'province_id' => $validated['provinceId'],
-            'district_id' => $validated['districtId'],
-            'ward_id' => $validated['wardId'],
+            'name' => $validatedData['houseNumber'],
+            'province_id' => $validatedData['provinceId'],
+            'district_id' => $validatedData['districtId'],
+            'ward_id' => $validatedData['wardId'],
         ]);
 
         $this->alert('success', trans('Create success!'));

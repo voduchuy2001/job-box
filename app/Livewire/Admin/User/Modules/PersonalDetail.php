@@ -39,7 +39,7 @@ class PersonalDetail extends Component
 
     public function updateProfile(): void
     {
-        $validated = $this->validate();
+        $validatedData = $this->validate();
 
         if ($this->user->is_root == 1) {
             $this->alert('warning', trans('You can not update personal details for this account'));
@@ -49,9 +49,9 @@ class PersonalDetail extends Component
         $this->alert('success', trans('Update success'));
 
         $this->user->update([
-            'name' => $validated['name'],
-            'role' => $validated['userRole'],
-            'status' => $validated['userStatus'],
+            'name' => $validatedData['name'],
+            'role' => $validatedData['userRole'],
+            'status' => $validatedData['userStatus'],
         ]);
     }
 

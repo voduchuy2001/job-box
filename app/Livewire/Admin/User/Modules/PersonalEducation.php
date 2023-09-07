@@ -4,12 +4,15 @@ namespace App\Livewire\Admin\User\Modules;
 
 use App\Models\User;
 use Illuminate\View\View;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class PersonalEducation extends Component
 {
+    use LivewireAlert;
+
     #[Locked]
     public User $user;
 
@@ -19,20 +22,39 @@ class PersonalEducation extends Component
     #[Rule('required|string|max:255')]
     public string $majors;
 
-    #[Rule('nullable')]
+    #[Rule('required|date_format:d-m-Y|before:today')]
     public string $startAt;
 
-    #[Rule('nullable')]
+    #[Rule('nullable|date_format:d-m-Y|after_or_equal:startAt')]
     public string $endAt;
 
-    #[Rule('required|string')]
+    #[Rule('nullable|string')]
     public string $description;
 
-    public bool $toggle = false;
+    public mixed $toggle = null;
 
     public function saveEducation(): void
     {
         $validatedData = $this->validate();
+
+        $this->user->educations()->updateOrCreate([
+            'school' => $validatedData['school'],
+            'majors' => $validatedData['majors'],
+            'start_at' => $validatedData['startAt'],
+            'end_at' => $validatedData['endAt'],
+            'description' => $validatedData['description']
+        ]);
+
+        $this->alert('success', trans('Create success!'));
+
+        $this->reset([
+            'school',
+            'majors',
+            'description',
+        ]);
+
+        $this->dispatch('hiddenModal');
+        $this->dispatch('refresh');
     }
 
     public function render(): View

@@ -27,7 +27,7 @@ class ChangePassword extends Component
 
     public function updatePassword(): void
     {
-        $validated = $this->validate();
+        $validatedData = $this->validate();
 
         if (Auth::user()->auth_type) {
             $this->alert('warning', trans('Not support to change password'));
@@ -35,14 +35,14 @@ class ChangePassword extends Component
             return;
         }
 
-        if (! Hash::check($validated['oldPassword'], Auth::user()->password)) {
+        if (! Hash::check($validatedData['oldPassword'], Auth::user()->password)) {
             $this->alert('warning', trans('Old password does not match!'));
             $this->reset();
             return;
         }
 
         Auth::user()->update([
-            'password' => Hash::make($validated['password']),
+            'password' => Hash::make($validatedData['password']),
         ]);
 
         $this->alert('success', trans('Update success!'));

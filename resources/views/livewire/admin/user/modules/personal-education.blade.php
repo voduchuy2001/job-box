@@ -31,14 +31,31 @@
                     name="toggle"
                     id="toggle"
                     model="toggle"
+                    value="true"
                 >{{ __('I am studying here') }}</x-admin.input.checkbox>
             </div>
 
             <div class="col-lg-6"></div>
 
             <div class="col-lg-6">
-                123
+                <x-admin.datepicker
+                    :label="__('Start At')"
+                    name="startAt"
+                    model="startAt"
+                    id="startAt"
+                ></x-admin.datepicker>
             </div>
+
+            @if(! $toggle)
+                <div class="col-lg-6">
+                    <x-admin.datepicker
+                        :label="__('End At')"
+                        name="endAt"
+                        model="endAt"
+                        id="endAt"
+                    ></x-admin.datepicker>
+                </div>
+            @endif
 
             <div class="col-lg-12">
                 <x-admin.input.textarea

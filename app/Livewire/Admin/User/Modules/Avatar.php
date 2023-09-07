@@ -32,9 +32,9 @@ class Avatar extends Component
 
     public function updatedAvatar(): void
     {
-        $validated = $this->validate();
+        $validatedData = $this->validate();
 
-        if (! $validated['avatar']) {
+        if (! $validatedData['avatar']) {
             return;
         }
 

@@ -16,7 +16,7 @@
     </div>
 </div>
 
-@pushonce('scripts')
+@push('scripts')
     <script>
         document.addEventListener('livewire:initialized', () => {
             @this.on('hiddenModal', (event) => {
@@ -24,4 +24,4 @@
             });
         });
     </script>
-@endpushonce
+@endpush
