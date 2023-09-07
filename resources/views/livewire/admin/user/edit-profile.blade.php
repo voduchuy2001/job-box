@@ -13,14 +13,14 @@
 
         <div class="col-xxl-9">
             <x-admin.card
-                :header="__('Personal Details')"
+                :header="__('Personal Detail')"
                 class="mt-xxl-n5"
             >
                 <livewire:admin.user.modules.personal-detail :user="$user"></livewire:admin.user.modules.personal-detail>
             </x-admin.card>
 
             <x-admin.card
-                :header="__('Addresses')"
+                :header="__('Address')"
             >
                 <x-button
                     type="button"
@@ -204,7 +204,7 @@
     <x-admin.modal
         id="new-skill"
         type="modal-lg modal-dialog-centered">
-        <x-admin.modal.header>{{ __('New Education') }}</x-admin.modal.header>
+        <x-admin.modal.header>{{ __('New Skill') }}</x-admin.modal.header>
         <x-admin.modal.body>
             <livewire:admin.user.modules.personal-skill :user="$user"></livewire:admin.user.modules.personal-skill>
         </x-admin.modal.body>

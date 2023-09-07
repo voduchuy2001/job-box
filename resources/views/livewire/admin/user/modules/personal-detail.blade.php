@@ -63,7 +63,7 @@
                 <div class="hstack gap-2 justify-content-end">
                     <x-button
                         type="submit"
-                        class="btn btn-primary">{{ __('Updates') }}</x-button>
+                        class="btn btn-primary">{{ __('Update') }}</x-button>
                 </div>
             </div>
         </div>

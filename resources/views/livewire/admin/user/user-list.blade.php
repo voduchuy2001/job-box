@@ -8,29 +8,34 @@
         model="searchTerm"
     ></x-admin.input.search>
 
-    <x-admin.table
-        :labels="[__('Id'), __('Name'), __('Email'), __('Status'), __('Role')]"
-    >
+    <x-admin.card>
         @foreach($users as $user)
-            <tr>
-                <td class="fw-medium">{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td><span class="badge badge-soft-secondary">{{ $user->email }}</span></td>
-                <td><span class="badge badge-soft-warning">{{ $user->status->value }}</span></td>
-                <td>
-                    <span
-                        class="badge badge-soft-danger">{{ $user->role->value }}</span>
-                </td>
-                <td>
-                    <div class="hstack gap-3 fs-15">
-                        <x-link
-                            to="{{ route('user-edit.profile', ['id' => $user->id]) }}"
-                            class="link-warning"><i class="ri-pencil-line"></i></x-link>
+            <div class="list-group">
+                <x-link
+                    :to="route('user-edit.profile', ['id' => $user->id])"
+                    class="list-group-item list-group-item-action">
+                    <div class="float-end">
+                        {{ $user->role }}
                     </div>
-                </td>
-            </tr>
+                    <div class="d-flex mb-2 align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="{{ $user->avatar ? asset($user->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="" class="avatar-sm rounded-circle" />
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="list-title fs-15 mb-1">{{ $user->name }}</h5>
+                            @if($user->lastLoginAt())
+                                <p class="list-text mb-0 fs-12">{{ __('Last login :at', ['at' => $user->lastLoginAt()->diffForHumans()]) }}</p>
+                            @endif
+                        </div>
+                    </div>
+                </x-link>
+            </div>
         @endforeach
-    </x-admin.table>
+
+        @if(! count($users))
+            <x-admin.empty></x-admin.empty>
+        @endif
+    </x-admin.card>
 
     {{ $users->links() }}
 </div>
