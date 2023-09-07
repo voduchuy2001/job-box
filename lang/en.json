@@ -148,5 +148,6 @@
     "Certificate: :certificate": "Certificate: :certificate",
     "Majors: :majors, start at: :startAt, end at: :endAt": "Majors: :majors, Start at: :startAt, End at: :endAt",
     "Description: :description": "Description: :description",
-    "Skill: :skillName": "Skill: :skillName"
+    "Skill: :skillName": "Skill: :skillName",
+    "Change Cover": "Change Cover"
 }

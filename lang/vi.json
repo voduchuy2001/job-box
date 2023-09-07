@@ -148,5 +148,6 @@
     "Certificate: :certificate": "Chứng chỉ: :certificate",
     "Majors: :majors, start at: :startAt, end at: :endAt": "Chuyên ngành: :majors, Bắt đầu học ngày: :startAt, Kết thúc ngày: :endAt",
     "Description: :description": "Mô tả: :description",
-    "Skill: :skillName": "Kỹ năng: :skillName"
+    "Skill: :skillName": "Kỹ năng: :skillName",
+    "Change Cover": "Cập Nhật Ảnh Bìa"
 }
