@@ -149,5 +149,7 @@
     "Majors: :majors, start at: :startAt, end at: :endAt": "Majors: :majors, Start at: :startAt, End at: :endAt",
     "Description: :description": "Description: :description",
     "Skill: :skillName": "Skill: :skillName",
-    "Change Cover": "Change Cover"
+    "Change Cover": "Change Cover",
+    "Position: :position": "Position: :position",
+    "Company: :company, start at: :startAt, end at: :endAt": "Company: :company, Start at: :startAt, End at: :endAt"
 }

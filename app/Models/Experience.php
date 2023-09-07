@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Experience extends Model
 {
@@ -15,4 +16,14 @@ class Experience extends Model
         'end_at',
         'description',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function getExperienceById(string|int $id)
+    {
+        return Experience::findOrFail($id);
+    }
 }

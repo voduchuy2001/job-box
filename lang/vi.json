@@ -149,5 +149,7 @@
     "Majors: :majors, start at: :startAt, end at: :endAt": "Chuyên ngành: :majors, Bắt đầu học ngày: :startAt, Kết thúc ngày: :endAt",
     "Description: :description": "Mô tả: :description",
     "Skill: :skillName": "Kỹ năng: :skillName",
-    "Change Cover": "Cập Nhật Ảnh Bìa"
+    "Change Cover": "Cập Nhật Ảnh Bìa",
+    "Position: :position": "Vị trí: :position",
+    "Company: :company, start at: :startAt, end at: :endAt": "Công ty: :company, Bắt Đầu Ngày: :startAt, Kết Thúc Ngày: :endAt"
 }

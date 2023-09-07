@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\User;
 use App\Models\Address;
 use App\Models\Certificate;
 use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Skill;
 use App\Models\User;
 use Illuminate\View\View;
@@ -62,6 +63,9 @@ class EditProfile extends Component
             case 'certificate':
                 $model = Certificate::getCertificateById($id);
                 break;
+            case 'experience':
+                $model = Experience::getExperienceById($id);
+                break;
             default:
                 return;
         }
@@ -111,6 +115,15 @@ class EditProfile extends Component
             ->certificates()
             ->count();
 
+        $experiences = $this->user
+            ->experiences()
+            ->orderByDesc('created_at')
+            ->limit($this->limit)
+            ->get();
+        $userExperiences = $this->user
+            ->certificates()
+            ->count();
+
         return view('livewire.admin.user.edit-profile', [
             'addresses' => $addresses,
             'userAddresses' => $userAddresses,
@@ -120,6 +133,8 @@ class EditProfile extends Component
             'userSkills' => $userSkills,
             'certificates' => $certificates,
             'userCertificates' => $userCertificates,
+            'experiences' => $experiences,
+            'userExperiences' => $userExperiences,
         ]);
     }
 }

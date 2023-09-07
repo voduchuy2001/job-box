@@ -74,6 +74,60 @@
             </x-admin.card>
 
             <x-admin.card
+                :header="__('Experience')"
+            >
+                <x-button
+                    type="button"
+                    class="btn btn-primary mb-3"
+                    data-bs-target="#new-experience"
+                    data-bs-toggle="modal"
+                >{{ __('Add New') }}</x-button>
+
+                @foreach($experiences as $experience)
+                    <div class="list-group">
+                        <span class="list-group-item list-group-item-action">
+                            <div class="float-end">
+                                 @if($confirm == $experience->id && $confirmType == 'experience')
+                                    <span
+                                        wire:click="delete({{ $experience->id }}, 'experience')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                    <span
+                                        wire:click="confirmDelete({{ $experience->id }}, 'experience')"
+                                        style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                                @else
+                                    <span
+                                        wire:click="confirmDelete({{ $experience->id }}, 'experience')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
+                                @endif
+                            </div>
+                            <div class="d-flex mb-2 align-items-center">
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="list-title fs-15 mb-1">{{ __('Position: :position', ['position' => $experience->position]) }}</h5>
+                                    <p class="list-text mb-0 fs-12">{{ __('Company: :company, start at: :startAt, end at: :endAt', ['company' => $experience->company_name, 'startAt' => $experience->start_at, 'endAt' => $experience->end_at ?: __('Undefined')]) }}</p>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                @endforeach
+
+                @if($userExperiences > $limit)
+                    <div class="form-group mt-3">
+                        <div class="text-center">
+                            <x-button
+                                wire:click="loadMore"
+                                class="btn btn-primary"
+                                type="button"
+                            >{{ __('Load more') }}</x-button>
+                        </div>
+                    </div>
+                @endif
+
+                @if(! count($educations))
+                    <x-admin.empty></x-admin.empty>
+                @endif
+            </x-admin.card>
+
+            <x-admin.card
                 :header="__('Education')"
             >
                 <x-button
@@ -245,6 +299,15 @@
         <x-admin.modal.header>{{ __('New Address') }}</x-admin.modal.header>
         <x-admin.modal.body>
             <livewire:admin.user.modules.personal-address :user="$user"></livewire:admin.user.modules.personal-address>
+        </x-admin.modal.body>
+    </x-admin.modal>
+
+    <x-admin.modal
+        id="new-experience"
+        type="modal-lg modal-dialog-centered">
+        <x-admin.modal.header>{{ __('New Experience') }}</x-admin.modal.header>
+        <x-admin.modal.body>
+            <livewire:admin.user.modules.personal-experience :user="$user"></livewire:admin.user.modules.personal-experience>
         </x-admin.modal.body>
     </x-admin.modal>
 

@@ -13,7 +13,7 @@ return new class () extends Migration {
             $table->string('position');
             $table->string('start_at')->nullable();
             $table->string('end_at')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });
