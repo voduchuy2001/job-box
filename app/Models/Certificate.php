@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Certificate extends Model
 {
@@ -14,4 +15,14 @@ class Certificate extends Model
         'issued_on',
         'expires_on',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function getCertificateById(string|int $id)
+    {
+        return Certificate::findOrFail($id);
+    }
 }

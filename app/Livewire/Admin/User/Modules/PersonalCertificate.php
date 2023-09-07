@@ -9,32 +9,43 @@ use Livewire\Attributes\Locked;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class PersonalSkill extends Component
+class PersonalCertificate extends Component
 {
     use LivewireAlert;
 
     #[Locked]
     public User $user;
 
+    public mixed $toggle = null;
+
     #[Rule('required|string|max:255')]
     public string $name;
 
-    #[Rule('nullable|string')]
-    public string $description;
+    #[Rule('required|string|max:255')]
+    public string $organization;
 
-    public function saveSkill(): void
+    #[Rule('required|date_format:d-m-Y|before_or_equal:today')]
+    public string $issuedOn;
+
+    #[Rule('nullable|date_format:d-m-Y|after_or_equal:issuedOn')]
+    public string $expiresOn;
+
+    public function saveCertificate(): void
     {
         $validatedData = $this->validate();
 
-        $this->user->skills()->updateOrCreate([
+        $this->user->certificates()->updateOrCreate([
             'name' => $validatedData['name'],
-            'description' => $validatedData['description'],
+            'organization' => $validatedData['organization'],
+            'issued_on' => $validatedData['issuedOn'],
+            'expires_on' => $validatedData['expiresOn'],
         ]);
 
         $this->alert('success', trans('Create success!'));
+
         $this->reset([
             'name',
-            'description',
+            'organization',
         ]);
 
         $this->dispatch('hiddenModal');
@@ -43,6 +54,6 @@ class PersonalSkill extends Component
 
     public function render(): View
     {
-        return view('livewire.admin.user.modules.personal-skill');
+        return view('livewire.admin.user.modules.personal-certificate');
     }
 }

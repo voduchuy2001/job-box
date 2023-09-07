@@ -103,7 +103,7 @@
                             <div class="d-flex mb-2 align-items-center">
                                 <div class="flex-grow-1 ms-3">
                                     <h5 class="list-title fs-15 mb-1">{{ __(':school', ['school' => $education->school]) }}</h5>
-                                    <p class="list-text mb-0 fs-12">{{ __(':majors', ['majors' => $education->majors]) }}</p>
+                                    <p class="list-text mb-0 fs-12">{{ __('Majors: :majors, start at: :startAt, end at: :endAt', ['majors' => $education->majors, 'startAt' => $education->start_at, 'endAt' => $education->end_at ?: __('Undefined')]) }}</p>
                                 </div>
                             </div>
                         </span>
@@ -156,8 +156,10 @@
                             </div>
                             <div class="d-flex mb-2 align-items-center">
                                 <div class="flex-grow-1 ms-3">
-                                    <h5 class="list-title fs-15 mb-1">{{ __(':school', ['school' => $skill->school]) }}</h5>
-                                    <p class="list-text mb-0 fs-12">{{ __(':majors', ['majors' => $skill->majors]) }}</p>
+                                    <h5 class="list-title fs-15 mb-1">{{ __('Skill: :skillName', ['skillName' => $skill->name]) }}</h5>
+                                    @if($skill->description)
+                                        <p class="list-text mb-0 fs-12">{{ __('Description: :description', ['description' => $skill->description]) }}</p>
+                                    @endif
                                 </div>
                             </div>
                         </span>
@@ -177,6 +179,60 @@
                 @endif
 
                 @if(! count($skills))
+                    <x-admin.empty></x-admin.empty>
+                @endif
+            </x-admin.card>
+
+            <x-admin.card
+                :header="__('Certificate')"
+            >
+                <x-button
+                    type="button"
+                    class="btn btn-primary mb-3"
+                    data-bs-target="#new-certificate"
+                    data-bs-toggle="modal"
+                >{{ __('Add New') }}</x-button>
+
+                @foreach($certificates as $certificate)
+                    <div class="list-group">
+                        <span class="list-group-item list-group-item-action">
+                            <div class="float-end">
+                                 @if($confirm == $certificate->id && $confirmType == 'certificate')
+                                    <span
+                                        wire:click="delete({{ $certificate->id }}, 'certificate')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                    <span
+                                        wire:click="confirmDelete({{ $certificate->id }}, 'certificate')"
+                                        style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                                @else
+                                    <span
+                                        wire:click="confirmDelete({{ $certificate->id }}, 'certificate')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
+                                @endif
+                            </div>
+                            <div class="d-flex mb-2 align-items-center">
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="list-title fs-15 mb-1">{{ __('Certificate: :certificate', ['certificate' => $certificate->name]) }}</h5>
+                                    <p class="list-text mb-0 fs-12">{{ __('Organization: :organization, Issued on: :issuedOn, Expires on: :expiresOn', ['organization' => $certificate->organization, 'issuedOn' => $certificate->issued_on, 'expiresOn' => $certificate->expires_on ?: __('Undefined')]) }}</p>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                @endforeach
+
+                @if($userCertificates > $limit)
+                    <div class="form-group mt-3">
+                        <div class="text-center">
+                            <x-button
+                                wire:click="loadMore"
+                                class="btn btn-primary"
+                                type="button"
+                            >{{ __('Load more') }}</x-button>
+                        </div>
+                    </div>
+                @endif
+
+                @if(! count($certificates))
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -207,6 +263,15 @@
         <x-admin.modal.header>{{ __('New Skill') }}</x-admin.modal.header>
         <x-admin.modal.body>
             <livewire:admin.user.modules.personal-skill :user="$user"></livewire:admin.user.modules.personal-skill>
+        </x-admin.modal.body>
+    </x-admin.modal>
+
+    <x-admin.modal
+        id="new-certificate"
+        type="modal-lg modal-dialog-centered">
+        <x-admin.modal.header>{{ __('New Certificate') }}</x-admin.modal.header>
+        <x-admin.modal.body>
+            <livewire:admin.user.modules.personal-certificate :user="$user"></livewire:admin.user.modules.personal-certificate>
         </x-admin.modal.body>
     </x-admin.modal>
 </div>

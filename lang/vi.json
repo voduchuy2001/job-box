@@ -135,5 +135,18 @@
     "Login History": "Lịch Sử Đăng Nhập",
     "Old Password": "Mật Khẩu Cũ",
     "Welcome :name!": "Chào mừng :name!",
-    "Last login :at": "Lần đăng nhập cuối cùng: :at"
+    "Last login :at": "Lần đăng nhập cuối cùng: :at",
+    "Certificate": "Chứng Chỉ",
+    "New Certificate": "Thêm Chứng Chỉ",
+    "Issued On": "Ngày Cấp",
+    "Expires On": "Ngày Hết Hạn",
+    "Certificates do not have an expiration date": "Chứng chỉ này không có thời gian hết hạn",
+    "Enter name": "Thêm tên",
+    "Enter organization": "Thêm tổ chức cấp",
+    "Undefined": "Không xác định",
+    "Organization: :organization, Issued on: :issuedOn, Expires on: :expiresOn": "Tổ chức cấp: :organization, Cấp ngày: :issuedOn, Hết hạn ngày: :expiresOn",
+    "Certificate: :certificate": "Chứng chỉ: :certificate",
+    "Majors: :majors, start at: :startAt, end at: :endAt": "Chuyên ngành: :majors, Bắt đầu học ngày: :startAt, Kết thúc ngày: :endAt",
+    "Description: :description": "Mô tả: :description",
+    "Skill: :skillName": "Kỹ năng: :skillName"
 }

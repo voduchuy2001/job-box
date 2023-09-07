@@ -22,7 +22,7 @@ class PersonalEducation extends Component
     #[Rule('required|string|max:255')]
     public string $majors;
 
-    #[Rule('required|date_format:d-m-Y|before:today')]
+    #[Rule('required|date_format:d-m-Y|before_or_equal:today')]
     public string $startAt;
 
     #[Rule('nullable|date_format:d-m-Y|after_or_equal:startAt')]

@@ -135,5 +135,18 @@
     "Login History": "Login History",
     "Old Password": "Old Password",
     "Welcome :name!": "Welcome :name!",
-    "Last login :at": "Last login: :at"
+    "Last login :at": "Last login: :at",
+    "Certificate": "Certificate",
+    "New Certificate": "New Certificate",
+    "Issued On": "Issued On",
+    "Expires On": "Expires On",
+    "Certificates do not have an expiration date": "Certificates do not have an expiration date",
+    "Enter name": "Enter name",
+    "Enter organization": "Enter organization",
+    "Undefined": "Undefined",
+    "Organization: :organization, Issued on: :issuedOn, Expires on: :expiresOn": "Organization: :organization, Issued on: :issuedOn, Expires on: :expiresOn",
+    "Certificate: :certificate": "Certificate: :certificate",
+    "Majors: :majors, start at: :startAt, end at: :endAt": "Majors: :majors, Start at: :startAt, End at: :endAt",
+    "Description: :description": "Description: :description",
+    "Skill: :skillName": "Skill: :skillName"
 }
