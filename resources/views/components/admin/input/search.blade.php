@@ -19,7 +19,7 @@
                         id="{{ $id }}"
                     @endif
                     @if($model)
-                        wire:model.live="{{ $model }}"
+                        wire:model.live.debounce.1000ms="{{ $model }}"
                     @endif
                     @if($placeholder)
                         placeholder="{{ $placeholder }}"

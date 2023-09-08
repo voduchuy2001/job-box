@@ -25,6 +25,9 @@ class PersonalDetail extends Component
     #[Rule('required|email')]
     public string $email;
 
+    #[Rule('nullable|string')]
+    public string $present;
+
     #[Rule(new Enum(UserStatus::class))]
     public UserStatus $userStatus;
 
@@ -37,6 +40,7 @@ class PersonalDetail extends Component
         $this->email = $this->user->email;
         $this->userRole = $this->user->role;
         $this->userStatus = $this->user->status;
+        $this->present = $this->user->present;
     }
 
     public function updateProfile(): void
@@ -54,6 +58,7 @@ class PersonalDetail extends Component
             'name' => $validatedData['name'],
             'role' => $validatedData['userRole'],
             'status' => $validatedData['userStatus'],
+            'present' => $validatedData['present'],
         ]);
     }
 

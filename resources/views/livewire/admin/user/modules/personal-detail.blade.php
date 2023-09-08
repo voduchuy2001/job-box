@@ -30,6 +30,19 @@
                 ></x-admin.input>
             </div>
 
+            <div class="col-lg-12">
+                <x-admin.input.textarea
+                    :label="__('Background/Career Objectives')"
+                    class="form-control"
+                    type="text"
+                    id="present"
+                    name="present"
+                    model="present"
+                    rows="7"
+                >
+                </x-admin.input.textarea>
+            </div>
+
             <div class="col-lg-6">
                 <label class="form-label">{{ __('Status') }}</label>
                 <select class="form-select mb-3" wire:model="userStatus">
