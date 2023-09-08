@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Course extends Model
+class SocialActivity extends Model
 {
-    protected $table = 'courses';
+    protected $table = 'social_activities';
 
     protected $fillable = [
-        'name',
         'organization',
-        'issued_on',
-        'expires_on',
+        'position',
+        'start_at',
+        'end_at',
         'description',
         'user_id',
     ];
@@ -23,8 +23,8 @@ class Course extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public static function getCourseById(string|int $id)
+    public static function getSocialActivityById(string|int $id)
     {
-        return Course::findOrFail($id);
+        return SocialActivity::findOrFail($id);
     }
 }

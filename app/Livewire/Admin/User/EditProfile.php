@@ -5,10 +5,13 @@ namespace App\Livewire\Admin\User;
 use App\Models\Address;
 use App\Models\Award;
 use App\Models\Certificate;
+use App\Models\Course;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\Product;
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\SocialActivity;
 use App\Models\User;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -73,6 +76,15 @@ class EditProfile extends Component
                 break;
             case 'project':
                 $model = Project::getProjectById($id);
+                break;
+            case 'product':
+                $model = Product::getProductById($id);
+                break;
+            case 'course':
+                $model = Course::getCourseById($id);
+                break;
+            case 'socialActivity':
+                $model = SocialActivity::getSocialActivityById($id);
                 break;
             default:
                 return;
@@ -150,6 +162,33 @@ class EditProfile extends Component
             ->projects()
             ->count();
 
+        $products = $this->user
+            ->products()
+            ->orderByDesc('created_at')
+            ->limit($this->limit)
+            ->get();
+        $userProducts = $this->user
+            ->products()
+            ->count();
+
+        $socialActivities = $this->user
+            ->socialActivities()
+            ->orderByDesc('created_at')
+            ->limit($this->limit)
+            ->get();
+        $userSocialActivities = $this->user
+            ->socialActivities()
+            ->count();
+
+        $courses = $this->user
+            ->courses()
+            ->orderByDesc('created_at')
+            ->limit($this->limit)
+            ->get();
+        $userCourses = $this->user
+            ->courses()
+            ->count();
+
         return view('livewire.admin.user.edit-profile', [
             'addresses' => $addresses,
             'userAddresses' => $userAddresses,
@@ -165,6 +204,12 @@ class EditProfile extends Component
             'userAwards' => $userAwards,
             'projects' => $projects,
             'userProjects' => $userProjects,
+            'products' => $products,
+            'userProducts' => $userProducts,
+            'socialActivities' => $socialActivities,
+            'userSocialActivities' => $userSocialActivities,
+            'courses' => $courses,
+            'userCourses' => $userCourses,
         ]);
     }
 }

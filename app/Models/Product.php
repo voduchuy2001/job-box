@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -13,5 +14,16 @@ class Product extends Model
         'type',
         'completion_time',
         'description',
+        'user_id',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function getProductById(string|int $id)
+    {
+        return Product::findOrFail($id);
+    }
 }

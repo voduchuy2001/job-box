@@ -174,5 +174,18 @@
     "Background/Career Objectives": "Background/Career Objectives",
     "Experience": "Experience",
     "New Experience": "New Experience",
-    "Company name": "Company name"
+    "Company name": "Company name",
+    "Course": "Course",
+    "Social Activity": "Social Activity",
+    "Product": "Product",
+    "New Product": "New Product",
+    "New Social Activity": "New Social Activity",
+    "New Course": "New Course",
+    "Completion time": "Completion time",
+    "Type": "Type",
+    "Enter type": "Enter type",
+    "Product: :product": "Product: :product",
+    "Type: :type, Completion time: :completionTime, Description: :description": "Type: :type, Completion time: :completionTime, Description: :description",
+    "Organization: :organization": "Organization: :organization",
+    "Position: :position, Start at: :startAt, End at: :endAt, Description: :description": "Position: :position, Start at: :startAt, End at: :endAt, Description: :description"
 }

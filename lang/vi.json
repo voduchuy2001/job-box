@@ -174,5 +174,19 @@
     "Background/Career Objectives": "Bối cảnh/Mục tiêu nghề nghiệp",
     "Experience": "Kinh Nghiệm",
     "New Experience": "Thêm Kinh Nghiệm",
-    "Company name": "Tên Công Ty"
+    "Company name": "Tên Công Ty",
+    "Course": "Khóa Học",
+    "Social Activity": "Hoạt Động Xã Hội",
+    "Product": "Sản Phẩm",
+    "New Product": "Thêm Sản Phẩm",
+    "New Social Activity": "Thêm Hoạt Động Xã Hội",
+    "New Course": "Thêm Khóa Học",
+    "Completion time": "Thời Gian Hoàn Thành",
+    "Type": "Thể Loại",
+    "Enter type": "Thêm thể loại",
+    "Product: :product": "Sản phẩm: :product",
+    "Type: :type, Completion time: :completionTime, Description: :description": "Thể loại: :type, Thời gian hoàn thàn: :completionTime, Mô tả: :description",
+    "Organization: :organization": "Tổ chức: :organization",
+    "Position: :position, Start at: :startAt, End at: :endAt, Description: :description": "Vị trí tham gia: :position, Bắt đầu ngày: :startAt, Kết thúc ngày: :endAt, Mô tả: :description"
 }
+

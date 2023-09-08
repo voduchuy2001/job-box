@@ -1,15 +1,15 @@
 <div>
-    <x-form wire:submit.prevent="saveExperience">
+    <x-form wire:submit.prevent="saveSocialActivity">
         <div class="row">
             <div class="col-lg-6">
                 <x-admin.input
-                    :label="__('Company name')"
+                    :label="__('Organization')"
                     class="form-control"
                     type="text"
-                    id="companyName"
-                    name="companyName"
-                    model="companyName"
-                    placeholder="{{ __('Enter name') }}"
+                    id="organization"
+                    name="organization"
+                    model="organization"
+                    placeholder="{{ __('Enter organization') }}"
                 ></x-admin.input>
             </div>
 
@@ -29,9 +29,8 @@
                 <p class="font-weight-bold">{{ __('Time') }} <span class="text-danger">*</span></p>
                 <x-admin.input.checkbox
                     name="toggle"
-                    id="toggle-experience"
+                    id="toggle-social-activity"
                     model="toggle"
-                    value="true"
                 >{{ __('I am working here') }}</x-admin.input.checkbox>
             </div>
 

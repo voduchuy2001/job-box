@@ -1,61 +1,47 @@
 <div>
-    <x-form wire:submit.prevent="saveExperience">
+    <x-form wire:submit.prevent="saveCourse">
         <div class="row">
             <div class="col-lg-6">
                 <x-admin.input
-                    :label="__('Company name')"
+                    :label="__('Name')"
                     class="form-control"
                     type="text"
-                    id="companyName"
-                    name="companyName"
-                    model="companyName"
+                    id="name"
+                    name="name"
+                    model="name"
                     placeholder="{{ __('Enter name') }}"
                 ></x-admin.input>
             </div>
 
             <div class="col-lg-6">
                 <x-admin.input
-                    :label="__('Position')"
+                    :label="__('Organization')"
                     class="form-control"
                     type="text"
-                    id="position"
-                    name="position"
-                    model="position"
-                    placeholder="{{ __('Enter position') }}"
+                    id="organization"
+                    name="organization"
+                    model="organization"
+                    placeholder="{{ __('Enter organization') }}"
                 ></x-admin.input>
             </div>
 
             <div class="col-lg-6">
-                <p class="font-weight-bold">{{ __('Time') }} <span class="text-danger">*</span></p>
-                <x-admin.input.checkbox
-                    name="toggle"
-                    id="toggle-experience"
-                    model="toggle"
-                    value="true"
-                >{{ __('I am working here') }}</x-admin.input.checkbox>
-            </div>
-
-            <div class="col-lg-6"></div>
-
-            <div class="col-lg-6">
                 <x-admin.datepicker
-                    :label="__('Start At')"
-                    name="startAt"
-                    model="startAt"
-                    id="startAt"
+                    :label="__('Issued On')"
+                    name="issuedOn"
+                    model="issuedOn"
+                    id="issuedOn"
                 ></x-admin.datepicker>
             </div>
 
-            @if(! $toggle)
-                <div class="col-lg-6">
-                    <x-admin.datepicker
-                        :label="__('End At')"
-                        name="endAt"
-                        model="endAt"
-                        id="endAt"
-                    ></x-admin.datepicker>
-                </div>
-            @endif
+            <div class="col-lg-6">
+                <x-admin.datepicker
+                    :label="__('Expires On')"
+                    name="expiresOn"
+                    model="expiresOn"
+                    id="expiresOn"
+                ></x-admin.datepicker>
+            </div>
 
             <div class="col-lg-12">
                 <x-admin.input.textarea
