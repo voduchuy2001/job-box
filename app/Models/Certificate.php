@@ -14,6 +14,7 @@ class Certificate extends Model
         'organization',
         'issued_on',
         'expires_on',
+        'user_id',
     ];
 
     public function user(): BelongsTo

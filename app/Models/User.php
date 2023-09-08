@@ -67,6 +67,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Certificate::class, 'user_id');
     }
 
+    public function awards(): HasMany
+    {
+        return $this->hasMany(Award::class, 'user_id');
+    }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class, 'user_id');
+    }
 
     public function skills(): MorphMany
     {

@@ -37,7 +37,7 @@ class PersonalEducation extends Component
     {
         $validatedData = $this->validate();
 
-        $this->user->educations()->updateOrCreate([
+        $this->user->educations()->create([
             'school' => $validatedData['school'],
             'majors' => $validatedData['majors'],
             'start_at' => $validatedData['startAt'],

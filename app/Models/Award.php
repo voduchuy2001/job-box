@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Award extends Model
 {
@@ -12,5 +13,16 @@ class Award extends Model
         'name',
         'organization',
         'issued_on',
+        'user_id',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function getAwardById(string|int $id)
+    {
+        return Award::findOrFail($id);
+    }
 }

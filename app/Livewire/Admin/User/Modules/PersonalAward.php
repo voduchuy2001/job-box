@@ -9,7 +9,7 @@ use Livewire\Attributes\Locked;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class PersonalSkill extends Component
+class PersonalAward extends Component
 {
     use LivewireAlert;
 
@@ -19,22 +19,27 @@ class PersonalSkill extends Component
     #[Rule('required|string|max:255')]
     public string $name;
 
-    #[Rule('nullable|string')]
-    public string $description;
+    #[Rule('required|string|max:255')]
+    public string $organization;
 
-    public function saveSkill(): void
+    #[Rule('required|date_format:d-m-Y|before_or_equal:today')]
+    public string $issuedOn;
+
+    public function saveAward(): void
     {
         $validatedData = $this->validate();
 
-        $this->user->skills()->create([
+        $this->user->awards()->create([
             'name' => $validatedData['name'],
-            'description' => $validatedData['description'],
+            'organization' => $validatedData['organization'],
+            'issued_on' => $validatedData['issuedOn'],
         ]);
 
         $this->alert('success', trans('Create success!'));
+
         $this->reset([
             'name',
-            'description',
+            'organization',
         ]);
 
         $this->dispatch('hiddenModal');
@@ -43,6 +48,6 @@ class PersonalSkill extends Component
 
     public function render(): View
     {
-        return view('livewire.admin.user.modules.personal-skill');
+        return view('livewire.admin.user.modules.personal-award');
     }
 }

@@ -15,6 +15,7 @@ class Experience extends Model
         'start_at',
         'end_at',
         'description',
+        'user_id',
     ];
 
     public function user(): BelongsTo

@@ -34,7 +34,7 @@ class PersonalCertificate extends Component
     {
         $validatedData = $this->validate();
 
-        $this->user->certificates()->updateOrCreate([
+        $this->user->certificates()->create([
             'name' => $validatedData['name'],
             'organization' => $validatedData['organization'],
             'issued_on' => $validatedData['issuedOn'],

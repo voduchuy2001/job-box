@@ -3,9 +3,11 @@
 namespace App\Livewire\Admin\User;
 
 use App\Models\Address;
+use App\Models\Award;
 use App\Models\Certificate;
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\Project;
 use App\Models\Skill;
 use App\Models\User;
 use Illuminate\View\View;
@@ -66,6 +68,12 @@ class EditProfile extends Component
             case 'experience':
                 $model = Experience::getExperienceById($id);
                 break;
+            case 'award':
+                $model = Award::getAwardById($id);
+                break;
+            case 'project':
+                $model = Project::getProjectById($id);
+                break;
             default:
                 return;
         }
@@ -124,6 +132,24 @@ class EditProfile extends Component
             ->certificates()
             ->count();
 
+        $awards = $this->user
+            ->awards()
+            ->orderByDesc('created_at')
+            ->limit($this->limit)
+            ->get();
+        $userAwards = $this->user
+            ->awards()
+            ->count();
+
+        $projects = $this->user
+            ->projects()
+            ->orderByDesc('created_at')
+            ->limit($this->limit)
+            ->get();
+        $userProjects = $this->user
+            ->projects()
+            ->count();
+
         return view('livewire.admin.user.edit-profile', [
             'addresses' => $addresses,
             'userAddresses' => $userAddresses,
@@ -135,6 +161,10 @@ class EditProfile extends Component
             'userCertificates' => $userCertificates,
             'experiences' => $experiences,
             'userExperiences' => $userExperiences,
+            'awards' => $awards,
+            'userAwards' => $userAwards,
+            'projects' => $projects,
+            'userProjects' => $userProjects,
         ]);
     }
 }

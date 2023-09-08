@@ -19,7 +19,7 @@ class PersonalAddress extends Component
     #[Locked]
     public User $user;
 
-    #[Rule('required|string|max:255')]
+    #[Rule('nullable|string|max:255')]
     public string $houseNumber = '';
 
     #[Rule('required|integer')]
@@ -39,7 +39,7 @@ class PersonalAddress extends Component
     {
         $validatedData = $this->validate();
 
-        $this->user->addresses()->updateOrCreate([
+        $this->user->addresses()->create([
             'name' => $validatedData['houseNumber'],
             'province_id' => $validatedData['provinceId'],
             'district_id' => $validatedData['districtId'],

@@ -1,19 +1,43 @@
 <div>
-    <x-form wire:submit.prevent="saveExperience">
+    <x-form wire:submit.prevent="saveProject">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <x-admin.input
-                    :label="__('Company name')"
+                    :label="__('Name')"
                     class="form-control"
                     type="text"
-                    id="companyName"
-                    name="companyName"
-                    model="companyName"
+                    id="name"
+                    name="name"
+                    model="name"
                     placeholder="{{ __('Enter name') }}"
                 ></x-admin.input>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
+                <x-admin.input
+                    :label="__('Customer')"
+                    class="form-control"
+                    type="text"
+                    id="customer"
+                    name="customer"
+                    model="customer"
+                    placeholder="{{ __('Enter customer name') }}"
+                ></x-admin.input>
+            </div>
+
+            <div class="col-lg-12">
+                <x-admin.input
+                    :label="__('Number Of Members')"
+                    class="form-control"
+                    type="number"
+                    id="numberOfMembers"
+                    name="numberOfMembers"
+                    model="numberOfMembers"
+                    placeholder="{{ __('Enter quantity') }}"
+                ></x-admin.input>
+            </div>
+
+            <div class="col-lg-12">
                 <x-admin.input
                     :label="__('Position')"
                     class="form-control"
@@ -25,11 +49,23 @@
                 ></x-admin.input>
             </div>
 
+            <div class="col-lg-12">
+                <x-admin.input
+                    :label="__('Technology')"
+                    class="form-control"
+                    type="text"
+                    id="technology"
+                    name="technology"
+                    model="technology"
+                    placeholder="{{ __('Enter technology') }}"
+                ></x-admin.input>
+            </div>
+
             <div class="col-lg-6">
                 <p class="font-weight-bold">{{ __('Time') }} <span class="text-danger">*</span></p>
                 <x-admin.input.checkbox
                     name="toggle"
-                    id="toggle-education"
+                    id="toggle-project"
                     model="toggle"
                     value="true"
                 >{{ __('I am working here') }}</x-admin.input.checkbox>

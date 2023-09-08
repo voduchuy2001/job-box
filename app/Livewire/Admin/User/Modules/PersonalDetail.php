@@ -40,7 +40,9 @@ class PersonalDetail extends Component
         $this->email = $this->user->email;
         $this->userRole = $this->user->role;
         $this->userStatus = $this->user->status;
-        $this->present = $this->user->present;
+        if ($this->user->present) {
+            $this->present = $this->user->present;
+        }
     }
 
     public function updateProfile(): void

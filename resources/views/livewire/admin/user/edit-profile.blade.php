@@ -290,6 +290,114 @@
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
+
+            <x-admin.card
+                :header="__('Award')"
+            >
+                <x-button
+                    type="button"
+                    class="btn btn-primary mb-3"
+                    data-bs-target="#new-award"
+                    data-bs-toggle="modal"
+                >{{ __('Add New') }}</x-button>
+
+                @foreach($awards as $award)
+                    <div class="list-group">
+                        <span class="list-group-item list-group-item-action">
+                            <div class="float-end">
+                                 @if($confirm == $award->id && $confirmType == 'award')
+                                    <span
+                                        wire:click="delete({{ $award->id }}, 'award')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                    <span
+                                        wire:click="confirmDelete({{ $award->id }}, 'award')"
+                                        style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                                @else
+                                    <span
+                                        wire:click="confirmDelete({{ $award->id }}, 'award')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
+                                @endif
+                            </div>
+                            <div class="d-flex mb-2 align-items-center">
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="list-title fs-15 mb-1">{{ __('Award: :award', ['award' => $award->name]) }}</h5>
+                                    <p class="list-text mb-0 fs-12">{{ __('Organization: :organization, Issued on: :issuedOn', ['organization' => $award->organization, 'issuedOn' => $award->issued_on]) }}</p>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                @endforeach
+
+                @if($userAwards > $limit)
+                    <div class="form-group mt-3">
+                        <div class="text-center">
+                            <x-button
+                                wire:click="loadMore"
+                                class="btn btn-primary"
+                                type="button"
+                            >{{ __('Load more') }}</x-button>
+                        </div>
+                    </div>
+                @endif
+
+                @if(! count($awards))
+                    <x-admin.empty></x-admin.empty>
+                @endif
+            </x-admin.card>
+
+            <x-admin.card
+                :header="__('Projects')"
+            >
+                <x-button
+                    type="button"
+                    class="btn btn-primary mb-3"
+                    data-bs-target="#new-project"
+                    data-bs-toggle="modal"
+                >{{ __('Add New') }}</x-button>
+
+                @foreach($projects as $project)
+                    <div class="list-group">
+                        <span class="list-group-item list-group-item-action">
+                            <div class="float-end">
+                                 @if($confirm == $project->id && $confirmType == 'project')
+                                    <span
+                                        wire:click="delete({{ $project->id }}, 'project')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                    <span
+                                        wire:click="confirmDelete({{ $project->id }}, 'project')"
+                                        style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                                @else
+                                    <span
+                                        wire:click="confirmDelete({{ $project->id }}, 'project')"
+                                        style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
+                                @endif
+                            </div>
+                            <div class="d-flex mb-2 align-items-center">
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="list-title fs-15 mb-1">{{ __('Project: :project', ['project' => $project->name]) }}</h5>
+                                    <p class="list-text mb-0 fs-12">{{ __('Position: :position, Number of member: :numberOfMembers, Start at: :startAt, End at: :endAt, Technology: :technology, Description: :description', ['position' => $project->position, 'numberOfMembers' => $project->number_of_members, 'startAt' => $project->start_at, 'endAt' => $project->end_at ?: __('Undefined'), 'technology' => $project->technology, 'description' => $project->description]) }}</p>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                @endforeach
+
+                @if($userProjects > $limit)
+                    <div class="form-group mt-3">
+                        <div class="text-center">
+                            <x-button
+                                wire:click="loadMore"
+                                class="btn btn-primary"
+                                type="button"
+                            >{{ __('Load more') }}</x-button>
+                        </div>
+                    </div>
+                @endif
+
+                @if(! count($projects))
+                    <x-admin.empty></x-admin.empty>
+                @endif
+            </x-admin.card>
         </div>
     </div>
 
@@ -322,7 +430,7 @@
 
     <x-admin.modal
         id="new-skill"
-        type="modal-lg modal-dialog-centered">
+        type="modal-md modal-dialog-centered">
         <x-admin.modal.header>{{ __('New Skill') }}</x-admin.modal.header>
         <x-admin.modal.body>
             <livewire:admin.user.modules.personal-skill :user="$user"></livewire:admin.user.modules.personal-skill>
@@ -335,6 +443,24 @@
         <x-admin.modal.header>{{ __('New Certificate') }}</x-admin.modal.header>
         <x-admin.modal.body>
             <livewire:admin.user.modules.personal-certificate :user="$user"></livewire:admin.user.modules.personal-certificate>
+        </x-admin.modal.body>
+    </x-admin.modal>
+
+    <x-admin.modal
+        id="new-award"
+        type="modal-md modal-dialog-centered">
+        <x-admin.modal.header>{{ __('New Award') }}</x-admin.modal.header>
+        <x-admin.modal.body>
+            <livewire:admin.user.modules.personal-award :user="$user"></livewire:admin.user.modules.personal-award>
+        </x-admin.modal.body>
+    </x-admin.modal>
+
+    <x-admin.modal
+        id="new-project"
+        type="modal-lg modal-dialog-centered">
+        <x-admin.modal.header>{{ __('New Project') }}</x-admin.modal.header>
+        <x-admin.modal.body>
+            <livewire:admin.user.modules.personal-project :user="$user"></livewire:admin.user.modules.personal-project>
         </x-admin.modal.body>
     </x-admin.modal>
 </div>
