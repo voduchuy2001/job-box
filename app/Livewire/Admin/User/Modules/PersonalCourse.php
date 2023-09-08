@@ -25,10 +25,10 @@ class PersonalCourse extends Component
     public string $organization;
 
     #[Rule('required|date_format:d-m-Y|before_or_equal:today')]
-    public string $issuedOn;
+    public string $startAt;
 
-    #[Rule('required|date_format:d-m-Y|after_or_equal:issuedOn')]
-    public string $expiresOn;
+    #[Rule('required|date_format:d-m-Y|after_or_equal:startAt')]
+    public string $endAt;
 
     #[Rule('required|string|max:1024')]
     public string $description;
@@ -40,8 +40,8 @@ class PersonalCourse extends Component
         $this->user->courses()->create([
             'name' => $validatedData['name'],
             'organization' => $validatedData['organization'],
-            'issued_on' => $validatedData['issuedOn'],
-            'expires_on' => $validatedData['expiresOn'],
+            'start_at' => $validatedData['startAt'],
+            'end_at' => $validatedData['endAt'],
             'description' => $validatedData['description'],
         ]);
 

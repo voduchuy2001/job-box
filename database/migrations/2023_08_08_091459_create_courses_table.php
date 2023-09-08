@@ -11,9 +11,9 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->string('organization');
-            $table->string('issued_on')->nullable();
-            $table->string('expires_on')->nullable();
-            $table->text('description');
+            $table->string('start_at')->nullable();
+            $table->string('end_at')->nullable();
+            $table->text('description')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

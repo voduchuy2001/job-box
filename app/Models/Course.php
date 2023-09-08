@@ -12,8 +12,8 @@ class Course extends Model
     protected $fillable = [
         'name',
         'organization',
-        'issued_on',
-        'expires_on',
+        'start_at',
+        'end_at',
         'description',
         'user_id',
     ];

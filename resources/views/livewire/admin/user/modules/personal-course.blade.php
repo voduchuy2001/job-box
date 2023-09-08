@@ -27,19 +27,19 @@
 
             <div class="col-lg-6">
                 <x-admin.datepicker
-                    :label="__('Issued On')"
-                    name="issuedOn"
-                    model="issuedOn"
-                    id="issuedOn"
+                    :label="__('Start At')"
+                    name="startAt"
+                    model="startAt"
+                    id="startAt"
                 ></x-admin.datepicker>
             </div>
 
             <div class="col-lg-6">
                 <x-admin.datepicker
-                    :label="__('Expires On')"
-                    name="expiresOn"
-                    model="expiresOn"
-                    id="expiresOn"
+                    :label="__('End At')"
+                    name="endAt"
+                    model="endAt"
+                    id="endAt"
                 ></x-admin.datepicker>
             </div>
 

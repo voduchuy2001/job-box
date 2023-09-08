@@ -152,7 +152,7 @@
     "Change Cover": "Cập Nhật Ảnh Bìa",
     "Position: :position": "Vị trí: :position",
     "Company: :company, start at: :startAt, end at: :endAt": "Công ty: :company, Bắt Đầu Ngày: :startAt, Kết Thúc Ngày: :endAt",
-    "Award": "Chứng Chỉ",
+    "Award": "Giải Thưởng",
     "New Award": "Thêm Giải Thưởng",
     "Organization": "Tổ Chức",
     "Load More": "Tải Thêm",
@@ -187,6 +187,8 @@
     "Product: :product": "Sản phẩm: :product",
     "Type: :type, Completion time: :completionTime, Description: :description": "Thể loại: :type, Thời gian hoàn thàn: :completionTime, Mô tả: :description",
     "Organization: :organization": "Tổ chức: :organization",
-    "Position: :position, Start at: :startAt, End at: :endAt, Description: :description": "Vị trí tham gia: :position, Bắt đầu ngày: :startAt, Kết thúc ngày: :endAt, Mô tả: :description"
+    "Position: :position, Start at: :startAt, End at: :endAt, Description: :description": "Vị trí tham gia: :position, Bắt đầu ngày: :startAt, Kết thúc ngày: :endAt, Mô tả: :description",
+    "Course: :course": "Khoá học: :course",
+    "Organization: :organization, Start at: :startAt, End at: :endAt, Description: :description": "Tổ chức câp: :organization, Ngày bắt đầu học: :startAt, Ngày kết thúc: :endAt, Mô tả: :description"
 }
 
