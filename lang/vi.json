@@ -189,6 +189,6 @@
     "Organization: :organization": "Tổ chức: :organization",
     "Position: :position, Start at: :startAt, End at: :endAt, Description: :description": "Vị trí tham gia: :position, Bắt đầu ngày: :startAt, Kết thúc ngày: :endAt, Mô tả: :description",
     "Course: :course": "Khoá học: :course",
-    "Organization: :organization, Start at: :startAt, End at: :endAt, Description: :description": "Tổ chức câp: :organization, Ngày bắt đầu học: :startAt, Ngày kết thúc: :endAt, Mô tả: :description"
+    "Organization: :organization, Start at: :startAt, End at: :endAt, Description: :description": "Tổ chức câp: :organization, Ngày bắt đầu học: :startAt, Ngày kết thúc: :endAt, Mô tả: :description",
+    "Roles And Permissions": "Vai Trò Và Quyền"
 }
-

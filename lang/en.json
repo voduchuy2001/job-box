@@ -187,5 +187,6 @@
     "Product: :product": "Product: :product",
     "Type: :type, Completion time: :completionTime, Description: :description": "Type: :type, Completion time: :completionTime, Description: :description",
     "Organization: :organization": "Organization: :organization",
-    "Position: :position, Start at: :startAt, End at: :endAt, Description: :description": "Position: :position, Start at: :startAt, End at: :endAt, Description: :description"
+    "Position: :position, Start at: :startAt, End at: :endAt, Description: :description": "Position: :position, Start at: :startAt, End at: :endAt, Description: :description",
+    "Roles And Permissions": "Roles And Permissions"
 }

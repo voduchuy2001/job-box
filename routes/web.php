@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
 use App\Livewire\Admin\Home\DashBoard;
+use App\Livewire\Admin\RolePermission\Setting;
 use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\EditProfile;
 use App\Livewire\Admin\User\UserList;
@@ -57,10 +58,11 @@ Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback'])
 Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('language.__invoke');
 
 /* Admin */
-Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
     Route::get('/', DashBoard::class)->name('dashboard');
-    Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile');
-    Route::get('/user', UserList::class)->name('user.index');
+    Route::get('/role-permission', Setting::class)->name('role-permission')->middleware('permission:role-permission');
+    Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');
+    Route::get('/user', UserList::class)->name('user.index')->middleware('permission:user-list');
     Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');
 });
 

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin\User\Modules;
 
-use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Models\User;
 use Illuminate\Validation\Rules\Enum;
@@ -31,14 +30,10 @@ class PersonalDetail extends Component
     #[Rule(new Enum(UserStatus::class))]
     public UserStatus $userStatus;
 
-    #[Rule(new Enum(UserRole::class))]
-    public UserRole $userRole;
-
     public function mount(): void
     {
         $this->name = $this->user->name;
         $this->email = $this->user->email;
-        $this->userRole = $this->user->role;
         $this->userStatus = $this->user->status;
         if ($this->user->present) {
             $this->present = $this->user->present;
@@ -58,7 +53,6 @@ class PersonalDetail extends Component
 
         $this->user->update([
             'name' => $validatedData['name'],
-            'role' => $validatedData['userRole'],
             'status' => $validatedData['userStatus'],
             'present' => $validatedData['present'],
         ]);

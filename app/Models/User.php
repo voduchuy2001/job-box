@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\ImageType;
-use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -21,12 +21,12 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory;
     use Notifiable;
     use AuthenticationLoggable;
+    use HasRoles;
 
     protected $fillable = [
         'name',
         'email',
         'present',
-        'role',
         'status',
         'is_root',
         'password',
@@ -44,7 +44,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'status' => UserStatus::class,
-        'role' => UserRole::class,
     ];
 
     public function addresses(): MorphMany

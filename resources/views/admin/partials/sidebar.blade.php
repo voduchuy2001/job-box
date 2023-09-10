@@ -32,6 +32,16 @@
                 </li>
 
                 <li class="nav-item">
+                    <x-link
+                        class="nav-link menu-link"
+                        to="{{ route('role-permission') }}"
+                    >
+                        <i class="ri-question-line"></i><span>{{ __('Roles And Permissions') }}</span>
+                    </x-link>
+                </li>
+
+
+                <li class="nav-item">
                     <a
                         target="_blank"
                         class="nav-link menu-link"

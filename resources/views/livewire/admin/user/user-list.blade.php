@@ -1,3 +1,6 @@
+@php
+    use App\Enums\UserStatus;
+@endphp
 <div>
     @include('admin.partials.page-title')
 
@@ -15,11 +18,14 @@
                     :to="route('user-edit.profile', ['id' => $user->id])"
                     class="list-group-item list-group-item-action">
                     <div class="float-end">
-                        {{ $user->role }}
+                        <span
+                            class="{{ $user->status == UserStatus::IsActive ? 'badge badge-soft-success' : 'badge badge-soft-danger'}}">{{ $user->status }}</span>
                     </div>
                     <div class="d-flex mb-2 align-items-center">
                         <div class="flex-shrink-0">
-                            <img src="{{ $user->avatar ? asset($user->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="" class="avatar-sm rounded-circle" />
+                            <img
+                                src="{{ $user->avatar ? asset($user->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}"
+                                alt="" class="avatar-sm rounded-circle"/>
                         </div>
                         <div class="flex-grow-1 ms-3">
                             <h5 class="list-title fs-15 mb-1">{{ $user->name }}</h5>
