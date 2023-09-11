@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
         ]);
 
         $role = Role::create([
-            'name' => 'Admin',
+            'name' => 'Super Admin',
             'guard_name' => 'web',
         ]);
 

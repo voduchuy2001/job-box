@@ -10,7 +10,7 @@
     ])
 
 <div class="mb-3">
-    @if($label) <label for="{{ $id }}" class="form-label">{{ $label }}</label> @endif
+    @if($label) <label for="{{ $name }}" class="form-label">{{ $label }}</label> @endif
     <input
         @if($type) type="{{ $type }}" @endif
         @if($class) class="{{ $class }}" @endif
@@ -26,7 +26,7 @@
 
     @error($model)
     <span class="text-danger">
-            {{ $message }}
-        </span>
+        {{ $message }}
+    </span>
     @enderror
 </div>
