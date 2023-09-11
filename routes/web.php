@@ -59,8 +59,8 @@ Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('lang
 
 /* Admin */
 Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
-    Route::get('/', DashBoard::class)->name('dashboard');
-    Route::get('/role-permission', Setting::class)->name('role-permission')->middleware('permission:role-permission');
+    Route::get('/', DashBoard::class)->name('dashboard')->middleware('dashboard');
+    Route::get('/role-permission', Setting::class)->name('role-permission')->middleware('permission:role-list');
     Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');
     Route::get('/user', UserList::class)->name('user.index')->middleware('permission:user-list');
     Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');

@@ -10,8 +10,8 @@ class PermissionTableSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-            'media-file',
             'dashboard',
+            'media-file',
             'role-permission',
             'user-list',
             'user-edit',
