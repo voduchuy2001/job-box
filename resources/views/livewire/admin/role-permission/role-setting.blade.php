@@ -17,7 +17,7 @@
                         type="button"
                         data-bs-target="#setting-role-permission"
                         data-bs-toggle="modal"
-                        class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i> Add Role</x-button>
+                        class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add Role') }}</x-button>
                 </div>
             </div>
         </div>

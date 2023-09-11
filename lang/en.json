@@ -146,7 +146,7 @@
     "Undefined": "Undefined",
     "Organization: :organization, Issued on: :issuedOn, Expires on: :expiresOn": "Organization: :organization, Issued on: :issuedOn, Expires on: :expiresOn",
     "Certificate: :certificate": "Certificate: :certificate",
-    "Majors: :majors, start at: :startAt, end at: :endAt": "Majors: :majors, Start at: :startAt, End at: :endAt",
+    "Majors: :majors, start at: :startAt, end at: :endAt, Description: :description": "Majors: :majors, Start at: :startAt, End at: :endAt, Description: :description",
     "Description: :description": "Description: :description",
     "Skill: :skillName": "Skill: :skillName",
     "Change Cover": "Change Cover",

@@ -103,7 +103,7 @@
                             <div class="d-flex mb-2 align-items-center">
                                 <div class="flex-grow-1 ms-3">
                                     <h5 class="list-title fs-15 mb-1">{{ __(':school', ['school' => $education->school]) }}</h5>
-                                    <p class="list-text mb-0 fs-12">{{ __('Majors: :majors, start at: :startAt, end at: :endAt', ['majors' => $education->majors, 'startAt' => $education->start_at, 'endAt' => $education->end_at ?: __('Undefined')]) }}</p>
+                                    <p class="list-text mb-0 fs-12">{{ __('Majors: :majors, start at: :startAt, end at: :endAt, Description: :description', ['majors' => $education->majors, 'startAt' => $education->start_at, 'endAt' => $education->end_at ?: __('Undefined'), 'description' => $education->description]) }}</p>
                                 </div>
                             </div>
                         </span>

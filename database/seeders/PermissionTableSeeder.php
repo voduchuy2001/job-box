@@ -13,6 +13,9 @@ class PermissionTableSeeder extends Seeder
             'dashboard',
             'media-file',
             'role-permission',
+            'role-create',
+            'role-update',
+            'role-delete',
             'user-list',
             'user-edit',
         ];

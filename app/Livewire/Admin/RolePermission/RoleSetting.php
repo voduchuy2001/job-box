@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\RolePermission;
 
 use App\Helpers\BaseHelper;
+use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -19,6 +20,7 @@ class RoleSetting extends Component
 {
     use LivewireAlert;
     use WithPagination;
+    use AuthorizesRoleOrPermission;
 
     public string $searchTerm = '';
 
@@ -26,7 +28,7 @@ class RoleSetting extends Component
 
     public mixed $confirm = null;
 
-    #[Rule('required|string|max:32|unique:roles,id')]
+    #[Rule('required|string|max:32|unique:roles')]
     public string $name;
 
     #[Rule('required')]
@@ -36,6 +38,11 @@ class RoleSetting extends Component
 
     public Role $role;
 
+    public function mount(): void
+    {
+        $this->authorizeRoleOrPermission('role-permission');
+    }
+
     public function changeType(): void
     {
         $this->isEdit = false;
@@ -44,6 +51,7 @@ class RoleSetting extends Component
 
     public function saveRole(): void
     {
+        $this->authorizeRoleOrPermission('role-create');
         $validatedData = $this->validate();
 
         $role = Role::create([
@@ -67,6 +75,7 @@ class RoleSetting extends Component
 
     public function deleteRole(string|int $id): void
     {
+        $this->authorizeRoleOrPermission('role-delete');
         $role = Role::findOrFail($id);
         $role->delete();
 
@@ -85,6 +94,7 @@ class RoleSetting extends Component
 
     public function updateRole(): void
     {
+        $this->authorizeRoleOrPermission('role-update');
         $validatedData = $this->validate();
 
         $this->role->update([

@@ -146,7 +146,7 @@
     "Undefined": "Không xác định",
     "Organization: :organization, Issued on: :issuedOn, Expires on: :expiresOn": "Tổ chức cấp: :organization, Cấp ngày: :issuedOn, Hết hạn ngày: :expiresOn",
     "Certificate: :certificate": "Chứng chỉ: :certificate",
-    "Majors: :majors, start at: :startAt, end at: :endAt": "Chuyên ngành: :majors, Bắt đầu học ngày: :startAt, Kết thúc ngày: :endAt",
+    "Majors: :majors, start at: :startAt, end at: :endAt, Description: :description": "Chuyên ngành: :majors, Bắt đầu học ngày: :startAt, Kết thúc ngày: :endAt, Mô tả :description",
     "Description: :description": "Mô tả: :description",
     "Skill: :skillName": "Kỹ năng: :skillName",
     "Change Cover": "Cập Nhật Ảnh Bìa",

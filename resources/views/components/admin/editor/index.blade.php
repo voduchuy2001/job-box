@@ -2,13 +2,18 @@
     'name' => null,
     'id' => null,
     'model' => null,
+    'label' => null,
+    'value' => null,
     ])
 
-<div>
-    <textarea
-        @if($name) name="{{ $name }}" @endif
-    @if($id) id="{{ $id }}" @endif
-        @if($model) wire:model="{{ $model }}" @endif>{{ $model }}</textarea>
+<div wire:ignore>
+    <x-admin.input
+        id="{{ $id }}"
+        label="{{ $label }}"
+        name="{{ $name }}"
+        model="{{ $model }}"
+        value="{{ $value }}"
+    ></x-admin.input>
 </div>
 
 @pushonce('styles')

@@ -102,6 +102,11 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('type', '=', ImageType::Avatar);
     }
 
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'user_id');
+    }
+
     public function coverImage(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable')

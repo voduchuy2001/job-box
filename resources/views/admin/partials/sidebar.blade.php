@@ -34,21 +34,19 @@
                 <li class="nav-item">
                     <x-link
                         class="nav-link menu-link"
-                        to="{{ route('role-permission') }}"
+                        :to="route('role-permission')"
                     >
                         <i class="ri-question-line"></i><span>{{ __('Roles And Permissions') }}</span>
                     </x-link>
                 </li>
 
-
                 <li class="nav-item">
-                    <a
-                        target="_blank"
+                    <x-link
                         class="nav-link menu-link"
-                        href="{{ route('elfinder.index') }}"
+                        to="{{ route('category.index') }}"
                     >
-                        <i class="ri-image-line"></i><span data-key="t-widgets">{{ __('Media Files') }}</span>
-                    </a>
+                        <i class="ri-menu-2-fill"></i><span>{{ __('Categories') }}</span>
+                    </x-link>
                 </li>
 
                 <li class="nav-item">
@@ -58,13 +56,23 @@
                     <div class="collapse menu-dropdown" id="jobs">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="job-list">{{ __('List Of Jobs') }}</a>
+                                <x-link :to="route('job.index')" class="nav-link" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-key="comments">{{ __('Comments') }}</a>
                             </li>
                         </ul>
                     </div>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        target="_blank"
+                        class="nav-link menu-link"
+                        href="{{ route('elfinder.index') }}"
+                    >
+                        <i class="ri-image-line"></i><span data-key="t-widgets">{{ __('Media Files') }}</span>
+                    </a>
                 </li>
 
                 @if(app()->getLocale() == 'vi')

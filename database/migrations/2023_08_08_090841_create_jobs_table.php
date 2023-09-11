@@ -13,12 +13,11 @@ return new class () extends Migration {
             $table->text('description');
             $table->string('qualification');
             $table->string('experience');
-            $table->string('industry');
             $table->string('vacancy');
-            $table->string('status');
             $table->timestamp('deadline_for_filing');
             $table->string('type');
             $table->foreignId('user_id');
+            $table->foreignId('category_id');
             $table->timestamps();
         });
     }

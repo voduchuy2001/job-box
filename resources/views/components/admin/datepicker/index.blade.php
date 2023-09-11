@@ -31,7 +31,6 @@
     <script type="text/javascript">
         flatpickr(".datepicker", {
             dateFormat: "d-m-Y",
-            maxDate: "today"
         });
 
         document.addEventListener('livewire:initialized', () => {
