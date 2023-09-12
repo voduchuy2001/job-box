@@ -35,6 +35,13 @@ class EditProfile extends Component
 
     public int $limit = 3;
 
+    public bool $show = false;
+
+    public function showPermission(): void
+    {
+        $this->show = !$this->show;
+    }
+
     public function mount(int|string $id): void
     {
         $user = User::getUserById($id);

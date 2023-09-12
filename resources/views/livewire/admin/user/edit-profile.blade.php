@@ -17,6 +17,21 @@
                 class="mt-xxl-n5"
             >
                 <livewire:admin.user.modules.personal-detail :user="$user"></livewire:admin.user.modules.personal-detail>
+
+                <div
+                    class="col-lg-12"
+                    wire:click="showPermission">
+
+                    <div class="hstack gap-2 justify-content-start">
+                        <p
+                            style="cursor: pointer"
+                            class="link-info">{{ $show === true ? __('Click here to hide permissions') : __('Click here to show permissions') }}</p>
+                    </div>
+                </div>
+
+                @if($show === true)
+                    <livewire:admin.user.modules.personal-permission :user="$user"></livewire:admin.user.modules.personal-permission>
+                @endif
             </x-admin.card>
 
             <x-admin.card

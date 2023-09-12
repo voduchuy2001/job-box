@@ -255,12 +255,6 @@
                         <h6 class="dropdown-header">{{ __('Welcome :name!', ['name' => Auth::user()->name]) }}</h6>
                         <x-link
                             class="dropdown-item"
-                            :to="route('user-edit.profile', ['id' => Auth::user()->id])">
-                            <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
-                            <span class="align-middle">{{ __('Your Profile') }}</span></x-link>
-
-                        <x-link
-                            class="dropdown-item"
                             :to="route('user-change-password.index')"><i class="mdi mdi-account-key-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Change Password') }}</span></x-link>
 
                         <div class="dropdown-divider"></div>

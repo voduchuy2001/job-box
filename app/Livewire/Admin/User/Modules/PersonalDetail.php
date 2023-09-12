@@ -10,6 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class PersonalDetail extends Component
 {
@@ -30,11 +31,19 @@ class PersonalDetail extends Component
     #[Rule(new Enum(UserStatus::class))]
     public UserStatus $userStatus;
 
+    #[Rule('nullable|string')]
+    public mixed $role;
+
     public function mount(): void
     {
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->userStatus = $this->user->status;
+        $role = json_decode($this->user->getRoleNames());
+        if (count($role) > 0) {
+            $this->role = $role[0];
+        }
+
         if ($this->user->present) {
             $this->present = $this->user->present;
         }
@@ -44,22 +53,37 @@ class PersonalDetail extends Component
     {
         $validatedData = $this->validate();
 
-        if ($this->user->is_root == 1) {
-            $this->alert('warning', trans('You can not update personal details for this account'));
+        if ($validatedData['role']) {
+            $this->user->syncRoles([
+                'name' => $validatedData['role'],
+            ]);
+        }
+
+        if (! $validatedData['role']) {
+            $this->user->syncRoles([]);
+        }
+
+        if ($this->user->is_root != 1) {
+            $this->user->update([
+                'name' => $validatedData['name'],
+                'status' => $validatedData['userStatus'],
+                'present' => $validatedData['present'],
+            ]);
+
+            $this->alert('success', trans('Update success'));
+            $this->dispatch('refresh');
             return;
         }
 
-        $this->alert('success', trans('Update success'));
-
-        $this->user->update([
-            'name' => $validatedData['name'],
-            'status' => $validatedData['userStatus'],
-            'present' => $validatedData['present'],
-        ]);
+        $this->alert('warning', trans('You can not update personal details for this account'));
     }
 
     public function render(): View
     {
-        return view('livewire.admin.user.modules.personal-detail');
+        $roles = Role::orderByDesc('created_at')->get();
+
+        return view('livewire.admin.user.modules.personal-detail', [
+            'roles' => $roles,
+        ]);
     }
 }

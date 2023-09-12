@@ -6,7 +6,9 @@ use App\Helpers\BaseHelper;
 use App\Models\Job;
 use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\View\View;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,6 +18,7 @@ class JobTrash extends Component
 {
     use WithPagination;
     use AuthorizesRoleOrPermission;
+    use LivewireAlert;
 
     public string $searchTerm = '';
 
@@ -26,6 +29,16 @@ class JobTrash extends Component
         $this->authorizeRoleOrPermission('job-trash');
     }
 
+    public function cleanData(): void
+    {
+        Job::onlyTrashed()->forceDelete();
+
+        $this->alert('success', 'Clean success!');
+        $this->dispatch('hiddenModal');
+        $this->dispatch('refresh');
+    }
+
+    #[On('refresh')]
     #[Layout('layouts.admin')]
     public function render(): View
     {

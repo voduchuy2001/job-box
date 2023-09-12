@@ -57,6 +57,22 @@
                 @enderror
             </div>
 
+            <div class="col-lg-6">
+                <label class="form-label">{{ __('Role') }}</label>
+                <select class="form-select mb-3" wire:model="role">
+                    <option value="">{{ __('Choose An Option') }}</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                    @endforeach
+                </select>
+
+                @error('role')
+                <span class="text-danger">
+                    {{ $message }}
+                </span>
+                @enderror
+            </div>
+
             <div class="col-lg-12">
                 <div class="hstack gap-2 justify-content-end">
                     <x-button
