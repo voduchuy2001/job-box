@@ -37,6 +37,7 @@ class CategoryList extends Component
 
     public function saveCategory(): void
     {
+        $this->authorizeRoleOrPermission('category-create');
         $validatedData = $this->validate();
 
         Category::create([
@@ -60,6 +61,7 @@ class CategoryList extends Component
 
     public function updateCategory(): void
     {
+        $this->authorizeRoleOrPermission('category-edit');
         $validatedData = $this->validate([
             'name' => 'required|string|min:2|max:32|unique:categories,name,'.$this->category->id,
         ]);
@@ -78,6 +80,7 @@ class CategoryList extends Component
 
     public function deleteCategory(string|int $id): void
     {
+        $this->authorizeRoleOrPermission('category-delete');
         $category = Category::getCategoryById($id);
 
         if (! $category->jobs()->count()) {

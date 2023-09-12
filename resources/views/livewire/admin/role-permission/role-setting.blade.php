@@ -30,11 +30,13 @@
                     <td class="fw-medium">{{ $key + 1 }}</td>
                     <td>{{ $role->name }}</td>
                     <td>
-                        @foreach($role->permissions as $permission)
-                            <span class="badge badge-soft-primary">
+                        <div class="text-break">
+                            @foreach($role->permissions as $permission)
+                                <span class="badge badge-soft-success" style="display: block; margin-bottom: 5px;">
                                 {{ $permission->name }}
                             </span>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </td>
                     <td>
                         <div class="hstack gap-3 fs-15">

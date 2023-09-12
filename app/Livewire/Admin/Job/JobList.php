@@ -8,6 +8,7 @@ use App\Models\District;
 use App\Models\Job;
 use App\Models\Province;
 use App\Models\Ward;
+use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -23,6 +24,7 @@ class JobList extends Component
 {
     use WithPagination;
     use LivewireAlert;
+    use AuthorizesRoleOrPermission;
 
     public string $searchTerm = '';
 
@@ -86,6 +88,7 @@ class JobList extends Component
 
     public function saveJob(): void
     {
+        $this->authorizeRoleOrPermission('job-create');
         $validatedData = $this->validate();
 
         $job = Job::create([
@@ -132,6 +135,7 @@ class JobList extends Component
 
     public function updateJob(): void
     {
+        $this->authorizeRoleOrPermission('job-edit');
         $validatedData = $this->validate();
 
         $this->job->update([
@@ -162,6 +166,7 @@ class JobList extends Component
 
     public function deleteJob(string|int $id): void
     {
+        $this->authorizeRoleOrPermission('job-delete');
         $job = Job::getJobById($id);
         $job->delete();
         $this->alert('success', trans('Delete success :name', ['name' => $job->name]));

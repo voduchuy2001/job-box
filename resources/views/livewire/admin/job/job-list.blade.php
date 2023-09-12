@@ -27,12 +27,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="d-flex mb-3">
-                            <div class="flex-shrink-0 avatar-sm">
-                                <div class="avatar-title bg-light rounded">
-                                    <img src="{{ $job->user->avatar->url != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-3.jpg') }}" alt="{{ $job->name }}" class="avatar-xxs" />
-                                </div>
-                            </div>
-                            <div class="flex-grow-1 ms-3">
+                            <div class="flex-grow-1">
                                 <h5 class="fs-15 mb-1">{{ $job->name }}</h5>
                                 <p class="text-muted mb-2">{!! Str::limit($job->description, 50) !!}</p>
                             </div>
