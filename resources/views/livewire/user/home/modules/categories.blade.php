@@ -8,9 +8,7 @@
                         <p class="text-muted">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
                     </div>
                 </div>
-                <!-- end col -->
             </div>
-            <!-- end row -->
 
             <div class="row justify-content-center">
                 <div class="col-lg-3 col-md-6">
@@ -126,8 +124,6 @@
                     </div>
                 </div>
             </div>
-            <!-- end row -->
         </div>
-        <!-- end container -->
     </section>
 </div>
