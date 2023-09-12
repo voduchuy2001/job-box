@@ -32,22 +32,16 @@
                                     <p class="text-muted mb-4">{{ __('Updated :updatedAt', ['updatedAt' => $category->updated_at->diffForHumans()]) }}</p>
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <div class="d-flex gap-1 align-items-center">
-                                        <div wire:ignore class="dropdown">
-                                            <button class="btn btn-link text-muted p-1 mt-n2 py-0 text-decoration-none fs-15" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <i data-feather="more-horizontal" class="icon-sm"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                            <span class="dropdown-item" data-bs-toggle="modal"
-                                                  data-bs-target="#category-setting"
-                                                  wire:click="editCategory({{ $category->id }})"
-                                            ><i class="ri-pencil-fill align-bottom me-2 text-muted"></i>{{ __('Edit') }}</span>
-                                                <div class="dropdown-divider"></div>
-                                                <span wire:click="deleteCategory({{ $category->id }})" class="dropdown-item btn"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                {{ __('Delete') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <span
+                                        style="cursor: pointer"
+                                        data-bs-toggle="modal"
+                                          data-bs-target="#category-setting"
+                                          wire:click="editCategory({{ $category->id }})"
+                                          class="badge badge-soft-warning">{{ __('Edit') }}</span>
+                                    <span
+                                        style="cursor: pointer"
+                                        wire:click="deleteCategory({{ $category->id }})"
+                                        class="badge badge-soft-danger">{{ __('Delete') }}</span>
                                 </div>
                             </div>
 

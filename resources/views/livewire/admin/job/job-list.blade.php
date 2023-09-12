@@ -34,17 +34,26 @@
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5 class="fs-15 mb-1">{{ $job->name }}</h5>
-                                <p class="text-muted mb-2">{!! $job->description !!}</p>
+                                <p class="text-muted mb-2">{!! Str::limit($job->description, 50) !!}</p>
                             </div>
                             <div>
-                                <a href="javascript:void(0);" class="badge badge-soft-{{ $job->status == 'still recruiting' ? 'success' : 'dark' }}">{{ $job->status }}<i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                <span
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#job-setting"
+                                    wire:click="editJob({{ $job->id }})"
+                                    style="cursor: pointer"
+                                    class="badge badge-soft-warning">{{ __('Edit') }}</span>
+                                <span
+                                    wire:click="deleteJob({{ $job->id }})"
+                                    style="cursor: pointer"
+                                    class="badge badge-soft-danger">{{ __('Delete') }}</span>
                             </div>
                         </div>
-                        <h6 class="text-muted mb-0">{{ __('From :from to :to VND', ['from' => number_format($job->salary->min), 'to' => number_format($job->salary->max)]) }}</h6>
+                        <h6 class="text-muted mb-0">{{ __('From :from to :to', ['from' => BaseHelper::moneyFormat($job->min_salary), 'to' => BaseHelper::moneyFormat($job->max_salary)]) }}</h6>
                     </div>
                     <div class="card-body border-top border-top-dashed">
                         <div class="d-flex">
-                            <h6 class="flex-shrink-0 text-danger mb-0"><i class="ri-time-line align-bottom"></i> {{ __('Updated :updatedAt', ['updatedAt' => $job->updated_at->diffForHumans()]) }}</h6>
+                            <h6 class="flex-shrink-0 text-success mb-0"><i class="ri-time-line align-bottom"></i> {{ __('Updated :updatedAt', ['updatedAt' => $job->updated_at->diffForHumans()]) }}</h6>
                         </div>
                     </div>
                 </div>
@@ -125,7 +134,7 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <x-admin.editor
+                        <x-admin.input.textarea
                             :label="__('Description')"
                             class="form-control"
                             type="text"
@@ -133,8 +142,9 @@
                             name="description"
                             model="description"
                             rows="7"
+                            placeholder="{{ __('Enter content') }}"
                         >
-                        </x-admin.editor>
+                        </x-admin.input.textarea>
                     </div>
 
                     <div class="col-lg-4">
@@ -178,7 +188,7 @@
                         ></x-admin.datepicker>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <x-admin.input
                             :label="__('Salary Min')"
                             class="form-control"
@@ -186,23 +196,11 @@
                             id="min"
                             name="min"
                             model="min"
-                            placeholder="{{ __('Enter min') }}"
+                            placeholder="{{ __('Enter min (VND)') }}"
                         ></x-admin.input>
                     </div>
 
-                    <div class="col-lg-4">
-                        <x-admin.input
-                            :label="__('Qualification')"
-                            class="form-control"
-                            type="text"
-                            id="qualification"
-                            name="qualification"
-                            model="qualification"
-                            placeholder="{{ __('Enter qualification') }}"
-                        ></x-admin.input>
-                    </div>
-
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <x-admin.input
                             :label="__('Salary Max')"
                             class="form-control"
@@ -210,7 +208,7 @@
                             id="max"
                             name="max"
                             model="max"
-                            placeholder="{{ __('Enter max') }}"
+                            placeholder="{{ __('Enter max (VND)') }}"
                         ></x-admin.input>
                     </div>
 
@@ -225,8 +223,8 @@
 
                         @error('provinceId')
                         <span class="text-danger">
-                    {{ $message }}
-                </span>
+                            {{ $message }}
+                        </span>
                         @enderror
                     </div>
 
@@ -241,8 +239,8 @@
 
                         @error('districtId')
                         <span class="text-danger">
-                    {{ $message }}
-                </span>
+                            {{ $message }}
+                        </span>
                         @enderror
                     </div>
 
@@ -257,8 +255,8 @@
 
                         @error('wardId')
                         <span class="text-danger">
-                    {{ $message }}
-                </span>
+                            {{ $message }}
+                        </span>
                         @enderror
                     </div>
 

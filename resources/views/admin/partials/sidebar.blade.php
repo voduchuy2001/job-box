@@ -61,6 +61,9 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-key="comments">{{ __('Comments') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <x-link :to="route('job.trash')" class="nav-link" data-key="trash">{{ __('Trash') }}</x-link>
+                            </li>
                         </ul>
                     </div>
                 </li>

@@ -11,13 +11,16 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('qualification');
             $table->string('experience');
+            $table->string('position');
             $table->string('vacancy');
-            $table->timestamp('deadline_for_filing');
+            $table->string('deadline_for_filing');
             $table->string('type');
+            $table->bigInteger('min_salary');
+            $table->bigInteger('max_salary');
             $table->foreignId('user_id');
             $table->foreignId('category_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

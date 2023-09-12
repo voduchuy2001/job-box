@@ -12,6 +12,7 @@
         @if($id) id="{{ $id }}" @endif
         @if($model) wire:model="{{ $model }}" @endif
         @if($name) name="{{ $name }}" @endif
+        placeholder="dd-mm-YYYY"
         {{ $attributes }}
     >
 

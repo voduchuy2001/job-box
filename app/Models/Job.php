@@ -4,33 +4,37 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Job extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'jobs';
 
     protected $fillable = [
         'name',
         'description',
-        'qualification',
+        'position',
         'experience',
         'vacancy',
         'deadline_for_filing',
         'type',
+        'min_salary',
+        'max_salary',
         'user_id',
         'category_id',
     ];
 
+    public static function getJobById(int|string $id)
+    {
+        return Job::findOrFail($id);
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
-    }
-
-    public function salary(): HasOne
-    {
-        return $this->hasOne(Salary::class, 'job_id');
     }
 
     public function address(): MorphOne

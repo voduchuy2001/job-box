@@ -11,6 +11,11 @@ class BaseHelper
         return $date->format('d') . '-' . $date->format('m') . '-' . $date->format('Y') . ' ' . $date->format('g:i A');
     }
 
+    public static function moneyFormat($amount): string
+    {
+        return number_format($amount, 0, ',', '.') . ' ' . trans('VND');
+    }
+
     public static function setPageTitle(string $current, string|null $parent = null): void
     {
         if ($parent) {

@@ -27,7 +27,7 @@ class CategoryList extends Component
 
     public bool $isEdit = false;
 
-    #[Rule('required|string|max:32|unique:categories')]
+    #[Rule('required|string|min:3|max:32|unique:categories', onUpdate: false)]
     public string $name;
 
     public function changeType(): void
@@ -60,7 +60,9 @@ class CategoryList extends Component
 
     public function updateCategory(): void
     {
-        $validatedData = $this->validate();
+        $validatedData = $this->validate([
+            'name' => 'required|string|min:2|max:32|unique:categories,name,'.$this->category->id,
+        ]);
 
         $this->category->update([
             'name' => $validatedData['name'],

@@ -7,13 +7,15 @@
     ])
 
 <div wire:ignore>
-    <x-admin.input
+    <x-admin.input.textarea
         id="{{ $id }}"
         label="{{ $label }}"
         name="{{ $name }}"
         model="{{ $model }}"
         value="{{ $value }}"
-    ></x-admin.input>
+        placeholder="{{ __('Enter content') }}"
+        wire:ignore
+    ></x-admin.input.textarea>
 </div>
 
 @pushonce('styles')
@@ -40,9 +42,15 @@
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount fullscreen',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat | fullscreen',
             image_class_list: [
-                { title: 'Responsive', value: 'img-fluid' }
+                { title: 'Image Responsive', value: 'img-fluid' }
             ],
             file_picker_callback: elFinderBrowser
+        });
+
+        document.addEventListener('livewire:initialized', () => {
+            @this.on('refresh', (event) => {
+                tinymce.get('{{ $id }}').setContent('');
+            });
         });
 
         function elFinderBrowser (callback, value, meta) {

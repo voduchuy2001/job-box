@@ -28,7 +28,7 @@ class RoleSetting extends Component
 
     public mixed $confirm = null;
 
-    #[Rule('required|string|max:32|unique:roles')]
+    #[Rule('required|string|min:2|max:32|unique:roles', onUpdate: false)]
     public string $name;
 
     #[Rule('required')]
@@ -95,16 +95,27 @@ class RoleSetting extends Component
     public function updateRole(): void
     {
         $this->authorizeRoleOrPermission('role-update');
-        $validatedData = $this->validate();
-
-        $this->role->update([
-            'name' => $validatedData['name'],
+        $validatedData = $this->validate([
+            'name' => 'required|string|min:2|max:32|unique:roles,name,'.$this->role->id,
+            'roleHasPermissions' => 'required',
         ]);
 
-        $this->role->syncPermissions($validatedData['roleHasPermissions']);
+        if ($validatedData['name'] != 'Super Admin') {
+            $this->role->update([
+                'name' => $validatedData['name'],
+            ]);
 
-        $this->alert('success', trans('Update success!'));
+            $this->role->syncPermissions($validatedData['roleHasPermissions']);
 
+            $this->alert('success', trans('Update success!'));
+
+            $this->resetForm();
+            $this->dispatch('hiddenModal');
+            $this->dispatch('refresh');
+            return;
+        }
+
+        $this->alert('warning', trans('Can not update Super Admin Role!'));
         $this->resetForm();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
