@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <div class="d-flex mb-3">
                             <div class="flex-grow-1">
-                                <h5 class="fs-15 mb-1">{{ $job->name }}</h5>
+                                <h5 title="{{ $job->name }}" class="fs-15 mb-1">{!! Str::limit($job->name, 30) !!}</h5>
                                 <p title="{{ $job->description }}" class="text-muted mb-2">{!! Str::limit($job->description, 30) !!}</p>
                             </div>
                             <div>

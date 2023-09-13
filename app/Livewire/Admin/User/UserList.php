@@ -6,6 +6,7 @@ use App\Helpers\BaseHelper;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -19,6 +20,7 @@ class UserList extends Component
 
     public int $itemPerPage = 20;
 
+    #[On('refresh')]
     #[Layout('layouts.admin')]
     public function render(): View
     {

@@ -11,6 +11,18 @@
         model="searchTerm"
     ></x-admin.input.search>
 
+    <div class="row g-4 mb-3">
+        <div class="col-sm-auto">
+            <div>
+                <x-button
+                    type="button"
+                    data-bs-target="#setting-user"
+                    data-bs-toggle="modal"
+                    class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add User') }}</x-button>
+            </div>
+        </div>
+    </div>
+
     <x-admin.card>
         @foreach($users as $user)
             <div class="list-group">
@@ -44,4 +56,13 @@
     </x-admin.card>
 
     {{ $users->links() }}
+
+    <x-admin.modal
+        id="setting-user"
+        type="modal-md modal-dialog-centered">
+        <x-admin.modal.header>{{ __('New User') }}</x-admin.modal.header>
+        <x-admin.modal.body>
+            <livewire:admin.user.user-create></livewire:admin.user.user-create>
+        </x-admin.modal.body>
+    </x-admin.modal>
 </div>
