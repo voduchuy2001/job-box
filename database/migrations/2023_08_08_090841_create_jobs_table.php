@@ -13,7 +13,7 @@ return new class () extends Migration {
             $table->text('description');
             $table->string('experience');
             $table->string('position');
-            $table->string('vacancy');
+            $table->bigInteger('vacancy');
             $table->string('deadline_for_filing');
             $table->string('type');
             $table->bigInteger('min_salary');

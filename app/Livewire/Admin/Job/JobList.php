@@ -75,8 +75,7 @@ class JobList extends Component
     {
         $this->authorizeRoleOrPermission('job-create');
         $validatedData = $this->validate();
-
-        $job = Job::create([
+        Job::create([
             'name' => $validatedData['name'],
             'position' => $validatedData['position'],
             'category_id' => $validatedData['category'],

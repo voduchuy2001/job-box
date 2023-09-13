@@ -29,7 +29,7 @@
                         <div class="d-flex mb-3">
                             <div class="flex-grow-1">
                                 <h5 class="fs-15 mb-1">{{ $job->name }}</h5>
-                                <p class="text-muted mb-2">{!! Str::limit($job->description, 50) !!}</p>
+                                <p title="{{ $job->description }}" class="text-muted mb-2">{!! Str::limit($job->description, 30) !!}</p>
                             </div>
                             <div>
                                 <span

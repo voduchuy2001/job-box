@@ -24,26 +24,31 @@
 
     <livewire:user.home.modules.categories></livewire:user.home.modules.categories>
 
-    <section class="py-5 bg-primary position-relative">
-        <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
-        <div class="container">
-            <div class="row align-items-center gy-4">
-                <div class="col-sm">
-                    <div>
-                        <h4 class="text-white mb-2">Ready to Started?</h4>
-                        <p class="text-white-50 mb-0">Create new account and refer your friend</p>
+    <livewire:user.home.modules.jobs></livewire:user.home.modules.jobs>
+
+
+    @if(! Auth::user())
+        <section class="py-5 bg-primary position-relative">
+            <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
+            <div class="container">
+                <div class="row align-items-center gy-4">
+                    <div class="col-sm">
+                        <div>
+                            <h4 class="text-white mb-2">{{ __('Ready to Started?') }}</h4>
+                            <p class="text-white-50 mb-0">{{ __('Create new account and refer your friend') }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-auto">
-                    <div>
-                        <a href="#!" class="btn bg-gradient btn-danger">Create Free Account</a>
+                    <div class="col-sm-auto">
+                        <div>
+                            <a
+                                href="{{ route('login') }}"
+                                class="btn bg-gradient btn-danger">{{ __('Create Free Account') }}</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <livewire:user.home.modules.jobs></livewire:user.home.modules.jobs>
+        </section>
+    @endif
 
     @include('user.partials.footer')
 </div>

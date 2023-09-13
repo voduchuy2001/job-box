@@ -12,18 +12,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="#hero">{{ __('Home') }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#findJob">{{ __('Jobs') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#process">{{ __('Process') }}</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#categories">{{ __('Categories') }}</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#blog">{{ __('Blog') }}</a>
+                    <a class="nav-link" href="#findJob">{{ __('Jobs') }}</a>
                 </li>
+
                 <li class="nav-item">
                     @if(app()->getLocale() == 'vi')
                         <a class="nav-link" href="{{ route('language.__invoke', ['locale' => 'en']) }}">{{ __('English') }}</a>
