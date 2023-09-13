@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Job extends Model
 {
-    use SoftDeletes;
-
     protected $table = 'jobs';
 
     protected $fillable = [
@@ -23,6 +20,7 @@ class Job extends Model
         'type',
         'min_salary',
         'max_salary',
+        'status',
         'user_id',
         'category_id',
     ];

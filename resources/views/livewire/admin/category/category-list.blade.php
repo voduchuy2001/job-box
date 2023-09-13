@@ -116,6 +116,7 @@
 
                     <div class="col-lg-12">
                         <div class="hstack gap-2 justify-content-end">
+                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
                             <x-button
                                 type="submit"
                                 class="btn btn-primary">{{ __('Save Data') }}</x-button>

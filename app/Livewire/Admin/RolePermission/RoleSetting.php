@@ -77,10 +77,17 @@ class RoleSetting extends Component
     {
         $this->authorizeRoleOrPermission('role-delete');
         $role = Role::findOrFail($id);
-        $role->delete();
 
-        $this->alert('success', trans('Delete success :name', ['name' => $role->name]));
-        $this->dispatch('refresh');
+        if ($role->name != 'Super Admin') {
+            $role->delete();
+
+            $this->alert('success', trans('Delete success :name', ['name' => $role->name]));
+            $this->dispatch('refresh');
+            return;
+        }
+
+        $this->alert('warning', trans('Can not delete Super Admin Role!'));
+        $this->confirm = false;
     }
 
     public function editRole(string|int $id): void

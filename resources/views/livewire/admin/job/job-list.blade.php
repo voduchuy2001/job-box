@@ -183,7 +183,7 @@
                         ></x-admin.datepicker>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <x-admin.input
                             :label="__('Salary Min')"
                             class="form-control"
@@ -195,7 +195,7 @@
                         ></x-admin.input>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <x-admin.input
                             :label="__('Salary Max')"
                             class="form-control"
@@ -208,47 +208,14 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <label class="form-label">{{ __('Provinces') }}</label>
-                        <select class="form-select" wire:model.live="provinceId">
-                            <option value="">{{ __('Choose Your Province') }}</option>
-                            @foreach($provinces as $province)
-                                <option value="{{ $province->id }}">{{ $province->name }}</option>
-                            @endforeach
+                        <label class="form-label">{{ __('Status') }}</label>
+                        <select class="form-select mb-3" wire:model="status">
+                            <option value="">{{ __('Choose An Option') }}</option>
+                            <option value="show">{{ __('Show') }}</option>
+                            <option value="hide">{{ __('Hide') }}</option>
                         </select>
 
-                        @error('provinceId')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-lg-4">
-                        <label class="form-label">{{ __('Districts') }}</label>
-                        <select class="form-select" wire:model.live="districtId">
-                            <option value="">{{ __('Choose A District') }}</option>
-                            @foreach($districts as $district)
-                                <option value="{{ $district->id }}">{{ $district->name }}</option>
-                            @endforeach
-                        </select>
-
-                        @error('districtId')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                        @enderror
-                    </div>
-
-                    <div class="col-lg-4 mb-3">
-                        <label class="form-label">{{ __('Wards') }}</label>
-                        <select class="form-select" wire:model.live="wardId">
-                            <option value="">{{ __('Choose A Ward') }}</option>
-                            @foreach($wards as $ward)
-                                <option value="{{ $ward->id }}">{{ $ward->name }}</option>
-                            @endforeach
-                        </select>
-
-                        @error('wardId')
+                        @error('status')
                         <span class="text-danger">
                             {{ $message }}
                         </span>
@@ -257,6 +224,7 @@
 
                     <div class="col-lg-12">
                         <div class="hstack gap-2 justify-content-end">
+                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
                             <x-button
                                 type="submit"
                                 class="btn btn-primary">{{ __('Save Data') }}</x-button>

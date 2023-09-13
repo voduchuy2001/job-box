@@ -8,7 +8,7 @@ class BaseHelper
 {
     public static function dateFormat(Carbon $date): string
     {
-        return $date->format('d') . '-' . $date->format('m') . '-' . $date->format('Y') . ' ' . $date->format('g:i A');
+        return $date->format('d') . '-' . $date->format('m') . '-' . $date->format('Y');
     }
 
     public static function moneyFormat($amount): string

@@ -22,61 +22,79 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span>{{ __('Menu') }}</span></li>
 
-                <li class="nav-item">
-                    <x-link
-                        class="nav-link menu-link"
-                        to="{{ route('user.index') }}"
-                    >
-                        <i class="ri-user-line"></i><span>{{ __('Users') }}</span>
-                    </x-link>
-                </li>
+                @can('dashboard')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link"
+                            to="{{ route('dashboard') }}"
+                        >
+                            <i class="ri-dashboard-2-line"></i><span>{{ __('Dashboard') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <x-link
-                        class="nav-link menu-link"
-                        :to="route('role-permission')"
-                    >
-                        <i class="ri-question-line"></i><span>{{ __('Roles And Permissions') }}</span>
-                    </x-link>
-                </li>
+                @can('user-list')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link"
+                            to="{{ route('user.index') }}"
+                        >
+                            <i class="ri-user-line"></i><span>{{ __('Users') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <x-link
-                        class="nav-link menu-link"
-                        to="{{ route('category.index') }}"
-                    >
-                        <i class="ri-menu-2-fill"></i><span>{{ __('Categories') }}</span>
-                    </x-link>
-                </li>
+                @can('role-permission')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link"
+                            :to="route('role-permission')"
+                        >
+                            <i class="ri-question-line"></i><span>{{ __('Roles And Permissions') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#jobs" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
-                        <i class="ri-file-2-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="jobs">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <x-link :to="route('job.index')" class="nav-link" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="comments">{{ __('Comments') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <x-link :to="route('job.trash')" class="nav-link" data-key="trash">{{ __('Trash') }}</x-link>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @can('category-list')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link"
+                            to="{{ route('category.index') }}"
+                        >
+                            <i class="ri-menu-2-fill"></i><span>{{ __('Categories') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
 
-                <li class="nav-item">
-                    <a
-                        target="_blank"
-                        class="nav-link menu-link"
-                        href="{{ route('elfinder.index') }}"
-                    >
-                        <i class="ri-image-line"></i><span data-key="t-widgets">{{ __('Media Files') }}</span>
-                    </a>
-                </li>
+                @can('job-list')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#jobs" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                            <i class="ri-file-2-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="jobs">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <x-link :to="route('job.index')" class="nav-link" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" data-key="comments">{{ __('Comments') }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
+
+                @can('media-file')
+                    <li class="nav-item">
+                        <a
+                            target="_blank"
+                            class="nav-link menu-link"
+                            href="{{ route('elfinder.index') }}"
+                        >
+                            <i class="ri-image-line"></i><span data-key="t-widgets">{{ __('Media Files') }}</span>
+                        </a>
+                    </li>
+                @endcan
 
                 @if(app()->getLocale() == 'vi')
                     <li class="nav-item">

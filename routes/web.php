@@ -11,7 +11,6 @@ use App\Http\Controllers\Lang\LanguageController;
 use App\Livewire\Admin\Category\CategoryList;
 use App\Livewire\Admin\Home\DashBoard;
 use App\Livewire\Admin\Job\JobList;
-use App\Livewire\Admin\Job\JobTrash;
 use App\Livewire\Admin\RolePermission\RoleSetting;
 use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\EditProfile;
@@ -68,7 +67,6 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
     Route::get('/user', UserList::class)->name('user.index')->middleware('permission:user-list');
     Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');
     Route::get('/job', JobList::class)->name('job.index')->middleware('permission:job-list');
-    Route::get('/job-trash', JobTrash::class)->name('job.trash')->middleware('permission:job-trash');
     Route::get('/category', CategoryList::class)->name('category.index')->middleware('permission:category-list');
 });
 

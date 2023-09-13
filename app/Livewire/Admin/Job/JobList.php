@@ -4,10 +4,7 @@ namespace App\Livewire\Admin\Job;
 
 use App\Helpers\BaseHelper;
 use App\Models\Category;
-use App\Models\District;
 use App\Models\Job;
-use App\Models\Province;
-use App\Models\Ward;
 use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -31,19 +28,6 @@ class JobList extends Component
     public int $itemPerPage = 20;
 
     public bool $isEdit = false;
-
-    #[Rule('required|integer')]
-    public string|null $provinceId;
-
-    public mixed $districts = [];
-
-    #[Rule('required|integer')]
-    public string|null $districtId;
-
-    public mixed $wards = [];
-
-    #[Rule('required|integer')]
-    public string|null $wardId;
 
     #[Rule('required|string|max:125')]
     public string $name;
@@ -75,9 +59,10 @@ class JobList extends Component
     #[Rule('required|integer|gte:min|max:1000000000')]
     public string $max;
 
-    public Job $job;
+    #[Rule('required|string|in:show,hide')]
+    public string $status;
 
-    public string $address;
+    public Job $job;
 
     public function changeType(): void
     {
@@ -100,15 +85,10 @@ class JobList extends Component
             'vacancy' => $validatedData['vacancy'],
             'experience' => $validatedData['experience'],
             'deadline_for_filing' => $validatedData['deadlineForFiling'],
+            'status' => $validatedData['status'],
             'user_id' => Auth::id(),
             'min_salary' => $validatedData['min'],
             'max_salary' => $validatedData['max'],
-        ]);
-
-        $job->address()->create([
-            'province_id' => $validatedData['provinceId'],
-            'district_id' => $validatedData['districtId'],
-            'ward_id' => $validatedData['wardId'],
         ]);
 
         $this->alert('success', trans('Create success!'));
@@ -129,6 +109,7 @@ class JobList extends Component
         $this->vacancy = $job->vacancy;
         $this->experience = $job->experience;
         $this->deadlineForFiling = $job->deadline_for_filing;
+        $this->status = $job->status;
         $this->min = $job->min_salary;
         $this->max = $job->max_salary;
     }
@@ -147,18 +128,13 @@ class JobList extends Component
             'vacancy' => $validatedData['vacancy'],
             'experience' => $validatedData['experience'],
             'deadline_for_filing' => $validatedData['deadlineForFiling'],
+            'status' => $validatedData['status'],
             'user_id' => Auth::id(),
             'min_salary' => $validatedData['min'],
             'max_salary' => $validatedData['max'],
         ]);
 
-        $this->job->address()->update([
-            'province_id' => $validatedData['provinceId'],
-            'district_id' => $validatedData['districtId'],
-            'ward_id' => $validatedData['wardId'],
-        ]);
-
-        $this->alert('success', trans('Update success!'));
+        $this->alert('success', trans('Update success'));
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
         $this->reset();
@@ -185,20 +161,9 @@ class JobList extends Component
 
         $categories = Category::orderByDesc('created_at')->get();
 
-        $provinces = Province::all();
-
-        if (! empty($this->provinceId)) {
-            $this->districts = District::where('province_id', $this->provinceId)->get();
-        }
-
-        if (! empty($this->districtId)) {
-            $this->wards = Ward::where('district_id', $this->districtId)->get();
-        }
-
         return view('livewire.admin.job.job-list', [
             'jobs' => $jobs,
             'categories' => $categories,
-            'provinces' => $provinces,
         ]);
     }
 }

@@ -46,8 +46,8 @@
             <div class="col-lg-6">
                 <label class="form-label">{{ __('Status') }}</label>
                 <select class="form-select mb-3" wire:model="userStatus">
-                    <option value="{{ UserStatus::IsActive }}">{{ UserStatus::IsActive }}</option>
-                    <option value="{{ UserStatus::Blocked }}">{{ UserStatus::Blocked }}</option>
+                    <option value="{{ UserStatus::IsActive }}">{{ __('Is Active') }}</option>
+                    <option value="{{ UserStatus::Blocked }}">{{ __('Blocked') }}</option>
                 </select>
 
                 @error('userStatus')

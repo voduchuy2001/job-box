@@ -33,10 +33,12 @@
         flatpickr(".datepicker", {
             dateFormat: "d-m-Y",
         });
-
         document.addEventListener('livewire:initialized', () => {
             @this.on('refresh', (event) => {
                 flatpickr(document.querySelector('.datepicker')).clear();
+                flatpickr(".datepicker", {
+                    dateFormat: "d-m-Y",
+                });
             });
         });
     </script>
