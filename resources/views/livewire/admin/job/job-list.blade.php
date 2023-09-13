@@ -223,6 +223,63 @@
                     </div>
 
                     <div class="col-lg-12">
+                        <span
+                            wire:click="showAddress"
+                            style="cursor: pointer"
+                            class="text-primary">{{ $show === false ? __('Click here to add address') : 'Click here to hide address' }}</span>
+                    </div>
+
+                    @if($show)
+                        <div class="col-lg-4">
+                            <label class="form-label">{{ __('Provinces') }}</label>
+                            <select class="form-select" wire:model.live="provinceId">
+                                <option value="">{{ __('Choose Your Province') }}</option>
+                                @foreach($provinces as $province)
+                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('provinceId')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="form-label">{{ __('Districts') }}</label>
+                            <select class="form-select" wire:model.live="districtId">
+                                <option value="">{{ __('Choose A District') }}</option>
+                                @foreach($districts as $district)
+                                    <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('districtId')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-lg-4 mb-3">
+                            <label class="form-label">{{ __('Wards') }}</label>
+                            <select class="form-select" wire:model.live="wardId">
+                                <option value="">{{ __('Choose A Ward') }}</option>
+                                @foreach($wards as $ward)
+                                    <option value="{{ $ward->id }}">{{ $ward->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('wardId')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+                    @endif
+
+                    <div class="col-lg-12">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
                             <x-button
