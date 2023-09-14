@@ -44,7 +44,7 @@
                             title="{{ $job->name }}"
                         >{!! Str::limit($job->name, 35) !!}</x-link>
                     @empty
-                        {{ __('There is no data to display at the moment.') }}
+                        <span class="text-primary" style="font-size: 13px">{{ __('There is no data to display at the moment.') }}</span>
                     @endforelse
                 </div>
         @endif
