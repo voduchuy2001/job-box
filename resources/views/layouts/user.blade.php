@@ -13,54 +13,51 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @vite(['resources/sass/app.scss'])
+    @stack('styles')
     @livewireStyles
 </head>
 <body>
+    <div class="layout-wrapper landing">
+        @include('user.partials.navbar')
 
-<div class="layout-wrapper landing">
-    @include('user.partials.navbar')
+        {{ $slot }}
 
-    {{ $slot }}
-
-    <livewire:user.home.modules.categories></livewire:user.home.modules.categories>
-
-    <livewire:user.home.modules.jobs></livewire:user.home.modules.jobs>
-
-    @if(! Auth::user())
-        <section class="py-5 bg-primary position-relative">
-            <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
-            <div class="container">
-                <div class="row align-items-center gy-4">
-                    <div class="col-sm">
-                        <div>
-                            <h4 class="text-white mb-2">{{ __('Ready to Started?') }}</h4>
-                            <p class="text-white-50 mb-0">{{ __('Create new account and refer your friend') }}</p>
+        @if(! Auth::user())
+            <section class="py-5 bg-primary position-relative">
+                <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
+                <div class="container">
+                    <div class="row align-items-center gy-4">
+                        <div class="col-sm">
+                            <div>
+                                <h4 class="text-white mb-2">{{ __('Ready to Started?') }}</h4>
+                                <p class="text-white-50 mb-0">{{ __('Create new account and refer your friend') }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-auto">
-                        <div>
-                            <a
-                                href="{{ route('login') }}"
-                                class="btn bg-gradient btn-danger">{{ __('Create Free Account') }}</a>
+                        <div class="col-sm-auto">
+                            <div>
+                                <a
+                                    href="{{ route('login') }}"
+                                    class="btn bg-gradient btn-danger">{{ __('Create Free Account') }}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    @endif
+            </section>
+        @endif
 
-    @include('user.partials.footer')
-</div>
+        @include('user.partials.footer')
+    </div>
 
-<script src="{{ asset('assets/js/sweetalert2@11.js') }}"></script>
-<x-livewire-alert::scripts />
-<script data-navigate-once src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script data-navigate-once src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-<script data-navigate-once src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-<script data-navigate-once src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
-<script data-navigate-once src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
-<script data-navigate-once src="{{ asset('assets/js/pages/job-lading.init.js') }}"></script>
-<script src="{{ asset('assets/js/app.js') }}"></script>
-@livewireScripts
+    <script src="{{ asset('assets/js/sweetalert2@11.js') }}"></script>
+    <x-livewire-alert::scripts />
+    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/job-lading.init.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    @stack('scripts')
+    @livewireScripts
 </body>
 </html>

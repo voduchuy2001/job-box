@@ -10,6 +10,7 @@
     @endif
     @if($class) class="{{ $class }}" @endif
     href="{{ $to }}"
+    {{ $attributes }}
 >
     {{ $slot }}
 </a>

@@ -1,44 +1,15 @@
 <div>
-    <section class="section job-hero-section bg-light pb-0" id="hero">
+    <div class="section job-hero-section bg-light pb-0" id="hero">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
                     <div>
                         <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">{{ __('Find Your Next Job And Build Your Dream Here') }}</h1>
                         <p class="lead text-muted lh-base mb-4">{{ __('Find jobs, create trackable resumes and enrich your applications. Carefully crafted after analyzing the needs of different industries.') }}</p>
-                        <form action="#" class="job-panel-filter">
-                            <div class="row g-md-0 g-2">
-                                <div class="col-md-4">
-                                    <div>
-                                        <input type="search" id="job-title" class="form-control filter-input-box" placeholder="Job, Company name...">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div>
-                                        <select class="form-control" data-choices>
-                                            <option value="">Select job type</option>
-                                            <option value="Full Time">Full Time</option>
-                                            <option value="Part Time">Part Time</option>
-                                            <option value="Freelance">Freelance</option>
-                                            <option value="Intership">Intership</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="h-100">
-                                        <button class="btn btn-primary submit-btn w-100 h-100" type="submit"><i class="ri-search-2-line align-bottom me-1"></i> Find Job</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
 
-                        <ul class="treding-keywords list-inline mb-0 mt-3 fs-13">
-                            <li class="list-inline-item text-danger fw-semibold"><i class="mdi mdi-tag-multiple-outline align-middle"></i> Trending Keywords:</li>
-                            <li class="list-inline-item"><a href="javascript:void(0)">Design,</a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)">Development,</a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)">Manager,</a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)">Senior</a></li>
-                        </ul>
+                        <livewire:user.home.modules.search></livewire:user.home.modules.search>
+
+                        <livewire:user.home.modules.trending-word></livewire:user.home.modules.trending-word>
                     </div>
                 </div>
 
@@ -108,9 +79,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="section" id="process">
+    <div class="section" id="process">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -173,9 +144,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <livewire:user.home.modules.categories></livewire:user.home.modules.categories>
+
+    <div class="section">
         <div class="container">
             <div class="row align-items-center justify-content-lg-between justify-content-center gy-4">
                 <div class="col-lg-5 col-sm-7">
@@ -253,5 +226,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <livewire:user.home.modules.jobs></livewire:user.home.modules.jobs>
 </div>

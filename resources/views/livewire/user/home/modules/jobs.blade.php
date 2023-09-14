@@ -1,5 +1,5 @@
 <div>
-    <section class="section" id="findJob">
+    <div class="section" id="findJob">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -60,5 +60,5 @@
                 @endif
             </div>
         </div>
-    </section>
+    </div>
 </div>

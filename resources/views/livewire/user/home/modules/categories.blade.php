@@ -12,7 +12,7 @@
 ?>
 
 <div>
-    <section class="section bg-light" id="categories">
+    <div class="section bg-light" id="categories">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -44,5 +44,5 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </div>
 </div>
