@@ -11,7 +11,7 @@ class Jobs extends Component
     public function render(): View
     {
         $jobs = Job::orderByDesc('created_at')
-            ->with('user')
+            ->with('user', 'addresses')
             ->where('status', 'show')
             ->where('vacancy', '>', 0)
             ->limit(8)->get();

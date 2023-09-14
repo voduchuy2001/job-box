@@ -26,7 +26,6 @@
 
     <livewire:user.home.modules.jobs></livewire:user.home.modules.jobs>
 
-
     @if(! Auth::user())
         <section class="py-5 bg-primary position-relative">
             <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
