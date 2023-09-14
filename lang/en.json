@@ -217,5 +217,10 @@
     "Can not delete Super Admin Role!": "Can not delete Super Admin Role!",
     "Can not update Super Admin Role!": "Can not update Super Admin Role!",
     "Address: :ward, :district, :province": "Address: :ward, :district, :province",
-    "Click here to add address": "Click here to add address"
+    "Click here to add address": "Click here to add address",
+    "Deadline: :deadline": "Deadline: :deadline",
+    "Vacancy: :vacancy": "Vacancy: :vacancy",
+    " M": " M",
+    " k": " k",
+    " d": " d"
 }

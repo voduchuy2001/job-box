@@ -217,5 +217,10 @@
     "Can not delete Super Admin Role!": "Không thể xóa quyền Super Admin",
     "Can not update Super Admin Role!": "Không thể cập nhật quyền Super Admin",
     "Address: :ward, :district, :province": "Địa chỉ: :ward, :district, :province",
-    "Click here to add address": "Nhấn vào đây để thêm địa chỉ"
+    "Click here to add address": "Nhấn vào đây để thêm địa chỉ",
+    "Deadline: :deadline": "Hạn chót: :deadline",
+    "Vacancy: :vacancy": "Số lượng cần tuyển: :vacancy",
+    " M": " Tr",
+    " k": " k",
+    " d": " đ"
 }

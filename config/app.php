@@ -172,6 +172,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -189,6 +190,7 @@ return [
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'BaseHelper' => \App\Helpers\BaseHelper::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
     ])->toArray(),
 
 ];

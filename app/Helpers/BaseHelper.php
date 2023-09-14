@@ -19,9 +19,9 @@ class BaseHelper
     public static function moneyFormatForHumans($number): string
     {
         return match (true) {
-            $number >= 1000000 => number_format($number / 1000000, 2) . ' M',
-            $number >= 1000 => number_format($number / 1000, 2) . ' k',
-            default => $number,
+            $number >= 1000000 => number_format($number / 1000000, 2) . trans(' M'),
+            $number >= 1000 => number_format($number / 1000, 2) . trans(' k'),
+            default => $number . trans(' d'),
         };
     }
 

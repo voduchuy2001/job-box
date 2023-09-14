@@ -32,9 +32,12 @@
                     <td>
                         <div class="text-break">
                             @foreach($role->permissions as $permission)
-                                <span class="badge badge-soft-success" style="display: block; margin-bottom: 5px;">
-                                {{ $permission->name }}
-                            </span>
+                                <div class="d-flex mb-1">
+                                    <span
+                                        class="badge badge-soft-success">
+                                    {{ $permission->name }}
+                                </span>
+                                </div>
                             @endforeach
                         </div>
                     </td>
@@ -91,27 +94,32 @@
                         ></x-admin.input>
                     </div>
 
-                    @foreach($permissions as $key => $permission)
-                        <div class="col-lg-4">
-                            <div class="form-check">
-                                <input class="form-check-input"
-                                       name="roleHasPermissions"
-                                       wire:model="roleHasPermissions"
-                                       type="checkbox"
-                                       value="{{ $permission->id }}"
-                                       id="{{ $permission->name }}"
-                                       checked
-                                >
-                                <label class="form-check-label" for="{{ $permission->name }}">
-                                    {{ $permission->name }}
-                                </label>
-                            </div>
-                        </div>
-                    @endforeach
+                    <div class="mb-3">
+                        <div class="row">
+                            @foreach($permissions as $key => $permission)
+                                <div class="col-lg-4">
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            name="roleHasPermissions"
+                                            wire:model="roleHasPermissions"
+                                            type="checkbox"
+                                            value="{{ $permission->id }}"
+                                            id="{{ $permission->name }}"
+                                            checked
+                                        >
+                                        <label class="form-check-label" for="{{ $permission->name }}">
+                                            {{ $permission->name }}
+                                        </label>
+                                    </div>
+                                </div>
+                            @endforeach
 
-                    @error('roleHasPermissions')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                            @error('roleHasPermissions')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
                     <div class="col-lg-12">
                         <div class="hstack gap-2 justify-content-end">
