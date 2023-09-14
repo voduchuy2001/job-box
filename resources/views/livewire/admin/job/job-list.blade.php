@@ -222,7 +222,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 mb-3">
                         <span
                             wire:click="showAddress"
                             style="cursor: pointer"
@@ -276,6 +276,25 @@
                                 {{ $message }}
                             </span>
                             @enderror
+                        </div>
+                    @endif
+
+                    @if(count($addresses) > 0)
+                        <div class="col-lg-12 mb-3">
+                            <ol>
+                                @foreach($addresses as $key => $address)
+                                <li>
+                                    <p>
+                                        {{ __('Address: :ward, :district, :province', ['ward' => $address->ward->name, 'district' => $address->district->name, 'province' => $address->province->name]) }}
+                                        <span
+                                            style="cursor: pointer"
+                                            wire:click="deleteAddress({{ $address->id }})"
+                                            class="badge badge-soft-danger">{{ __('Delete') }}</span>
+                                    </p>
+                                </li>
+                                @endforeach
+
+                            </ol>
                         </div>
                     @endif
 

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Job extends Model
 {
@@ -35,9 +35,9 @@ class Job extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function address(): MorphOne
+    public function addresses(): MorphMany
     {
-        return $this->morphOne(Address::class, 'addressable');
+        return $this->morphMany(Address::class, 'addressable');
     }
 
     public function user(): BelongsTo

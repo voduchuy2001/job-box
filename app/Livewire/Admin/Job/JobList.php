@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Job;
 
 use App\Helpers\BaseHelper;
+use App\Models\Address;
 use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
@@ -32,7 +33,7 @@ class JobList extends Component
 
     public bool $isEdit = false;
 
-    #[Rule('nullable')]
+    #[Rule('nullable|required_with:districtId,wardId')]
     public string|null $provinceId;
 
     public mixed $districts = [];
@@ -82,6 +83,8 @@ class JobList extends Component
 
     public Job $job;
 
+    public mixed $addresses = [];
+
     public function showAddress(): void
     {
         if ($this->show === false) {
@@ -120,7 +123,7 @@ class JobList extends Component
         ]);
 
         if ($validatedData['provinceId']) {
-            $job->address()->create([
+            $job->addresses()->create([
                 'province_id' => $validatedData['provinceId'],
                 'district_id' => $validatedData['districtId'],
                 'ward_id' => $validatedData['wardId'],
@@ -133,6 +136,7 @@ class JobList extends Component
         $this->reset();
     }
 
+    #[On('refresh')]
     public function editJob(string|int $id): void
     {
         $this->isEdit = true;
@@ -148,6 +152,7 @@ class JobList extends Component
         $this->status = $job->status;
         $this->min = $job->min_salary;
         $this->max = $job->max_salary;
+        $this->addresses = $job->addresses()->get();
     }
 
     public function updateJob(): void
@@ -155,7 +160,7 @@ class JobList extends Component
         $this->authorizeRoleOrPermission('job-edit');
         $validatedData = $this->validate();
 
-        $job = $this->job->update([
+        $this->job->update([
             'name' => $validatedData['name'],
             'position' => $validatedData['position'],
             'category_id' => $validatedData['category'],
@@ -169,6 +174,14 @@ class JobList extends Component
             'min_salary' => $validatedData['min'],
             'max_salary' => $validatedData['max'],
         ]);
+
+        if ($validatedData['provinceId']) {
+            $this->job->addresses()->create([
+                'province_id' => $validatedData['provinceId'],
+                'district_id' => $validatedData['districtId'],
+                'ward_id' => $validatedData['wardId'],
+            ]);
+        }
 
         $this->alert('success', trans('Update success'));
         $this->dispatch('hiddenModal');
@@ -184,6 +197,13 @@ class JobList extends Component
         $this->alert('success', trans('Delete success :name', ['name' => $job->name]));
         $this->dispatch('refresh');
         $this->reset();
+    }
+
+    public function deleteAddress(string|int $id): void
+    {
+        Address::getAddressById($id)->delete();
+
+        $this->addresses = $this->job->addresses()->get();
     }
 
     #[On('refresh')]
