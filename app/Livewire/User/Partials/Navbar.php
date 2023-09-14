@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Navbar extends Component
 {
-    public string $active = '';
+    public string $active = 'hero';
 
     public function activeLink(string $key): void
     {
