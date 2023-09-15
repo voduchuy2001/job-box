@@ -11,9 +11,9 @@
                                 </div>
                             </div>
                             <div class="ms-3 flex-grow-1">
-                                <a href="#!">
+                                <x-link :to="route('job-detail', ['id' => $job->id])">
                                     <h5>{{ $job->name }}</h5>
-                                </a>
+                                </x-link>
                                 <ul class="list-inline text-muted mb-3">
                                     <li class="list-inline-item">
                                         <i class="ri-building-line align-bottom me-1"></i> {{ $job->user->name }}
