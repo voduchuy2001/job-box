@@ -1,12 +1,12 @@
 <div>
-    <livewire:admin.user.modules.cover-image :user="$user"></livewire:admin.user.modules.cover-image>
+    <livewire:admin.user.modules.cover-image :user="$user" lazy></livewire:admin.user.modules.cover-image>
 
     <div class="row">
         <div class="col-xxl-3">
             <x-admin.card
                 class="mt-n5">
                 <div class="text-center">
-                    <livewire:admin.user.modules.avatar :user="$user"></livewire:admin.user.modules.avatar>
+                    <livewire:admin.user.modules.avatar :user="$user" lazy></livewire:admin.user.modules.avatar>
                 </div>
             </x-admin.card>
         </div>
@@ -16,7 +16,7 @@
                 :header="__('Personal Detail')"
                 class="mt-xxl-n5"
             >
-                <livewire:admin.user.modules.personal-detail :user="$user"></livewire:admin.user.modules.personal-detail>
+                <livewire:admin.user.modules.personal-detail :user="$user" lazy></livewire:admin.user.modules.personal-detail>
 
                 <div
                     class="col-lg-12"
@@ -30,7 +30,7 @@
                 </div>
 
                 @if($show === true)
-                    <livewire:admin.user.modules.personal-permission :user="$user"></livewire:admin.user.modules.personal-permission>
+                    <livewire:admin.user.modules.personal-permission :user="$user" lazy></livewire:admin.user.modules.personal-permission>
                 @endif
             </x-admin.card>
 
