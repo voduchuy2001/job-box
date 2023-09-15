@@ -29,7 +29,7 @@
                         <div class="d-flex flex-column h-100">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <p class="text-muted mb-4">{{ __('Updated :updatedAt', ['updatedAt' => $category->updated_at->diffForHumans()]) }}</p>
+                                    <p class="text-muted mb-4">{{ __('Updated :updatedAt', ['updatedAt' =>  BaseHelper::dateFormatForHumans($category->updated_at)]) }}</p>
                                 </div>
                                 <div class="flex-shrink-0">
                                     <span

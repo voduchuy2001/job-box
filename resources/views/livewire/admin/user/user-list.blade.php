@@ -41,7 +41,7 @@
                     <div class="flex-grow-1 ms-3">
                         <h5 class="list-title fs-15 mb-1">{{ $user->name }}</h5>
                         @if($user->lastLoginAt())
-                            <p class="list-text mb-0 fs-12">{{ __('Last login :at', ['at' => $user->lastLoginAt()->diffForHumans()]) }}</p>
+                            <p class="list-text mb-0 fs-12">{{ __('Last login :at', ['at' =>  BaseHelper::dateFormatForHumans($user->lastLoginAt())]) }}</p>
                         @endif
                     </div>
                 </div>

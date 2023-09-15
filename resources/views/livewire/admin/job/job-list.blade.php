@@ -48,7 +48,7 @@
                     </div>
                     <div class="card-body border-top border-top-dashed">
                         <div class="d-flex">
-                            <h6 class="flex-shrink-0 text-success mb-0"><i class="ri-time-line align-bottom"></i> {{ __('Updated :updatedAt', ['updatedAt' => $job->updated_at->diffForHumans()]) }}</h6>
+                            <h6 class="flex-shrink-0 text-success mb-0"><i class="ri-time-line align-bottom"></i> {{ __('Updated :updatedAt', ['updatedAt' => BaseHelper::dateFormatForHumans($job->updated_at)]) }}</h6>
                         </div>
                     </div>
                 </div>
