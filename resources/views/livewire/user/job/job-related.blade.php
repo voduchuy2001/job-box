@@ -27,8 +27,6 @@
                             </div>
                         </div>
 
-                        <p class="text-muted" title="{{ $job->description }}">{!! Str::limit($job->description, 30) !!}</p>
-
                         <div class="hstack gap-2">
                             <span class="badge badge-soft-danger">{{ __('Deadline: :deadline', ['deadline' => $job->deadline_for_filing]) }}</span>
                             <span class="badge badge-soft-success">{{ __('Vacancy: :vacancy', ['vacancy' => $job->vacancy]) }}</span>

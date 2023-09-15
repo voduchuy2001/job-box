@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Job;
 
 use App\Helpers\BaseHelper;
+use App\Models\Address;
 use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
@@ -15,20 +16,12 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
-use Livewire\Attributes\Title;
 use Livewire\Component;
-use Livewire\WithPagination;
 
-#[Title('List Of Jobs')]
-class JobList extends Component
+class JobEdit extends Component
 {
-    use WithPagination;
     use LivewireAlert;
     use AuthorizesRoleOrPermission;
-
-    public string $searchTerm = '';
-
-    public int $itemPerPage = 20;
 
     #[Rule('nullable|required_with:districtId,wardId')]
     public string|null $provinceId;
@@ -76,18 +69,35 @@ class JobList extends Component
     #[Rule('required|string|in:show,hide')]
     public string $status;
 
-    public bool $show = false;
+    public mixed $addresses = [];
 
     public mixed $job;
 
-    public mixed $addresses = [];
-
-    public function saveJob(): void
+    public function mount(string|int $id): void
     {
-        $this->authorizeRoleOrPermission('job-create');
+        $job = Job::with('addresses.province', 'addresses.district', 'addresses.ward')
+            ->findOrFail($id);
+        $this->job = $job;
+        $this->name = $job->name;
+        $this->position = $job->position;
+        $this->category = $job->category_id;
+        $this->type = $job->type;
+        $this->description = $job->description;
+        $this->vacancy = $job->vacancy;
+        $this->experience = $job->experience;
+        $this->deadlineForFiling = $job->deadline_for_filing;
+        $this->status = $job->status;
+        $this->min = $job->min_salary;
+        $this->max = $job->max_salary;
+        $this->addresses = $job->addresses;
+    }
+
+    public function updateJob(): void
+    {
+        $this->authorizeRoleOrPermission('job-edit');
         $validatedData = $this->validate();
 
-        $job = Job::create([
+        $this->job->update([
             'name' => $validatedData['name'],
             'position' => $validatedData['position'],
             'category_id' => $validatedData['category'],
@@ -103,37 +113,29 @@ class JobList extends Component
         ]);
 
         if ($validatedData['provinceId']) {
-            $job->addresses()->create([
+            $this->job->addresses()->create([
                 'province_id' => $validatedData['provinceId'],
                 'district_id' => $validatedData['districtId'],
                 'ward_id' => $validatedData['wardId'],
             ]);
         }
 
-        $this->alert('success', trans('Create success!'));
-        $this->dispatch('hiddenModal');
-        $this->dispatch('refresh');
-        $this->reset();
+        $this->alert('success', trans('Update success'));
+        $this->redirect(JobList::class, navigate: true);
     }
 
-    public function deleteJob(string|int $id): void
+    public function deleteAddress(string|int $id): void
     {
-        $this->authorizeRoleOrPermission('job-delete');
-        $job = Job::getJobById($id);
-        $job->delete();
-        $this->alert('success', trans('Delete success :name', ['name' => $job->name]));
-        $this->dispatch('refresh');
-        $this->reset();
+        Address::getAddressById($id)->delete();
+        $this->addresses = $this->job->addresses()->get();
+        $this->alert('success', trans('Delete success'));
     }
 
     #[On('refresh')]
     #[Layout('layouts.admin')]
     public function render(): View
     {
-        BaseHelper::setPageTitle(trans('List Of Jobs'), trans('Jobs'));
-
-        $searchTerm = '%' . $this->searchTerm . '%';
-        $jobs = Job::getJobs($this->itemPerPage, $searchTerm);
+        BaseHelper::setPageTitle(trans('Edit Jobs'), trans('Jobs'));
 
         $categories = Category::orderByDesc('created_at')->get();
 
@@ -147,8 +149,7 @@ class JobList extends Component
             $this->wards = Ward::where('district_id', $this->districtId)->get();
         }
 
-        return view('livewire.admin.job.job-list', [
-            'jobs' => $jobs,
+        return view('livewire.admin.job.job-edit', [
             'categories' => $categories,
             'provinces' => $provinces,
         ]);

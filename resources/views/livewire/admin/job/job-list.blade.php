@@ -12,11 +12,10 @@
         <div class="col-sm-auto">
             <div>
                 <x-button
-                    wire:click="changeType"
                     type="button"
                     data-bs-target="#job-setting"
                     data-bs-toggle="modal"
-                    class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add Job') }}</x-button>
+                    class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Quick Add') }}</x-button>
             </div>
         </div>
     </div>
@@ -31,13 +30,12 @@
                                 <h5 title="{{ $job->name }}" class="fs-15 mb-1">{!! Str::limit($job->name, 30) !!}</h5>
                                 <p title="{{ $job->description }}" class="text-muted mb-2">{!! Str::limit($job->description, 30) !!}</p>
                             </div>
-                            <div>
-                                <span
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#job-setting"
-                                    wire:click="editJob({{ $job->id }})"
-                                    style="cursor: pointer"
-                                    class="badge badge-soft-warning">{{ __('Edit') }}</span>
+                            <div class="d-flex">
+                                <span class="badge badge-soft-warning">
+                                    <x-link
+                                        :to="route('job.edit', ['id' => $job->id])"
+                                        class="link-warning"
+                                    >{{ __('Edit') }}</x-link></span>
                                 <span
                                     wire:click="deleteJob({{ $job->id }})"
                                     style="cursor: pointer"
@@ -67,9 +65,9 @@
     <x-admin.modal
         id="job-setting"
         type="modal-xl modal-dialog-centered">
-        <x-admin.modal.header>{{ $isEdit === true ? __('Edit Job') : __('New Job') }}</x-admin.modal.header>
+        <x-admin.modal.header>{{ __('New Job') }}</x-admin.modal.header>
         <x-admin.modal.body>
-            <x-form wire:submit.prevent="{{ $isEdit === true ? 'updateJob' : 'saveJob' }}">
+            <x-form wire:submit.prevent="saveJob">
                 <div class="row">
                     <div class="col-lg-6">
                         <x-admin.input
@@ -221,82 +219,6 @@
                         </span>
                         @enderror
                     </div>
-
-                    <div class="col-lg-12 mb-3">
-                        <span
-                            wire:click="showAddress"
-                            style="cursor: pointer"
-                            class="text-primary">{{ $show === false ? __('Click here to add address') : 'Click here to hide address' }}</span>
-                    </div>
-
-                    @if($show)
-                        <div class="col-lg-4">
-                            <label class="form-label">{{ __('Provinces') }}</label>
-                            <select class="form-select" wire:model.live="provinceId">
-                                <option value="">{{ __('Choose Your Province') }}</option>
-                                @foreach($provinces as $province)
-                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                @endforeach
-                            </select>
-
-                            @error('provinceId')
-                            <span class="text-danger">
-                                {{ $message }}
-                            </span>
-                            @enderror
-                        </div>
-
-                        <div class="col-lg-4">
-                            <label class="form-label">{{ __('Districts') }}</label>
-                            <select class="form-select" wire:model.live="districtId">
-                                <option value="">{{ __('Choose A District') }}</option>
-                                @foreach($districts as $district)
-                                    <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                @endforeach
-                            </select>
-
-                            @error('districtId')
-                            <span class="text-danger">
-                                {{ $message }}
-                            </span>
-                            @enderror
-                        </div>
-
-                        <div class="col-lg-4 mb-3">
-                            <label class="form-label">{{ __('Wards') }}</label>
-                            <select class="form-select" wire:model.live="wardId">
-                                <option value="">{{ __('Choose A Ward') }}</option>
-                                @foreach($wards as $ward)
-                                    <option value="{{ $ward->id }}">{{ $ward->name }}</option>
-                                @endforeach
-                            </select>
-
-                            @error('wardId')
-                            <span class="text-danger">
-                                {{ $message }}
-                            </span>
-                            @enderror
-                        </div>
-                    @endif
-
-                    @if(count($addresses) > 0)
-                        <div class="col-lg-12 mb-3">
-                            <ol>
-                                @foreach($addresses as $key => $address)
-                                <li>
-                                    <p>
-                                        {{ __('Address: :ward, :district, :province', ['ward' => $address->ward->name, 'district' => $address->district->name, 'province' => $address->province->name]) }}
-                                        <span
-                                            style="cursor: pointer"
-                                            wire:click="deleteAddress({{ $address->id }})"
-                                            class="badge badge-soft-danger">{{ __('Delete') }}</span>
-                                    </p>
-                                </li>
-                                @endforeach
-
-                            </ol>
-                        </div>
-                    @endif
 
                     <div class="col-lg-12">
                         <div class="hstack gap-2 justify-content-end">

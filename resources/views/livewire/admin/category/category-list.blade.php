@@ -35,9 +35,9 @@
                                     <span
                                         style="cursor: pointer"
                                         data-bs-toggle="modal"
-                                          data-bs-target="#category-setting"
-                                          wire:click="editCategory({{ $category->id }})"
-                                          class="badge badge-soft-warning">{{ __('Edit') }}</span>
+                                        data-bs-target="#category-setting"
+                                        wire:click="editCategory({{ $category->id }})"
+                                        class="badge badge-soft-warning">{{ __('Edit') }}</span>
                                     <span
                                         style="cursor: pointer"
                                         wire:click="deleteCategory({{ $category->id }})"

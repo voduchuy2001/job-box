@@ -54,7 +54,7 @@
                             <h5 class="mb-3">{{ __('Job Description') }}</h5>
 
                             <div class="text-break mb-3">
-                                {{ $job->description }}
+                                {!! $job->description !!}
                             </div>
                         </div>
                     </div>

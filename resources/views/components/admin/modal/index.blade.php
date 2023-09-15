@@ -4,12 +4,12 @@
     ])
 
 <div wire:ignore.self id="{{ $id }}"
-     class="modal"
-     tabindex="-1"
-     aria-hidden="true">
+     class="modal">
     <div class="modal-dialog {{ $type ?: 'modal-dialog-centered' }}">
         <div class="modal-content">
+
             {{ $slot }}
+
         </div>
     </div>
 </div>
