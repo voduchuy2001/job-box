@@ -16,8 +16,6 @@ class PersonalCourse extends Component
     #[Locked]
     public User $user;
 
-    public mixed $toggle = null;
-
     #[Rule('required|string|max:255')]
     public string $name;
 
@@ -46,13 +44,7 @@ class PersonalCourse extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-
-        $this->reset([
-            'name',
-            'organization',
-            'description',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

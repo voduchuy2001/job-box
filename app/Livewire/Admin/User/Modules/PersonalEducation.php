@@ -33,6 +33,11 @@ class PersonalEducation extends Component
 
     public mixed $toggle = null;
 
+    public function updatedToggle(): void
+    {
+        $this->reset('endAt');
+    }
+
     public function saveEducation(): void
     {
         $validatedData = $this->validate();
@@ -46,13 +51,7 @@ class PersonalEducation extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-
-        $this->reset([
-            'school',
-            'majors',
-            'description',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

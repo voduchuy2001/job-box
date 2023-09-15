@@ -36,12 +36,7 @@ class PersonalAward extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-
-        $this->reset([
-            'name',
-            'organization',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

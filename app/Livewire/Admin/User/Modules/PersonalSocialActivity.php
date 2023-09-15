@@ -33,6 +33,11 @@ class PersonalSocialActivity extends Component
     #[Rule('required|string|max:1024')]
     public string $description;
 
+    public function updatedToggle(): void
+    {
+        $this->reset('endAt');
+    }
+
     public function saveSocialActivity(): void
     {
         $validatedData = $this->validate();
@@ -46,13 +51,7 @@ class PersonalSocialActivity extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-
-        $this->reset([
-            'name',
-            'organization',
-            'description',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

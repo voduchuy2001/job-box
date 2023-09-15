@@ -40,13 +40,7 @@ class PersonalProduct extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-
-        $this->reset([
-            'name',
-            'type',
-            'description',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

@@ -30,6 +30,11 @@ class PersonalCertificate extends Component
     #[Rule('nullable|date_format:d-m-Y|after_or_equal:issuedOn')]
     public string $expiresOn;
 
+    public function updatedToggle(): void
+    {
+        $this->reset('expiresOn');
+    }
+
     public function saveCertificate(): void
     {
         $validatedData = $this->validate();
@@ -42,12 +47,7 @@ class PersonalCertificate extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-
-        $this->reset([
-            'name',
-            'organization',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

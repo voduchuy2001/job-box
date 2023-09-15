@@ -47,16 +47,7 @@ class PersonalAddress extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-        $this->reset([
-            'houseNumber',
-            'provinceId',
-            'provinces',
-            'districtId',
-            'districts',
-            'wardId',
-            'wards'
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

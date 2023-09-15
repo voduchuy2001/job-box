@@ -32,11 +32,7 @@ class PersonalSkill extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-        $this->reset([
-            'name',
-            'description',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

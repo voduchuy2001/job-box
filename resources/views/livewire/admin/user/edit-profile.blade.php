@@ -48,7 +48,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $address->id && $confirmType == 'address')
+                                @if($confirm == $address->id && $confirmType == 'address')
                                     <span
                                         wire:click="delete({{ $address->id }}, 'address')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -71,7 +71,7 @@
                     </div>
                 @endforeach
 
-                @if($userAddresses > $limit)
+                @if($user->addresses->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -83,7 +83,7 @@
                     </div>
                 @endif
 
-                @if(! count($addresses))
+                @if(! $addresses->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -102,7 +102,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $education->id && $confirmType == 'education')
+                                @if($confirm == $education->id && $confirmType == 'education')
                                     <span
                                         wire:click="delete({{ $education->id }}, 'education')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -125,7 +125,7 @@
                     </div>
                 @endforeach
 
-                @if($userEducations > $limit)
+                @if($user->educations->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -137,7 +137,7 @@
                     </div>
                 @endif
 
-                @if(! count($educations))
+                @if(! $educations->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -156,7 +156,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $experience->id && $confirmType == 'experience')
+                                @if($confirm == $experience->id && $confirmType == 'experience')
                                     <span
                                         wire:click="delete({{ $experience->id }}, 'experience')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -179,7 +179,7 @@
                     </div>
                 @endforeach
 
-                @if($userExperiences > $limit)
+                @if($user->experiences->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -191,7 +191,7 @@
                     </div>
                 @endif
 
-                @if(! count($experiences))
+                @if(! $experiences->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -210,7 +210,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $skill->id && $confirmType == 'skill')
+                                @if($confirm == $skill->id && $confirmType == 'skill')
                                     <span
                                         wire:click="delete({{ $skill->id }}, 'skill')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -235,7 +235,7 @@
                     </div>
                 @endforeach
 
-                @if($userSkills > $limit)
+                @if($user->skills->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -247,7 +247,7 @@
                     </div>
                 @endif
 
-                @if(! count($skills))
+                @if(! $skills->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -266,7 +266,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $certificate->id && $confirmType == 'certificate')
+                                @if($confirm == $certificate->id && $confirmType == 'certificate')
                                     <span
                                         wire:click="delete({{ $certificate->id }}, 'certificate')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -289,7 +289,7 @@
                     </div>
                 @endforeach
 
-                @if($userCertificates > $limit)
+                @if($user->certificates->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -301,7 +301,7 @@
                     </div>
                 @endif
 
-                @if(! count($certificates))
+                @if(! $certificates->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -320,7 +320,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $award->id && $confirmType == 'award')
+                                @if($confirm == $award->id && $confirmType == 'award')
                                     <span
                                         wire:click="delete({{ $award->id }}, 'award')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -343,7 +343,7 @@
                     </div>
                 @endforeach
 
-                @if($userAwards > $limit)
+                @if($user->awards->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -355,7 +355,7 @@
                     </div>
                 @endif
 
-                @if(! count($awards))
+                @if(! $awards->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -374,7 +374,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $course->id && $confirmType == 'course')
+                                @if($confirm == $course->id && $confirmType == 'course')
                                     <span
                                         wire:click="delete({{ $course->id }}, 'course')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -397,7 +397,7 @@
                     </div>
                 @endforeach
 
-                @if($userCourses > $limit)
+                @if($user->courses->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -409,7 +409,7 @@
                     </div>
                 @endif
 
-                @if(! count($courses))
+                @if(! $courses->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -428,7 +428,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $project->id && $confirmType == 'project')
+                                @if($confirm == $project->id && $confirmType == 'project')
                                     <span
                                         wire:click="delete({{ $project->id }}, 'project')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -451,7 +451,7 @@
                     </div>
                 @endforeach
 
-                @if($userProjects > $limit)
+                @if($user->projects->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -463,7 +463,7 @@
                     </div>
                 @endif
 
-                @if(! count($projects))
+                @if(! $projects->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -482,7 +482,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $product->id && $confirmType == 'product')
+                                @if($confirm == $product->id && $confirmType == 'product')
                                     <span
                                         wire:click="delete({{ $product->id }}, 'product')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -505,7 +505,7 @@
                     </div>
                 @endforeach
 
-                @if($userProducts > $limit)
+                @if($user->products->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -517,7 +517,7 @@
                     </div>
                 @endif
 
-                @if(! count($products))
+                @if(! $products->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>
@@ -536,7 +536,7 @@
                     <div class="list-group">
                         <span class="list-group-item list-group-item-action">
                             <div class="float-end">
-                                 @if($confirm == $socialActivity->id && $confirmType == 'socialActivity')
+                                @if($confirm == $socialActivity->id && $confirmType == 'socialActivity')
                                     <span
                                         wire:click="delete({{ $socialActivity->id }}, 'socialActivity')"
                                         style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
@@ -552,14 +552,14 @@
                             <div class="d-flex mb-2 align-items-center">
                                 <div class="flex-grow-1 ms-3">
                                     <h5 class="list-title fs-15 mb-1">{{ __('Organization: :organization', ['organization' => $socialActivity->organization]) }}</h5>
-                                    <p class="list-text mb-0 fs-12">{{ __('Position: :position, Start at: :startAt, End at: :endAt, Description: :description', ['position' => $socialActivity->position, 'startAt' => $socialActivity->start_at, 'endAt' => $socialActivity->end_at ?: __('Undefined'), 'technology' => $project->technology, 'description' => $project->description]) }}</p>
+                                    <p class="list-text mb-0 fs-12">{{ __('Position: :position, Start at: :startAt, End at: :endAt, Description: :description', ['position' => $socialActivity->position, 'startAt' => $socialActivity->start_at, 'endAt' => $socialActivity->end_at ?: __('Undefined'), 'description' => $socialActivity->description]) }}</p>
                                 </div>
                             </div>
                         </span>
                     </div>
                 @endforeach
 
-                @if($userSocialActivities > $limit)
+                @if($user->socialActivities->count() > $limit)
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
@@ -571,7 +571,7 @@
                     </div>
                 @endif
 
-                @if(! count($socialActivities))
+                @if(! $socialActivities->count())
                     <x-admin.empty></x-admin.empty>
                 @endif
             </x-admin.card>

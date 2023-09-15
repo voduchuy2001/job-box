@@ -42,6 +42,11 @@ class PersonalProject extends Component
     #[Rule('required|string')]
     public string $position;
 
+    public function updatedToggle(): void
+    {
+        $this->reset('endAt');
+    }
+
     public function saveProject(): void
     {
         $validatedData = $this->validate();
@@ -58,17 +63,7 @@ class PersonalProject extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-        $this->reset([
-            'name',
-            'customer',
-            'number_of_members',
-            'position',
-            'technology',
-            'start_at',
-            'end_at',
-            'description',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }

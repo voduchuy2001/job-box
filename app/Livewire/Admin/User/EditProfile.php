@@ -106,117 +106,91 @@ class EditProfile extends Component
     #[Layout('layouts.admin')]
     public function render(): View
     {
+        $user = $this->user
+            ->with([
+                'addresses',
+                'educations',
+                'skills',
+                'certificates',
+                'experiences',
+                'awards',
+                'projects',
+                'products',
+                'socialActivities',
+                'courses'
+            ]);
+
         $addresses = $this->user
             ->addresses()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userAddresses = $this->user
-            ->addresses()
-            ->count();
 
         $educations = $this->user
             ->educations()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userEducations = $this->user
-            ->educations()
-            ->count();
 
         $skills = $this->user
             ->skills()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userSkills = $this->user
-            ->skills()
-            ->count();
 
         $certificates = $this->user
             ->certificates()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userCertificates = $this->user
-            ->certificates()
-            ->count();
 
         $experiences = $this->user
             ->experiences()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userExperiences = $this->user
-            ->certificates()
-            ->count();
 
         $awards = $this->user
             ->awards()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userAwards = $this->user
-            ->awards()
-            ->count();
 
         $projects = $this->user
             ->projects()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userProjects = $this->user
-            ->projects()
-            ->count();
 
         $products = $this->user
             ->products()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userProducts = $this->user
-            ->products()
-            ->count();
-
         $socialActivities = $this->user
             ->socialActivities()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userSocialActivities = $this->user
-            ->socialActivities()
-            ->count();
 
         $courses = $this->user
             ->courses()
             ->orderByDesc('created_at')
             ->limit($this->limit)
             ->get();
-        $userCourses = $this->user
-            ->courses()
-            ->count();
 
         return view('livewire.admin.user.edit-profile', [
+            'user' => $user,
             'addresses' => $addresses,
-            'userAddresses' => $userAddresses,
             'educations' => $educations,
-            'userEducations' => $userEducations,
             'skills' => $skills,
-            'userSkills' => $userSkills,
             'certificates' => $certificates,
-            'userCertificates' => $userCertificates,
             'experiences' => $experiences,
-            'userExperiences' => $userExperiences,
             'awards' => $awards,
-            'userAwards' => $userAwards,
             'projects' => $projects,
-            'userProjects' => $userProjects,
             'products' => $products,
-            'userProducts' => $userProducts,
             'socialActivities' => $socialActivities,
-            'userSocialActivities' => $userSocialActivities,
             'courses' => $courses,
-            'userCourses' => $userCourses,
         ]);
     }
 }

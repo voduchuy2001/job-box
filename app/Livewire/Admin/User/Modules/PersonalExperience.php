@@ -28,6 +28,16 @@ class PersonalExperience extends Component
     #[Rule('nullable|date_format:d-m-Y|after_or_equal:startAt')]
     public string $endAt;
 
+    #[Rule('nullable|string')]
+    public string $description;
+
+    public mixed $toggle = null;
+
+    public function updatedToggle(): void
+    {
+        $this->reset('endAt');
+    }
+
     public function saveExperience(): void
     {
         $validatedData = $this->validate();
@@ -41,21 +51,10 @@ class PersonalExperience extends Component
         ]);
 
         $this->alert('success', trans('Create success!'));
-
-        $this->reset([
-            'company_name',
-            'position',
-            'description',
-        ]);
-
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }
-
-    #[Rule('nullable|string')]
-    public string $description;
-
-    public mixed $toggle = null;
 
     public function render(): View
     {
