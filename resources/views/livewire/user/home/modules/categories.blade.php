@@ -31,5 +31,9 @@
                 </div>
             </div>
         @endforeach
+
+            @if(! $categories->count())
+                <x-admin.empty></x-admin.empty>
+            @endif
     </section>
 </div>

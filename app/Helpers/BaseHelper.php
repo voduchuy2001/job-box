@@ -11,6 +11,11 @@ class BaseHelper
         return $date->format('d') . '-' . $date->format('m') . '-' . $date->format('Y');
     }
 
+    public static function dateFormatForHumans(Carbon $date): string
+    {
+        return $date->diffForHumans();
+    }
+
     public static function moneyFormat($amount): string
     {
         return number_format($amount, 0, ',', '.') . ' ' . trans('VND');

@@ -25,11 +25,6 @@ class Job extends Model
         'category_id',
     ];
 
-    public static function getJobById(int|string $id)
-    {
-        return Job::findOrFail($id);
-    }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -43,6 +38,11 @@ class Job extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public static function getJobById(int|string $id)
+    {
+        return Job::findOrFail($id);
     }
 
     public static function getJobs(int|null $itemPerPage, string $searchTerm)

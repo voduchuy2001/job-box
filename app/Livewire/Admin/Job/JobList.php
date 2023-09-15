@@ -58,7 +58,7 @@ class JobList extends Component
     #[Rule('required|string|in:Full Time,Part Time,Freelance,Internship')]
     public string $type;
 
-    #[Rule('required|string')]
+    #[Rule('required|min:30|string')]
     public string $description;
 
     #[Rule('required|integer')]

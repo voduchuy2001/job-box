@@ -44,7 +44,17 @@
             </div>
         @endforeach
 
-        @if(! count($jobs))
+            @if($jobs->count())
+                <div class="col-lg-12">
+                    <div class="text-center mt-4">
+                        <x-link
+                            href="#!"
+                            class="btn btn-ghost-primary">{{ __('View More Jobs ') }}<i class="ri-arrow-right-line align-bottom"></i></x-link>
+                    </div>
+                </div>
+            @endif
+
+        @if(! $jobs->count())
             <x-admin.empty></x-admin.empty>
         @endif
     </section>
