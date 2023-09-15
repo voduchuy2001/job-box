@@ -143,4 +143,6 @@ return [
     */
 
     'pagination_theme' => 'bootstrap',
+
+    'lazy_placeholder' => 'livewire.placeholder.index',
 ];

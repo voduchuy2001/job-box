@@ -146,7 +146,21 @@
         </div>
     </div>
 
-    <livewire:user.home.modules.categories></livewire:user.home.modules.categories>
+    <div class="section bg-light" id="categories">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="text-center mb-5">
+                        <h1 class="mb-3 ff-secondary fw-semibold text-capitalize lh-base">{{ __('High demand jobs Categories featured') }}</h1>
+                        <p class="text-muted">{{ __("Post a job to tell us about your project. We'll quickly match you with the right freelancers.") }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <livewire:user.home.modules.categories lazy></livewire:user.home.modules.categories>
+        </div>
+    </div>
+
 
     <div class="section">
         <div class="container">
@@ -228,5 +242,19 @@
         </div>
     </div>
 
-    <livewire:user.home.modules.jobs></livewire:user.home.modules.jobs>
+
+    <div class="section" id="findJob">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="text-center mb-5">
+                        <h1 class="mb-3 ff-secondary fw-semibold text-capitalize lh-base">{{ __('Find Your Career You Deserve It') }}</h1>
+                        <p class="text-muted">{{ __("Post a job to tell us about your project. We'll quickly match you with the right freelancers.") }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <livewire:user.home.modules.jobs lazy></livewire:user.home.modules.jobs>
+        </div>
+    </div>
 </div>
