@@ -25,7 +25,7 @@
                 @can('dashboard')
                     <li class="nav-item">
                         <x-link
-                            class="nav-link menu-link"
+                            class="nav-link menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
                             to="{{ route('dashboard') }}"
                         >
                             <i class="ri-dashboard-2-line"></i><span>{{ __('Dashboard') }}</span>
@@ -36,7 +36,7 @@
                 @can('user-list')
                     <li class="nav-item">
                         <x-link
-                            class="nav-link menu-link"
+                            class="nav-link menu-link {{ request()->routeIs('user.*') ? 'active' : '' }}"
                             to="{{ route('user.index') }}"
                         >
                             <i class="ri-user-line"></i><span>{{ __('Users') }}</span>
@@ -47,7 +47,7 @@
                 @can('role-permission')
                     <li class="nav-item">
                         <x-link
-                            class="nav-link menu-link"
+                            class="nav-link menu-link {{ request()->routeIs('role-permission') ? 'active' : '' }}"
                             :to="route('role-permission')"
                         >
                             <i class="ri-question-line"></i><span>{{ __('Roles And Permissions') }}</span>
@@ -58,7 +58,7 @@
                 @can('category-list')
                     <li class="nav-item">
                         <x-link
-                            class="nav-link menu-link"
+                            class="nav-link menu-link {{ request()->routeIs('category.*') ? 'active' : '' }}"
                             to="{{ route('category.index') }}"
                         >
                             <i class="ri-menu-2-fill"></i><span>{{ __('Categories') }}</span>
@@ -68,13 +68,18 @@
 
                 @can('job-list')
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="#jobs" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                        <a class="nav-link menu-link {{ request()->routeIs('job.*') ? 'active' : '' }}"
+                           href="#jobs"
+                           data-bs-toggle="collapse"
+                           role="button"
+                           aria-expanded="false"
+                           aria-controls="sidebarTables">
                             <i class="ri-file-2-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
                         </a>
                         <div class="collapse menu-dropdown" id="jobs">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <x-link :to="route('job.index')" class="nav-link" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
+                                    <x-link :to="route('job.index')" class="nav-link {{ request()->routeIs('job.*') ? 'active' : '' }}" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link" data-key="comments">{{ __('Comments') }}</a>

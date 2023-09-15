@@ -4,12 +4,10 @@
     ])
 
 <div wire:ignore.self id="{{ $id }}"
-     class="modal">
+     class="modal fade">
     <div class="modal-dialog {{ $type ?: 'modal-dialog-centered' }}">
         <div class="modal-content">
-
             {{ $slot }}
-
         </div>
     </div>
 </div>

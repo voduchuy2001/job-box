@@ -12,7 +12,7 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     @stack('styles')
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss'])
     @livewireStyles
 </head>
 <body>

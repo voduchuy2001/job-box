@@ -9,6 +9,7 @@
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
     {!! RecaptchaV3::initJs() !!}
+    <link href="{{ asset('assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
@@ -55,6 +56,7 @@
     <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
+    <script src="{{ asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/job-lading.init.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     @stack('scripts')
