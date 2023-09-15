@@ -4,7 +4,7 @@
     ])
 
 <div wire:ignore.self id="{{ $id }}"
-     class="modal fade"
+     class="modal"
      tabindex="-1"
      aria-hidden="true">
     <div class="modal-dialog {{ $type ?: 'modal-dialog-centered' }}">

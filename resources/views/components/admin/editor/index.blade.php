@@ -24,7 +24,7 @@
 
 @pushonce('scripts')
     <script>
-        tinyMCE.remove();
+        tinymce.remove();
 
         tinymce.init({
             selector: '#{{ $id }}',
@@ -35,7 +35,7 @@
                 });
 
                 editor.on('blur', function (e) {
-                @this.set('{{ $model }}', editor.getContent());
+                    @this.set('{{ $model }}', editor.getContent());
                 });
             },
 

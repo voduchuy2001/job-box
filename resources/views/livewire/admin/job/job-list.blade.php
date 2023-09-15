@@ -129,7 +129,7 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <x-admin.input.textarea
+                        <x-admin.editor
                             :label="__('Description')"
                             class="form-control"
                             type="text"
@@ -139,7 +139,7 @@
                             rows="7"
                             placeholder="{{ __('Enter content') }}"
                         >
-                        </x-admin.input.textarea>
+                        </x-admin.editor>
                     </div>
 
                     <div class="col-lg-4">
@@ -162,7 +162,7 @@
                             <option value="1">{{ __('1 Year') }}</option>
                             <option value="2">{{ __('2 Years') }}</option>
                             <option value="3">{{ __('3 Years') }}</option>
-                            <option value="more">{{ __('More') }}</option>
+                            <option value="more">{{ __('More 3 Years') }}</option>
                         </select>
 
                         @error('experience')
