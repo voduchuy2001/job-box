@@ -71,11 +71,11 @@
                     </div>
                 @endforeach
 
-                @if($user->addresses->count() > $limit)
+                @if($user->addresses->count() > $limits['addresses'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('addresses')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -125,11 +125,11 @@
                     </div>
                 @endforeach
 
-                @if($user->educations->count() > $limit)
+                @if($user->educations->count() > $limits['educations'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('educations')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -179,11 +179,11 @@
                     </div>
                 @endforeach
 
-                @if($user->experiences->count() > $limit)
+                @if($user->experiences->count() > $limits['experiences'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('experiences')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -235,11 +235,11 @@
                     </div>
                 @endforeach
 
-                @if($user->skills->count() > $limit)
+                @if($user->skills->count() > $limits['skills'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('skills')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -289,11 +289,11 @@
                     </div>
                 @endforeach
 
-                @if($user->certificates->count() > $limit)
+                @if($user->certificates->count() > $limits['certificates'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('certificates')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -343,11 +343,11 @@
                     </div>
                 @endforeach
 
-                @if($user->awards->count() > $limit)
+                @if($user->awards->count() > $limits['awards'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('awards')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -397,11 +397,11 @@
                     </div>
                 @endforeach
 
-                @if($user->courses->count() > $limit)
+                @if($user->courses->count() > $limits['courses'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('courses')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -451,11 +451,11 @@
                     </div>
                 @endforeach
 
-                @if($user->projects->count() > $limit)
+                @if($user->projects->count() > $limits['projects'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('projects')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -505,11 +505,11 @@
                     </div>
                 @endforeach
 
-                @if($user->products->count() > $limit)
+                @if($user->products->count() > $limits['products'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('products')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>
@@ -559,11 +559,11 @@
                     </div>
                 @endforeach
 
-                @if($user->socialActivities->count() > $limit)
+                @if($user->socialActivities->count() > $limits['socialActivities'])
                     <div class="form-group mt-3">
                         <div class="text-center">
                             <x-button
-                                wire:click="loadMore"
+                                wire:click="loadMore('socialActivities')"
                                 class="btn btn-primary"
                                 type="button"
                             >{{ __('Load more') }}</x-button>

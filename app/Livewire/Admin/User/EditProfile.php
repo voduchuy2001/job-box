@@ -33,7 +33,18 @@ class EditProfile extends Component
 
     public mixed $confirmType = null;
 
-    public int $limit = 3;
+    public mixed $limits = [
+        'addresses' => 3,
+        'educations' => 3,
+        'skills' => 3,
+        'certificates' => 3,
+        'experiences' => 3,
+        'awards' => 3,
+        'projects' => 3,
+        'products' => 3,
+        'courses' => 3,
+        'socialActivities' => 3,
+    ];
 
     public bool $show = false;
 
@@ -48,9 +59,9 @@ class EditProfile extends Component
         $this->user = $user;
     }
 
-    public function loadMore(): void
+    public function loadMore(string $component): void
     {
-        $this->limit += 3;
+        $this->limits[$component] += 3;
         $this->dispatch('refresh');
     }
 
@@ -123,60 +134,61 @@ class EditProfile extends Component
         $addresses = $this->user
             ->addresses()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['addresses'])
             ->get();
 
         $educations = $this->user
             ->educations()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['educations'])
             ->get();
 
         $skills = $this->user
             ->skills()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['skills'])
             ->get();
 
         $certificates = $this->user
             ->certificates()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['certificates'])
             ->get();
 
         $experiences = $this->user
             ->experiences()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['experiences'])
             ->get();
 
         $awards = $this->user
             ->awards()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['awards'])
             ->get();
 
         $projects = $this->user
             ->projects()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['projects'])
             ->get();
 
         $products = $this->user
             ->products()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
-            ->get();
-        $socialActivities = $this->user
-            ->socialActivities()
-            ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['products'])
             ->get();
 
         $courses = $this->user
             ->courses()
             ->orderByDesc('created_at')
-            ->limit($this->limit)
+            ->limit($this->limits['courses'])
+            ->get();
+
+        $socialActivities = $this->user
+            ->socialActivities()
+            ->orderByDesc('created_at')
+            ->limit($this->limits['socialActivities'])
             ->get();
 
         return view('livewire.admin.user.edit-profile', [
