@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Job extends Model
@@ -38,6 +39,11 @@ class Job extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function wishlists(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'wishlists', 'job_id', 'user_id');
     }
 
     public static function getJobById(int|string $id)

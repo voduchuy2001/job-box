@@ -16,7 +16,7 @@ class VerifyRecaptchaV3
         $score = RecaptchaV3::verify($request->get('g-recaptcha-response'), $formName);
 
         if ($score < 0.5) {
-            toast('Recaptcha validation failed', 'warning');
+            toast(trans('Recaptcha validation failed'), 'warning');
             return redirect()->back();
         }
 

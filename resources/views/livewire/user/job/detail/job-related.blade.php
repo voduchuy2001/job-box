@@ -4,7 +4,9 @@
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <button type="button" class="btn btn-icon btn-soft-primary float-end" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
+
+                        <livewire:user.job.wishlist :jobId="$job->id"></livewire:user.job.wishlist>
+
                         <div class="avatar-sm mb-4">
                             <div class="avatar-title bg-soft-secondary rounded">
                                 <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="{{ $job->user->name }}" class="avatar-xxs" />

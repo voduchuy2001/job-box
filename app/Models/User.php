@@ -6,6 +6,7 @@ use App\Enums\ImageType;
 use App\Enums\UserStatus;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -105,6 +106,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function jobs(): HasMany
     {
         return $this->hasMany(Job::class, 'user_id');
+    }
+
+    public function wishlists(): BelongsToMany
+    {
+        return $this->belongsToMany(Job::class, 'wishlists', 'user_id', 'job_id');
     }
 
     public function coverImage(): MorphOne

@@ -33,10 +33,7 @@
                                 </div>
                             </div>
                             <div>
-                                <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
-                                    <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                    <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                </button>
+                                <livewire:user.job.wishlist :jobId="$job->id"></livewire:user.job.wishlist>
                             </div>
                         </div>
                     </div>

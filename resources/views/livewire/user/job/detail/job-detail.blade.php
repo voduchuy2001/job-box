@@ -112,10 +112,8 @@
 
                             <div class="mt-4 pt-2 hstack gap-2">
                                 <x-link href="#!" class="btn btn-primary w-100">{{ __('Apply Now') }}</x-link>
-                                <button class="btn btn-soft-danger btn-icon custom-toggle flex-shrink-0" data-bs-toggle="button">
-                                    <span class="icon-on"><i class="ri-bookmark-line align-bottom"></i></span>
-                                    <span class="icon-off"><i class="ri-bookmark-3-fill align-bottom"></i></span>
-                                </button>
+
+                                <livewire:user.job.wishlist :jobId="$job->id"></livewire:user.job.wishlist>
                             </div>
                         </div>
                     </div>
