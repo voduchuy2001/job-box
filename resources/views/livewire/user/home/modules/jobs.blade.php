@@ -46,7 +46,7 @@
                     <div class="text-center mt-4">
                         <x-link
                             href="#!"
-                            class="btn btn-ghost-primary">{{ __('View More Jobs ') }}<i class="ri-arrow-right-line align-bottom"></i></x-link>
+                            class="btn btn-ghost-primary">{{ __('View More Jobs') }}<i class="ri-arrow-right-line align-bottom"></i></x-link>
                     </div>
                 </div>
             @endif

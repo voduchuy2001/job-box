@@ -22,7 +22,7 @@
                                         <i class="ri-mail-send-line"></i>
                                     </div>
                                 </div>
-                                <h5 class="fs-15 lh-base mb-0">{{ __('Work Inquiry from velzon') }}</h5>
+                                <h5 class="fs-15 lh-base mb-0">{{ __('Work Inquiry from :name', ['name' => 'JobBox']) }}</h5>
                             </div>
                         </div>
 
@@ -126,7 +126,7 @@
                             </h1>
 
                             <h6 class="fs-17 mb-2">{{ __('Find Job') }}</h6>
-                            <p class="text-muted mb-0 fs-15">{{ __('Search for your dream jobs from velzon.') }}</p>
+                            <p class="text-muted mb-0 fs-15">{{ __('Search for your dream jobs :name', ['name' => 'JobBox']) }}</p>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="text-center mb-5">
-                        <h1 class="mb-3 ff-secondary fw-semibold text-capitalize lh-base">{{ __('High demand jobs Categories featured') }}</h1>
+                        <h1 class="mb-3 ff-secondary fw-semibold text-capitalize lh-base">{{ __('High Demand Jobs Categories Featured') }}</h1>
                         <p class="text-muted">{{ __("Post a job to tell us about your project. We'll quickly match you with the right freelancers.") }}</p>
                     </div>
                 </div>
@@ -184,16 +184,8 @@
                                     <img src="{{ asset('assets/images/users/avatar-10.jpg') }}" alt="" class="avatar-sm rounded-circle">
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-14 lh-base mb-0">Tonya Noble</h5>
-                                    <p class="text-muted fs-11 mb-1">UI/UX Designer</p>
-
-                                    <div class="text-warning">
-                                        <i class="ri-star-s-fill"></i>
-                                        <i class="ri-star-s-fill"></i>
-                                        <i class="ri-star-s-fill"></i>
-                                        <i class="ri-star-s-fill"></i>
-                                        <i class="ri-star-s-line"></i>
-                                    </div>
+                                    <h5 class="fs-14 lh-base mb-0">Thuy Duong</h5>
+                                    <p class="text-muted fs-11 mb-1">Web Developer</p>
                                 </div>
                             </div>
                         </div>

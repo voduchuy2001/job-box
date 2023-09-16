@@ -1,7 +1,7 @@
 <div>
     @if(count($trendingWords))
         <ul class="treding-keywords list-inline mb-0 mt-3 fs-13">
-            <li class="list-inline-item text-danger fw-semibold"><i class="mdi mdi-tag-multiple-outline align-middle"></i> Trending Keywords:</li>
+            <li class="list-inline-item text-danger fw-semibold"><i class="mdi mdi-tag-multiple-outline align-middle"></i> {{ __('Trending Keywords:') }}</li>
             @foreach($trendingWords as $word)
                 <li class="list-inline-item"><a href="javascript:void(0)">{{ $word->name }} @if(! $loop->last) , @endif</a></li>
             @endforeach

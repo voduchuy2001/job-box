@@ -22,7 +22,6 @@ class Wishlist extends Component
     #[On('refresh')]
     public function mount(): void
     {
-
         if (! Auth::user()) {
             $this->redirectRoute('login');
             toast(trans('You must login before save job'), 'warning');
@@ -41,13 +40,13 @@ class Wishlist extends Component
 
         if (in_array($this->jobId, $wishlistJobIds)) {
             $this->user->wishlists()->detach($this->jobId);
-            $this->alert('success', trans('Delete success'));
+            $this->alert('success', trans('Remove from wishlist success'));
             $this->dispatch('refresh');
             return;
         }
 
         $this->user->wishlists()->attach($this->jobId);
-        $this->alert('success', trans('Save success'));
+        $this->alert('success', trans('Save to wishlist success'));
         $this->dispatch('refresh');
     }
 

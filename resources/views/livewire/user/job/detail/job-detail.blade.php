@@ -185,18 +185,47 @@
                         </div>
                         <div class="card-body">
                             <form>
-                                <div class="mb-3">
-                                    <label for="nameInput" class="form-label">{{ __('Name') }}</label>
-                                    <input type="text" class="form-control" id="nameInput" placeholder="Enter your name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="emailInput" class="form-label">{{ __('Email') }}</label>
-                                    <input type="text" class="form-control" id="emailInput" placeholder="Enter your email">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="messageInput" class="form-label">{{ __('Message') }}</label>
-                                    <textarea class="form-control" id="messageInput" rows="3" placeholder="Message"></textarea>
-                                </div>
+                                <x-admin.input
+                                    :label="__('Name')"
+                                    class="form-control"
+                                    id="name"
+                                    name="name"
+                                    model="name"
+                                    type="text"
+                                    :placeholder="__('Enter your name')"
+                                ></x-admin.input>
+
+                                <x-admin.input
+                                    :label="__('Email')"
+                                    class="form-control"
+                                    id="name"
+                                    name="name"
+                                    model="name"
+                                    type="email"
+                                    :placeholder="__('Enter your email')"
+                                ></x-admin.input>
+
+                                <x-admin.input
+                                    :label="__('Subject')"
+                                    class="form-control"
+                                    id="subject"
+                                    name="subject"
+                                    model="subject"
+                                    :placeholder="__('Enter subject')"
+                                    type="text"
+                                ></x-admin.input>
+
+                                <x-admin.input.textarea
+                                    :label="__('Message')"
+                                    class="form-control"
+                                    type="text"
+                                    name="message"
+                                    model="message"
+                                    :placeholder="__('Enter message')"
+                                    rows="7"
+                                    type="text"
+                                ></x-admin.input.textarea>
+
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">{{ __('Send Message') }}</button>
                                 </div>
