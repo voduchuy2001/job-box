@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Locked;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
@@ -16,7 +15,6 @@ class PersonalDetail extends Component
 {
     use LivewireAlert;
 
-    #[Locked]
     public User $user;
 
     #[Rule('required|string|max:32')]

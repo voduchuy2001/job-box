@@ -8,18 +8,20 @@
         model="searchTerm"
     ></x-admin.input.search>
 
-    <div class="row g-4 mb-3">
-        <div class="col-sm-auto">
-            <div>
-                <x-button
-                    wire:click="changeType"
-                    type="button"
-                    data-bs-target="#category-setting"
-                    data-bs-toggle="modal"
-                    class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add Category') }}</x-button>
+    @can('category-create')
+        <div class="row g-4 mb-3">
+            <div class="col-sm-auto">
+                <div>
+                    <x-button
+                        wire:click="changeType"
+                        type="button"
+                        data-bs-target="#category-setting"
+                        data-bs-toggle="modal"
+                        class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add Category') }}</x-button>
+                </div>
             </div>
         </div>
-    </div>
+    @endcan
 
     <div class="row">
         @foreach($categories as $category)
@@ -32,16 +34,20 @@
                                     <p class="text-muted mb-4">{{ __('Updated :updatedAt', ['updatedAt' =>  BaseHelper::dateFormatForHumans($category->updated_at)]) }}</p>
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <span
-                                        style="cursor: pointer"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#category-setting"
-                                        wire:click="editCategory({{ $category->id }})"
-                                        class="badge badge-soft-warning">{{ __('Edit') }}</span>
-                                    <span
-                                        style="cursor: pointer"
-                                        wire:click="deleteCategory({{ $category->id }})"
-                                        class="badge badge-soft-danger">{{ __('Delete') }}</span>
+                                    @can('category-edit')
+                                        <span
+                                            style="cursor: pointer"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#category-setting"
+                                            wire:click="editCategory({{ $category->id }})"
+                                            class="badge badge-soft-warning">{{ __('Edit') }}</span>
+                                    @endcan
+                                    @can('category-delete')
+                                        <span
+                                            style="cursor: pointer"
+                                            wire:click="deleteCategory({{ $category->id }})"
+                                            class="badge badge-soft-danger">{{ __('Delete') }}</span>
+                                    @endcan
                                 </div>
                             </div>
 
@@ -85,13 +91,13 @@
         @endforeach
     </div>
 
-    @if(! count($categories))
+    @if(! $categories->count())
         <x-admin.card>
             <div class="mt-3">
                 <x-admin.empty></x-admin.empty>
             </div>
         </x-admin.card>
-    @endif
+   ) @endif
 
     {{ $categories->links() }}
 

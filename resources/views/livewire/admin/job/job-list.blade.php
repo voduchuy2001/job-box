@@ -8,17 +8,19 @@
         model="searchTerm"
     ></x-admin.input.search>
 
-    <div class="row g-4 mb-3">
-        <div class="col-sm-auto">
-            <div>
-                <x-button
-                    type="button"
-                    data-bs-target="#job-setting"
-                    data-bs-toggle="modal"
-                    class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Quick Add') }}</x-button>
+    @can('job-create')
+        <div class="row g-4 mb-3">
+            <div class="col-sm-auto">
+                <div>
+                    <x-button
+                        type="button"
+                        data-bs-target="#job-setting"
+                        data-bs-toggle="modal"
+                        class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Quick Add') }}</x-button>
+                </div>
             </div>
         </div>
-    </div>
+    @endcan
 
     <div class="row">
         @foreach($jobs as $job)
@@ -54,7 +56,7 @@
         @endforeach
     </div>
 
-    @if(! count($jobs))
+    @if(! $jobs->count())
         <x-admin.card>
             <div class="mt-3">
                 <x-admin.empty></x-admin.empty>

@@ -8,7 +8,6 @@ use App\Models\User;
 use App\Models\Ward;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Locked;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -16,7 +15,6 @@ class PersonalAddress extends Component
 {
     use LivewireAlert;
 
-    #[Locked]
     public User $user;
 
     #[Rule('nullable|string|max:255')]

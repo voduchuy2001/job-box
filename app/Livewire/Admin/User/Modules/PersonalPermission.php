@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -17,7 +16,6 @@ class PersonalPermission extends Component
     use LivewireAlert;
     use AuthorizesRoleOrPermission;
 
-    #[Locked]
     public User $user;
 
     #[Rule('nullable')]

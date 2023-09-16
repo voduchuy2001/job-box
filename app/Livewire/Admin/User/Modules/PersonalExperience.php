@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\User\Modules;
 use App\Models\User;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Locked;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -13,7 +12,6 @@ class PersonalExperience extends Component
 {
     use LivewireAlert;
 
-    #[Locked]
     public User $user;
 
     #[Rule('required|string|max:255')]

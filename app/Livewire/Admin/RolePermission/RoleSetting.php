@@ -101,7 +101,7 @@ class RoleSetting extends Component
 
     public function updateRole(): void
     {
-        $this->authorizeRoleOrPermission('role-update');
+        $this->authorizeRoleOrPermission('role-edit');
         $validatedData = $this->validate([
             'name' => 'required|string|min:2|max:32|unique:roles,name,'.$this->role->id,
             'roleHasPermissions' => 'required',

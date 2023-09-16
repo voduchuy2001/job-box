@@ -8,7 +8,7 @@
         model="searchTerm"
     ></x-admin.input.search>
 
-    <x-admin.card>
+    @can('role-create')
         <div class="row g-4 mb-3">
             <div class="col-sm-auto">
                 <div>
@@ -21,7 +21,9 @@
                 </div>
             </div>
         </div>
+    @endcan
 
+    <x-admin.card>
         <x-admin.table
             :labels="[__('Id'), __('Name'), __('Permission')]"
         >
@@ -43,24 +45,28 @@
                     </td>
                     <td>
                         <div class="hstack gap-3 fs-15">
-                              <span
-                                  data-bs-target="#setting-role-permission"
-                                  data-bs-toggle="modal"
-                                  wire:click="editRole({{ $role->id }})"
-                                  style="cursor: pointer" class="link-warning"><i class="ri-pencil-line"></i></span>
+                              @can('role-edit')
+                                <span
+                                    data-bs-target="#setting-role-permission"
+                                    data-bs-toggle="modal"
+                                    wire:click="editRole({{ $role->id }})"
+                                    style="cursor: pointer" class="link-warning"><i class="ri-pencil-line"></i></span>
 
-                            @if($confirm == $role->id)
-                                <span
-                                    wire:click="deleteRole({{ $role->id }})"
-                                    style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
-                                <span
-                                    wire:click="confirmDelete({{ $role->id }})"
-                                    style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
-                            @else
-                                <span
-                                    wire:click="confirmDelete({{ $role->id }})"
-                                    style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
-                            @endif
+                                @endcan
+                                    @can('role-delete')
+                                      @if($confirm == $role->id)
+                                          <span
+                                              wire:click="deleteRole({{ $role->id }})"
+                                              style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                          <span
+                                              wire:click="confirmDelete({{ $role->id }})"
+                                              style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                                      @else
+                                          <span
+                                              wire:click="confirmDelete({{ $role->id }})"
+                                              style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
+                                      @endif
+                                  @endcan
                         </div>
                     </td>
                 </tr>
@@ -68,7 +74,7 @@
         </x-admin.table>
 
 
-        @if(! count($roles))
+        @if(! $roles->count())
             <div class="mt-3">
                 <x-admin.empty></x-admin.empty>
             </div>
