@@ -32,6 +32,10 @@
         </div>
     </div>
 
+    <button onclick="topFunction()" class="btn btn-info btn-icon landing-back-top" id="back-to-top" style="display: block;">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
     <x-livewire-alert::scripts />
     <script src="{{ asset('assets/js/sweetalert2@11.js') }}"></script>
     <script data-navigate-once src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

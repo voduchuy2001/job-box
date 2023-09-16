@@ -10,7 +10,7 @@
                                 <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="{{ $job->user->name }}" class="avatar-xxs" />
                             </div>
                         </div>
-                        <x-link to="#!">
+                        <x-link :to="route('job-detail', ['id' => $job->id])">
                             <h5 title="{{ $job->name }}">{!! Str::limit($job->name, 30) !!}</h5>
                         </x-link>
                         <p class="text-muted">{{ $job->user->name }}</p>

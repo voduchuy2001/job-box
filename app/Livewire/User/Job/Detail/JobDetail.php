@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\User\Job;
+namespace App\Livewire\User\Job\Detail;
 
 use App\Models\Job;
 use Illuminate\View\View;
@@ -32,6 +32,6 @@ class JobDetail extends Component
     #[Layout('layouts.user')]
     public function render(): View
     {
-        return view('livewire.user.job.job-detail');
+        return view('livewire.user.job.detail.job-detail');
     }
 }

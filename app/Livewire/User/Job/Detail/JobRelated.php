@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\User\Job;
+namespace App\Livewire\User\Job\Detail;
 
 use App\Models\Job;
 use Illuminate\View\View;
@@ -24,6 +24,6 @@ class JobRelated extends Component
 
     public function render(): View
     {
-        return view('livewire.user.job.job-related');
+        return view('livewire.user.job.detail.job-related');
     }
 }

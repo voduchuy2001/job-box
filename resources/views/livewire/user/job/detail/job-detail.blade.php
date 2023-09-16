@@ -220,7 +220,7 @@
                     </div>
                 </div>
 
-                <livewire:user.job.job-related :job="$job" lazy></livewire:user.job.job-related>
+                <livewire:user.job.detail.job-related :job="$job" lazy></livewire:user.job.detail.job-related>
 
             </div>
         </div>

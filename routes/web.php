@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
 use App\Livewire\Admin\Category\CategoryList;
@@ -17,7 +17,7 @@ use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\EditProfile;
 use App\Livewire\Admin\User\UserList;
 use App\Livewire\User\Home\HomePage;
-use App\Livewire\User\Job\JobDetail;
+use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\User\UserProfile;
 use Illuminate\Support\Facades\Route;
 

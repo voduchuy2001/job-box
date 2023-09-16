@@ -46,6 +46,10 @@
             </section>
         @endif
 
+        <button onclick="topFunction()" class="btn btn-info btn-icon landing-back-top" id="back-to-top" style="display: block;">
+            <i class="ri-arrow-up-line"></i>
+        </button>
+
         @include('user.partials.footer')
     </div>
 
