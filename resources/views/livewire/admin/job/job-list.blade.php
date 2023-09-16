@@ -34,10 +34,10 @@
                             </div>
                             <div class="d-flex">
                                 <span class="badge badge-soft-warning">
-                                    <x-link
-                                        :to="route('job.edit', ['id' => $job->id])"
+                                    <a
+                                        href="{{ route('job.edit', ['id' => $job->id]) }}"
                                         class="link-warning"
-                                    >{{ __('Edit') }}</x-link></span>
+                                    >{{ __('Edit') }}</a></span>
                                 <span
                                     wire:click="deleteJob({{ $job->id }})"
                                     style="cursor: pointer"
