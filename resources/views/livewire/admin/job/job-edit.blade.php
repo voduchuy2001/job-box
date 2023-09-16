@@ -219,35 +219,6 @@
                     </div>
                 @endif
 
-                <div class="col-lg-6">
-                    <x-admin.input
-                        :label="__('Longitude')"
-                        class="form-control"
-                        id="longitude"
-                        name="longitude"
-                        model="longitude"
-                        :placeholder="__('Enter longitude')"
-                        type="text"
-                    ></x-admin.input>
-                </div>
-
-                <div class="col-lg-6">
-                    <x-admin.input
-                        :label="__('Latitude')"
-                        class="form-control"
-                        id="latitude"
-                        name="latitude"
-                        model="latitude"
-                        :placeholder="__('Enter latitude')"
-                        type="text"
-                    ></x-admin.input>
-                </div>
-
-                <div class="col-lg-12 mb-3">
-                    <x-admin.map
-                        id="job-addresses"></x-admin.map>
-                </div>
-
                 <div class="col-lg-12">
                     <div class="hstack gap-2 justify-content-end">
                         <x-button

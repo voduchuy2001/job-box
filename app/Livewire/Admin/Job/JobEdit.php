@@ -23,7 +23,7 @@ class JobEdit extends Component
     use LivewireAlert;
     use AuthorizesRoleOrPermission;
 
-    #[Rule('nullable|required_with:districtId,wardId,longitude,latitude')]
+    #[Rule('nullable|required_with:districtId,wardId')]
     public string|null $provinceId;
 
     public mixed $districts = [];
@@ -71,12 +71,6 @@ class JobEdit extends Component
 
     public mixed $addresses = [];
 
-    #[Rule('required_with:provinceId')]
-    public string $longitude;
-
-    #[Rule('required_with:provinceId')]
-    public string $latitude;
-
     public mixed $job;
 
     public function mount(string|int $id): void
@@ -123,8 +117,6 @@ class JobEdit extends Component
                 'province_id' => $validatedData['provinceId'],
                 'district_id' => $validatedData['districtId'],
                 'ward_id' => $validatedData['wardId'],
-                'longitude' => $validatedData['longitude'],
-                'latitude' => $validatedData['latitude'],
             ]);
         }
 
