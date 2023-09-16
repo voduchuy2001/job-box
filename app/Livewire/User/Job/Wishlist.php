@@ -17,10 +17,24 @@ class Wishlist extends Component
 
     public mixed $wishlist = [];
 
-    public User $user;
+    public mixed $user;
 
     #[On('refresh')]
     public function mount(): void
+    {
+        if (! Auth::user()) {
+            $this->wishlist = [];
+            return;
+        }
+
+        $user = User::where('id', Auth::id())
+            ->with('wishlists')
+            ->first();
+        $this->user = $user;
+        $this->wishlist = $user->wishlists->pluck('id')->toArray() ?? [];
+    }
+
+    public function addOrRemoveToWishList(): void
     {
         if (! Auth::user()) {
             $this->redirectRoute('login');
@@ -28,14 +42,6 @@ class Wishlist extends Component
             return;
         }
 
-        $this->user = $user = User::where('id', Auth::id())
-            ->with('wishlists')
-            ->first();
-        $this->wishlist = $user->wishlists->pluck('id')->toArray();
-    }
-
-    public function addOrRemoveToWishList(): void
-    {
         $wishlistJobIds = $this->wishlist;
 
         if (in_array($this->jobId, $wishlistJobIds)) {
