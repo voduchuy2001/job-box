@@ -17,8 +17,6 @@ class Address extends Model
         'ward_id',
         'district_id',
         'province_id',
-        'longitude',
-        'latitude',
     ];
 
     public function addressable(): MorphTo
