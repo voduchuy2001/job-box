@@ -12,6 +12,7 @@ class PermissionTableSeeder extends Seeder
         $permissions = [
             'dashboard',
             'media-file',
+            'permission-edit',
             'role-permission',
             'role-create',
             'role-edit',
