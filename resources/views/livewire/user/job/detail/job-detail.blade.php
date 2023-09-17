@@ -179,7 +179,7 @@
                         </div>
                     </div>
 
-                    <livewire:user.job.detail.contact-new></livewire:user.job.detail.contact-new>
+                    <livewire:user.job.detail.contact-job :jobId="$job->id"></livewire:user.job.detail.contact-job>
                 </div>
             </div>
 

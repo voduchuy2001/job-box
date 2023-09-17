@@ -4,7 +4,7 @@
             <h5 class="mb-0">{{ __('Contact Us') }}</h5>
         </div>
         <div class="card-body">
-            <form>
+            <x-form wire:submit.prevent="sendContact">
                 <x-admin.input
                     :label="__('Name')"
                     class="form-control"
@@ -18,9 +18,9 @@
                 <x-admin.input
                     :label="__('Email')"
                     class="form-control"
-                    id="name"
-                    name="name"
-                    model="name"
+                    id="email"
+                    name="email"
+                    model="email"
                     type="email"
                     :placeholder="__('Enter your email')"
                 ></x-admin.input>
@@ -46,9 +46,11 @@
                 ></x-admin.input.textarea>
 
                 <div class="text-end">
-                    <button type="submit" class="btn btn-primary">{{ __('Send Message') }}</button>
+                    <x-button
+                        type="submit"
+                        class="btn btn-primary">{{ __('Send Message') }}</x-button>
                 </div>
-            </form>
+            </x-form>
         </div>
     </div>
 </div>
