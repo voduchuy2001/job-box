@@ -73,6 +73,12 @@ class JobEdit extends Component
 
     public mixed $job;
 
+    #[Rule('required_with:provinceId|max:255')]
+    public string $longitude;
+
+    #[Rule('required_with:provinceId|max:255')]
+    public string $latitude;
+
     public function mount(string|int $id): void
     {
         $job = Job::with(['addresses.province', 'addresses.district', 'addresses.ward'])
@@ -117,6 +123,8 @@ class JobEdit extends Component
                 'province_id' => $validatedData['provinceId'],
                 'district_id' => $validatedData['districtId'],
                 'ward_id' => $validatedData['wardId'],
+                'longitude' => $validatedData['longitude'],
+                'latitude' => $validatedData['latitude'],
             ]);
         }
 

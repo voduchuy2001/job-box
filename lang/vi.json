@@ -266,5 +266,11 @@
     "Find jobs, create trackable resumes and enrich your applications. Carefully crafted after analyzing the needs of different industries.": "Tìm việc làm, tạo sơ yếu lý lịch có thể theo dõi và làm phong phú thêm hồ sơ ứng tuyển của bạn. Được chế tạo cẩn thận sau khi phân tích nhu cầu của các ngành công nghiệp khác nhau.",
     "Trending Keywords:": "Từ khóa xu hướng:",
     "Find your job...": "Tìm công việc mà bạn mong muốn...",
-    "Work Inquiry from :name": "Yêu cầu công việc từ :name"
+    "Work Inquiry from :name": "Yêu cầu công việc từ :name",
+    "You can get your exact coordinates from: :here": "Bạn có thể lấy tọa độ chính xác của mình từ: :here",
+    "Enter longitude": "Thêm vĩ độ",
+    "Enter latitude": "Thêm kinh độ",
+    "Latitude": "Kinh Độ",
+    "Longitude": "Vĩ Độ",
+    "Apply Now": "Đăng Ký Ngay"
 }

@@ -22,7 +22,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Title('Edit User Profile')]
-class EditProfile extends Component
+class ProfileEdit extends Component
 {
     use WithFileUploads;
     use LivewireAlert;
@@ -191,7 +191,7 @@ class EditProfile extends Component
             ->limit($this->limits['socialActivities'])
             ->get();
 
-        return view('livewire.admin.user.edit-profile', [
+        return view('livewire.admin.user.profile-edit', [
             'user' => $user,
             'addresses' => $addresses,
             'educations' => $educations,

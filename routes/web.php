@@ -14,7 +14,7 @@ use App\Livewire\Admin\Job\JobEdit;
 use App\Livewire\Admin\Job\JobList;
 use App\Livewire\Admin\RolePermission\RoleSetting;
 use App\Livewire\Admin\User\ChangePassword;
-use App\Livewire\Admin\User\EditProfile;
+use App\Livewire\Admin\User\ProfileEdit;
 use App\Livewire\Admin\User\UserList;
 use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
@@ -66,7 +66,7 @@ Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('lang
 Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
     Route::get('/', DashBoard::class)->name('dashboard')->middleware('permission:dashboard');
     Route::get('/role-permission', RoleSetting::class)->name('role-permission')->middleware('permission:role-permission');
-    Route::get('/edit-profile/{id}', EditProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');
+    Route::get('/edit-profile/{id}', ProfileEdit::class)->name('user-edit.profile')->middleware('permission:user-edit');
     Route::get('/user', UserList::class)->name('user.index')->middleware('permission:user-list');
     Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');
     Route::get('/job', JobList::class)->name('job.index')->middleware('permission:job-list');

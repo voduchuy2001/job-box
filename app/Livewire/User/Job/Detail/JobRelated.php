@@ -14,7 +14,8 @@ class JobRelated extends Component
 
     public function mount(): void
     {
-        $jobs = Job::with('category', 'user', 'addresses.province')
+        $jobs = Job::inRandomOrder()
+            ->with('category', 'user', 'addresses.province')
             ->where('id', '!=', $this->job->id)
             ->limit(6)
             ->get();

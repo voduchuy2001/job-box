@@ -201,6 +201,36 @@
                     @enderror
                 </div>
 
+                <div class="col-lg-6">
+                    <x-admin.input
+                        :label="__('Latitude')"
+                        class="form-control"
+                        type="text"
+                        id="latitude"
+                        name="latitude"
+                        model="latitude"
+                        placeholder="{{ __('Enter latitude') }}"
+                    ></x-admin.input>
+                </div>
+
+                <div class="col-lg-6">
+                    <x-admin.input
+                        :label="__('Longitude')"
+                        class="form-control"
+                        type="text"
+                        id="longitude"
+                        name="longitude"
+                        model="longitude"
+                        placeholder="{{ __('Enter longitude') }}"
+                    ></x-admin.input>
+                </div>
+
+                <div class="col-lg-12 mb-3">
+                    <span class="text-primary">
+                        {!! __('You can get your exact coordinates from: :here', ['here' => '<a class="link-info" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">click here</a>']) !!}
+                    </span>
+                </div>
+
                 @if($addresses->count() > 0)
                     <div class="col-lg-12 mb-3">
                         <ol>
