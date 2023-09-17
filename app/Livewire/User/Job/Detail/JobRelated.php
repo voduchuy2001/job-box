@@ -16,6 +16,7 @@ class JobRelated extends Component
     {
         $jobs = Job::inRandomOrder()
             ->with('category', 'user', 'addresses.province')
+            ->where('status', 'show')
             ->where('id', '!=', $this->job->id)
             ->limit(6)
             ->get();

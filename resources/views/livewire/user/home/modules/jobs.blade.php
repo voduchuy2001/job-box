@@ -7,12 +7,12 @@
                         <div class="d-flex">
                             <div class="avatar-sm">
                                 <div class="avatar-title bg-soft-warning rounded">
-                                    <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="" class="avatar-xxs">
+                                    <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->user->name }}}" class="avatar-xxs">
                                 </div>
                             </div>
                             <div class="ms-3 flex-grow-1">
                                 <x-link :to="route('job-detail', ['id' => $job->id])">
-                                    <h5>{{ $job->name }}</h5>
+                                    <h5 title="{{ $job->name }}">{!! Str::limit($job->name, 50) !!}</h5>
                                 </x-link>
                                 <ul class="list-inline text-muted mb-3">
                                     <li class="list-inline-item">
@@ -41,15 +41,15 @@
             </div>
         @endforeach
 
-            @if($jobs->count())
-                <div class="col-lg-12">
-                    <div class="text-center mt-4">
-                        <x-link
-                            href="#!"
-                            class="btn btn-ghost-primary">{{ __('View More Jobs') }}<i class="ri-arrow-right-line align-bottom"></i></x-link>
-                    </div>
+        @if($jobs->count())
+            <div class="col-lg-12">
+                <div class="text-center mt-4">
+                    <x-link
+                        href="#!"
+                        class="btn btn-ghost-primary">{{ __('View More Jobs') }}<i class="ri-arrow-right-line align-bottom"></i></x-link>
                 </div>
-            @endif
+            </div>
+        @endif
 
         @if(! $jobs->count())
             <x-admin.empty></x-admin.empty>

@@ -16,6 +16,7 @@ class JobDetail extends Component
     public function mount(string|int $id): void
     {
         $job = Job::with(['user', 'addresses.district', 'addresses.province'])
+            ->where('status', 'show')
             ->findOrFail($id);
 
         $this->job = $job;

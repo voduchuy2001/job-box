@@ -62,6 +62,7 @@ class Job extends Model
     public static function getLimitJobs(string $searchTerm)
     {
         return Job::where('name', 'like', '%' . $searchTerm . '%')
+            ->where('status', 'show')
             ->orWhere('description', 'like', '%' . $searchTerm . '%')
             ->orderByDesc('created_at')
             ->limit(5)
