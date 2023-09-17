@@ -75,7 +75,7 @@ class JobEdit extends Component
 
     public function mount(string|int $id): void
     {
-        $job = Job::with('addresses.province', 'addresses.district', 'addresses.ward')
+        $job = Job::with(['addresses.province', 'addresses.district', 'addresses.ward'])
             ->findOrFail($id);
         $this->job = $job;
         $this->name = $job->name;
