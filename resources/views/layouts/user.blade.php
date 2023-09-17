@@ -8,7 +8,6 @@
 
     <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
-    {!! RecaptchaV3::initJs() !!}
     <link href="{{ asset('assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
