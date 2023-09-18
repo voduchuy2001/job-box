@@ -3,11 +3,7 @@
 namespace App\Livewire\Admin\Job;
 
 use App\Helpers\BaseHelper;
-use App\Models\Category;
-use App\Models\District;
 use App\Models\Job;
-use App\Models\Province;
-use App\Models\Ward;
 use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -49,22 +45,8 @@ class JobList extends Component
         $searchTerm = '%' . $this->searchTerm . '%';
         $jobs = Job::getJobs($this->itemPerPage, $searchTerm);
 
-        $categories = Category::orderByDesc('created_at')->get();
-
-        $provinces = Province::all();
-
-        if (! empty($this->provinceId)) {
-            $this->districts = District::where('province_id', $this->provinceId)->get();
-        }
-
-        if (! empty($this->districtId)) {
-            $this->wards = Ward::where('district_id', $this->districtId)->get();
-        }
-
         return view('livewire.admin.job.job-list', [
             'jobs' => $jobs,
-            'categories' => $categories,
-            'provinces' => $provinces,
         ]);
     }
 }

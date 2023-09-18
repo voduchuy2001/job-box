@@ -23,15 +23,14 @@
 
     <div class="row">
         @foreach($jobs as $job)
-            <div class="col-md-6">
-                <div class="card mb-3">
+            <div class="col-xxl-3 col-sm-6">
+                <div class="card card-height-100">
                     <div class="card-body">
                         <div class="d-flex mb-3">
                             <div class="flex-grow-1">
-                                <h5 title="{{ $job->name }}" class="fs-15 mb-1">{!! Str::limit($job->name, 30) !!}</h5>
-                                <p title="{{ $job->description }}" class="text-muted mb-2">{!! Str::limit($job->description, 30) !!}</p>
+                                <h5 title="{{ $job->name }}" class="fs-15 mb-1 rex">{!! Str::limit($job->name, 30) !!}</h5>
                             </div>
-                            <div class="d-flex">
+                            <div class="d-inline-block">
                                     <span class="badge badge-soft-warning">
                                     <x-link
                                         :to="route('job.edit', ['id' => $job->id])"

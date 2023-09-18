@@ -36,10 +36,10 @@ class JobEdit extends Component
     #[Rule('required_with:districtId')]
     public string|null $wardId;
 
-    #[Rule('required_with:provinceId|max:255')]
+    #[Rule('required_with:provinceId|max:255|numeric|nullable')]
     public string $longitude;
 
-    #[Rule('required_with:provinceId|max:255')]
+    #[Rule('required_with:provinceId|max:255|numeric|nullable')]
     public string $latitude;
 
     #[Rule('required|string|max:125')]
