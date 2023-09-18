@@ -2,7 +2,7 @@
     @include('admin.partials.page-title')
 
     <x-admin.card>
-        <x-form wire:submit.prevent="updateJob">
+        <x-form wire:submit.prevent="saveJob">
             <div class="row">
                 <div class="col-lg-6">
                     <x-admin.input
@@ -38,7 +38,7 @@
                     </select>
 
                     @error('category')
-                        <span class="text-danger">
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -55,7 +55,7 @@
                     </select>
 
                     @error('type')
-                        <span class="text-danger">
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -99,7 +99,7 @@
                     </select>
 
                     @error('experience')
-                        <span class="text-danger">
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -149,7 +149,7 @@
                     </select>
 
                     @error('status')
-                        <span class="text-danger">
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -165,7 +165,7 @@
                     </select>
 
                     @error('provinceId')
-                        <span class="text-danger">
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -181,7 +181,7 @@
                     </select>
 
                     @error('districtId')
-                        <span class="text-danger">
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -197,7 +197,7 @@
                     </select>
 
                     @error('wardId')
-                        <span class="text-danger">
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -232,24 +232,6 @@
                         {!! __('You can get your exact coordinates from: :here', ['here' => '<a class="link-info" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">click here</a>']) !!}
                     </span>
                 </div>
-
-                @if($addresses->count() > 0)
-                    <div class="col-lg-12 mb-3">
-                        <ol>
-                            @foreach($addresses as $key => $address)
-                                <li>
-                                    <p>
-                                        {{ __('Address: :ward, :district, :province', ['ward' => $address->ward->name, 'district' => $address->district->name, 'province' => $address->province->name]) }}
-                                        <span
-                                            style="cursor: pointer"
-                                            wire:click="deleteAddress({{ $address->id }})"
-                                            class="badge badge-soft-danger">{{ __('Delete') }}</span>
-                                    </p>
-                                </li>
-                            @endforeach
-                        </ol>
-                    </div>
-                @endif
 
                 <div class="col-lg-12">
                     <div class="hstack gap-2 justify-content-end">

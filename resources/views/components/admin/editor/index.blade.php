@@ -6,16 +6,24 @@
     'value' => null,
     ])
 
-<div wire:ignore>
-    <x-admin.input.textarea
-        id="{{ $id }}"
-        label="{{ $label }}"
-        name="{{ $name }}"
-        model="{{ $model }}"
-        value="{{ $value }}"
-        placeholder="{{ __('Enter content') }}"
-        wire:ignore
-    ></x-admin.input.textarea>
+<div>
+    <div wire:ignore>
+        <x-admin.input.textarea
+            id="{{ $id }}"
+            label="{{ $label }}"
+            name="{{ $name }}"
+            model="{{ $model }}"
+            value="{{ $value }}"
+            placeholder="{{ __('Enter content') }}"
+            wire:ignore
+        ></x-admin.input.textarea>
+    </div>
+
+    @error($model)
+    <span class="text-danger">
+        {{ $message }}
+    </span>
+    @enderror
 </div>
 
 @pushonce('styles')

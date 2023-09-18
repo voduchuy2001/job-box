@@ -28,7 +28,7 @@
                             class="stretched-link">
                             <h5 class="fs-17 pt-1">{{ $category->name }}</h5>
                         </x-link>
-                        <p class="mb-0 text-muted">{{ __(':count Jobs', ['count' => $category->jobs->count()]) }}</p>
+                        <p class="mb-0 text-muted">{{ __(':count Jobs', ['count' => $category->jobs_count]) }}</p>
                     </div>
                 </div>
             </div>

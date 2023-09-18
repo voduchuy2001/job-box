@@ -3,7 +3,6 @@
 namespace App\Livewire\Admin\Job;
 
 use App\Helpers\BaseHelper;
-use App\Helpers\JobDataHelper;
 use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
@@ -14,7 +13,6 @@ use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -30,80 +28,7 @@ class JobList extends Component
 
     public int $itemPerPage = 20;
 
-    #[Rule('nullable|required_with:districtId,wardId')]
-    public string|null $provinceId;
-
-    public mixed $districts = [];
-
-    #[Rule('required_with:provinceId')]
-    public string|null $districtId;
-
-    public mixed $wards = [];
-
-    #[Rule('required_with:districtId')]
-    public string|null $wardId;
-
-    #[Rule('required|string|max:125')]
-    public string $name;
-
-    #[Rule('required|string|max:50')]
-    public string $position;
-
-    #[Rule('required|integer')]
-    public string $category;
-
-    #[Rule('required|string|in:Full Time,Part Time,Freelance,Internship')]
-    public string $type;
-
-    #[Rule('required|min:30|string')]
-    public string $description;
-
-    #[Rule('required|integer')]
-    public string $vacancy;
-
-    #[Rule('required|string|in:0,1,2,3,more')]
-    public string $experience;
-
-    #[Rule('required|date_format:d-m-Y|after_or_equal:today')]
-    public string $deadlineForFiling;
-
-    #[Rule('required|integer|min:0|max:1000000000')]
-    public string $min;
-
-    #[Rule('required|integer|gte:min|max:1000000000')]
-    public string $max;
-
-    #[Rule('required|string|in:show,hide')]
-    public string $status;
-
-    public bool $show = false;
-
     public mixed $job;
-
-    public mixed $addresses = [];
-
-    public function saveJob(): void
-    {
-        $this->authorizeRoleOrPermission('job-create');
-        $validatedData = $this->validate();
-
-        $jobData = JobDataHelper::updateOrCreateJobData($validatedData);
-
-        $job = Job::create($jobData);
-
-        if ($validatedData['provinceId']) {
-            $job->addresses()->create([
-                'province_id' => $validatedData['provinceId'],
-                'district_id' => $validatedData['districtId'],
-                'ward_id' => $validatedData['wardId'],
-            ]);
-        }
-
-        $this->alert('success', trans('Create success!'));
-        $this->dispatch('hiddenModal');
-        $this->dispatch('refresh');
-        $this->reset();
-    }
 
     public function deleteJob(string|int $id): void
     {
