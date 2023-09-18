@@ -131,7 +131,6 @@
                                                     {{ __('Internship') }}
                                                 </label>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +142,7 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="row">
                         @foreach($jobs as $job)
-                            <div class="col-lg-6">
+                            <div class="col-lg-6" wire:key="job-list-{{ $job->id }}">
                                 <div class="card shadow-lg">
                                     <div class="card-body">
                                         <div class="d-flex">
@@ -175,7 +174,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <livewire:user.job.wishlist :jobId="$job->id"></livewire:user.job.wishlist>
+                                                <livewire:user.job.wishlist :jobId="$job->id" wire:key="wishlist-{{ $job->id }}"></livewire:user.job.wishlist>
                                             </div>
                                         </div>
                                     </div>

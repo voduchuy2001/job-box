@@ -23,9 +23,11 @@
                                 <i class="{{ $icons[$key % count($icons)] }} fs-1"></i>
                             </div>
                         </div>
-                        <a href="#!" class="stretched-link">
+                        <x-link
+                            :to="route('user.job-list')"
+                            class="stretched-link">
                             <h5 class="fs-17 pt-1">{{ $category->name }}</h5>
-                        </a>
+                        </x-link>
                         <p class="mb-0 text-muted">{{ __(':count Jobs', ['count' => $category->jobs->count()]) }}</p>
                     </div>
                 </div>

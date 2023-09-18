@@ -4,6 +4,8 @@ namespace App\Livewire\User\Job;
 
 use App\Models\Category;
 use App\Models\Job;
+use App\Traits\TrendingWord;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -14,6 +16,7 @@ use Livewire\WithPagination;
 class JobList extends Component
 {
     use WithPagination;
+    use TrendingWord;
 
     public int $itemPerPage = 12;
 
@@ -36,14 +39,14 @@ class JobList extends Component
             ->get();
     }
 
-    #[Layout('layouts.user')]
-    public function render(): View
+    private function queryFilterJob(): LengthAwarePaginator
     {
         $searchTerm = '%' . $this->searchTerm . '%';
         $salaryMin = is_numeric($this->salaryMin) ? (int) $this->salaryMin : null;
         $salaryMax = is_numeric($this->salaryMax) ? (int) $this->salaryMax : null;
+        $this->createTrendingWords($this->searchTerm);
 
-        $jobs = Job::where('status', 'show')
+        return Job::where('status', 'show')
             ->where('name', 'like', $searchTerm)
             ->when($this->filterByCategory, function ($query) {
                 $query->whereIn('category_id', $this->filterByCategory);
@@ -63,6 +66,12 @@ class JobList extends Component
             ->with('user', 'addresses.province')
             ->orderBy('created_at', 'desc')
             ->paginate($this->itemPerPage);
+    }
+
+    #[Layout('layouts.user')]
+    public function render(): View
+    {
+        $jobs = $this->queryFilterJob();
 
         return view('livewire.user.job.job-list', [
             'jobs' => $jobs,

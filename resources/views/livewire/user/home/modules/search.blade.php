@@ -29,24 +29,28 @@
     </div>
 
     <div class="col-md-8 mt-2">
-        @if(! isset($searchTerm))
+        @if(! isset($searchTerm) || $showSuggestions)
             <div class="text-center my-2" wire:loading wire:target="searchTerm">
                 <span class="text-primary"><i class="mdi mdi-loading mdi-spin fs-20 align-middle me-2"></i>{{ __('Loading...') }}</span>
             </div>
         @endif
         @if ($showSuggestions && isset($searchTerm))
-                <div class="list-group">
-                    @forelse($jobs as $job)
-                        <x-link
-                            :to="route('job-detail', ['id' => $job->id])"
-                            class="list-group-item"
-                            style="font-size: 13px; border: none;"
-                            title="{{ $job->name }}"
-                        >{!! Str::limit($job->name, 35) !!}</x-link>
-                    @empty
-                        <span class="text-primary" style="font-size: 13px">{{ __('There is no data to display at the moment.') }}</span>
-                    @endforelse
-                </div>
+            <div class="list-group">
+                @forelse($jobs as $job)
+                    <x-link
+                        :to="route('job-detail', ['id' => $job->id])"
+                        class="list-group-item"
+                        style="font-size: 13px; border: none;"
+                        title="{{ $job->name }}"
+                    >{!! Str::limit($job->name, 35) !!}</x-link>
+                @empty
+                    <span
+                        class="text-primary"
+                        style="font-size: 13px;">
+                            {{ __('There is no data to display at the moment.') }}
+                        </span>
+                @endforelse
+            </div>
         @endif
     </div>
 </div>

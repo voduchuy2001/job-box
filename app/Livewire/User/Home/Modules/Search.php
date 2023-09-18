@@ -3,13 +3,15 @@
 namespace App\Livewire\User\Home\Modules;
 
 use App\Models\Job;
-use App\Models\Keyword;
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use App\Traits\TrendingWord;
 
 class Search extends Component
 {
+    use TrendingWord;
+
     public string $searchTerm;
 
     public mixed $jobs;
@@ -26,25 +28,7 @@ class Search extends Component
         if (! empty($this->searchTerm)) {
             $this->jobs = Job::getLimitJobs($this->searchTerm);
 
-            $keywords = explode(" ", $this->searchTerm);
-            $existingKeywords = Keyword::whereIn('name', $keywords)->get();
-
-            $existingKeywordsMap = $existingKeywords->pluck('name')->toArray();
-
-            foreach ($keywords as $keyword) {
-                if (! in_array($keyword, $existingKeywordsMap)) {
-                    Keyword::create([
-                        'name' => $keyword,
-                        'count' => 1
-                    ]);
-                }
-
-                $existingKeyword = $existingKeywords->where('name', $keyword)->first();
-
-                if ($existingKeyword) {
-                    $existingKeyword->increment('count');
-                }
-            }
+            $this->createTrendingWords($this->searchTerm);
 
             $this->dispatch('refresh');
             return;
@@ -59,7 +43,6 @@ class Search extends Component
         $this->showSuggestions = true;
         $this->search();
     }
-
 
     #[On('refresh')]
     public function render(): View
