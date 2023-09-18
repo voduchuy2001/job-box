@@ -44,5 +44,11 @@
                 </div>
             </div>
         @endforeach
+
+        @if(! $jobs->count())
+            <div class="col-xl-12">
+                <x-admin.empty></x-admin.empty>
+            </div>
+        @endif
     </div>
 </div>

@@ -3,13 +3,13 @@
 namespace App\Livewire\Admin\Job;
 
 use App\Helpers\BaseHelper;
+use App\Helpers\JobDataHelper;
 use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
 use App\Models\Province;
 use App\Models\Ward;
 use App\Traits\AuthorizesRoleOrPermission;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -87,20 +87,9 @@ class JobList extends Component
         $this->authorizeRoleOrPermission('job-create');
         $validatedData = $this->validate();
 
-        $job = Job::create([
-            'name' => $validatedData['name'],
-            'position' => $validatedData['position'],
-            'category_id' => $validatedData['category'],
-            'type' => $validatedData['type'],
-            'description' => $validatedData['description'],
-            'vacancy' => $validatedData['vacancy'],
-            'experience' => $validatedData['experience'],
-            'deadline_for_filing' => $validatedData['deadlineForFiling'],
-            'status' => $validatedData['status'],
-            'user_id' => Auth::id(),
-            'min_salary' => $validatedData['min'],
-            'max_salary' => $validatedData['max'],
-        ]);
+        $jobData = JobDataHelper::updateOrCreateJobData($validatedData);
+
+        $job = Job::create($jobData);
 
         if ($validatedData['provinceId']) {
             $job->addresses()->create([
