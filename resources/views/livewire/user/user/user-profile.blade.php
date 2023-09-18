@@ -1,3 +1,9 @@
 <div>
-    {{-- Close your eyes. Count to one. That is how long forever feels. --}}
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                {{ $user->name }}
+            </div>
+        </div>
+    </div>
 </div>

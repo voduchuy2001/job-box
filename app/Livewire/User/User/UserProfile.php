@@ -2,6 +2,8 @@
 
 namespace App\Livewire\User\User;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -13,6 +15,11 @@ class UserProfile extends Component
     #[Layout('layouts.user')]
     public function render(): View
     {
-        return view('livewire.user.user.user-profile');
+        $user = User::with('wishlists', 'jobs')
+            ->find(Auth::id());
+
+        return view('livewire.user.user.user-profile', [
+            'user' => $user,
+        ]);
     }
 }

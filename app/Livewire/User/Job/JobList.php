@@ -46,28 +46,18 @@ class JobList extends Component
         $salaryMax = is_numeric($this->salaryMax) ? (int) $this->salaryMax : null;
         $this->createTrendingWords($this->searchTerm);
 
-        return Job::where('status', 'show')
+        $query = Job::where('status', 'show')
             ->where(function ($query) use ($searchTerm) {
                 $query->where('name', 'like', $searchTerm)
                     ->orWhere('description', 'like', $searchTerm);
             })
-            ->when($this->filterByCategory, function ($query) {
-                $query->whereIn('category_id', $this->filterByCategory);
-            })
-            ->when($this->filterByType, function ($query) {
-                $query->whereIn('type', $this->filterByType);
-            })
-            ->when($salaryMin, function ($query) use ($salaryMin) {
-                $query->where('min_salary', '>=', $salaryMin);
-            })
-            ->when($salaryMax, function ($query) use ($salaryMax) {
-                $query->where(function ($query) use ($salaryMax) {
-                    $query->where('max_salary', '<=', $salaryMax)
-                        ->orWhereNull('max_salary');
-                });
-            })
-            ->with('user', 'addresses.province')
-            ->orderBy('created_at', 'desc')
+            ->when($this->filterByCategory, fn ($query) => $query->whereIn('category_id', $this->filterByCategory))
+            ->when($this->filterByType, fn ($query) => $query->whereIn('type', $this->filterByType))
+            ->when($salaryMin, fn ($query) => $query->where('min_salary', '>=', $salaryMin))
+            ->when($salaryMax, fn ($query) => $query->where(fn ($query) => $query->where('max_salary', '<=', $salaryMax)->orWhereNull('max_salary')));
+
+        return $query->with('user', 'addresses.province')
+            ->orderByDesc('created_at')
             ->paginate($this->itemPerPage);
     }
 

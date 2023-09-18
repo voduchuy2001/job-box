@@ -110,7 +110,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function wishlists(): BelongsToMany
     {
-        return $this->belongsToMany(Job::class, 'wishlists', 'user_id', 'job_id');
+        return $this->belongsToMany(Job::class, 'wishlists', 'job_id', 'user_id')
+            ->withTimestamps();
     }
 
     public function coverImage(): MorphOne

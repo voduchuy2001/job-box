@@ -13,7 +13,6 @@ class Jobs extends Component
         $jobs = Job::orderByDesc('created_at')
             ->with('user', 'addresses.province')
             ->where('status', 'show')
-            ->where('vacancy', '>', 0)
             ->limit(8)->get();
 
         return view('livewire.user.home.modules.jobs', [
