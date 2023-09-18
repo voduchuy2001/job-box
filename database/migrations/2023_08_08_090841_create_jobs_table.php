@@ -19,6 +19,7 @@ return new class () extends Migration {
             $table->bigInteger('min_salary');
             $table->bigInteger('max_salary');
             $table->string('status')->default('hide');
+            $table->softDeletes();
             $table->foreignId('user_id');
             $table->foreignId('category_id');
             $table->timestamps();

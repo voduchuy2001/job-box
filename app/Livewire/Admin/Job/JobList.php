@@ -29,7 +29,7 @@ class JobList extends Component
     public function deleteJob(string|int $id): void
     {
         $this->authorizeRoleOrPermission('job-delete');
-        $job = Job::getJobById($id);
+        $job = Job::findOrFail($id);
         $job->delete();
         $this->alert('success', trans('Delete success :name', ['name' => $job->name]));
         $this->dispatch('refresh');

@@ -47,7 +47,10 @@ class JobList extends Component
         $this->createTrendingWords($this->searchTerm);
 
         return Job::where('status', 'show')
-            ->where('name', 'like', $searchTerm)
+            ->where(function ($query) use ($searchTerm) {
+                $query->where('name', 'like', $searchTerm)
+                    ->orWhere('description', 'like', $searchTerm);
+            })
             ->when($this->filterByCategory, function ($query) {
                 $query->whereIn('category_id', $this->filterByCategory);
             })
