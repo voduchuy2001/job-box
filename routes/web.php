@@ -11,6 +11,7 @@ use App\Http\Controllers\Lang\LanguageController;
 use App\Livewire\Admin\Category\CategoryList;
 use App\Livewire\Admin\Home\DashBoard;
 use App\Livewire\Admin\Job\JobCreate;
+use App\Livewire\Admin\Job\JobDelete;
 use App\Livewire\Admin\Job\JobEdit;
 use App\Livewire\Admin\Job\JobList;
 use App\Livewire\Admin\RolePermission\RoleSetting;
@@ -74,6 +75,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
     Route::get('/job', JobList::class)->name('job.index')->middleware('permission:job-list');
     Route::get('/job-edit/{id}', JobEdit::class)->name('job.edit')->middleware('permission:job-list');
     Route::get('/job-create', JobCreate::class)->name('job.create')->middleware('permission:job-create');
+    Route::get('/job-delete', JobDelete::class)->name('job.delete')->middleware('permission:job-delete');
     Route::get('/category', CategoryList::class)->name('category.index')->middleware('permission:category-list');
 });
 

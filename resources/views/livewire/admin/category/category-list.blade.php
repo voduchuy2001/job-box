@@ -70,7 +70,10 @@
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
                                 <div class="avatar-group">
-                                    <x-link :to="route('job.index')" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="{{ __('Add Job') }}">
+                                    <x-link
+                                        :to="route('job.create')"
+                                        class="avatar-group-item"
+                                        title="{{ __('Add Job') }}">
                                         <div class="avatar-xxs">
                                             <div class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
                                                 +

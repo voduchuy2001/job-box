@@ -81,8 +81,14 @@
                                 <li class="nav-item">
                                     <x-link :to="route('job.index')" class="nav-link {{ request()->routeIs('job.*') ? 'active' : '' }}" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
                                 </li>
+
                                 <li class="nav-item">
                                     <a href="#" class="nav-link" data-key="comments">{{ __('Comments') }}</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <x-link
+                                        :to="route('job.delete')" class="nav-link" data-key="jobs-delete">{{ __('Jobs Deleted') }}</x-link>
                                 </li>
                             </ul>
                         </div>

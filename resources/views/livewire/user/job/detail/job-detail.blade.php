@@ -95,6 +95,10 @@
                                         <td>{{ __(':count Application', ['count' => $job->vacancy]) }}</td>
                                     </tr>
                                     <tr>
+                                        <td class="fw-medium">{{ __('Position') }}</td>
+                                        <td>{{ $job->position }}</td>
+                                    </tr>
+                                    <tr>
                                         <td class="fw-medium">{{ __('Post Date') }}</td>
                                         <td>{{ BaseHelper::dateFormat($job->created_at) }}</td>
                                     </tr>

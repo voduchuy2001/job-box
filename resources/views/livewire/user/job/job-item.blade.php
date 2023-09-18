@@ -12,14 +12,9 @@
                         <h5 title="{{ $job->name }}">{!! Str::limit($job->name, 30) !!}</h5>
                     </x-link>
                     <ul class="list-inline text-muted mb-3">
-                        <li class="list-inline-item">
-                            <i class="ri-building-line align-bottom me-1"></i> {{ $job->user->name }}
+                        <li class="list-inline-item" title="{{ $job->user->name }}">
+                            <i class="ri-building-line align-bottom me-1"></i> {!! Str::limit($job->user->name, 7) !!}
                         </li>
-                        @if($job->addresses->count())
-                            <li class="list-inline-item">
-                                <i class="ri-map-pin-2-line align-bottom me-1"></i> {{ $job->addresses[0]->province->name }}
-                            </li>
-                        @endif
                         <li class="list-inline-item">
                             <i class="ri-money-dollar-circle-line align-bottom me-1"></i> {{ __(':min - :max', ['min' => BaseHelper::moneyFormatForHumans($job->min_salary), 'max' => BaseHelper::moneyFormatForHumans($job->max_salary)]) }}
                         </li>

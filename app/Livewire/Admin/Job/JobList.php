@@ -33,7 +33,6 @@ class JobList extends Component
         $job->delete();
         $this->alert('success', trans('Delete success :name', ['name' => $job->name]));
         $this->dispatch('refresh');
-        $this->reset();
     }
 
     #[On('refresh')]

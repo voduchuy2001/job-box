@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Job;
 
 use App\Helpers\BaseHelper;
 use App\Helpers\JobDataHelper;
+use App\Livewire\Admin\Category\CategoryList;
 use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
@@ -73,6 +74,14 @@ class JobCreate extends Component
     #[Rule('required|string|in:show,hide')]
     public string $status;
 
+    public function mount(): void
+    {
+        if (! Category::count()) {
+            $this->alert('warning', trans('Please add category first'));
+            $this->redirect(CategoryList::class, navigate: true);
+        }
+    }
+
     public function saveJob(): void
     {
         $validatedData = $this->validate();
@@ -91,7 +100,7 @@ class JobCreate extends Component
             ]);
         }
 
-        $this->alert('success', trans('Create success!'));
+        $this->alert('success', trans('Create success'));
         $this->redirect(JobList::class, navigate: true);
     }
 

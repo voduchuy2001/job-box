@@ -46,7 +46,7 @@ class Job extends Model
 
     public function wishlists(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'wishlists', 'user_id', 'job_id')
+        return $this->belongsToMany(User::class, 'wishlists', 'job_id', 'user_id')
             ->withTimestamps();
     }
 
@@ -55,8 +55,10 @@ class Job extends Model
         parent::boot();
 
         static::deleting(function ($job) {
-            $job->addresses()->delete();
-            $job->wishlists()->detach();
+            if ($job->isForceDeleting()) {
+                $job->addresses()->delete();
+                $job->wishlists()->detach();
+            }
         });
     }
 

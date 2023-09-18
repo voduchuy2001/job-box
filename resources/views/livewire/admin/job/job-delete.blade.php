@@ -8,18 +8,16 @@
         model="searchTerm"
     ></x-admin.input.search>
 
-    @can('job-create')
-        <div class="row g-4 mb-3">
-            <div class="col-sm-auto">
-                <div>
-                    <x-link
-                        :to="route('job.create')"
-                        class="btn btn-primary">
-                        <i class="ri-add-line align-bottom me-1"></i>{{ __('Add Job') }}</x-link>
-                </div>
+    <div class="row g-4 mb-3">
+        <div class="col-sm-auto">
+            <div>
+                <button
+                    {{ $jobs->count() ? '' : 'disabled' }}
+                    wire:click="clearAll"
+                    class="btn btn-primary">{{ __('Clear All') }}</button>
             </div>
         </div>
-    @endcan
+    </div>
 
     <div class="row">
         @foreach($jobs as $job)
@@ -31,11 +29,11 @@
                                 <h5 title="{{ $job->name }}" class="fs-15 mb-1 rex">{!! Str::limit($job->name, 30) !!}</h5>
                             </div>
                             <div class="d-inline-block">
-                                    <span class="badge badge-soft-warning">
-                                    <x-link
-                                        :to="route('job.edit', ['id' => $job->id])"
-                                        class="link-warning"
-                                    >{{ __('Edit') }}</x-link></span>
+                                    <span class="badge badge-soft-warning"
+                                          style="cursor: pointer;"
+                                          wire:click="reverseJob({{ $job->id }})"
+                                          class="badge badge-soft-warning"
+                                    >{{ __('Reverse') }}</span>
                                 <span
                                     wire:click="deleteJob({{ $job->id }})"
                                     style="cursor: pointer"
