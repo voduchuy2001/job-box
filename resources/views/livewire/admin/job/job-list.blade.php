@@ -8,6 +8,61 @@
         model="searchTerm"
     ></x-admin.input.search>
 
+    <div class="card">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0"
+                        role="tablist">
+                        <li class="nav-item">
+                            <span
+                                wire:click="filterByType('all')"
+                                style="cursor: pointer;"
+                                class="nav-link {{ $filterType == 'all' ? 'active' : '' }} fw-semibold"
+                                data-bs-toggle="tab"
+                                role="tab">{{ __('All') }}<span
+                                    class="badge badge-soft-danger align-middle rounded-pill ms-1"> {{ $totalJobs }}</span>
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <span
+                                wire:click="filterByType('show')"
+                                style="cursor: pointer;"
+                                class="nav-link fw-semibold {{ $filterType == 'show' ? 'active' : '' }}"
+                                data-bs-toggle="tab"
+                                role="tab">{{ __('Published') }}<span
+                                    class="badge badge-soft-danger align-middle rounded-pill ms-1"> {{ $publishedJobs }}</span>
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <span
+                                wire:click="filterByType('hide')"
+                                style="cursor: pointer;"
+                                class="nav-link fw-semibold {{ $filterType == 'hide' ? 'active' : '' }}"
+                                data-bs-toggle="tab"
+                                role="tab">{{ __('Hide') }}<span
+                                    class="badge badge-soft-danger align-middle rounded-pill ms-1"> {{ $hiddenJobs }}</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <div id="selection-element">
+                        <div class="my-n1 d-flex align-items-center text-muted">
+                            Select <div id="select-content"
+                                        class="text-body fw-semibold px-1"></div> Result <button
+                                type="button" class="btn btn-link link-danger p-0 ms-3"
+                                data-bs-toggle="modal"
+                                data-bs-target="#removeItemModal">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @can('job-create')
         <div class="row g-4 mb-3">
             <div class="col-sm-auto">
@@ -54,8 +109,6 @@
         @endforeach
     </div>
 
-    {{ $jobs->links() }}
-
     @if(! $jobs->count())
         <x-admin.card>
             <div class="mt-3">
@@ -63,4 +116,6 @@
             </div>
         </x-admin.card>
     @endif
+
+    {{ $jobs->links() }}
 </div>

@@ -22,7 +22,7 @@
 
                         @auth
                             <x-link
-                            href="{{ route('user-profile.user') }}"
+                            :to="route('user-profile.user')"
                             class="btn btn-soft-primary">
                             <i class="ri-user-3-line align-bottom me-1"></i>
                             {{ __('Hello :name', ['name' => Auth::user()->name]) }}</x-link>

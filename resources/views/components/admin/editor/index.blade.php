@@ -26,10 +26,6 @@
     @enderror
 </div>
 
-@pushonce('styles')
-    <script src="https://cdn.tiny.cloud/1/p2dn1c52nfnobcdqv1qtbglx3ivx2ry4kn67m5w6ksk35mek/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-@endpushonce
-
 @pushonce('scripts')
     <script>
         tinymce.remove();

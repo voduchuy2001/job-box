@@ -9,7 +9,7 @@
 
                         <livewire:user.home.modules.search></livewire:user.home.modules.search>
 
-                        <livewire:user.home.modules.trending-word></livewire:user.home.modules.trending-word>
+                        <livewire:user.home.modules.trendy-word></livewire:user.home.modules.trendy-word>
                     </div>
                 </div>
 

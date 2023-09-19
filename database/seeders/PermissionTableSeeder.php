@@ -28,7 +28,10 @@ class PermissionTableSeeder extends Seeder
             'job-create',
             'job-edit',
             'job-delete',
-            'job-reverse'
+            'job-reverse',
+            'company-job-create',
+            'company-job-edit',
+            'company-job-delete',
         ];
 
         foreach ($permissions as $permission) {

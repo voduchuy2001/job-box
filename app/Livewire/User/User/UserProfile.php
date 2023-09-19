@@ -15,7 +15,10 @@ class UserProfile extends Component
     #[Layout('layouts.user')]
     public function render(): View
     {
-        $user = User::with('wishlists', 'jobs')
+        $user = User::with([
+            'avatar',
+            'addresses',
+        ])
             ->find(Auth::id());
 
         return view('livewire.user.user.user-profile', [

@@ -26,6 +26,13 @@ class JobList extends Component
 
     public mixed $job;
 
+    public string $filterType = 'all';
+
+    public function filterByType(string $type): void
+    {
+        $this->filterType = $type;
+    }
+
     public function deleteJob(string|int $id): void
     {
         $this->authorizeRoleOrPermission('job-delete');
@@ -42,10 +49,29 @@ class JobList extends Component
         BaseHelper::setPageTitle(trans('List Of Jobs'), trans('Jobs'));
 
         $searchTerm = '%' . $this->searchTerm . '%';
-        $jobs = Job::getJobs($this->itemPerPage, $searchTerm);
+        $jobs = Job::where(function ($query) use ($searchTerm) {
+            $query->where('name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('description', 'like', '%' . $searchTerm . '%');
+        })
+            ->when($this->filterType == 'show', fn ($query) => $query->where('status', 'show'))
+            ->when($this->filterType == 'hide', fn ($query) => $query->where('status', 'hide'))
+            ->orderByDesc('created_at')
+            ->paginate($this->itemPerPage);
+
+        $countJobs = Job::selectRaw('status, COUNT(*) as count')
+            ->groupBy('status')
+            ->get()
+            ->pluck('count', 'status');
+
+        $totalJobs = $countJobs->sum();
+        $publishedJobs = $countJobs->get('show', 0);
+        $hiddenJobs = $countJobs->get('hide', 0);
 
         return view('livewire.admin.job.job-list', [
             'jobs' => $jobs,
+            'totalJobs' => $totalJobs,
+            'publishedJobs' => $publishedJobs,
+            'hiddenJobs' => $hiddenJobs,
         ]);
     }
 }

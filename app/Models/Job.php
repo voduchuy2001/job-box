@@ -62,16 +62,6 @@ class Job extends Model
         });
     }
 
-    public static function getJobs(int|null $itemPerPage, string $searchTerm)
-    {
-        return Job::where(function ($query) use ($searchTerm) {
-            $query->where('name', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('description', 'like', '%' . $searchTerm . '%');
-        })
-            ->orderByDesc('created_at')
-            ->paginate($itemPerPage);
-    }
-
     public static function getLimitJobs(string $searchTerm)
     {
         return Job::where(function ($query) use ($searchTerm) {

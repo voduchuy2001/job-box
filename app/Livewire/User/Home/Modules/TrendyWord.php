@@ -7,7 +7,7 @@ use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class TrendingWord extends Component
+class TrendyWord extends Component
 {
     public mixed $trendingWords = [];
 
@@ -21,6 +21,6 @@ class TrendingWord extends Component
 
     public function render(): View
     {
-        return view('livewire.user.home.modules.trending-word');
+        return view('livewire.user.home.modules.trendy-word');
     }
 }
