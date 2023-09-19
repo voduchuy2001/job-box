@@ -8,7 +8,7 @@
 
             <x-link
                 href="#"
-                class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Applications Jobs') }}</x-link>
+                class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Job Applied') }}</x-link>
 
             <x-link
                 :to="route('user-wishlist.user')"
