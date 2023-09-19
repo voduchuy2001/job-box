@@ -78,7 +78,7 @@ class RoleSetting extends Component
         $this->authorizeRoleOrPermission('role-delete');
         $role = Role::findOrFail($id);
 
-        if ($role->name != 'Super Admin') {
+        if (! in_array($role->name, ['Super Admin', 'Company'])) {
             $role->delete();
 
             $this->alert('success', trans('Delete success :name', ['name' => $role->name]));
@@ -86,7 +86,7 @@ class RoleSetting extends Component
             return;
         }
 
-        $this->alert('warning', trans('Can not delete Super Admin Role!'));
+        $this->alert('warning', trans('Can not delete :name!', ['name' => $role->name]));
         $this->confirm = false;
     }
 
@@ -107,7 +107,7 @@ class RoleSetting extends Component
             'roleHasPermissions' => 'required',
         ]);
 
-        if ($validatedData['name'] != 'Super Admin') {
+        if (! in_array($this->role->name, ['Super Admin', 'Company'])) {
             $this->role->update([
                 'name' => $validatedData['name'],
             ]);
@@ -115,14 +115,13 @@ class RoleSetting extends Component
             $this->role->syncPermissions($validatedData['roleHasPermissions']);
 
             $this->alert('success', trans('Update success!'));
-
             $this->resetForm();
             $this->dispatch('hiddenModal');
             $this->dispatch('refresh');
             return;
         }
 
-        $this->alert('warning', trans('Can not update Super Admin Role!'));
+        $this->alert('warning', trans('Can not update :name!', ['name' => $this->role->name]));
         $this->resetForm();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');

@@ -214,8 +214,6 @@
     "Updated :updatedAt": "Updated :updatedAt",
     ":count Jobs": ":count Jobs",
     "Can not delete :name": "Can not delete :name",
-    "Can not delete Super Admin Role!": "Can not delete Super Admin Role!",
-    "Can not update Super Admin Role!": "Can not update Super Admin Role!",
     "Address: :ward, :district, :province": "Address: :ward, :district, :province",
     "Click here to add address": "Click here to add address",
     "Deadline: :deadline": "Deadline: :deadline",
