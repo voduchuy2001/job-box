@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,7 +23,8 @@ class JobList extends Component
 
     public mixed $categories = [];
 
-    public string $searchTerm = '';
+    #[Url(history: true)]
+    public mixed $searchTerm = '';
 
     public mixed $filterByCategory = [];
 
@@ -41,17 +43,21 @@ class JobList extends Component
 
     private function queryFilterJob(): LengthAwarePaginator
     {
+        if (! is_string($this->searchTerm)) {
+            $this->searchTerm = 'Is Array';
+        }
+
         $searchTerm = '%' . $this->searchTerm . '%';
         $salaryMin = is_numeric($this->salaryMin) ? (int) $this->salaryMin : null;
         $salaryMax = is_numeric($this->salaryMax) ? (int) $this->salaryMax : null;
         $this->createTrendingWords($this->searchTerm);
 
-        $query = Job::where('status', 'show')
-            ->where(function ($query) use ($searchTerm) {
-                $query->where('name', 'like', $searchTerm)
-                    ->orWhere('description', 'like', $searchTerm);
-            })
-            ->orWhere('position', 'like', $searchTerm)
+        $query = Job::where(function ($query) use ($searchTerm) {
+            $query->where('name', 'like', $searchTerm)
+                ->orWhere('description', 'like', $searchTerm)
+                ->orWhere('position', 'like', $searchTerm);
+        })
+            ->where('status', 'show')
             ->when($this->filterByCategory, fn ($query) => $query->whereIn('category_id', $this->filterByCategory))
             ->when($this->filterByType, fn ($query) => $query->whereIn('type', $this->filterByType))
             ->when($salaryMin, fn ($query) => $query->where('min_salary', '>=', $salaryMin))
