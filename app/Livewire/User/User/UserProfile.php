@@ -6,12 +6,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Title('Trang Cá Nhân')]
 class UserProfile extends Component
 {
+    #[On('refresh')]
     #[Layout('layouts.user')]
     public function render(): View
     {
