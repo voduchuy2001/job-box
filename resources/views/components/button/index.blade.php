@@ -12,7 +12,8 @@
         <span class="d-flex align-items-center">
             <i wire:loading
                wire:loading.attr="disabled"
-               class="mdi mdi-loading mdi-spin align-middle me-2"></i> {{ $slot }}
+               class="mdi mdi-loading mdi-spin align-middle me-2"></i>
+            <span class="flex-grow-1 ms-2">{{ $slot }}</span>
         </span>
     @else
         {{ $slot }}
