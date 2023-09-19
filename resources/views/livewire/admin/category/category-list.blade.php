@@ -102,7 +102,7 @@
         </x-admin.card>
    ) @endif
 
-    {{ $categories->links() }}
+    {{ $categories->onEachSide(0)->links() }}
 
     <x-admin.modal
         id="category-setting"

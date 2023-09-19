@@ -29,13 +29,9 @@
                             </div>
                         </div>
 
-                        <div class="hstack gap-2">
-                            <span class="badge badge-soft-danger">{{ __('Deadline: :deadline', ['deadline' => $job->deadline_for_filing]) }}</span>
-                            <span class="badge badge-soft-success">{{ __('Vacancy: :vacancy', ['vacancy' => $job->vacancy]) }}</span>
-                        </div>
-
                         <div class="mt-4 hstack gap-2">
                             <a href="#!" class="btn btn-soft-primary w-100">{{ __('Apply Job') }}</a>
+
                             <x-link
                                 :to="route('job-detail', ['id' => $job->id])"
                                 class="btn btn-soft-success w-100">{{ __('Overview') }}</x-link>

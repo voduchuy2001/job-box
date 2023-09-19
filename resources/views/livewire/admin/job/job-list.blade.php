@@ -117,5 +117,5 @@
         </x-admin.card>
     @endif
 
-    {{ $jobs->links() }}
+    {{ $jobs->onEachSide(0)->links() }}
 </div>

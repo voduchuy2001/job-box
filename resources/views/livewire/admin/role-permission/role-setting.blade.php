@@ -81,6 +81,8 @@
         @endif
     </x-admin.card>
 
+    {{ $roles->onEachSide(0)->links() }}
+
     <x-admin.modal
         id="setting-role-permission"
         type="modal-lg modal-dialog-centered">

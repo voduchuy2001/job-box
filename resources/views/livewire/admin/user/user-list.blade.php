@@ -53,7 +53,7 @@
         <x-admin.empty></x-admin.empty>
     @endif
 
-    {{ $users->links() }}
+    {{ $users->onEachSide(0)->links() }}
 
     <x-admin.modal
         id="setting-user"
