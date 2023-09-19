@@ -2,7 +2,7 @@
 
 namespace App\Livewire\User\Home\Modules;
 
-use App\Models\Keyword;
+use App\Models\TrendingWord;
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -14,7 +14,7 @@ class TrendingWord extends Component
     #[On('refresh')]
     public function mount(): void
     {
-        $this->trendingWords = Keyword::orderByDesc('count')
+        $this->trendingWords = TrendingWord::orderByDesc('count')
         ->limit(7)
         ->get();
     }

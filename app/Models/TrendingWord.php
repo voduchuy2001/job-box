@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Keyword extends Model
+class TrendingWord extends Model
 {
-    protected $table = 'keywords';
+    protected $table = 'trending_words';
 
     protected $fillable = [
         'name',

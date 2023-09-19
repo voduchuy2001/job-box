@@ -6,11 +6,11 @@ use App\Models\Job;
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use App\Traits\TrendingWord;
+use App\Traits\WordTrend;
 
 class Search extends Component
 {
-    use TrendingWord;
+    use WordTrend;
 
     public string $searchTerm;
 

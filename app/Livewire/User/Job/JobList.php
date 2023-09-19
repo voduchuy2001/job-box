@@ -4,7 +4,7 @@ namespace App\Livewire\User\Job;
 
 use App\Models\Category;
 use App\Models\Job;
-use App\Traits\TrendingWord;
+use App\Traits\WordTrend;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 use Livewire\Attributes\Layout;
@@ -17,7 +17,7 @@ use Livewire\WithPagination;
 class JobList extends Component
 {
     use WithPagination;
-    use TrendingWord;
+    use WordTrend;
 
     public int $itemPerPage = 12;
 

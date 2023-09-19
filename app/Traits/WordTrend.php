@@ -2,9 +2,9 @@
 
 namespace App\Traits;
 
-use App\Models\Keyword;
+use App\Models\TrendingWord;
 
-trait TrendingWord
+trait WordTrend
 {
     public function createTrendingWords(string $searchTerm): void
     {
@@ -17,13 +17,13 @@ trait TrendingWord
 
         if (! empty($searchTerm && ! in_array($searchTerm, $blacklistKeywords))) {
             $keywords = explode(" ", $searchTerm);
-            $existingKeywords = Keyword::whereIn('name', $keywords)->get();
+            $existingKeywords = TrendingWord::whereIn('name', $keywords)->get();
 
             $existingKeywordsMap = $existingKeywords->pluck('name')->toArray();
 
             foreach ($keywords as $keyword) {
                 if (! in_array($keyword, $existingKeywordsMap)) {
-                    Keyword::create([
+                    TrendingWord::create([
                         'name' => $keyword,
                         'count' => 1
                     ]);
