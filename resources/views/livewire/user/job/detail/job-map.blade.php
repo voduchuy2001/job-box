@@ -13,34 +13,17 @@
 
 @push('scripts')
     <script type="text/javascript">
-        var locations = @json($this->getLocations());
+        var locations = {{ Js::from($this->getLocations()) }};
+        var map = L.map('map').setView([10.1817, 106.1166], 7);
 
-        document.addEventListener('livewire:navigated', () => {
-            var map = L.map('map').setView([10.1817, 106.1166], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
-
-            locations.forEach(function(location) {
-                L.marker([location.latitude, location.longitude])
-                    .addTo(map)
-                    .bindPopup(location.name);
-            });
-        });
-
-        document.addEventListener('livewire:init', function () {
-            var map = L.map('map').setView([10.1817, 106.1166], 7);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
-
-            locations.forEach(function(location) {
-                L.marker([location.latitude, location.longitude])
-                    .addTo(map)
-                    .bindPopup(location.name);
-            });
+        locations.forEach(function(location) {
+            L.marker([location.latitude, location.longitude])
+                .addTo(map)
+                .bindPopup(location.name);
         });
     </script>
 @endpush

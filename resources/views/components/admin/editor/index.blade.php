@@ -27,7 +27,7 @@
 </div>
 
 @pushonce('scripts')
-    <script>
+    <script type="text/javascript">
         tinymce.remove();
 
         tinymce.init({
