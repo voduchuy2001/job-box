@@ -50,5 +50,6 @@
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.js') }}"></script>
     @stack('scripts')
     @livewireScripts
+    @livewireChartsScripts
 </body>
 </html>
