@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" wire:ignore>
     <div class="card-body">
         <div class="list-group list-group-fill-primary">
             <x-link
