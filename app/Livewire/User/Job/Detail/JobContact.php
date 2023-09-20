@@ -9,7 +9,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class ContactJob extends Component
+class JobContact extends Component
 {
     use LivewireAlert;
 
@@ -45,6 +45,6 @@ class ContactJob extends Component
 
     public function render(): View
     {
-        return view('livewire.user.job.detail.contact-job');
+        return view('livewire.user.job.detail.job-contact');
     }
 }

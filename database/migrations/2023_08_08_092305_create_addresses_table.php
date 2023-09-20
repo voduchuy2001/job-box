@@ -14,8 +14,8 @@ return new class () extends Migration {
             $table->foreignId('ward_id')->nullable();
             $table->foreignId('district_id')->nullable();
             $table->foreignId('province_id')->nullable();
-            $table->string('longitude')->nullable();
-            $table->string('latitude')->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
+            $table->decimal('latitude', 10, 7)->nullable();
             $table->timestamps();
         });
     }

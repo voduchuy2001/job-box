@@ -15,8 +15,8 @@
                 class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-wishlist.user' ? 'active' : '' }}"><i class="ri-heart-2-line align-middle me-2"></i>{{ __('Wishlist Jobs') }}</x-link>
 
             <x-link
-                href=""
-                class="list-group-item list-group-item-action"><i class="ri-shield-check-line align-middle me-2"></i>{{ __('Change Password') }}</x-link>
+                :to="route('user-change-password.user')"
+                class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-change-password.user' ? 'active' : '' }}"><i class="ri-shield-check-line align-middle me-2"></i>{{ __('Change Password') }}</x-link>
 
             <a
                 onclick="event.preventDefault();

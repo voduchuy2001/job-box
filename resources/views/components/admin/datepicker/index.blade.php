@@ -12,7 +12,7 @@
         @if($id) id="{{ $id }}" @endif
         @if($model) wire:model="{{ $model }}" @endif
         @if($name) name="{{ $name }}" @endif
-        placeholder="dd-mm-YYYY"
+        placeholder="YYYY-MM-dd"
         {{ $attributes }}
     >
 
@@ -27,9 +27,7 @@
 
 @pushonce('scripts')
     <script type="text/javascript">
-        flatpickr(".datepicker", {
-            dateFormat: "d-m-Y",
-        });
+        flatpickr(".datepicker");
         document.addEventListener('livewire:initialized', () => {
             @this.on('refresh', (event) => {
                 flatpickr(document.querySelector('.datepicker')).clear();

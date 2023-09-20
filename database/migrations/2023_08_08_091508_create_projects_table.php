@@ -14,8 +14,8 @@ return new class () extends Migration {
             $table->integer('number_of_members');
             $table->string('position');
             $table->string('technology');
-            $table->string('start_at')->nullable();
-            $table->string('end_at')->nullable();
+            $table->date('start_at')->nullable();
+            $table->date('end_at')->nullable();
             $table->string('description')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();

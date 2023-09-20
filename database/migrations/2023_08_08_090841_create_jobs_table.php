@@ -10,11 +10,11 @@ return new class () extends Migration {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->longText('description');
             $table->string('experience');
             $table->string('position');
             $table->bigInteger('vacancy');
-            $table->string('deadline_for_filing');
+            $table->date('deadline_for_filing');
             $table->string('type');
             $table->bigInteger('min_salary');
             $table->bigInteger('max_salary');

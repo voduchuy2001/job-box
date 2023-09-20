@@ -62,7 +62,7 @@ class JobCreate extends Component
     #[Rule('required|string|in:0,1,2,3,more')]
     public string $experience;
 
-    #[Rule('required|date_format:d-m-Y|after_or_equal:today')]
+    #[Rule('required|date_format:Y-m-d|after_or_equal:today')]
     public string $deadlineForFiling;
 
     #[Rule('required|integer|min:0|max:1000000000')]

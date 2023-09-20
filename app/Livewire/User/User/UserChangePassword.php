@@ -2,11 +2,16 @@
 
 namespace App\Livewire\User\User;
 
+use Illuminate\View\View;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Đổi Mật Khẩu')]
 class UserChangePassword extends Component
 {
-    public function render()
+    #[Layout('layouts.user')]
+    public function render(): View
     {
         return view('livewire.user.user.user-change-password');
     }

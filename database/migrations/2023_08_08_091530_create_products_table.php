@@ -11,7 +11,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->string('completion_time');
+            $table->date('completion_time');
             $table->text('description')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();

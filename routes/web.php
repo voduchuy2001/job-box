@@ -21,6 +21,7 @@ use App\Livewire\Admin\User\UserList;
 use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobList as UserJobList;
+use App\Livewire\User\User\UserChangePassword;
 use App\Livewire\User\User\UserProfile;
 use App\Livewire\User\User\UserWishlistJob;
 use Illuminate\Support\Facades\Route;
@@ -83,5 +84,9 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
 Route::get('/', HomePage::class)->name('home');
 Route::get('/job-detail/{id}', JobDetail::class)->name('job-detail');
 Route::get('/job-list', UserJobList::class)->name('user.job-list');
-Route::get('/user-profile', UserProfile::class)->name('user-profile.user')->middleware('auth');
-Route::get('/user-wishlist-job', UserWishlistJob::class)->name('user-wishlist.user')->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/user-profile', UserProfile::class)->name('user-profile.user');
+    Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');
+    Route::get('/user-wishlist-job', UserWishlistJob::class)->name('user-wishlist.user');
+});

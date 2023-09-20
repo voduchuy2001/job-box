@@ -91,6 +91,10 @@
                                         <td><span class="badge badge-soft-success">{{ $job->type }}</span></td>
                                     </tr>
                                     <tr>
+                                        <td class="fw-medium">{{ __('Deadline For Filing') }}</td>
+                                        <td><span class="badge badge-soft-danger">{{ BaseHelper::dateFormat($job->deadline_for_filing) }}</span></td>
+                                    </tr>
+                                    <tr>
                                         <td class="fw-medium">{{ __('Job Application') }}</td>
                                         <td>{{ __(':count Application', ['count' => $job->vacancy]) }}</td>
                                     </tr>
@@ -183,7 +187,9 @@
                         </div>
                     </div>
 
-                    <livewire:user.job.detail.contact-job :jobId="$job->id"></livewire:user.job.detail.contact-job>
+                    <livewire:user.job.detail.job-map :jobId="$job->id"></livewire:user.job.detail.job-map>
+
+                    <livewire:user.job.detail.job-contact :jobId="$job->id"></livewire:user.job.detail.job-contact>
                 </div>
             </div>
 
