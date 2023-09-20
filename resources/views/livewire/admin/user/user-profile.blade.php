@@ -1,5 +1,11 @@
 <div>
-    <livewire:admin.user.modules.cover-image :user="$user" lazy></livewire:admin.user.modules.cover-image>
+    <div class="position-relative mx-n4 mt-n4">
+        <div class="profile-wid-bg profile-setting-img">
+            <img
+                src="{{ asset('assets/images/profile-bg.jpg') }}"
+                class="profile-wid-img" alt="{{ $user->name }}">
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-xxl-3">
