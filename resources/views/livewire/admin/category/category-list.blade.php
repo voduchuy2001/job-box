@@ -98,7 +98,7 @@
                 <x-admin.empty></x-admin.empty>
             </div>
         </x-admin.card>
-   ) @endif
+    @endif
 
     {{ $categories->onEachSide(0)->links() }}
 
