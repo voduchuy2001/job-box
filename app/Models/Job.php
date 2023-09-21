@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\MonthHelper;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -60,6 +62,53 @@ class Job extends Model
                 $job->wishlists()->detach();
             }
         });
+    }
+
+    public function scopeGroupByMonth(Builder $query): array
+    {
+        $currentYear = date('Y');
+        $previousYear = $currentYear - 1;
+
+        $months = MonthHelper::getMonths();
+
+        $jobs = $query->selectRaw('MONTH(created_at) as month')
+            ->selectRaw('COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month');
+
+        $currentYearResults = $jobs
+            ->whereYear('created_at', $currentYear)
+            ->get();
+
+        $previousYearResults = $jobs->getModel()
+            ->newQuery()
+            ->selectRaw('MONTH(created_at) as month')
+            ->selectRaw('COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->whereYear('created_at', $previousYear)
+            ->get();
+
+        $labels = [];
+
+        foreach ($currentYearResults as $result) {
+            $month = $months[$result->month];
+            if (! in_array($month, $labels)) {
+                $labels[] = $month;
+            }
+        }
+
+        foreach ($previousYearResults as $result) {
+            $month = $months[$result->month];
+            if (! in_array($month, $labels)) {
+                $labels[] = $month;
+            }
+        }
+
+        $currentYearJobs = $currentYearResults->pluck('count')->toArray();
+        $previousYearJobs = $previousYearResults->pluck('count')->toArray();
+
+        return compact('labels', 'currentYearJobs', 'previousYearJobs');
     }
 
     public static function getLimitJobs(string $searchTerm)

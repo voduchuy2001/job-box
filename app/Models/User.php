@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Enums\ImageType;
 use App\Enums\UserStatus;
+use App\Helpers\MonthHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -114,10 +116,23 @@ class User extends Authenticatable implements MustVerifyEmail
             ->withTimestamps();
     }
 
-    public function coverImage(): MorphOne
+    public function scopeGroupByMonth(Builder $query): Builder|array
     {
-        return $this->morphOne(Image::class, 'imageable')
-            ->where('type', '=', ImageType::Cover);
+        $months = MonthHelper::getMonths();
+
+        $results = $query->selectRaw('month(created_at) as month')
+            ->selectRaw('count(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        $labels = $results->map(function ($result) use ($months) {
+            return $months[$result->month];
+        })->toArray();
+
+        $users = $results->pluck('count')->toArray();
+
+        return compact('labels', 'users');
     }
 
     public static function getUsers(int $itemPerPage, string $searchTerm)
