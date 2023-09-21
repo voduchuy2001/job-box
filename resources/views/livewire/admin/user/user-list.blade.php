@@ -16,8 +16,7 @@
             <div>
                 <x-button
                     type="button"
-                    data-bs-target="#setting-user"
-                    data-bs-toggle="modal"
+                    onclick="showModal()"
                     class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add User') }}</x-button>
             </div>
         </div>
