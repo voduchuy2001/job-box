@@ -22,9 +22,4 @@ class SocialActivity extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public static function getSocialActivityById(string|int $id)
-    {
-        return SocialActivity::findOrFail($id);
-    }
 }

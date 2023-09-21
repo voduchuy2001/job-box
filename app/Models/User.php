@@ -6,6 +6,7 @@ use App\Enums\ImageType;
 use App\Enums\UserStatus;
 use App\Helpers\MonthHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -116,23 +117,58 @@ class User extends Authenticatable implements MustVerifyEmail
             ->withTimestamps();
     }
 
-    public function scopeGroupByMonth(Builder $query): Builder|array
+    public function scopeGroupByMonth(Builder $query): array
     {
-        $months = MonthHelper::getMonths();
+        $currentYear = date('Y');
+        $previousYear = $currentYear - 1;
 
-        $results = $query->selectRaw('month(created_at) as month')
-            ->selectRaw('count(*) as count')
+        $currentYearResults = $this->getYearResults($query, $currentYear);
+        $previousYearResults = $this->getYearResults($query, $previousYear);
+
+        $labels = $this->getLabels($currentYearResults, $previousYearResults);
+        $currentYearUsers = $this->getUserCounts($currentYearResults);
+        $previousYearUsers = $this->getUserCounts($previousYearResults);
+
+        return compact('labels', 'currentYearUsers', 'previousYearUsers');
+    }
+
+    private function getYearResults(Builder $query, int $year): Collection
+    {
+        return $query->getModel()
+            ->newQuery()
+            ->selectRaw('MONTH(created_at) as month')
+            ->selectRaw('COUNT(*) as count')
             ->groupBy('month')
             ->orderBy('month')
+            ->whereYear('created_at', $year)
             ->get();
+    }
 
-        $labels = $results->map(function ($result) use ($months) {
-            return $months[$result->month];
-        })->toArray();
+    private function getLabels(Collection $currentYearResults, Collection $previousYearResults): array
+    {
+        $months = MonthHelper::getMonths();
+        $labels = [];
 
-        $users = $results->pluck('count')->toArray();
+        foreach ($currentYearResults as $result) {
+            $month = $months[$result->month];
+            if (! in_array($month, $labels)) {
+                $labels[] = $month;
+            }
+        }
 
-        return compact('labels', 'users');
+        foreach ($previousYearResults as $result) {
+            $month = $months[$result->month];
+            if (! in_array($month, $labels)) {
+                $labels[] = $month;
+            }
+        }
+
+        return $labels;
+    }
+
+    private function getUserCounts(Collection $results): array
+    {
+        return $results->pluck('count')->toArray();
     }
 
     public static function getUsers(int $itemPerPage, string $searchTerm)
@@ -142,10 +178,5 @@ class User extends Authenticatable implements MustVerifyEmail
             ->orWhere('email', 'like', $searchTerm)
             ->orderByDesc('created_at')
             ->paginate($itemPerPage);
-    }
-
-    public static function getUserById(int|string $id)
-    {
-        return User::findOrFail($id);
     }
 }

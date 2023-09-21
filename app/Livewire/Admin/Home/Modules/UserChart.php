@@ -10,12 +10,12 @@ class UserChart extends Component
 {
     public function render(): View
     {
-        $thisYearUsers = User::whereYear('created_at', date('Y'))
-            ->groupByMonth();
+        $users = User::groupByMonth();
 
         return view('livewire.admin.home.modules.user-chart', [
-            'thisYearUsers' => $thisYearUsers['users'],
-            'labels' => $thisYearUsers['labels'],
+            'currentYearUsers' => $users['currentYearUsers'],
+            'previousYearUsers' => $users['previousYearUsers'],
+            'labels' => $users['labels'],
         ]);
     }
 }

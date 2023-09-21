@@ -18,9 +18,4 @@ class Skill extends Model
     {
         return $this->morphTo();
     }
-
-    public static function getSkillById(string|int $id)
-    {
-        return Skill::findOrFail($id);
-    }
 }

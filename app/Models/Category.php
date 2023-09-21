@@ -17,9 +17,4 @@ class Category extends Model
     {
         return $this->hasMany(Job::class, 'category_id');
     }
-
-    public static function getCategoryById(string|int $id)
-    {
-        return Category::findOrFail($id);
-    }
 }

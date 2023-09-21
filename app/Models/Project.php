@@ -25,9 +25,4 @@ class Project extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public static function getProjectById(string|int $id)
-    {
-        return Project::findOrFail($id);
-    }
 }

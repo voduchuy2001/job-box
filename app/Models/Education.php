@@ -21,9 +21,4 @@ class Education extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public static function getEducationById(string|int $id)
-    {
-        return Education::findOrFail($id);
-    }
 }

@@ -14,9 +14,14 @@
             data: {
                 labels: {{ Js::from($labels) }},
                 datasets: [{
-                    label: 'This Year User',
+                    label: 'Current Year Users',
                     backgroundColor: '#405189',
-                    data: {{ Js::from($thisYearUsers) }},
+                    data: {{ Js::from($currentYearUsers) }},
+                    borderWidth: 1
+                }, {
+                    label: 'Previous Year Users',
+                    backgroundColor: 'lightgray',
+                    data: {{ Js::from($previousYearUsers) }},
                     borderWidth: 1
                 }]
             },

@@ -22,9 +22,4 @@ class Experience extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public static function getExperienceById(string|int $id)
-    {
-        return Experience::findOrFail($id);
-    }
 }

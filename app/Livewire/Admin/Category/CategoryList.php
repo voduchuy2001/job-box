@@ -55,7 +55,7 @@ class CategoryList extends Component
     public function editCategory(string|int $id): void
     {
         $this->isEdit = true;
-        $this->category = $category = Category::getCategoryById($id);
+        $this->category = $category = Category::findOrFail($id);
         $this->name = $category->name;
     }
 
@@ -81,7 +81,7 @@ class CategoryList extends Component
     public function deleteCategory(string|int $id): void
     {
         $this->authorizeRoleOrPermission('category-delete');
-        $category = Category::getCategoryById($id);
+        $category = Category::findOrFail($id);
 
         if (! $category->jobs()->count()) {
             $category->delete();

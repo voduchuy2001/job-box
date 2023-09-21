@@ -20,9 +20,4 @@ class Award extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public static function getAwardById(string|int $id)
-    {
-        return Award::findOrFail($id);
-    }
 }

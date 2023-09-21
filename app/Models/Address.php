@@ -40,8 +40,4 @@ class Address extends Model
     {
         return $this->belongsTo(Province::class, 'province_id');
     }
-    public static function getAddressById(string|int $id)
-    {
-        return Address::findOrFail($id);
-    }
 }

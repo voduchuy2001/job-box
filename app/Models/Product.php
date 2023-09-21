@@ -21,9 +21,4 @@ class Product extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public static function getProductById(string|int $id)
-    {
-        return Product::findOrFail($id);
-    }
 }

@@ -123,7 +123,7 @@ class JobEdit extends Component
 
     public function deleteAddress(string|int $id): void
     {
-        Address::getAddressById($id)->delete();
+        Address::findOrFail($id)->delete();
         $this->addresses = $this->job->addresses()->get();
         $this->alert('success', trans('Delete success'));
     }

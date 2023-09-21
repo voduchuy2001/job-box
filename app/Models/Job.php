@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\MonthHelper;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -69,26 +70,31 @@ class Job extends Model
         $currentYear = date('Y');
         $previousYear = $currentYear - 1;
 
-        $months = MonthHelper::getMonths();
+        $currentYearResults = $this->getYearResults($query, $currentYear);
+        $previousYearResults = $this->getYearResults($query, $previousYear);
 
-        $jobs = $query->selectRaw('MONTH(created_at) as month')
-            ->selectRaw('COUNT(*) as count')
-            ->groupBy('month')
-            ->orderBy('month');
+        $labels = $this->getLabels($currentYearResults, $previousYearResults);
+        $currentYearJobs = $this->getJobCounts($currentYearResults);
+        $previousYearJobs = $this->getJobCounts($previousYearResults);
 
-        $currentYearResults = $jobs
-            ->whereYear('created_at', $currentYear)
-            ->get();
+        return compact('labels', 'currentYearJobs', 'previousYearJobs');
+    }
 
-        $previousYearResults = $jobs->getModel()
+    private function getYearResults(Builder $query, int $year): Collection
+    {
+        return $query->getModel()
             ->newQuery()
             ->selectRaw('MONTH(created_at) as month')
             ->selectRaw('COUNT(*) as count')
             ->groupBy('month')
             ->orderBy('month')
-            ->whereYear('created_at', $previousYear)
+            ->whereYear('created_at', $year)
             ->get();
+    }
 
+    private function getLabels(Collection $currentYearResults, Collection $previousYearResults): array
+    {
+        $months = MonthHelper::getMonths();
         $labels = [];
 
         foreach ($currentYearResults as $result) {
@@ -105,10 +111,12 @@ class Job extends Model
             }
         }
 
-        $currentYearJobs = $currentYearResults->pluck('count')->toArray();
-        $previousYearJobs = $previousYearResults->pluck('count')->toArray();
+        return $labels;
+    }
 
-        return compact('labels', 'currentYearJobs', 'previousYearJobs');
+    private function getJobCounts(Collection $results): array
+    {
+        return $results->pluck('count')->toArray();
     }
 
     public static function getLimitJobs(string $searchTerm)

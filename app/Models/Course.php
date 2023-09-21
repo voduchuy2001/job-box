@@ -22,9 +22,4 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public static function getCourseById(string|int $id)
-    {
-        return Course::findOrFail($id);
-    }
 }
