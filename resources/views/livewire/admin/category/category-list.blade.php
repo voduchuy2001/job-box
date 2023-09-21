@@ -15,8 +15,7 @@
                     <x-button
                         wire:click="changeType"
                         type="button"
-                        data-bs-target="#category-setting"
-                        data-bs-toggle="modal"
+                        onclick="showModal()"
                         class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add Category') }}</x-button>
                 </div>
             </div>
@@ -37,8 +36,7 @@
                                     @can('category-edit')
                                         <span
                                             style="cursor: pointer"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#category-setting"
+                                            onclick="showModal()"
                                             wire:click="editCategory({{ $category->id }})"
                                             class="badge badge-soft-warning">{{ __('Edit') }}</span>
                                     @endcan

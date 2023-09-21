@@ -14,6 +14,10 @@
 
 @push('scripts')
     <script>
+        const showModal = () => {
+            $('#{{ $id }}').modal('show');
+        }
+
         document.addEventListener('livewire:initialized', () => {
             @this.on('hiddenModal', (event) => {
                 $('#{{ $id }}').modal('hide')

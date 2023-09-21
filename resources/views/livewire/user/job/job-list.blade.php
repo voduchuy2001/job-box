@@ -65,7 +65,7 @@
                                 </div>
                             </div>
 
-                            <div class="accordion-item" wire:ignore>
+                            <div class="accordion-item" wire:ignore.self>
                                 <h2 class="accordion-header" id="flush-headingType">
                                     <button class="accordion-button bg-transparent shadow-none collapsed"
                                             type="button" data-bs-toggle="collapse"

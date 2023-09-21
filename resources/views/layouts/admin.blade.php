@@ -13,10 +13,13 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <script src="{{ asset('assets/libs/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script data-navigate-track src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script data-navigate-track src="{{ asset('assets/js/chart.js') }}"></script>
+    <script data-navigate-track src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script data-navigate-track src="{{ asset('assets/libs/flatpickr/flatpickr.js') }}"></script>
     @stack('styles')
-    @vite(['resources/css/app.css'])
     @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <div id="layout-wrapper">
@@ -41,14 +44,11 @@
 
     <x-livewire-alert::scripts />
     <script src="{{ asset('assets/js/sweetalert2@11.js') }}"></script>
-    <script data-navigate-track src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/flatpickr/flatpickr.js') }}"></script>
     @stack('scripts')
     @livewireScripts
 </body>
