@@ -14,7 +14,7 @@
 
 @push('scripts')
     <script>
-        const showModal = () => {
+        function showModal() {
             $('#{{ $id }}').modal('show');
         }
 
