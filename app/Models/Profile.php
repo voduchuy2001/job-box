@@ -3,16 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Profile extends Model
 {
     protected $table = 'profiles';
 
     protected $fillable = [
-        'position',
-        'sex',
-        'date_of_birth',
-        'present',
-        'view',
+        'payload',
+        'profileable_id',
+        'profileable_type',
     ];
+
+    protected $casts = [
+        'payload' => 'json',
+    ];
+
+    public function profileable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }

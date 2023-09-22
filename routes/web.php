@@ -23,6 +23,7 @@ use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobList as UserJobList;
 use App\Livewire\User\User\UserChangePassword;
 use App\Livewire\User\User\UserProfile;
+use App\Livewire\User\User\UserResume;
 use App\Livewire\User\User\UserWishlistJob;
 use Illuminate\Support\Facades\Route;
 
@@ -89,4 +90,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user-profile', UserProfile::class)->name('user-profile.user');
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');
     Route::get('/user-wishlist-job', UserWishlistJob::class)->name('user-wishlist.user');
+    Route::get('/user-resume', UserResume::class)->name('user-resume.user');
 });

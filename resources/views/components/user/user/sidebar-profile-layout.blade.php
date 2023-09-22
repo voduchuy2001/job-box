@@ -6,6 +6,13 @@
                 class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-profile.user' ? 'active' : '' }}">
                 <i class="ri-user-3-line align-middle me-2"></i>{{ __('User Profile') }}</x-link>
 
+            @if(Auth::user()->profile)
+                <x-link
+                    :to="route('user-resume.user')"
+                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-resume.user' ? 'active' : '' }}">
+                    <i class="ri-todo-line align-middle me-2"></i>{{ __('Resume') }}</x-link>
+            @endif
+
             <x-link
                 href="#"
                 class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Job Applied') }}</x-link>
