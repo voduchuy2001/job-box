@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Enums\ImageType;
 use App\Enums\UserStatus;
-use App\Helpers\MonthHelper;
+use App\Traits\Label;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use AuthenticationLoggable;
     use HasRoles;
+    use Label;
 
     protected $fillable = [
         'name',
@@ -142,28 +143,6 @@ class User extends Authenticatable implements MustVerifyEmail
             ->orderBy('month')
             ->whereYear('created_at', $year)
             ->get();
-    }
-
-    private function getLabels(Collection $currentYearResults, Collection $previousYearResults): array
-    {
-        $months = MonthHelper::getMonths();
-        $labels = [];
-
-        foreach ($currentYearResults as $result) {
-            $month = $months[$result->month];
-            if (! in_array($month, $labels)) {
-                $labels[] = $month;
-            }
-        }
-
-        foreach ($previousYearResults as $result) {
-            $month = $months[$result->month];
-            if (! in_array($month, $labels)) {
-                $labels[] = $month;
-            }
-        }
-
-        return $labels;
     }
 
     private function getUserCounts(Collection $results): array

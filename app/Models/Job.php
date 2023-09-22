@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Helpers\MonthHelper;
+use App\Traits\Label;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Job extends Model
 {
     use SoftDeletes;
+    use Label;
 
     protected $table = 'jobs';
 
@@ -90,28 +91,6 @@ class Job extends Model
             ->orderBy('month')
             ->whereYear('created_at', $year)
             ->get();
-    }
-
-    private function getLabels(Collection $currentYearResults, Collection $previousYearResults): array
-    {
-        $months = MonthHelper::getMonths();
-        $labels = [];
-
-        foreach ($currentYearResults as $result) {
-            $month = $months[$result->month];
-            if (! in_array($month, $labels)) {
-                $labels[] = $month;
-            }
-        }
-
-        foreach ($previousYearResults as $result) {
-            $month = $months[$result->month];
-            if (! in_array($month, $labels)) {
-                $labels[] = $month;
-            }
-        }
-
-        return $labels;
     }
 
     private function getJobCounts(Collection $results): array
