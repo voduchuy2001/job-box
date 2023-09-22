@@ -13,7 +13,7 @@
     @if($label) <label for="{{ $id }}" class="form-label">{{ $label }}</label> @endif
     <textarea
         @if($type) type="{{ $type }}" @endif
-        @if($class) class="{{ $class }}" @endif
+        @if($class) class="{{ $class }} @error($model) is-invalid @enderror" @endif
         @if($id) id="{{ $id }}" @endif
         @if($placeholder) placeholder="{{ $placeholder }}" @endif
         @if($model) wire:model="{{ $model }}" @endif
