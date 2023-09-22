@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ImageType;
 use App\Enums\UserStatus;
+use App\Traits\GetYearResult;
 use App\Traits\Label;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
@@ -27,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use AuthenticationLoggable;
     use HasRoles;
     use Label;
+    use GetYearResult;
 
     protected $fillable = [
         'name',
@@ -131,18 +133,6 @@ class User extends Authenticatable implements MustVerifyEmail
         $previousYearUsers = $this->getUserCounts($previousYearResults);
 
         return compact('labels', 'currentYearUsers', 'previousYearUsers');
-    }
-
-    private function getYearResults(Builder $query, int $year): Collection
-    {
-        return $query->getModel()
-            ->newQuery()
-            ->selectRaw('MONTH(created_at) as month')
-            ->selectRaw('COUNT(*) as count')
-            ->groupBy('month')
-            ->orderBy('month')
-            ->whereYear('created_at', $year)
-            ->get();
     }
 
     private function getUserCounts(Collection $results): array

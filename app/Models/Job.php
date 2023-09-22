@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\GetYearResult;
 use App\Traits\Label;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -15,6 +16,7 @@ class Job extends Model
 {
     use SoftDeletes;
     use Label;
+    use GetYearResult;
 
     protected $table = 'jobs';
 
@@ -79,18 +81,6 @@ class Job extends Model
         $previousYearJobs = $this->getJobCounts($previousYearResults);
 
         return compact('labels', 'currentYearJobs', 'previousYearJobs');
-    }
-
-    private function getYearResults(Builder $query, int $year): Collection
-    {
-        return $query->getModel()
-            ->newQuery()
-            ->selectRaw('MONTH(created_at) as month')
-            ->selectRaw('COUNT(*) as count')
-            ->groupBy('month')
-            ->orderBy('month')
-            ->whereYear('created_at', $year)
-            ->get();
     }
 
     private function getJobCounts(Collection $results): array
