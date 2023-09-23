@@ -2,9 +2,7 @@
 
 namespace App\Livewire\Admin\User\Modules;
 
-use App\Enums\UserStatus;
 use App\Models\User;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Rule;
@@ -17,33 +15,24 @@ class PersonalDetail extends Component
 
     public User $user;
 
-    #[Rule('required|string|max:32')]
     public string $name;
 
-    #[Rule('required|email')]
     public string $email;
 
-    #[Rule('nullable|string')]
-    public string $present;
-
-    #[Rule(new Enum(UserStatus::class))]
-    public UserStatus $userStatus;
+    #[Rule('required:in:Is Active,Blocked')]
+    public string $userStatus;
 
     #[Rule('nullable|string')]
     public mixed $role;
 
     public function mount(): void
     {
-        $this->name = $this->user->name;
-        $this->email = $this->user->email;
         $this->userStatus = $this->user->status;
+        $this->email = $this->user->email;
+        $this->name = $this->user->name;
         $role = json_decode($this->user->getRoleNames());
         if (count($role) > 0) {
             $this->role = $role[0];
-        }
-
-        if ($this->user->present) {
-            $this->present = $this->user->present;
         }
     }
 
@@ -63,9 +52,7 @@ class PersonalDetail extends Component
 
         if ($this->user->is_root != 1) {
             $this->user->update([
-                'name' => $validatedData['name'],
                 'status' => $validatedData['userStatus'],
-                'present' => $validatedData['present'],
             ]);
 
             $this->alert('success', trans('Update success'));

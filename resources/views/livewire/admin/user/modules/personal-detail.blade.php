@@ -1,7 +1,3 @@
-@php
-    use App\Enums\UserRole;
-    use App\Enums\UserStatus;
-@endphp
 <div>
     <x-form wire:submit.prevent="updateProfile">
         <div class="row">
@@ -13,7 +9,8 @@
                     id="name"
                     name="name"
                     model="name"
-                    placeholder="{{ __('Enter name') }}"
+                    readonly
+                    disabled
                 ></x-admin.input>
             </div>
 
@@ -30,24 +27,11 @@
                 ></x-admin.input>
             </div>
 
-            <div class="col-lg-12">
-                <x-admin.input.textarea
-                    :label="__('Background/Career Objectives')"
-                    class="form-control"
-                    type="text"
-                    id="present"
-                    name="present"
-                    model="present"
-                    rows="7"
-                >
-                </x-admin.input.textarea>
-            </div>
-
             <div class="col-lg-6">
                 <label class="form-label">{{ __('Status') }}</label>
                 <select class="form-select mb-3" wire:model="userStatus">
-                    <option value="{{ UserStatus::IsActive }}">{{ __('Is Active') }}</option>
-                    <option value="{{ UserStatus::Blocked }}">{{ __('Blocked') }}</option>
+                    <option value="Is Active">{{ __('Is Active') }}</option>
+                    <option value="Blocked">{{ __('Blocked') }}</option>
                 </select>
 
                 @error('userStatus')

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\ImageType;
-use App\Enums\UserStatus;
 use App\Traits\GetYearResult;
 use App\Traits\Label;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -49,7 +48,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'status' => UserStatus::class,
     ];
 
     public function addresses(): MorphMany

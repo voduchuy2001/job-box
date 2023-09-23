@@ -1,6 +1,3 @@
-@php
-    use App\Enums\UserStatus;
-@endphp
 <div>
     @include('admin.partials.page-title')
 
@@ -30,7 +27,7 @@
                     class="list-group-item list-group-item-action">
                     <div class="float-end">
                         <span
-                            class="{{ $user->status == UserStatus::IsActive ? 'badge badge-soft-success' : 'badge badge-soft-danger'}}">{{ $user->status }}</span>
+                            class="{{ $user->status == 'Is Active' ? 'badge badge-soft-success' : 'badge badge-soft-danger'}}">{{ $user->status }}</span>
                     </div>
                     <div class="d-flex mb-2 align-items-center">
                         <div class="flex-shrink-0">
