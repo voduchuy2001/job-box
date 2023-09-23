@@ -13,7 +13,7 @@ return new class () extends Migration {
             $table->string('name');
             $table->string('email')->unique();
             $table->string('status')->default(UserStatus::IsActive->value);
-            $table->string('is_root')->default(0);
+            $table->smallInteger('is_root')->default(0);
             $table->string('provider_id')->nullable();
             $table->string('auth_type')->nullable();
             $table->timestamp('email_verified_at')->nullable();

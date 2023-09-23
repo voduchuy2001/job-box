@@ -1,5 +1,7 @@
 <div>
-    <span class="mb-2"><strong>{{ __('Permissions') }}</strong></span>
+    <div class="mb-2">
+        <span><strong>{{ __('Permissions') }}</strong></span>
+    </div>
     <x-form wire:submit.prevent="savePermission">
         <div class="row">
             @foreach($permissions as $key => $permission)
@@ -22,7 +24,6 @@
 
                 <div class="col-lg-12">
                     <div class="hstack gap-2 justify-content-end">
-                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
                         <x-button
                             type="submit"
                             class="btn btn-primary">{{ __('Update') }}</x-button>

@@ -33,22 +33,23 @@ class PersonalPermission extends Component
 
     public function savePermission(): void
     {
-        $this->authorizeRoleOrPermission('permission-edit');
+        $this->authorizeRoleOrPermission('permission-user-edit');
         $validatedData = $this->validate();
 
-        if ($this->user->is_root != 1) {
-            $this->user->syncPermissions($validatedData['userHasPermissions']);
-            $this->alert('success', trans('Update success!'));
+        if ($this->user->is_root === 1) {
+            $this->alert('warning', trans('You can not update this account'));
             return;
         }
 
-        $this->alert('warning', trans('You can not update personal details for this account'));
+        $this->user->syncPermissions($validatedData['userHasPermissions']);
+        $this->alert('success', trans('Update success!'));
+        $this->dispatch('refresh');
     }
 
     public function render(): View
     {
 
-        $permissions = Permission::orderByDesc('created_at')->get();
+        $permissions = Permission::all();
 
         return view('livewire.admin.user.modules.personal-permission', [
             'permissions' => $permissions,
