@@ -120,11 +120,12 @@
                     <x-admin.input
                         :label="__('Salary Min')"
                         class="form-control"
-                        type="number"
                         id="min"
                         name="min"
                         model="min"
                         placeholder="{{ __('Enter min (VND)') }}"
+                        x-mask:dynamic="$money($input, ',')"
+                        x-data
                     ></x-admin.input>
                 </div>
 
@@ -132,11 +133,12 @@
                     <x-admin.input
                         :label="__('Salary Max')"
                         class="form-control"
-                        type="number"
                         id="max"
                         name="max"
                         model="max"
                         placeholder="{{ __('Enter max (VND)') }}"
+                        x-mask:dynamic="$money($input, ',')"
+                        x-data
                     ></x-admin.input>
                 </div>
 

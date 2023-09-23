@@ -22,7 +22,7 @@ class JobCreate extends Component
 {
     use LivewireAlert;
 
-    #[Rule('nullable|required_with:districtId,wardId')]
+    #[Rule('required|required_with:districtId,wardId')]
     public string|null $provinceId;
 
     public mixed $districts = [];
@@ -65,10 +65,10 @@ class JobCreate extends Component
     #[Rule('required|date_format:Y-m-d|after_or_equal:today')]
     public string $deadlineForFiling;
 
-    #[Rule('required|integer|min:0|max:1000000000')]
+    #[Rule('required')]
     public string $min;
 
-    #[Rule('required|integer|gte:min|max:1000000000')]
+    #[Rule('required|gte:min')]
     public string $max;
 
     #[Rule('required|string|in:show,hide')]
@@ -101,6 +101,8 @@ class JobCreate extends Component
         }
 
         $this->alert('success', trans('Create success'));
+        $this->reset();
+        $this->dispatch('refresh');
         $this->redirect(JobList::class, navigate: true);
     }
 

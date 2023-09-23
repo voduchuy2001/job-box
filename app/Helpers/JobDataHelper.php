@@ -19,8 +19,8 @@ class JobDataHelper
             'deadline_for_filing' => $validatedData['deadlineForFiling'],
             'status' => $validatedData['status'],
             'user_id' => Auth::id(),
-            'min_salary' => $validatedData['min'],
-            'max_salary' => $validatedData['max'],
+            'min_salary' => (int) str_replace('.', '', $validatedData['min']),
+            'max_salary' => (int) str_replace('.', '', $validatedData['min']),
         ];
     }
 }
