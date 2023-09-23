@@ -15,7 +15,20 @@ class SocialiteController extends Controller
 {
     public function redirect(string $provider): RedirectResponse
     {
+        if (! $this->catchError($provider)) {
+            abort(404, trans('Page Not Found'));
+        }
+
         return Socialite::driver($provider)->redirect();
+    }
+
+    protected function catchError(string $provider): bool
+    {
+        if (! in_array($provider, ['github', 'google'])) {
+            return false;
+        }
+
+        return true;
     }
 
     public function callback(string $provider): RedirectResponse|string
