@@ -50,7 +50,7 @@
                             class="nav-link menu-link {{ request()->route()->getName() == 'role-permission' ? 'active' : '' }}"
                             :to="route('role-permission')"
                         >
-                            <i class="ri-question-line"></i><span>{{ __('Roles And Permissions') }}</span>
+                            <i class="ri-shield-user-line"></i><span>{{ __('Roles And Permissions') }}</span>
                         </x-link>
                     </li>
                 @endcan

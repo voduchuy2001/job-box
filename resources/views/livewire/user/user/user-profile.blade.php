@@ -171,6 +171,13 @@
 
                                                     <div class="d-flex align-items-start gap-3 mt-4">
                                                         <x-button
+                                                            wire:click="updateStep({{ 0 }})"
+                                                            type="button"
+                                                            class="btn btn-light btn-label">
+                                                            <i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>
+                                                            {{ __('Previous Step') }}</x-button>
+
+                                                        <x-button
                                                             type="button"
                                                             wire:click="saveProfile"
                                                             class="btn btn-success btn-label right ms-auto">
@@ -180,7 +187,7 @@
                                                                    class="mdi mdi-loading mdi-spin align-middle me-2"></i>
                                                                 <span class="flex-grow-1 ms-2">
                                                             <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>
-                                                            {{ __('Save And Activate The Resume Page') }}</span>
+                                                            {{ __('Save To Continue') }}</span>
                                                             </span></x-button>
                                                     </div>
                                                 </div>

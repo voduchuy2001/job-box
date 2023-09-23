@@ -12,7 +12,7 @@
 ?>
 
 <div>
-    <section class="row justify-content-center">
+    <div class="row justify-content-center">
         @foreach($categories as $key => $category)
             <div class="col-lg-3 col-md-6">
                 <div class="card shadow-none text-center py-3">
@@ -37,5 +37,5 @@
             @if(! $categories->count())
                 <x-admin.empty></x-admin.empty>
             @endif
-    </section>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 <div>
-    <section class="row">
+    <div class="row">
         @foreach($jobs as $job)
             <div class="col-lg-6">
                 <livewire:user.job.job-item :job="$job" wire:key="job-item-{{ $job->id }}"></livewire:user.job.job-item>
@@ -19,5 +19,5 @@
         @if(! $jobs->count())
             <x-admin.empty></x-admin.empty>
         @endif
-    </section>
+    </div>
 </div>

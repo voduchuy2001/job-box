@@ -32,9 +32,22 @@ class UserProfile extends Component
 
     public string $phone;
 
-    public string $present;
-
     public mixed $data;
+
+    public function mount(): void
+    {
+        if ($user = Auth::user()->profile) {
+            $userData = $user->payload;
+            $this->email = $userData['email'];
+            $this->firstName = $userData['firstName'];
+            $this->lastName = $userData['lastName'];
+            $this->major = $userData['major'];
+            $this->course = $userData['course'];
+            $this->phone = $userData['phone'];
+            $this->email = $userData['email'];
+            $this->studentId = $userData['studentId'];
+        }
+    }
 
     public function validateStep(int $step): bool
     {

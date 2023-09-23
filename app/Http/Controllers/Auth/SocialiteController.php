@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
@@ -31,7 +30,7 @@ class SocialiteController extends Controller
                 'name' => $socialAccount->getName(),
                 'provider_id' => $socialAccount->getId(),
                 'auth_type' => $provider,
-                'status' => UserStatus::IsActive,
+                'status' => 'Is Active',
                 'password' => Hash::make(Str::random(10)),
                 'email_verified_at' => Carbon::now(),
             ]);

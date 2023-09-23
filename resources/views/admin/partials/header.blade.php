@@ -31,7 +31,7 @@
                         href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"
-                        class="btn btn-icon btn-topbar text-danger">
+                        class="btn btn-icon btn-topbar">
                         <i class='bx bx-log-out fs-22'></i>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

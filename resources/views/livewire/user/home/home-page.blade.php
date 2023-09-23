@@ -1,5 +1,5 @@
 <div>
-    <div class="section job-hero-section bg-light pb-0" id="hero">
+    <div class="section job-hero-section bg-light pb-0">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
