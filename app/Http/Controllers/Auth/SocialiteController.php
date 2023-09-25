@@ -48,6 +48,10 @@ class SocialiteController extends Controller
                 'email_verified_at' => Carbon::now(),
             ]);
 
+            $user->assignRole([
+                'name' => 'Student',
+            ]);
+
             Auth::login($user);
 
             return redirect('/');

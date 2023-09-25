@@ -78,7 +78,7 @@ class RoleSetting extends Component
         $this->authorizeRoleOrPermission('role-delete');
         $role = Role::findOrFail($id);
 
-        if (! in_array($role->name, ['Super Admin', 'Company'])) {
+        if (! in_array($role->name, ['Super Admin', 'Company', 'Student'])) {
             $role->delete();
 
             $this->alert('success', trans('Delete success :name', ['name' => $role->name]));
@@ -104,7 +104,7 @@ class RoleSetting extends Component
         $this->authorizeRoleOrPermission('role-edit');
         $validatedData = $this->validate([
             'name' => 'required|string|min:2|max:32|unique:roles,name,'.$this->role->id,
-            'roleHasPermissions' => 'required',
+            'roleHasPermissions' => 'nullable',
         ]);
 
         if (! in_array($this->role->name, ['Super Admin', 'Company'])) {
