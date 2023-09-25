@@ -37,7 +37,7 @@ class SocialiteController extends Controller
             $socialAccount = Socialite::driver($provider)->user();
 
             $user = User::updateOrCreate([
-                'provider_id' => $socialAccount->getId(),
+                'email' => $socialAccount->getEmail(),
             ], [
                 'email' => $socialAccount->getEmail(),
                 'name' => $socialAccount->getName(),
