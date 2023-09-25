@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
+use App\Http\Controllers\User\ResumeController;
 use App\Livewire\Admin\Category\CategoryList;
 use App\Livewire\Admin\Home\DashBoard;
 use App\Livewire\Admin\Job\JobCreate;
@@ -91,4 +92,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');
     Route::get('/user-wishlist-job', UserWishlistJob::class)->name('user-wishlist.user');
     Route::get('/user-resume', UserResume::class)->name('user-resume.user');
+    Route::get('/user-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
 });

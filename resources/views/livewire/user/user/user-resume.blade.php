@@ -12,10 +12,27 @@
                             <div class="text-center">
                                 <livewire:admin.user.modules.avatar :user="$user"></livewire:admin.user.modules.avatar>
                                 <h5 class="fs-16 mb-1">{{ Auth::user()->name }}</h5>
-                                <button
-                                    wire:click="downloadResume"
-                                    class="btn btn-soft-info"
-                                ><i class="ri-download-2-line align-bottom me-1"></i> {{ __('Download Resume') }}</button>
+                                <span class="d-flex align-items-center">
+                                    <span class="flex-grow-1 ms-2">
+                                        <button
+                                            wire:click="downloadResume({{ Auth::id() }})"
+                                            class="btn btn-soft-info">
+                                                <i wire:loading
+                                                   wire:loading.attr="disabled"
+                                                   class="mdi mdi-loading mdi-spin align-middle me-2"></i>
+                                                <i wire:loading.attr="hidden"
+                                                   class="ri-download-2-line align-bottom me-1"></i>
+                                                {{ __('Download Resume') }}
+                                        </button>
+
+                                        <a
+                                            target="_blank"
+                                            href="{{ route('user-resume-preview.user', ['id' => $user->id]) }}"
+                                            class="btn btn-soft-warning"
+                                        ><i
+                                            class="ri-eye-2-line align-bottom me-1"></i>{{ __('Preview') }}</a>
+                                    </span>
+                                </span>
                             </div>
                         </div>
                     </div>

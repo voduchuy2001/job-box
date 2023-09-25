@@ -12,6 +12,8 @@ use App\Models\Product;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\SocialActivity;
+use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -19,6 +21,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 #[Title('Trang CV')]
 class UserResume extends Component
@@ -73,9 +76,33 @@ class UserResume extends Component
         $this->user = $user;
     }
 
-    public function downloadResume(): void
+    public function downloadResume(string|int $id): StreamedResponse
     {
-        dd(123);
+        $user = User::findOrFail($id)
+            ->with([
+                'avatar',
+                'profile',
+                'addresses.province',
+                'addresses.district',
+                'educations',
+                'skills',
+                'certificates',
+                'experiences',
+                'awards',
+                'projects',
+                'products',
+                'socialActivities',
+                'courses'
+            ])->first();
+
+        $content = Pdf::loadView('pdf.resume', [
+            'user' => $user,
+        ])->setPaper('a4', 'landscape')->output();
+
+        return response()->streamDownload(
+            fn () => print($content),
+            "Resume-" . $user->name . ".pdf"
+        );
     }
 
     public function delete(string|int $id, string $type): void
