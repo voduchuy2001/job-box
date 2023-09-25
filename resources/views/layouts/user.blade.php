@@ -14,6 +14,8 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/leaflet/leaflet.css') }}" rel="stylesheet" type="text/css" />
     <script data-navigate-track src="{{ asset('assets/libs/leaflet/leaflet.js') }}"></script>
+    <script data-navigate-track src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script data-navigate-track src="{{ asset('assets/libs/flatpickr/flatpickr.js') }}"></script>
     @vite(['resources/css/app.css'])
     @stack('styles')
     @livewireStyles

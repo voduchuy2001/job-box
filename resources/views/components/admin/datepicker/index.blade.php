@@ -32,7 +32,7 @@
             @this.on('refresh', (event) => {
                 flatpickr(document.querySelector('.datepicker')).clear();
                 flatpickr(".datepicker", {
-                    dateFormat: "d-m-Y",
+                    dateFormat: "Y-m-d",
                 });
             });
         });

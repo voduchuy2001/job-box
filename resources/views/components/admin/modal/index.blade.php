@@ -14,8 +14,8 @@
 
 @push('scripts')
     <script>
-        function showModal() {
-            $('#{{ $id }}').modal('show');
+        function showModal(modalId) {
+           $('#' + modalId).modal('show');
         }
 
         document.addEventListener('livewire:initialized', () => {

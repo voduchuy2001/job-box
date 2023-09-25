@@ -3,7 +3,6 @@
 namespace App\Livewire\Admin\User\Modules;
 
 use App\Enums\ImageType;
-use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -17,7 +16,7 @@ class Avatar extends Component
     use WithFileUploads;
     use LivewireAlert;
 
-    public User $user;
+    public mixed $user;
 
     #[Rule('nullable|image|max:2048')]
     public mixed $avatar = null;

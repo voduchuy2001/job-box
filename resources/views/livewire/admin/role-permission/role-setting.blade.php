@@ -15,7 +15,7 @@
                     <x-button
                         wire:click="changeType"
                         type="button"
-                        onclick="showModal()"
+                        onclick="showModal('setting-role-permission')"
                         class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add Role') }}</x-button>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         <div class="hstack gap-3 fs-15">
                             @can('role-edit')
                                 <span
-                                    onclick="showModal()"
+                                    onclick="showModal('setting-role-permission')"
                                     wire:click="editRole({{ $role->id }})"
                                     style="cursor: pointer" class="link-warning"><i class="ri-pencil-line"></i></span>
                             @endcan
