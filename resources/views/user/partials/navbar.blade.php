@@ -33,7 +33,7 @@
                         <li class="nav-item">
                             <x-link
                                 :to="route('user-profile.user')"
-                                class="nav-link {{ request()->route()->getName() == 'user-profile.user' || 'user-resume.user' || 'user-wishlist.user' || 'user-change-password.user' ? 'active' : '' }}">{{ __('Profile') }}</x-link>
+                                class="nav-link {{ in_array(request()->route()->getName(), ['user-profile.user', 'user-resume.user', 'user-wishlist.user', 'user-change-password.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
                         </li>
                     @endauth
                 </ul>
