@@ -16,11 +16,13 @@
                                     <span class="flex-grow-1 ms-2">
                                         <button
                                             wire:click="downloadResume({{ Auth::id() }})"
+                                            wire:loading.attr="disabled"
                                             class="btn btn-soft-info">
                                                 <i wire:loading
-                                                   wire:loading.attr="disabled"
+                                                   wire:target="downloadResume"
                                                    class="mdi mdi-loading mdi-spin align-middle me-2"></i>
                                                 <i wire:loading.attr="hidden"
+                                                   wire:target="downloadResume"
                                                    class="ri-download-2-line align-bottom me-1"></i>
                                                 {{ __('Download Resume') }}
                                         </button>
@@ -30,7 +32,7 @@
                                             href="{{ route('user-resume-preview.user', ['id' => $user->id]) }}"
                                             class="btn btn-soft-warning"
                                         ><i
-                                            class="ri-eye-2-line align-bottom me-1"></i>{{ __('Preview') }}</a>
+                                                class="ri-eye-2-line align-bottom me-1"></i>{{ __('Preview') }}</a>
                                     </span>
                                 </span>
                             </div>
@@ -47,28 +49,28 @@
 
                             @foreach($addresses as $address)
                                 <div class="list-group">
-                        <span class="list-group-item list-group-item-action">
-                            <div class="float-end">
-                                @if($confirm == $address->id && $confirmType == 'address')
-                                    <span
-                                        wire:click="delete({{ $address->id }}, 'address')"
-                                        style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
-                                    <span
-                                        wire:click="confirmDelete({{ $address->id }}, 'address')"
-                                        style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
-                                @else
-                                    <span
-                                        wire:click="confirmDelete({{ $address->id }}, 'address')"
-                                        style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
-                                @endif
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <div class="flex-grow-1 ms-3">
-                                    <h5 class="list-title fs-15 mb-1">{{ __(':houseNumber', ['houseNumber' => $address->name]) }}</h5>
-                                    <p class="list-text mb-0 fs-12">{{ __(':ward, :district, :province', ['ward' => $address->ward->name, 'district' => $address->district->name, 'province' => $address->province->name]) }}</p>
-                                </div>
-                            </div>
-                        </span>
+                                    <span class="list-group-item list-group-item-action">
+                                        <div class="float-end">
+                                            @if($confirm == $address->id && $confirmType == 'address')
+                                                <span
+                                                    wire:click="delete({{ $address->id }}, 'address')"
+                                                    style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                                <span
+                                                    wire:click="confirmDelete({{ $address->id }}, 'address')"
+                                                    style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                                            @else
+                                                <span
+                                                    wire:click="confirmDelete({{ $address->id }}, 'address')"
+                                                    style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
+                                            @endif
+                                        </div>
+                                        <div class="d-flex mb-2 align-items-center">
+                                            <div class="flex-grow-1 ms-3">
+                                                <h5 class="list-title fs-15 mb-1">{{ __(':houseNumber', ['houseNumber' => $address->name]) }}</h5>
+                                                <p class="list-text mb-0 fs-12">{{ __(':ward, :district, :province', ['ward' => $address->ward->name, 'district' => $address->district->name, 'province' => $address->province->name]) }}</p>
+                                            </div>
+                                        </div>
+                                    </span>
                                 </div>
                             @endforeach
 

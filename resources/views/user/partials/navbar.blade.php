@@ -20,11 +20,20 @@
                             :to="route('user.job-list')"
                             class="nav-link {{ request()->route()->getName() == 'user.job-list' ? 'active' : '' }}">{{ __('Jobs') }}</x-link>
                     </li>
+
+                    @if(! Auth::check())
+                        <li class="nav-item">
+                            <a
+                                href="{{ route('user-profile.user') }}"
+                                class="nav-link">{{ __('Resume') }}</a>
+                        </li>
+                    @endif
+
                     @auth
                         <li class="nav-item">
                             <x-link
                                 :to="route('user-profile.user')"
-                                class="nav-link {{ request()->route()->getName() == 'user-profile.user' ? 'active' : '' }}">{{ __('Profile') }}</x-link>
+                                class="nav-link {{ request()->route()->getName() == 'user-profile.user' || 'user-resume.user' || 'user-wishlist.user' || 'user-change-password.user' ? 'active' : '' }}">{{ __('Profile') }}</x-link>
                         </li>
                     @endauth
                 </ul>

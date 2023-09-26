@@ -37,16 +37,18 @@
         </header>
 
         <div class="resume-body p-4">
+            @if($user->profile->payload['career'])
                 <section class="resume-section summary-section mb-4">
                     <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Career Summary</h2>
                     <div class="resume-section-content">
                         <p class="mb-0">{{ $user->profile->payload['career'] ?? '' }}</p>
                     </div>
                 </section>
+            @endif
 
             <div class="row">
                 <div class="col-lg-9">
-                    @if($user->experiences)
+                    @if($user->experiences->count())
                         <section class="resume-section experience-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
                             <div class="resume-section-content">
@@ -70,7 +72,7 @@
                         </section>
                     @endif
 
-                    @if($user->projects)
+                    @if($user->projects->count())
                         <section class="resume-section experience-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Project</h2>
                             <div class="resume-section-content">
@@ -96,7 +98,7 @@
                         </section>
                     @endif
 
-                    @if($user->products)
+                    @if($user->products->count())
                         <section class="resume-section experience-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Product</h2>
                             <div class="resume-section-content">
@@ -122,7 +124,7 @@
                 </div>
 
                 <div class="col-lg-3">
-                    @if($user->skills)
+                    @if($user->skills->count())
                         <section class="resume-section skills-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Skills</h2>
                             <div class="resume-section-content">
@@ -139,7 +141,7 @@
                         </section>
                     @endif
 
-                    @if($user->educations)
+                    @if($user->educations->count())
                         <section class="resume-section education-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
                             <div class="resume-section-content">
@@ -156,7 +158,7 @@
                         </section>
                     @endif
 
-                    @if($user->awards)
+                    @if($user->awards->count())
                         <section class="resume-section reference-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Awards</h2>
                             <div class="resume-section-content">
@@ -172,7 +174,7 @@
                         </section>
                     @endif
 
-                    @if($user->certificates)
+                    @if($user->certificates->count())
                         <section class="resume-section language-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Certificates</h2>
                             <div class="resume-section-content">
@@ -187,7 +189,7 @@
                         </section>
                     @endif
 
-                    @if($user->courses)
+                    @if($user->courses->count())
                         <section class="resume-section language-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Course</h2>
                             <div class="resume-section-content">
@@ -203,7 +205,7 @@
                         </section>
                     @endif
 
-                    @if($user->socialActivities)
+                    @if($user->socialActivities->count())
                         <section class="resume-section interests-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Social Activity</h2>
                             <div class="resume-section-content">
