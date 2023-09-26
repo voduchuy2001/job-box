@@ -71,9 +71,7 @@ class CategoryList extends Component
         ]);
 
         $this->alert('success', trans('Update success!'));
-        $this->reset([
-            'name',
-        ]);
+        $this->reset();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
     }
@@ -86,7 +84,6 @@ class CategoryList extends Component
         if (! $category->jobs()->count()) {
             $category->delete();
             $this->alert('success', trans('Delete success :name', ['name' => $category->name]));
-            $this->dispatch('hiddenModal');
             $this->dispatch('refresh');
             return;
         }

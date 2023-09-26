@@ -66,6 +66,17 @@
                     </li>
                 @endcan
 
+                @can('category-list')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link {{ request()->route()->getName() == 'trending-word.index' ? 'active' : '' }}"
+                            to="{{ route('trending-word.index') }}"
+                        >
+                            <i class="ri-file-word-line"></i><span>{{ __('Trending Word') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
+
                 @can('job-list')
                     <li class="nav-item">
                         <a class="nav-link menu-link {{ request()->routeIs('job.*') ? 'active' : '' }}"
