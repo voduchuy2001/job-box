@@ -4,14 +4,18 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ResumeController extends Controller
 {
     public function __invoke(string|int  $id): View
     {
-        $user = User::findOrFail($id)
-            ->with([
+        if ($id != Auth::id()) {
+            abort(403);
+        }
+
+        $user = User::with([
             'avatar',
             'profile',
             'addresses.province',
@@ -25,7 +29,7 @@ class ResumeController extends Controller
             'products',
             'socialActivities',
             'courses'
-        ])->first();
+        ])->findOrFail($id);
 
         return view('pdf.resume', [
             'user' => $user,

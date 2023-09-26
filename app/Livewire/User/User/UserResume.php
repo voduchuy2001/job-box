@@ -78,8 +78,11 @@ class UserResume extends Component
 
     public function downloadResume(string|int $id): StreamedResponse
     {
-        $user = User::findOrFail($id)
-            ->with([
+        if ($id != Auth::id()) {
+            abort(403);
+        }
+
+        $user = User::with([
                 'avatar',
                 'profile',
                 'addresses.province',
@@ -93,7 +96,7 @@ class UserResume extends Component
                 'products',
                 'socialActivities',
                 'courses'
-            ])->first();
+            ])->findOrFail($id);
 
         $content = PDF::loadView('pdf.resume', [
             'user' => $user,

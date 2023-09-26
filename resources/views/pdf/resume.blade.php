@@ -22,11 +22,11 @@
                     <div class="row p-3 justify-content-center justify-content-md-between">
                         <div class="primary-info col-auto">
                             <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{ $user->name }}</h1>
-                            <div class="title mb-3">{{ $user->profile->payload['appliedPosition'] }}</div>
+                            <div class="title mb-3">{{ $user->profile->payload['appliedPosition'] ?? '' }}</div>
                             <ul class="list-unstyled">
-                                <li class="mb-2">Email contact: <a class="text-link" href="mailto:{{ $user->profile->payload['email'] }}">{{ __(':email', ['email' => $user->profile->payload['email']]) }}</a></li>
-                                <li class="mb-2">Phone number: <a class="text-link" href="tel:{{ $user->profile->payload['phone'] }}">{{ __(':phone', ['phone' => $user->profile->payload['phone']]) }}</a></li>
-                                @if($user->addresses)
+                                <li class="mb-2">Email contact: <a class="text-link" href="mailto:{{ $user->profile->payload['email'] ?? '' }}">{{ __(':email', ['email' => $user->profile->payload['email'] ?? '']) }}</a></li>
+                                <li class="mb-2">Phone number: <a class="text-link" href="tel:{{ $user->profile->payload['phone'] ?? '' }}">{{ __(':phone', ['phone' => $user->profile->payload['phone'] ?? '']) }}</a></li>
+                                @if($user->addresses->count())
                                     <li>Address: <a href="javascript:void(0)" class="text-link">{{ __(':district, :province', ['district' => $user->addresses[0]->district->name, 'province' => $user->addresses[0]->province->name]) }}</a></li>
                                 @endif
                             </ul>
@@ -37,14 +37,12 @@
         </header>
 
         <div class="resume-body p-4">
-            @if($user->profile->payload['career'])
                 <section class="resume-section summary-section mb-4">
                     <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Career Summary</h2>
                     <div class="resume-section-content">
-                        <p class="mb-0">{{ $user->profile->payload['career'] }}</p>
+                        <p class="mb-0">{{ $user->profile->payload['career'] ?? '' }}</p>
                     </div>
                 </section>
-            @endif
 
             <div class="row">
                 <div class="col-lg-9">

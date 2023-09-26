@@ -43,7 +43,7 @@ class UserProfile extends Component
         if ($user = Auth::user()->profile) {
             $userData = $user->payload;
             $this->email = $userData['email'];
-            $this->firstName = $userData['firstName'];
+            $this->firstName = $userData['firstName'] ?? '';
             $this->lastName = $userData['lastName'];
             $this->major = $userData['major'];
             $this->course = $userData['course'];
@@ -51,7 +51,7 @@ class UserProfile extends Component
             $this->email = $userData['email'];
             $this->studentId = $userData['studentId'];
             $this->appliedPosition = $userData['appliedPosition'];
-            $this->career = $userData['career'];
+            $this->career = $userData['career'] ?? '';
         }
     }
 
