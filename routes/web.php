@@ -87,7 +87,7 @@ Route::get('/', HomePage::class)->name('home');
 Route::get('/job-detail/{id}', JobDetail::class)->name('job-detail');
 Route::get('/job-list', UserJobList::class)->name('user.job-list');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-profile', UserProfile::class)->name('user-profile.user');
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');
     Route::get('/user-wishlist-job', UserWishlistJob::class)->name('user-wishlist.user');

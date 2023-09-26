@@ -66,10 +66,10 @@ class JobEdit extends Component
     #[Rule('required|date_format:Y-m-d|after_or_equal:today')]
     public string $deadlineForFiling;
 
-    #[Rule('required|integer|min:0|max:1000000000')]
+    #[Rule('required')]
     public string $min;
 
-    #[Rule('required|integer|gte:min|max:1000000000')]
+    #[Rule('required|gte:min')]
     public string $max;
 
     #[Rule('required|string|in:show,hide')]
