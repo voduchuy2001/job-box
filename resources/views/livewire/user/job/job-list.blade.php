@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="accordion-item" wire:ignore.self>
-                                <h2 class="accordion-header" id="flush-headingType">
+                                <h2 class="accordion-header" id="job-type">
                                     <button class="accordion-button bg-transparent shadow-none collapsed"
                                             type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapseType" aria-expanded="true"
@@ -77,7 +77,7 @@
                                     </button>
                                 </h2>
                                 <div id="flush-collapseType" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-headingType">
+                                     aria-labelledby="job-type">
                                     <div class="accordion-body text-body pt-1">
                                         <div class="d-flex flex-column gap-2 filter-check">
                                             <div class="form-check">
