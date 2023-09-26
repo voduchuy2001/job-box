@@ -1,37 +1,228 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <title>{{ __('Resume :user', ['user' => $user->name]) }}</title>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
-
-    <link href="{{ asset('assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/libs/leaflet/leaflet.css') }}" rel="stylesheet" type="text/css" />
-    @vite(['resources/css/app.css'])
+    <script src="{{ asset('assets/js/all.min.js') }}"></script>
+    <link href="{{ asset('assets/css/pillar.css') }}" rel="stylesheet">
+    @vite(['resources/js/app.js'])
 </head>
+
 <body>
 
-    <div class="page-content">
-        <div class="container">
-            <x-admin.card>
-                Xin chao cac ban
-            </x-admin.card>
+<article class="text-center position-relative">
+    <div class="mx-auto text-start">
+        <header class="resume-header">
+            <div class="row">
+                <div class="col">
+                    <div class="row p-3 justify-content-center justify-content-md-between">
+                        <div class="primary-info col-auto">
+                            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{ $user->name }}</h1>
+                            <div class="title mb-3">{{ $user->profile->payload['appliedPosition'] }}</div>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">Email contact: <a class="text-link" href="mailto:{{ $user->profile->payload['email'] }}">{{ __(':email', ['email' => $user->profile->payload['email']]) }}</a></li>
+                                <li class="mb-2">Phone number: <a class="text-link" href="tel:{{ $user->profile->payload['phone'] }}">{{ __(':phone', ['phone' => $user->profile->payload['phone']]) }}</a></li>
+                                @if($user->addresses)
+                                    <li>Address: <a href="javascript:void(0)" class="text-link">{{ __(':district, :province', ['district' => $user->addresses[0]->district->name, 'province' => $user->addresses[0]->province->name]) }}</a></li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="resume-body p-4">
+            @if($user->profile->payload['career'])
+                <section class="resume-section summary-section mb-4">
+                    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Career Summary</h2>
+                    <div class="resume-section-content">
+                        <p class="mb-0">{{ $user->profile->payload['career'] }}</p>
+                    </div>
+                </section>
+            @endif
+
+            <div class="row">
+                <div class="col-lg-9">
+                    @if($user->experiences)
+                        <section class="resume-section experience-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Work Experience</h2>
+                            <div class="resume-section-content">
+                                <div class="resume-timeline position-relative">
+                                    @foreach($user->experiences as $experience)
+                                        <article class="resume-timeline-item position-relative {{ ! $loop->last ? 'pb-4' : '' }}">
+                                            <div class="resume-timeline-item-header mb-2">
+                                                <div class="d-flex flex-column flex-md-row">
+                                                    <h3 class="resume-position-title font-weight-bold mb-1">{{ $experience->position }}</h3>
+                                                    <div class="resume-company-name ms-auto">{{ $experience->company_name }}</div>
+                                                </div>
+                                                <div class="resume-position-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($experience->start_at), 'to' => $experience->end_at ? BaseHelper::dateFormat($experience->end_at) : __('Present')]) }}</div>
+                                            </div>
+                                            <div class="resume-timeline-item-desc">
+                                                <p>{{ $experience->description }}</p>
+                                            </div>
+                                        </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->projects)
+                        <section class="resume-section experience-section mb-5">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Project</h2>
+                            <div class="resume-section-content">
+                                <div class="resume-timeline position-relative">
+                                    @foreach($user->projects as $project)
+                                        <article class="resume-timeline-item position-relative {{ ! $loop->last ? 'pb-4' : '' }}">
+                                            <div class="resume-timeline-item-header mb-2">
+                                                <div class="d-flex flex-column flex-md-row">
+                                                    <h3 class="resume-position-title font-weight-bold mb-1">{{ $project->name }}</h3>
+                                                    <div class="resume-company-name ms-auto">{{ $project->customer }}</div>
+                                                </div>
+                                                <div class="resume-position-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($project->start_at), 'to' => $project->end_at ? BaseHelper::dateFormat($project->end_at) : __('Present')]) }}</div>
+                                            </div>
+                                            <div class="resume-timeline-item-desc">
+                                                <p>{{ __('Number of members: :member', ['member' => $project->number_of_members]) }}</p>
+                                                <p>{{ $project->description }}</p>
+                                                <h4 class="resume-timeline-item-desc-heading font-weight-bold">{{ __('Technologies used: :technology', ['technology' => $project->technology]) }}</h4>
+                                            </div>
+                                        </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->products)
+                        <section class="resume-section experience-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Product</h2>
+                            <div class="resume-section-content">
+                                <div class="resume-timeline position-relative">
+                                    @foreach($user->products as $product)
+                                        <article class="resume-timeline-item position-relative {{ ! $loop->last ? 'pb-4' : '' }}">
+                                            <div class="resume-timeline-item-header mb-2">
+                                                <div class="d-flex flex-column flex-md-row">
+                                                    <h3 class="resume-position-title font-weight-bold mb-1">{{ $product->name }}</h3>
+                                                    <div class="resume-company-name ms-auto">{{ BaseHelper::dateFormat($product->completion_time) }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="resume-timeline-item-desc">
+                                                <p>{{ $product->description }}</p>
+                                                <h4 class="resume-timeline-item-desc-heading font-weight-bold">{{ __('Type: :type', ['type' => $product->type]) }}</h4>
+                                            </div>
+                                        </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+                </div>
+
+                <div class="col-lg-3">
+                    @if($user->skills)
+                        <section class="resume-section skills-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Skills</h2>
+                            <div class="resume-section-content">
+                                <div class="resume-skill-item">
+                                    <ul class="list-unstyled resume-lang-list">
+                                        @foreach($user->skills as $skill)
+                                            <li class="mb-2">
+                                                <span class="resume-lang-name font-weight-bold">{{ $skill->name }}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->educations)
+                        <section class="resume-section education-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
+                            <div class="resume-section-content">
+                                <ul class="list-unstyled">
+                                    @foreach($user->educations as $education)
+                                        <li class="mb-2">
+                                            <div class="resume-degree font-weight-bold">{{ $education->majors }}</div>
+                                            <div class="resume-degree-org">{{ $education->school }}</div>
+                                            <div class="resume-degree-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($education->start_at), 'to' => $education->end_at ? BaseHelper::dateFormat($education->end_at) : __('Present')]) }}</div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->awards)
+                        <section class="resume-section reference-section mb-5">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Awards</h2>
+                            <div class="resume-section-content">
+                                <ul class="list-unstyled">
+                                    @foreach($user->awards as $award)
+                                        <li class="mb-2">
+                                            <div class="resume-degree font-weight-bold">{{ $award->name  }}</div>
+                                            <div class="resume-degree-time">{{ __('Organization: :organization (:issueOn)', ['organization' => $award->organization, 'issueOn' => BaseHelper::dateFormat($award->issued_on)]) }}</div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->certificates)
+                        <section class="resume-section language-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Certificates</h2>
+                            <div class="resume-section-content">
+                                <ul class="list-unstyled resume-lang-list">
+                                    @foreach($user->certificates as $certificate)
+                                        <li class="mb-2">
+                                            <span class="resume-lang-name font-weight-bold">{{ $certificate->name }}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->courses)
+                        <section class="resume-section language-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Course</h2>
+                            <div class="resume-section-content">
+                                <ul class="list-unstyled resume-lang-list">
+                                    @foreach($user->courses as $course)
+                                        <li class="mb-2">
+                                            <span class="resume-lang-name font-weight-bold">{{ $course->name }}</span> <small class="text-muted font-weight-normal">({{ __(':from - :to', ['from' => BaseHelper::dateFormat($course->start_at), 'to' => $course->end_at ? BaseHelper::dateFormat($course->end_at) : __('Present')]) }})</small>
+                                            <div class="resume-degree-org">{{ $course->organization }}</div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->socialActivities)
+                        <section class="resume-section interests-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Social Activity</h2>
+                            <div class="resume-section-content">
+                                <ul class="list-unstyled">
+                                    @foreach($user->socialActivities as $activity)
+                                        <li class="mb-1">{{ $activity->position }} <small>({{ $activity->organization }})</small></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
+</article>
 
-<script data-navigate-once src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-<script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
-<script src="{{ asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/job-lading.init.js') }}"></script>
-<script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>
+

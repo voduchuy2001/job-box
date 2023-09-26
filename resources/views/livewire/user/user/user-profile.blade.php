@@ -17,14 +17,14 @@
                                                         <span class="step-title me-2">
                                                             <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step 1') }}
                                                         </span>
-                                                {{ __('Basic Info') }}
+                                                {{ __('Basic') }}
                                             </span>
 
                                             <span class="nav-link {{ $step === 2 ? 'active' : '' }} {{ $step > 2 ? 'done' : '' }}">
                                                         <span class="step-title me-2">
                                                             <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step 2') }}
                                                         </span>
-                                                {{ __('Contact Info') }}
+                                                {{ __('Info') }}
                                             </span>
 
                                             <span class="nav-link {{ $step === 3 ? 'active' : '' }} {{ $step > 3 ? 'done' : '' }}">
@@ -122,7 +122,7 @@
 
                                                     <div>
                                                         <div class="row g-3">
-                                                            <div class="col-12">
+                                                            <div class="col-6">
                                                                 <x-input
                                                                     class="form-control"
                                                                     id="email"
@@ -133,7 +133,7 @@
                                                                 ></x-input>
                                                             </div>
 
-                                                            <div class="col-12">
+                                                            <div class="col-6">
                                                                 <x-input
                                                                     class="form-control"
                                                                     id="phone"
@@ -142,6 +142,29 @@
                                                                     :label="__('Phone')"
                                                                     :placeholder="__('Enter phone')"
                                                                 ></x-input>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <x-input
+                                                                    class="form-control"
+                                                                    id="appliedPosition"
+                                                                    name="appliedPosition"
+                                                                    model="appliedPosition"
+                                                                    :label="__('Applied Position')"
+                                                                    :placeholder="__('Enter applied position')"
+                                                                ></x-input>
+                                                            </div>
+
+                                                            <div class="col-12">
+                                                                <x-input.textarea
+                                                                    class="form-control"
+                                                                    rows="7"
+                                                                    name="career"
+                                                                    model="career"
+                                                                    id="career"
+                                                                    :label="__('Career')"
+                                                                    :placeholder="__('Enter career')"
+                                                                ></x-input.textarea>
                                                             </div>
                                                         </div>
                                                     </div>

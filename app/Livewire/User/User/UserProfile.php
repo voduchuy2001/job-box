@@ -32,6 +32,10 @@ class UserProfile extends Component
 
     public string $phone;
 
+    public string $career;
+
+    public string $appliedPosition;
+
     public mixed $data;
 
     public function mount(): void
@@ -46,6 +50,8 @@ class UserProfile extends Component
             $this->phone = $userData['phone'];
             $this->email = $userData['email'];
             $this->studentId = $userData['studentId'];
+            $this->appliedPosition = $userData['appliedPosition'];
+            $this->career = $userData['career'];
         }
     }
 
@@ -66,6 +72,8 @@ class UserProfile extends Component
                 $validatedData = $this->validate([
                     'email' => 'required|email',
                     'phone' => 'required|numeric',
+                    'career' => 'nullable|string',
+                    'appliedPosition' => 'required|string|max:50'
                 ]);
                 break;
 

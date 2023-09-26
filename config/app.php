@@ -173,6 +173,7 @@ return [
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -191,6 +192,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'BaseHelper' => \App\Helpers\BaseHelper::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ])->toArray(),
 
 ];

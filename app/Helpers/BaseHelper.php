@@ -9,7 +9,7 @@ class BaseHelper
     public static function dateFormat(string $date): string
     {
         $date = Carbon::parse($date);
-        return $date->format('d') . '-' . $date->format('m') . '-' . $date->format('Y');
+        return $date->format('m') . '-' . $date->format('Y');
     }
 
     public static function dateFormatForHumans(Carbon $date): string

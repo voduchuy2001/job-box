@@ -13,10 +13,10 @@ use App\Models\Project;
 use App\Models\Skill;
 use App\Models\SocialActivity;
 use App\Models\User;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
@@ -95,9 +95,18 @@ class UserResume extends Component
                 'courses'
             ])->first();
 
-        $content = Pdf::loadView('pdf.resume', [
+        $content = PDF::loadView('pdf.resume', [
             'user' => $user,
-        ])->setPaper('a4', 'landscape')->output();
+        ])->setOptions([
+            'disable-smart-shrinking' => true,
+            'page-size' => 'A4',
+            'orientation' => 'portrait',
+            'dpi' => 300,
+            'margin-bottom' => 0,
+            'margin-top' => 0,
+            'margin-left' => 0,
+            'margin-right' => 0,
+        ])->output();
 
         return response()->streamDownload(
             fn () => print($content),
