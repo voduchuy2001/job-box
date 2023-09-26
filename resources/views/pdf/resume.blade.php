@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ __('Resume - :appliedPosition - :user', ['appliedPosition' => $user->profile->payload['appliedPosition'], 'user' => $user->name]) }}</title>
+    <title>{{ __('Resume - :appliedPosition - :user', ['appliedPosition' => $user->profile->payload['appliedPosition'] ?? '', 'user' => $user->name]) }}</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +21,7 @@
                 <div class="col">
                     <div class="row p-3 justify-content-center justify-content-md-between">
                         <div class="primary-info col-auto">
-                            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{ $user->name }}</h1>
+                            <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{ $user->profile->payload['firstName'] ?? '' }} {{ $user->profile->payload['lastName'] ?? '' }}</h1>
                             <div class="title mb-3">{{ $user->profile->payload['appliedPosition'] ?? '' }}</div>
                             <ul class="list-unstyled">
                                 <li class="mb-2">Email contact: <a class="text-link" href="mailto:{{ $user->profile->payload['email'] ?? '' }}">{{ __(':email', ['email' => $user->profile->payload['email'] ?? '']) }}</a></li>
@@ -38,7 +38,7 @@
 
         <div class="resume-body p-4">
             @if($user->profile->payload['career'])
-                <section class="resume-section summary-section mb-4">
+                <section class="resume-section  summary-section mb-4">
                     <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Career Summary</h2>
                     <div class="resume-section-content">
                         <p class="mb-0">{{ $user->profile->payload['career'] ?? '' }}</p>

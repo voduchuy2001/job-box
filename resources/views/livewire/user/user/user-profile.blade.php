@@ -166,6 +166,21 @@
                                                                     :placeholder="__('Enter career')"
                                                                 ></x-input.textarea>
                                                             </div>
+
+                                                            <div class="col-6">
+                                                                <label class="form-label">{{ __('Allow Publishing') }}</label>
+                                                                <select class="form-select" wire:model="allowPublishing">
+                                                                    <option value="">{{ __('Choose An Option') }}</option>
+                                                                    <option value="publish">{{ __('Publish') }}</option>
+                                                                    <option value="unPublish">{{ __('Un Publish') }}</option>
+                                                                </select>
+
+                                                                @error('allowPublishing')
+                                                                <span class="text-danger">
+                                                                    {{ $message }}
+                                                                </span>
+                                                                @enderror
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="d-flex align-items-start gap-3 mt-4">

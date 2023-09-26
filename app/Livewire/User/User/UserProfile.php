@@ -36,6 +36,8 @@ class UserProfile extends Component
 
     public string $appliedPosition;
 
+    public string $allowPublishing;
+
     public mixed $data;
 
     public function mount(): void
@@ -48,10 +50,10 @@ class UserProfile extends Component
             $this->major = $userData['major'];
             $this->course = $userData['course'];
             $this->phone = $userData['phone'];
-            $this->email = $userData['email'];
             $this->studentId = $userData['studentId'];
             $this->appliedPosition = $userData['appliedPosition'];
             $this->career = $userData['career'] ?? '';
+            $this->allowPublishing = $userData['allowPublishing'];
         }
     }
 
@@ -73,7 +75,8 @@ class UserProfile extends Component
                     'email' => 'required|email',
                     'phone' => 'required|numeric',
                     'career' => 'nullable|string',
-                    'appliedPosition' => 'required|string|max:50'
+                    'appliedPosition' => 'required|string|max:50',
+                    'allowPublishing' => 'required|in:publish,unPublish',
                 ]);
                 break;
 
