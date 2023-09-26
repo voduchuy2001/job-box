@@ -13,7 +13,7 @@ return new class () extends Migration {
             $table->morphs('linkable');
             $table->string('type')->nullable();
             $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

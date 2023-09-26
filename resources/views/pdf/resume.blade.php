@@ -71,7 +71,7 @@
                     @endif
 
                     @if($user->projects)
-                        <section class="resume-section experience-section mb-5">
+                        <section class="resume-section experience-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Project</h2>
                             <div class="resume-section-content">
                                 <div class="resume-timeline position-relative">
@@ -157,7 +157,7 @@
                     @endif
 
                     @if($user->awards)
-                        <section class="resume-section reference-section mb-5">
+                        <section class="resume-section reference-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Awards</h2>
                             <div class="resume-section-content">
                                 <ul class="list-unstyled">

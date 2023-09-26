@@ -27,7 +27,7 @@ class UserExperience extends Component
     #[Rule('nullable|date_format:Y-m-d|after_or_equal:startAt')]
     public string $endAt;
 
-    #[Rule('nullable|string')]
+    #[Rule('nullable|string|max:1024')]
     public string $description;
 
     public mixed $toggle = null;

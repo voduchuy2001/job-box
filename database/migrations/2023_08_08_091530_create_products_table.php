@@ -12,7 +12,7 @@ return new class () extends Migration {
             $table->string('name');
             $table->string('type');
             $table->date('completion_time');
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();
         });

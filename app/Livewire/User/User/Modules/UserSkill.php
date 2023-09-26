@@ -18,7 +18,7 @@ class UserSkill extends Component
     #[Rule('required|string|max:255')]
     public string $name;
 
-    #[Rule('nullable|string')]
+    #[Rule('nullable|string|max:1024')]
     public string $description;
 
     public function mount(): void

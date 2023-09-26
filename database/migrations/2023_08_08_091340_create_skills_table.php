@@ -11,7 +11,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->morphs('skillable');
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
