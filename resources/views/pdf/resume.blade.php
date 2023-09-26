@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ __('Resume :user', ['user' => $user->name]) }}</title>
+    <title>{{ __('Resume - :appliedPosition - :user', ['appliedPosition' => $user->profile->payload['appliedPosition'], 'user' => $user->name]) }}</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="{{ asset('assets/js/all.min.js') }}"></script>
-    <link href="{{ asset('assets/css/pillar.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/resume.css') }}" rel="stylesheet">
     @vite(['resources/js/app.js'])
 </head>
 
@@ -124,23 +124,6 @@
                 </div>
 
                 <div class="col-lg-3">
-                    @if($user->skills->count())
-                        <section class="resume-section skills-section mb-4">
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Skills</h2>
-                            <div class="resume-section-content">
-                                <div class="resume-skill-item">
-                                    <ul class="list-unstyled resume-lang-list">
-                                        @foreach($user->skills as $skill)
-                                            <li class="mb-2">
-                                                <span class="resume-lang-name font-weight-bold">{{ $skill->name }}</span>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </section>
-                    @endif
-
                     @if($user->educations->count())
                         <section class="resume-section education-section mb-4">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
@@ -154,6 +137,23 @@
                                         </li>
                                     @endforeach
                                 </ul>
+                            </div>
+                        </section>
+                    @endif
+
+                    @if($user->skills->count())
+                        <section class="resume-section skills-section mb-4">
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Skills</h2>
+                            <div class="resume-section-content">
+                                <div class="resume-skill-item">
+                                    <ul class="list-unstyled resume-lang-list">
+                                        @foreach($user->skills as $skill)
+                                            <li class="mb-2">
+                                                <span class="resume-lang-name font-weight-bold">{{ $skill->name }} {{ $skill->description ? '(' . $skill->description . ')' : '' }}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </section>
                     @endif
@@ -181,7 +181,7 @@
                                 <ul class="list-unstyled resume-lang-list">
                                     @foreach($user->certificates as $certificate)
                                         <li class="mb-2">
-                                            <span class="resume-lang-name font-weight-bold">{{ $certificate->name }}</span>
+                                            <span class="resume-lang-name font-weight-bold">{{ $certificate->name }} {{ '(' . $certificate->organization . ')' }}</span>
                                         </li>
                                     @endforeach
                                 </ul>

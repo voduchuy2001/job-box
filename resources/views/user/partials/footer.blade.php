@@ -69,7 +69,7 @@
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
                                 <li><a href="apps-job-lists.html">Job List</a></li>
-                                <li><a href="apps-job-application.html">application</a></li>
+                                <li><a href="apps-job-application.html">Application</a></li>
                                 <li><a href="apps-job-new.html">New Job</a></li>
                                 <li><a href="apps-job-companies-lists.html">Company List</a></li>
                             </ul>

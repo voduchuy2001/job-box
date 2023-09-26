@@ -113,7 +113,7 @@ class UserResume extends Component
 
         return response()->streamDownload(
             fn () => print($content),
-            "Resume-" . $user->name . ".pdf"
+            "Resume - " . $user->profile->payload['appliedPosition'] . ' - ' . $user->name . ".pdf"
         );
     }
 
