@@ -206,6 +206,7 @@
                                                             class="btn btn-success btn-label right ms-auto">
                                                             <span class="d-flex align-items-center">
                                                                 <i wire:loading
+                                                                   wire:target="saveProfile"
                                                                    wire:loading.attr="disabled"
                                                                    class="mdi mdi-loading mdi-spin align-middle me-2"></i>
                                                                 <span class="flex-grow-1 ms-2">
