@@ -31,14 +31,13 @@ class ResumeController extends Controller
                 'courses'
             ])->findOrFail($id);
 
-            if ($user->id != Auth::id()
-                || ! $user->profile
-                || $user->id != Auth::id() && $user->profile->payload['allowPublishing'] == 'unPublish') {
-                toast(trans('This page seems to be unavailable or the user does not want to share resources'), 'warning');
-                abort(404);
+            if ($user->profile && $user->profile->payload['allowPublishing'] == 'publish'
+                || $user->id == Auth::id()) {
+                return $next($request);
             }
 
-            return $next($request);
+            toast(trans('This page seems to be unavailable or the user does not want to share resources'), 'warning');
+            abort(404);
         });
     }
 
