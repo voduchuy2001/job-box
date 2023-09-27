@@ -107,7 +107,7 @@ class RoleSetting extends Component
             'roleHasPermissions' => 'nullable',
         ]);
 
-        if (! in_array($this->role->name, ['Super Admin', 'Company'])) {
+        if (! in_array($this->role->name, ['Super Admin', 'Company', 'Student'])) {
             $this->role->update([
                 'name' => $validatedData['name'],
             ]);

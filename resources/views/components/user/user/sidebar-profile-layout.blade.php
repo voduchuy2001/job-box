@@ -1,25 +1,33 @@
 <div class="card" wire:ignore>
     <div class="card-body">
         <div class="list-group list-group-fill-primary">
-            <x-link
-                :to="route('user-profile.user')"
-                class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-profile.user' ? 'active' : '' }}">
-                <i class="ri-user-3-line align-middle me-2"></i>{{ __('User Profile') }}</x-link>
-
-            @if(Auth::user()->profile)
+            @can('student-profile-create')
                 <x-link
-                    :to="route('user-resume.user')"
-                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-resume.user' ? 'active' : '' }}">
-                    <i class="ri-todo-line align-middle me-2"></i>{{ __('Resume') }}</x-link>
-            @endif
+                    :to="route('student-profile.user')"
+                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-profile.user' ? 'active' : '' }}">
+                    <i class="ri-user-3-line align-middle me-2"></i>{{ __('User Profile') }}</x-link>
+            @endcan
 
-            <x-link
-                href="#"
-                class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Job Applied') }}</x-link>
+            @can('student-resume-create')
+                @if(Auth::user()->profile)
+                    <x-link
+                        :to="route('student-resume.user')"
+                        class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-resume.user' ? 'active' : '' }}">
+                        <i class="ri-todo-line align-middle me-2"></i>{{ __('Resume') }}</x-link>
+                @endif
+            @endcan
 
-            <x-link
-                :to="route('user-wishlist.user')"
-                class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-wishlist.user' ? 'active' : '' }}"><i class="ri-heart-2-line align-middle me-2"></i>{{ __('Wishlist Jobs') }}</x-link>
+            @can('student-job-apply')
+                <x-link
+                    href="#"
+                    class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Job Applied') }}</x-link>
+            @endcan
+
+            @can('student-job-wishlist')
+                <x-link
+                    :to="route('student-wishlist.user')"
+                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-wishlist.user' ? 'active' : '' }}"><i class="ri-heart-2-line align-middle me-2"></i>{{ __('Wishlist Jobs') }}</x-link>
+            @endcan
 
             <x-link
                 :to="route('user-change-password.user')"

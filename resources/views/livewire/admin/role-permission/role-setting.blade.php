@@ -24,24 +24,12 @@
 
     <x-admin.card>
         <x-admin.table
-            :labels="[__('Id'), __('Name'), __('Permission')]"
+            :labels="[__('Id'), __('Name')]"
         >
             @foreach($roles as $key => $role)
                 <tr>
                     <td class="fw-medium">{{ $key + 1 }}</td>
                     <td>{{ $role->name }}</td>
-                    <td>
-                        <div class="text-break">
-                            @foreach($role->permissions as $permission)
-                                <div class="d-flex mb-1">
-                                    <span
-                                        class="badge badge-soft-success">
-                                    {{ $permission->name }}
-                                </span>
-                                </div>
-                            @endforeach
-                        </div>
-                    </td>
                     <td>
                         <div class="hstack gap-3 fs-15">
                             @can('role-edit')

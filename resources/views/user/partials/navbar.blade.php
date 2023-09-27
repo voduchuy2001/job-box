@@ -32,8 +32,8 @@
                     @auth
                         <li class="nav-item">
                             <x-link
-                                :to="route('user-profile.user')"
-                                class="nav-link {{ in_array(request()->route()->getName(), ['user-profile.user', 'user-resume.user', 'user-wishlist.user', 'user-change-password.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
+                                :to="route('student-profile.user')"
+                                class="nav-link {{ in_array(request()->route()->getName(), ['student-profile.user', 'student-resume.user', 'student-wishlist.user', 'user-change-password.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
                         </li>
                     @endauth
                 </ul>
@@ -49,7 +49,7 @@
 
                     @auth
                         <x-link
-                            :to="route('user-profile.user')"
+                            :to="route('student-profile.user')"
                             class="btn btn-soft-primary">
                             <i class="ri-user-3-line align-bottom me-1"></i>
                             {{ __('Hello :name', ['name' => Auth::user()->name]) }}</x-link>

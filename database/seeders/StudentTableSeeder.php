@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
-class CompanyTableSeeder extends Seeder
+class StudentTableSeeder extends Seeder
 {
     public function run(): void
     {
         $user = User::create([
-            'name' => 'Cao Thi Thuy Duong',
-            'email' => 'company@gmail.com',
+            'name' => 'Tran Minh Tri',
+            'email' => 'student@gmail.com',
             'password' => Hash::make('admin123'),
             'status' => 'Is Active',
             'is_root' => 0,
@@ -24,20 +24,19 @@ class CompanyTableSeeder extends Seeder
         ]);
 
         $role = Role::create([
-            'name' => 'Company',
+            'name' => 'Student',
             'guard_name' => 'web',
         ]);
 
         $permissions = [
-            'company-job-list',
-            'company-job-create',
-            'company-job-edit',
-            'company-job-delete',
-            'company-job-apply',
+            'student-profile-create',
+            'student-resume-create',
+            'student-job-wishlist',
+            'student-job-applied',
         ];
 
         $role->syncPermissions($permissions);
 
-        $user->assignRole('Company');
+        $user->assignRole('Student');
     }
 }
