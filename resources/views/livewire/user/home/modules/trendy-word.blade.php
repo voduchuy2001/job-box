@@ -5,7 +5,7 @@
             @foreach($trendingWords as $word)
                 <li class="list-inline-item">
                     <x-link
-                        :to="route('user.job-list')">
+                        :to="route('job-list.user')">
                         {{ $word->name }} @if(! $loop->last) , @endif</x-link>
                 </li>
             @endforeach

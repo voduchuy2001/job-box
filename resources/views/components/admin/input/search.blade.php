@@ -28,8 +28,4 @@
             </div>
         </div>
     </div>
-
-    <div class="text-center my-2" wire:loading wire:target="{{ $model }}">
-        <span class="text-primary"><i class="mdi mdi-loading mdi-spin fs-20 align-middle me-2"></i>{{ __('Loading...') }}</span>
-    </div>
 </div>

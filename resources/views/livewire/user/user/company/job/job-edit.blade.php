@@ -122,7 +122,7 @@
                                     ></x-admin.datepicker>
                                 </div>
 
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <x-admin.input
                                         :label="__('Salary Min')"
                                         class="form-control"
@@ -135,7 +135,7 @@
                                     ></x-admin.input>
                                 </div>
 
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <x-admin.input
                                         :label="__('Salary Max')"
                                         class="form-control"
@@ -146,21 +146,6 @@
                                         x-mask:dynamic="$money($input, ',')"
                                         x-data
                                     ></x-admin.input>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <label class="form-label">{{ __('Status') }}</label>
-                                    <select class="form-select mb-3" wire:model="status">
-                                        <option value="">{{ __('Choose An Option') }}</option>
-                                        <option value="show">{{ __('Show') }}</option>
-                                        <option value="hide">{{ __('Hide') }}</option>
-                                    </select>
-
-                                    @error('status')
-                                    <span class="text-danger">
-                                        {{ $message }}
-                                    </span>
-                                    @enderror
                                 </div>
 
                                 <div class="col-lg-4">

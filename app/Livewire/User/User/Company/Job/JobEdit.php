@@ -69,9 +69,6 @@ class JobEdit extends Component
     #[Rule('required|gte:min')]
     public string $max;
 
-    #[Rule('required|string|in:show,hide')]
-    public string $status;
-
     public mixed $addresses = [];
 
     public mixed $job;
@@ -98,7 +95,6 @@ class JobEdit extends Component
         $this->vacancy = $job->vacancy;
         $this->experience = $job->experience;
         $this->deadlineForFiling = $job->deadline_for_filing;
-        $this->status = $job->status;
         $this->min = $job->min_salary;
         $this->max = $job->max_salary;
         $this->addresses = $job->addresses;

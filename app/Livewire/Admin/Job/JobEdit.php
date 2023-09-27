@@ -10,7 +10,6 @@ use App\Models\District;
 use App\Models\Job;
 use App\Models\Province;
 use App\Models\Ward;
-use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -21,7 +20,6 @@ use Livewire\Component;
 class JobEdit extends Component
 {
     use LivewireAlert;
-    use AuthorizesRoleOrPermission;
 
     #[Rule('nullable|required_with:districtId,wardId')]
     public string|null $provinceId;
@@ -100,7 +98,6 @@ class JobEdit extends Component
 
     public function updateJob(): void
     {
-        $this->authorizeRoleOrPermission('job-edit');
         $validatedData = $this->validate();
 
         $jobData = JobDataHelper::updateOrCreateJobData($validatedData);

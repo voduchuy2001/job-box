@@ -46,6 +46,20 @@ class CompanyProfile extends Component
 
     public mixed $data;
 
+    public function mount(): void
+    {
+        if ($user = Auth::user()->profile) {
+            $userData = $user->payload;
+            $this->name = $userData['name'];
+            $this->email = $userData['email'] ?? '';
+            $this->phone = $userData['phone'];
+            $this->founded = $userData['founded'];
+            $this->description = $userData['description'];
+            $this->headquarters = $userData['headquarters'];
+            $this->numberOfEmployee = $userData['numberOfEmployee'];
+        }
+    }
+
     public function validateStep(int $step): bool
     {
         switch ($step) {

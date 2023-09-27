@@ -66,7 +66,7 @@
                     </li>
                 @endcan
 
-                @can('category-list')
+                @can('trending-word-list')
                     <li class="nav-item">
                         <x-link
                             class="nav-link menu-link {{ request()->route()->getName() == 'trending-word.index' ? 'active' : '' }}"

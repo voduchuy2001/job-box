@@ -200,7 +200,9 @@
                             <h5 class="mb-0">{{ __('Related Jobs') }}</h5>
                         </div>
                         <div class="flex-shrink-0">
-                            <a href="#!" class="btn btn-ghost-success">{{ __('View All') }}<i class="ri-arrow-right-line ms-1 align-bottom"></i></a>
+                            <x-link
+                                :to="route('job-list.user')"
+                                class="btn btn-ghost-success">{{ __('View All') }}<i class="ri-arrow-right-line ms-1 align-bottom"></i></x-link>
                         </div>
                     </div>
                 </div>

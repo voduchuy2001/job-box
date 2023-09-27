@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <x-link
-                            :to="route('user.job-list')"
+                            :to="route('job-list.user')"
                             class="stretched-link">
                             <h5 class="fs-17 pt-1">{{ $category->name }}</h5>
                         </x-link>

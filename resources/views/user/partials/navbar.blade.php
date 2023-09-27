@@ -17,8 +17,8 @@
                     </li>
                     <li class="nav-item">
                         <x-link
-                            :to="route('user.job-list')"
-                            class="nav-link {{ request()->route()->getName() == 'user.job-list' ? 'active' : '' }}">{{ __('Jobs') }}</x-link>
+                            :to="route('job-list.user')"
+                            class="nav-link {{ in_array(request()->route()->getName(), ['job-list.user', 'job-detail']) ? 'active' : '' }}">{{ __('Jobs') }}</x-link>
                     </li>
 
                     @auth

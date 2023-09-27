@@ -75,23 +75,23 @@ Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback'])
 Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('language.__invoke');
 
 /* Admin */
-Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/', DashBoard::class)->name('dashboard')->middleware('permission:dashboard');
     Route::get('/role-permission', RoleSetting::class)->name('role-permission')->middleware('permission:role-permission');
     Route::get('/user-profile/{id}', AdminUserProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');
     Route::get('/user', UserList::class)->name('user.index')->middleware('permission:user-list');
     Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');
     Route::get('/job', JobList::class)->name('job.index')->middleware('permission:job-list');
-    Route::get('/job-edit/{id}', JobEdit::class)->name('job.edit')->middleware('permission:job-list');
+    Route::get('/job-edit/{id}', JobEdit::class)->name('job.edit')->middleware('permission:job-edit');
     Route::get('/job-create', JobCreate::class)->name('job.create')->middleware('permission:job-create');
     Route::get('/job-delete', JobDelete::class)->name('job.delete')->middleware('permission:job-delete');
     Route::get('/category', CategoryList::class)->name('category.index')->middleware('permission:category-list');
-    Route::get('/trending-word', TrendingWordList::class)->name('trending-word.index')->middleware('permission:category-list');
+    Route::get('/trending-word', TrendingWordList::class)->name('trending-word.index')->middleware('permission:trending-word-list');
 });
 
 Route::get('/', HomePage::class)->name('home');
 Route::get('/job-detail/{id}', JobDetail::class)->name('job-detail');
-Route::get('/job-list', UserJobList::class)->name('user.job-list');
+Route::get('/job-list', UserJobList::class)->name('job-list.user');
 Route::get('/user-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
