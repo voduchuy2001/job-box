@@ -24,7 +24,7 @@
                     @if(! Auth::check())
                         <li class="nav-item">
                             <a
-                                href="{{ route('user-profile.user') }}"
+                                href="{{ route('student-profile.user') }}"
                                 class="nav-link">{{ __('Resume') }}</a>
                         </li>
                     @endif
