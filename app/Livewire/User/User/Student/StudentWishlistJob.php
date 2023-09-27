@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\User\User;
+namespace App\Livewire\User\User\Student;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +10,7 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class UserWishlistJob extends Component
+class StudentWishlistJob extends Component
 {
     use WithPagination;
 
@@ -27,7 +27,7 @@ class UserWishlistJob extends Component
             ->with('user')
             ->paginate($this->itemPerPage);
 
-        return view('livewire.user.user.user-wishlist-job', [
+        return view('livewire.user.user.student.student-wishlist-job', [
             'jobs' => $jobs
         ]);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\User\User;
+namespace App\Livewire\User\User\Student;
 
 use App\Models\Address;
 use App\Models\Award;
@@ -13,10 +13,10 @@ use App\Models\Project;
 use App\Models\Skill;
 use App\Models\SocialActivity;
 use App\Models\User;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
@@ -24,7 +24,7 @@ use Livewire\Component;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 #[Title('Trang CV')]
-class UserResume extends Component
+class StudentResume extends Component
 {
     use LivewireAlert;
 
@@ -69,7 +69,7 @@ class UserResume extends Component
     public function mount(): void
     {
         if (! Auth::user()->profile) {
-            $this->redirect(UserProfile::class, navigate: true);
+            $this->redirect(StudentProfile::class, navigate: true);
         }
 
         $user = Auth::user();
@@ -237,7 +237,7 @@ class UserResume extends Component
             ->limit($this->limits['socialActivities'])
             ->get();
 
-        return view('livewire.user.user.user-resume', [
+        return view('livewire.user.user.student.student-resume', [
             'user' => $user,
             'addresses' => $addresses,
             'educations' => $educations,

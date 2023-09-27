@@ -18,15 +18,15 @@ use App\Livewire\Admin\Job\JobList;
 use App\Livewire\Admin\RolePermission\RoleSetting;
 use App\Livewire\Admin\TrendingWord\TrendingWordList;
 use App\Livewire\Admin\User\ChangePassword;
-use App\Livewire\Admin\User\UserProfile as AdminUserProfile;
 use App\Livewire\Admin\User\UserList;
+use App\Livewire\Admin\User\UserProfile as AdminUserProfile;
 use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobList as UserJobList;
+use App\Livewire\User\User\Student\StudentProfile;
+use App\Livewire\User\User\Student\StudentResume;
+use App\Livewire\User\User\Student\StudentWishlistJob;
 use App\Livewire\User\User\UserChangePassword;
-use App\Livewire\User\User\UserProfile;
-use App\Livewire\User\User\UserResume;
-use App\Livewire\User\User\UserWishlistJob;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,7 +92,7 @@ Route::get('/user-resume-preview/{id}', [ResumeController::class, '__invoke'])->
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');
-    Route::get('/student-profile', UserProfile::class)->name('student-profile.user')->middleware('permission:student-profile-create');
-    Route::get('/student-wishlist-job', UserWishlistJob::class)->name('student-wishlist.user')->middleware('permission:student-job-wishlist-create');
-    Route::get('/student-resume', UserResume::class)->name('student-resume.user')->middleware('permission:student-resume-create');
+    Route::get('/student-profile', StudentProfile::class)->name('student-profile.user')->middleware('permission:student-profile-create');
+    Route::get('/student-wishlist-job', StudentWishlistJob::class)->name('student-wishlist.user')->middleware('permission:student-job-wishlist');
+    Route::get('/student-resume', StudentResume::class)->name('student-resume.user')->middleware('permission:student-resume-create');
 });

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Livewire\User\User\Modules;
+namespace App\Livewire\User\User\Student\Modules;
 
-use App\Livewire\User\User\UserResume;
+use App\Livewire\User\User\Student\StudentResume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class UserSkill extends Component
+class StudentSkill extends Component
 {
     use LivewireAlert;
 
@@ -24,7 +24,7 @@ class UserSkill extends Component
     public function mount(): void
     {
         if (! Auth::check()) {
-            $this->redirect(UserResume::class, navigate: true);
+            $this->redirect(StudentResume::class, navigate: true);
         }
     }
 
@@ -46,6 +46,6 @@ class UserSkill extends Component
 
     public function render(): View
     {
-        return view('livewire.user.user.modules.user-skill');
+        return view('livewire.user.user.student.modules.student-skill');
     }
 }

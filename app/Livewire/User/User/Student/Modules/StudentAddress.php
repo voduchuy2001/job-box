@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Livewire\User\User\Modules;
+namespace App\Livewire\User\User\Student\Modules;
 
-use App\Livewire\User\User\UserResume;
+use App\Livewire\User\User\Student\StudentResume;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Ward;
@@ -12,7 +12,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class UserAddress extends Component
+class StudentAddress extends Component
 {
     use LivewireAlert;
 
@@ -35,7 +35,7 @@ class UserAddress extends Component
     public function mount(): void
     {
         if (! Auth::check()) {
-            $this->redirect(UserResume::class, navigate: true);
+            $this->redirect(StudentResume::class, navigate: true);
         }
     }
 
@@ -69,7 +69,7 @@ class UserAddress extends Component
             $this->wards = Ward::where('district_id', $this->districtId)->get();
         }
 
-        return view('livewire.user.user.modules.user-address', [
+        return view('livewire.user.user.student.modules.student-address', [
             'provinces' => $provinces,
         ]);
     }

@@ -1,49 +1,56 @@
 <?php
 
-namespace App\Livewire\User\User\Modules;
+namespace App\Livewire\User\User\Student\Modules;
 
-use App\Livewire\User\User\UserResume;
+use App\Livewire\User\User\Student\StudentResume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class UserProduct extends Component
+class StudentCertificate extends Component
 {
     use LivewireAlert;
 
     public mixed $user;
 
+    public mixed $toggle = null;
+
     #[Rule('required|string|max:255')]
     public string $name;
 
     #[Rule('required|string|max:255')]
-    public string $type;
+    public string $organization;
 
     #[Rule('required|date_format:Y-m-d|before_or_equal:today')]
-    public string $completionTime;
+    public string $issuedOn;
 
-    #[Rule('required|string|max:1024')]
-    public string $description;
+    #[Rule('nullable|date_format:Y-m-d|after_or_equal:issuedOn')]
+    public string $expiresOn;
+
+    public function updatedToggle(): void
+    {
+        $this->reset('expiresOn');
+    }
 
     public function mount(): void
     {
         if (! Auth::check()) {
-            $this->redirect(UserResume::class, navigate: true);
+            $this->redirect(StudentResume::class, navigate: true);
         }
     }
 
-    public function saveProduct(): void
+    public function saveCertificate(): void
     {
         $validatedData = $this->validate();
 
         $user = Auth::user();
-        $user->products()->create([
+        $user->certificates()->create([
             'name' => $validatedData['name'],
-            'type' => $validatedData['type'],
-            'completion_time' => $validatedData['completionTime'],
-            'description' => $validatedData['description'],
+            'organization' => $validatedData['organization'],
+            'issued_on' => $validatedData['issuedOn'],
+            'expires_on' => $validatedData['expiresOn'],
         ]);
 
         $this->alert('success', trans('Create success!'));
@@ -54,6 +61,6 @@ class UserProduct extends Component
 
     public function render(): View
     {
-        return view('livewire.user.user.modules.user-product');
+        return view('livewire.user.user.student.modules.student-certificate');
     }
 }

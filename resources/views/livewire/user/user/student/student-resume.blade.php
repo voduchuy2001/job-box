@@ -95,7 +95,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Address') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-address></livewire:user.user.modules.user-address>
+                                    <livewire:user.user.student.modules.student-address></livewire:user.user.student.modules.student-address>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -155,7 +155,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Experience') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-experience></livewire:user.user.modules.user-experience>
+                                    <livewire:user.user.student.modules.student-experience></livewire:user.user.student.modules.student-experience>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -215,7 +215,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Education') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-education></livewire:user.user.modules.user-education>
+                                    <livewire:user.user.student.modules.student-education></livewire:user.user.student.modules.student-education>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -277,7 +277,7 @@
                                 type="modal-md modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Skill') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-skill></livewire:user.user.modules.user-skill>
+                                    <livewire:user.user.student.modules.student-skill></livewire:user.user.student.modules.student-skill>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -337,7 +337,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Certificate') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-certificate></livewire:user.user.modules.user-certificate>
+                                    <livewire:user.user.student.modules.student-certificate></livewire:user.user.student.modules.student-certificate>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -397,7 +397,7 @@
                                 type="modal-md modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Award') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-award></livewire:user.user.modules.user-award>
+                                    <livewire:user.user.student.modules.student-award></livewire:user.user.student.modules.student-award>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -457,7 +457,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Course') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-course></livewire:user.user.modules.user-course>
+                                    <livewire:user.user.student.modules.student-course></livewire:user.user.student.modules.student-course>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -517,7 +517,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Project') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-project></livewire:user.user.modules.user-project>
+                                    <livewire:user.user.student.modules.student-project></livewire:user.user.student.modules.student-project>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -577,7 +577,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Product') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-product></livewire:user.user.modules.user-product>
+                                    <livewire:user.user.student.modules.student-product></livewire:user.user.student.modules.student-product>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>
@@ -637,7 +637,7 @@
                                 type="modal-lg modal-dialog-centered">
                                 <x-admin.modal.header>{{ __('New Social Activity') }}</x-admin.modal.header>
                                 <x-admin.modal.body>
-                                    <livewire:user.user.modules.user-social-activity></livewire:user.user.modules.user-social-activity>
+                                    <livewire:user.user.student.modules.student-social-activity></livewire:user.user.student.modules.student-social-activity>
                                 </x-admin.modal.body>
                             </x-admin.modal>
                         </div>

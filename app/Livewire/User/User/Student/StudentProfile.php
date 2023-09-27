@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\User\User;
+namespace App\Livewire\User\User\Student;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +12,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Title('Trang Cá Nhân')]
-class UserProfile extends Component
+class StudentProfile extends Component
 {
     use LivewireAlert;
 
@@ -114,13 +114,13 @@ class UserProfile extends Component
         ]);
 
         $this->alert('success', 'Create Success');
-        $this->redirect(UserResume::class, navigate: true);
+        $this->redirect(StudentResume::class, navigate: true);
     }
 
     #[On('refresh')]
     #[Layout('layouts.user')]
     public function render(): View
     {
-        return view('livewire.user.user.user-profile');
+        return view('livewire.user.user.student.student-profile');
     }
 }
