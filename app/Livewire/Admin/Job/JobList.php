@@ -50,8 +50,8 @@ class JobList extends Component
 
         $searchTerm = '%' . $this->searchTerm . '%';
         $jobs = Job::where(function ($query) use ($searchTerm) {
-            $query->where('name', 'like', '%' . $searchTerm . '%')
-                ->orWhere('description', 'like', '%' . $searchTerm . '%');
+            $query->where('name', 'like', $searchTerm)
+                ->orWhere('description', 'like', $searchTerm);
         })
             ->when($this->filterType == 'show', fn ($query) => $query->where('status', 'show'))
             ->when($this->filterType == 'hide', fn ($query) => $query->where('status', 'hide'))

@@ -13,7 +13,7 @@
             <div>
                 <x-button
                     type="button"
-                    onclick="showModal()"
+                    onclick="showModal('setting-user')"
                     class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add User') }}</x-button>
             </div>
         </div>

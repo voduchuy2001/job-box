@@ -30,6 +30,7 @@ class PermissionTableSeeder extends Seeder
             'job-edit',
             'job-delete',
             'job-reverse',
+            'company-profile-create',
             'company-job-list',
             'company-job-create',
             'company-job-edit',

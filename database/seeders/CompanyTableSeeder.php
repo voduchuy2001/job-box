@@ -29,6 +29,7 @@ class CompanyTableSeeder extends Seeder
         ]);
 
         $permissions = [
+            'company-profile-create',
             'company-job-list',
             'company-job-create',
             'company-job-edit',

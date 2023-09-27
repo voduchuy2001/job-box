@@ -17,7 +17,7 @@ class JobDataHelper
             'vacancy' => $validatedData['vacancy'],
             'experience' => $validatedData['experience'],
             'deadline_for_filing' => $validatedData['deadlineForFiling'],
-            'status' => $validatedData['status'],
+            'status' => $validatedData['status'] ?? 'hide',
             'user_id' => Auth::id(),
             'min_salary' => (int) str_replace('.', '', $validatedData['min']),
             'max_salary' => (int) str_replace('.', '', $validatedData['min']),

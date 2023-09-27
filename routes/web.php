@@ -23,6 +23,10 @@ use App\Livewire\Admin\User\UserProfile as AdminUserProfile;
 use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobList as UserJobList;
+use App\Livewire\User\User\Company\CompanyProfile;
+use App\Livewire\User\User\Company\Job\JobCreate as CompanyJobCreate;
+use App\Livewire\User\User\Company\Job\JobEdit as CompanyJobEdit;
+use App\Livewire\User\User\Company\Job\JobList as CompanyJobList;
 use App\Livewire\User\User\Student\StudentProfile;
 use App\Livewire\User\User\Student\StudentResume;
 use App\Livewire\User\User\Student\StudentWishlistJob;
@@ -92,7 +96,13 @@ Route::get('/user-resume-preview/{id}', [ResumeController::class, '__invoke'])->
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');
+
     Route::get('/student-profile', StudentProfile::class)->name('student-profile.user')->middleware('permission:student-profile-create');
     Route::get('/student-wishlist-job', StudentWishlistJob::class)->name('student-wishlist.user')->middleware('permission:student-job-wishlist');
     Route::get('/student-resume', StudentResume::class)->name('student-resume.user')->middleware('permission:student-resume-create');
+
+    Route::get('/company-profile', CompanyProfile::class)->name('company-profile.user')->middleware('permission:company-profile-create');
+    Route::get('/company-job-create', CompanyJobCreate::class)->name('company-job-create.user')->middleware('permission:company-job-create');
+    Route::get('/company-job-list', CompanyJobList::class)->name('company-job-list.user')->middleware('permission:company-job-list');
+    Route::get('/company-job-edit/{id}', CompanyJobEdit::class)->name('company-job-edit.user')->middleware('permission:company-job-edit');
 });
