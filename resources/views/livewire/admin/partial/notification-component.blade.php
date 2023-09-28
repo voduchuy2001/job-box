@@ -40,7 +40,9 @@
                         @endforeach
 
                         <div class="my-3 text-center view-all">
-                            <button type="button" class="btn btn-soft-success waves-effect waves-light"> {{ trans('View More') }} <i class="ri-arrow-right-line align-middle"></i></button>
+                            <x-link
+                                :to="route('notification.index')"
+                                class="btn btn-soft-success waves-effect waves-light"> {{ trans('View More') }} <i class="ri-arrow-right-line align-middle"></i></x-link>
                         </div>
                     </div>
 

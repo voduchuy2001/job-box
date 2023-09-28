@@ -66,6 +66,17 @@
                     </li>
                 @endcan
 
+                @can('category-list')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link {{ request()->route()->getName() == 'notification.index' ? 'active' : '' }}"
+                            to="{{ route('notification.index') }}"
+                        >
+                            <i class="ri-notification-2-line"></i><span>{{ __('Notifications') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
+
                 @can('trending-word-list')
                     <li class="nav-item">
                         <x-link
