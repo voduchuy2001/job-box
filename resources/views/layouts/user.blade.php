@@ -17,7 +17,7 @@
     <script data-navigate-track src="{{ asset('assets/libs/leaflet/leaflet.js') }}"></script>
     <script data-navigate-track src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script data-navigate-track src="{{ asset('assets/libs/flatpickr/flatpickr.js') }}"></script>
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
     @livewireStyles
 </head>

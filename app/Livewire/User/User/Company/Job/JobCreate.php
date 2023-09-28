@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\User\Company\Job;
 
+use App\Events\CompanyJobCreate;
 use App\Helpers\JobDataHelper;
 use App\Models\Category;
 use App\Models\District;
@@ -93,8 +94,8 @@ class JobCreate extends Component
             ]);
         }
 
+        broadcast(new CompanyJobCreate(trans('A new job has been added: (:name)!', ['name' => $job->name])));
         $this->alert('success', trans('Create success'));
-        $this->reset();
         $this->dispatch('refresh');
         $this->redirect(JobList::class, navigate: true);
     }

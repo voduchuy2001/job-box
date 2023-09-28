@@ -123,6 +123,7 @@ class JobEdit extends Component
         Address::findOrFail($id)->delete();
         $this->addresses = $this->job->addresses()->get();
         $this->alert('success', trans('Delete success'));
+        $this->dispatch('refresh');
     }
 
     #[On('refresh')]

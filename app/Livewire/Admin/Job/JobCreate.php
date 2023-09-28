@@ -101,7 +101,6 @@ class JobCreate extends Component
         }
 
         $this->alert('success', trans('Create success'));
-        $this->reset();
         $this->dispatch('refresh');
         $this->redirect(JobList::class, navigate: true);
     }

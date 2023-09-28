@@ -11,5 +11,9 @@
         "laravel-vite-plugin": "^0.7.5",
         "sass": "^1.56.1",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@ably/laravel-echo": "^1.0.3",
+        "ably": "^1.2.45"
     }
 }

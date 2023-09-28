@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
 use App\Http\Controllers\User\ResumeController;
 use App\Livewire\Admin\Category\CategoryList;
-use App\Livewire\Admin\Home\DashBoard;
+use App\Livewire\Admin\Home\Dashboard;
 use App\Livewire\Admin\Job\JobCreate;
 use App\Livewire\Admin\Job\JobDelete;
 use App\Livewire\Admin\Job\JobEdit;
@@ -76,7 +76,7 @@ Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('lang
 
 /* Admin */
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
-    Route::get('/', DashBoard::class)->name('dashboard')->middleware('permission:dashboard');
+    Route::get('/', Dashboard::class)->name('dashboard')->middleware('permission:dashboard');
     Route::get('/role-permission', RoleSetting::class)->name('role-permission')->middleware('permission:role-permission');
     Route::get('/user-profile/{id}', AdminUserProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');
     Route::get('/user', UserList::class)->name('user.index')->middleware('permission:user-list');

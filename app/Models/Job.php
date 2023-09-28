@@ -56,6 +56,11 @@ class Job extends Model
             ->withTimestamps();
     }
 
+    public function notifications(): MorphMany
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
+
     protected static function boot(): void
     {
         parent::boot();

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\User\Company\Job;
 
+use App\Events\CompanyJobEdit;
 use App\Helpers\JobDataHelper;
 use App\Models\Address;
 use App\Models\Category;
@@ -118,7 +119,9 @@ class JobEdit extends Component
             ]);
         }
 
+        broadcast(new CompanyJobEdit(trans('A job has been updated: :name!', ['name' => $this->job->name])));
         $this->alert('success', trans('Update success'));
+        $this->dispatch('refresh');
         $this->redirect(JobList::class, navigate: true);
     }
 
