@@ -24,7 +24,7 @@
                     @auth
                         <li class="nav-item">
                             <x-link
-                                :to="route('student-profile.user')"
+                                :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
                                 class="nav-link {{ in_array(request()->route()->getName(), ['student-profile.user', 'student-resume.user', 'student-wishlist.user', 'user-change-password.user', 'company-profile.user', 'company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
                         </li>
                     @endauth

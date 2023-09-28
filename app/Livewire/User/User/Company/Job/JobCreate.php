@@ -4,6 +4,7 @@ namespace App\Livewire\User\User\Company\Job;
 
 use App\Events\CompanyJobCreateEvent;
 use App\Helpers\JobDataHelper;
+use App\Livewire\User\User\Company\CompanyProfile;
 use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
@@ -73,6 +74,10 @@ class JobCreate extends Component
 
     public function mount(): void
     {
+        if (! Auth::user()->profile) {
+            $this->redirect(CompanyProfile::class, navigate: true);
+        }
+
         if (! Category::count()) {
             $this->alert('warning', trans('Please wait for the admin to add more categories'));
             $this->redirect(JobList::class, navigate: true);

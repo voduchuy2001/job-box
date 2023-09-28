@@ -68,7 +68,7 @@
                                                                     id="email"
                                                                     name="email"
                                                                     model="email"
-                                                                    :label="__('email')"
+                                                                    :label="__('Email')"
                                                                     :placeholder="__('Enter email')"
                                                                 ></x-input>
                                                             </div>
@@ -91,7 +91,7 @@
                                                                     id="founded"
                                                                     name="founded"
                                                                     model="founded"
-                                                                    :label="__('Founded')"
+                                                                    :label="__('Founded In')"
                                                                     :placeholder="__('Enter founded')"
                                                                 ></x-input>
                                                             </div>
@@ -123,8 +123,8 @@
                                                                     id="headquarters"
                                                                     name="headquarters"
                                                                     model="headquarters"
-                                                                    :label="__('Head Quarters')"
-                                                                    :placeholder="__('Enter Head Quarters')"
+                                                                    :label="__('Headquarters')"
+                                                                    :placeholder="__('Enter headquarters')"
                                                                 ></x-input>
                                                             </div>
 

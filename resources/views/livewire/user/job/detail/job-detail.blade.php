@@ -139,51 +139,7 @@
                                 </a>
                             </div>
 
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <tbody>
-                                    <tr>
-                                        <td class="fw-medium">Company Size</td>
-                                        <td>50+</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-medium">Industry Type</td>
-                                        <td>Software</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-medium">Founded in</td>
-                                        <td>2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-medium">Phone</td>
-                                        <td>+(234) 12345 67890</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-medium">Email</td>
-                                        <td>themesbrand@gmail.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-medium">Social media</td>
-                                        <td>
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item">
-                                                    <a href="#!"><i class="ri-whatsapp-line"></i></a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#!"><i class="ri-facebook-line"></i></a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#!"><i class="ri-twitter-line"></i></a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#!"><i class="ri-youtube-line"></i></a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <livewire:user.job.detail.job-company :jobId="$job->id"></livewire:user.job.detail.job-company>
                         </div>
                     </div>
 

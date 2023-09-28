@@ -9,10 +9,13 @@
             @endcan
 
             @can('company-job-list')
-                <x-link
-                    :to="route('company-job-list.user')"
-                    class="list-group-item list-group-item-action {{ in_array(request()->route()->getName(), ['company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">
-                    <i class="ri-file-2-line align-middle me-2"></i>{{ __('List Of Jobs') }}</x-link>
+                @if(Auth::user()->profile)
+                    <x-link
+                        :to="route('company-job-list.user')"
+                        class="list-group-item list-group-item-action {{ in_array(request()->route()->getName(), ['company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">
+                        <i class="ri-file-2-line align-middle me-2"></i>{{ __('List Of Jobs') }}</x-link>
+
+                @endif
             @endcan
 
             @can('student-profile-create')

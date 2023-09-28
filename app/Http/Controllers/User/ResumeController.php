@@ -37,7 +37,7 @@ class ResumeController extends Controller
             }
 
             toast(trans('This page seems to be unavailable or the user does not want to share resources'), 'warning');
-            abort(404);
+            abort(403);
         });
     }
 

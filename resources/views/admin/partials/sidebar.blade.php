@@ -129,13 +129,23 @@
                     </li>
                 @endcan
 
+                <li class="nav-item">
+                    <a
+                        target="_blank"
+                        class="nav-link menu-link"
+                        href="{{ route('home') }}"
+                    >
+                        <i class="ri-global-line"></i><span data-key="t-widgets">{{ __('Go To Website') }}</span>
+                    </a>
+                </li>
+
                 @if(app()->getLocale() == 'vi')
                     <li class="nav-item">
                         <a
                             class="nav-link menu-link"
                             href="{{ route('language.__invoke', ['locale' => 'en' ]) }}"
                         >
-                            <i class="ri-global-line"></i><span data-key="t-widgets">{{ __('English') }}</span>
+                            <i class="ri-flag-2-line"></i><span data-key="t-widgets">{{ __('English') }}</span>
                         </a>
                     </li>
                 @else
@@ -144,7 +154,7 @@
                             class="nav-link menu-link"
                             href="{{ route('language.__invoke', ['locale' => 'vi' ]) }}"
                         >
-                            <i class="ri-global-line"></i><span data-key="t-widgets">{{ __('Tiếng Việt') }}</span>
+                            <i class="ri-flag-2-line"></i><span data-key="t-widgets">{{ __('Tiếng Việt') }}</span>
                         </a>
                     </li>
                 @endif

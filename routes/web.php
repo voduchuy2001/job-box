@@ -94,7 +94,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 Route::get('/', HomePage::class)->name('home');
 Route::get('/job-detail/{id}', JobDetail::class)->name('job-detail');
 Route::get('/job-list', UserJobList::class)->name('job-list.user');
-Route::get('/user-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
+Route::get('/student-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');

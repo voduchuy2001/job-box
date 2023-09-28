@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\User\Company\Job;
 
+use App\Livewire\User\User\Company\CompanyProfile;
 use App\Models\Job;
 use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,13 @@ class JobList extends Component
     public int $itemPerPage = 20;
 
     public mixed $job;
+
+    public function mount(): void
+    {
+        if (! Auth::user()->profile) {
+            $this->redirect(CompanyProfile::class, navigate: true);
+        }
+    }
 
     public function deleteJob(string|int $id): void
     {
