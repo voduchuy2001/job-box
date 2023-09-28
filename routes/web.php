@@ -16,7 +16,7 @@ use App\Livewire\Admin\Job\JobDelete;
 use App\Livewire\Admin\Job\JobEdit;
 use App\Livewire\Admin\Job\JobList;
 use App\Livewire\Admin\RolePermission\RoleSetting;
-use App\Livewire\Admin\TrendingWord\TrendingWordList;
+use App\Livewire\Admin\TrendyWord\TrendyWordList;
 use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\UserList;
 use App\Livewire\Admin\User\UserProfile as AdminUserProfile;
@@ -86,7 +86,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/job-create', JobCreate::class)->name('job.create')->middleware('permission:job-create');
     Route::get('/job-delete', JobDelete::class)->name('job.delete')->middleware('permission:job-delete');
     Route::get('/category', CategoryList::class)->name('category.index')->middleware('permission:category-list');
-    Route::get('/trending-word', TrendingWordList::class)->name('trending-word.index')->middleware('permission:trending-word-list');
+    Route::get('/trending-word', TrendyWordList::class)->name('trending-word.index')->middleware('permission:trending-word-list');
 });
 
 Route::get('/', HomePage::class)->name('home');

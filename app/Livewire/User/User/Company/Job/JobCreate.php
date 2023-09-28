@@ -2,13 +2,16 @@
 
 namespace App\Livewire\User\User\Company\Job;
 
-use App\Events\CompanyJobCreate;
+use App\Events\CompanyJobCreateEvent;
 use App\Helpers\JobDataHelper;
 use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
 use App\Models\Province;
 use App\Models\Ward;
+use App\Notifications\CompanyJobCreateNotification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -94,7 +97,8 @@ class JobCreate extends Component
             ]);
         }
 
-        broadcast(new CompanyJobCreate(trans('A new job has been added: (:name)!', ['name' => $job->name])));
+        Notification::send(Auth::user(), new CompanyJobCreateNotification($job));
+        broadcast(new CompanyJobCreateEvent(trans('A new job has been added: (:name)!', ['name' => $job->name])));
         $this->alert('success', trans('Create success'));
         $this->dispatch('refresh');
         $this->redirect(JobList::class, navigate: true);

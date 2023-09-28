@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\TrendingWord;
+namespace App\Livewire\Admin\TrendyWord;
 
 use App\Helpers\BaseHelper;
 use App\Models\TrendingWord;
@@ -14,7 +14,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Title('List Of Trending Words')]
-class TrendingWordList extends Component
+class TrendyWordList extends Component
 {
     use LivewireAlert;
     use WithPagination;
@@ -72,7 +72,7 @@ class TrendingWordList extends Component
             ->orderByDesc('count')
             ->paginate($this->itemPerPage);
 
-        return view('livewire.admin.trending-word.trending-word-list', [
+        return view('livewire.admin.trendy-word.trendy-word-list', [
             'words' => $words,
         ]);
     }

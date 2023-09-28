@@ -8,7 +8,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CompanyJobCreate implements ShouldBroadcast
+class CompanyJobCreateEvent implements ShouldBroadcast
 {
     use Dispatchable;
     use InteractsWithSockets;
