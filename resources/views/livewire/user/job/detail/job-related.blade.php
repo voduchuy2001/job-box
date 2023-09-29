@@ -15,7 +15,10 @@
                         <x-link :to="route('job-detail', ['id' => $job->id])">
                             <h5 title="{{ $job->name }}">{!! Str::limit($job->name, 30) !!}</h5>
                         </x-link>
-                        <p class="text-muted">{{ $job->user->name }}</p>
+
+                        @if($job->addresses->count())
+                            <p class="text-muted">{{ $job->addresses[0]->province->name }}</p>
+                        @endif
 
                         <div class="d-flex gap-4 mb-3">
                             @if($job->addresses->count())

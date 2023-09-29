@@ -15,18 +15,29 @@
                             :to="route('home')"
                             class="nav-link {{ request()->route()->getName() == 'home' ? 'active' : '' }}">{{ __('Home') }}</x-link>
                     </li>
+
                     <li class="nav-item">
                         <x-link
                             :to="route('job-list.user')"
                             class="nav-link {{ in_array(request()->route()->getName(), ['job-list.user', 'job-detail']) ? 'active' : '' }}">{{ __('Jobs') }}</x-link>
                     </li>
 
-                    @auth
+                    @if(Auth::user()->hasRole('Super Admin'))
                         <li class="nav-item">
                             <x-link
-                                :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
-                                class="nav-link {{ in_array(request()->route()->getName(), ['student-profile.user', 'student-resume.user', 'student-wishlist.user', 'user-change-password.user', 'company-profile.user', 'company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
+                                :to="route('student-wishlist.user')"
+                                class="nav-link {{ request()->route()->getName() == 'student-wishlist.user' ? 'active' : '' }}">{{ __('Wishlist') }}</x-link>
                         </li>
+                    @endif
+
+                    @auth
+                        @if(! Auth::user()->hasRole('Super Admin'))
+                            <li class="nav-item">
+                                <x-link
+                                    :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
+                                    class="nav-link {{ in_array(request()->route()->getName(), ['student-profile.user', 'student-resume.user', 'student-wishlist.user', 'user-change-password.user', 'company-profile.user', 'company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
+                            </li>
+                        @endif
                     @endauth
                 </ul>
 
@@ -42,11 +53,20 @@
                     @endunless
 
                     @auth
-                        <x-link
-                            :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
-                            class="btn btn-soft-primary">
-                            <i class="ri-user-3-line align-bottom me-1"></i>
-                            {{ __('Hello :name', ['name' => Auth::user()->name]) }}</x-link>
+                        @if(! Auth::user()->hasRole('Super Admin'))
+                            <x-link
+                                :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
+                                class="btn btn-soft-primary">
+                                <i class="ri-user-3-line align-bottom me-1"></i>
+                                {{ __('Hello :name', ['name' => Auth::user()->name]) }}</x-link>
+                        @else
+                            <a
+                                target="_blank"
+                                href="{{ route('dashboard') }}"
+                                class="btn btn-soft-primary">
+                                <i class="ri-user-3-line align-bottom me-1"></i>
+                                {{ __('Hello :name', ['name' => Auth::user()->name]) }}</a>
+                        @endif
                     @endauth
                 </div>
             </div>

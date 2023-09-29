@@ -68,6 +68,10 @@ class StudentResume extends Component
 
     public function mount(): void
     {
+        if (! Auth::user()->hasRole('Student')) {
+            abort(403);
+        }
+
         if (! Auth::user()->profile) {
             $this->redirect(StudentProfile::class, navigate: true);
         }

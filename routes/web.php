@@ -81,7 +81,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/role-permission', RoleSetting::class)->name('role-permission')->middleware('permission:role-permission');
     Route::get('/user-profile/{id}', AdminUserProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');
     Route::get('/user', UserList::class)->name('user.index')->middleware('permission:user-list');
-    Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index');
+    Route::get('/user-change-password', ChangePassword::class)->name('user-change-password.index')->middleware('password.confirm:password.confirm,1');
     Route::get('/job', JobList::class)->name('job.index')->middleware('permission:job-list');
     Route::get('/job-edit/{id}', JobEdit::class)->name('job.edit')->middleware('permission:job-edit');
     Route::get('/job-create', JobCreate::class)->name('job.create')->middleware('permission:job-create');
@@ -97,10 +97,10 @@ Route::get('/job-list', UserJobList::class)->name('job-list.user');
 Route::get('/student-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user');
+    Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');
 
     Route::get('/student-profile', StudentProfile::class)->name('student-profile.user')->middleware('permission:student-profile-create');
-    Route::get('/student-wishlist-job', StudentWishlistJob::class)->name('student-wishlist.user')->middleware('permission:student-job-wishlist');
+    Route::get('/wishlist-job', StudentWishlistJob::class)->name('student-wishlist.user')->middleware('permission:student-job-wishlist');
     Route::get('/student-resume', StudentResume::class)->name('student-resume.user')->middleware('permission:student-resume-create');
 
     Route::get('/company-profile', CompanyProfile::class)->name('company-profile.user')->middleware('permission:company-profile-create');

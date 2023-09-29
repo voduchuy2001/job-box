@@ -61,7 +61,7 @@ class JobList extends Component
             ->when($this->filterByCategory, fn ($query) => $query->whereIn('category_id', $this->filterByCategory))
             ->when($this->filterByType, fn ($query) => $query->whereIn('type', $this->filterByType))
             ->when($salaryMin, fn ($query) => $query->where('min_salary', '>=', $salaryMin))
-            ->when($salaryMax, fn ($query) => $query->where(fn ($query) => $query->where('max_salary', '<=', $salaryMax)->orWhereNull('max_salary')));
+            ->when($salaryMax, fn ($query) => $query->where(fn ($query) => $query->where('max_salary', '<=', $salaryMax)));
 
         return $query->with('user')
             ->orderByDesc('created_at')

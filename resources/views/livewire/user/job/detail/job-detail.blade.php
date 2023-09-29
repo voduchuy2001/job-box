@@ -96,7 +96,7 @@
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Job Application') }}</td>
-                                        <td>{{ __(':count Application', ['count' => $job->vacancy]) }}</td>
+                                        <td>{{ __(':count Application(s)', ['count' => $job->vacancy]) }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Position') }}</td>

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -130,11 +131,18 @@ class JobEdit extends Component
 
     public function deleteAddress(string|int $id): void
     {
-        Address::findOrFail($id)->delete();
-        $this->addresses = $this->job->addresses()->get();
-        $this->alert('success', trans('Delete success'));
+        if ($this->job->addresses->count() > 1) {
+            Address::findOrFail($id)->delete();
+            $this->addresses = $this->job->addresses()->get();
+            $this->alert('success', trans('Delete success'));
+            $this->dispatch('refresh');
+            return;
+        }
+
+        $this->alert('warning', trans('Can not delete all addresses'));
     }
 
+    #[On('refresh')]
     #[Layout('layouts.user')]
     public function render(): View
     {

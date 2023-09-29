@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Partial;
 
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class NotificationComponent extends Component
@@ -12,6 +13,7 @@ class NotificationComponent extends Component
 
     public int $unread = 0;
 
+    #[On('refresh')]
     public function mount(): void
     {
         $this->notifications = DatabaseNotification::orderByDesc('created_at')

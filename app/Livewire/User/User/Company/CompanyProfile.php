@@ -48,6 +48,10 @@ class CompanyProfile extends Component
 
     public function mount(): void
     {
+        if (! Auth::user()->hasRole('Company')) {
+            abort(403);
+        }
+
         if ($user = Auth::user()->profile) {
             $userData = $user->payload;
             $this->name = $userData['name'];

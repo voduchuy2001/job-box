@@ -42,6 +42,10 @@ class StudentProfile extends Component
 
     public function mount(): void
     {
+        if (! Auth::user()->hasRole('Student')) {
+            abort(403);
+        }
+
         if ($user = Auth::user()->profile) {
             $userData = $user->payload;
             $this->email = $userData['email'];

@@ -45,8 +45,8 @@
 
                                     @error('category')
                                     <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
+                                        {{ $message }}
+                                    </span>
                                     @enderror
                                 </div>
 
@@ -62,8 +62,8 @@
 
                                     @error('type')
                                     <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
+                                        {{ $message }}
+                                    </span>
                                     @enderror
                                 </div>
 
