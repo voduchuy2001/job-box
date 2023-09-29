@@ -22,13 +22,21 @@
                             class="nav-link {{ in_array(request()->route()->getName(), ['job-list.user', 'job-detail']) ? 'active' : '' }}">{{ __('Jobs') }}</x-link>
                     </li>
 
-                    @if(Auth::user()->hasRole('Super Admin'))
-                        <li class="nav-item">
-                            <x-link
-                                :to="route('student-wishlist.user')"
-                                class="nav-link {{ request()->route()->getName() == 'student-wishlist.user' ? 'active' : '' }}">{{ __('Wishlist') }}</x-link>
-                        </li>
-                    @endif
+                    <li class="nav-item">
+                        <x-link
+                            :to="route('company-list.user')"
+                            class="nav-link {{ in_array(request()->route()->getName(), ['company-list.user', 'company-detail.user']) ? 'active' : '' }}">{{ __('Companies') }}</x-link>
+                    </li>
+
+                    @auth
+                        @if(Auth::user()->hasRole('Super Admin'))
+                            <li class="nav-item">
+                                <x-link
+                                    :to="route('student-wishlist.user')"
+                                    class="nav-link {{ request()->route()->getName() == 'student-wishlist.user' ? 'active' : '' }}">{{ __('Wishlist') }}</x-link>
+                            </li>
+                        @endif
+                    @endauth
 
                     @auth
                         @if(! Auth::user()->hasRole('Super Admin'))

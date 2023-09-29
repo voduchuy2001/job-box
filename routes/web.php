@@ -21,6 +21,8 @@ use App\Livewire\Admin\TrendyWord\TrendyWordList;
 use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\UserList;
 use App\Livewire\Admin\User\UserProfile as AdminUserProfile;
+use App\Livewire\User\Company\CompanyDetail;
+use App\Livewire\User\Company\CompanyList;
 use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobList as UserJobList;
@@ -95,6 +97,8 @@ Route::get('/', HomePage::class)->name('home');
 Route::get('/job-detail/{id}', JobDetail::class)->name('job-detail');
 Route::get('/job-list', UserJobList::class)->name('job-list.user');
 Route::get('/student-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
+Route::get('/company-list', CompanyList::class)->name('company-list.user');
+Route::get('/company-detail/{id}', CompanyDetail::class)->name('company-detail.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');

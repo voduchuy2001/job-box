@@ -20,7 +20,9 @@ class ToastComponent extends Component
 
     public function showNotification(mixed $event): void
     {
-        $this->alert('success', $event['message']);
+        $this->alert('success', $event['message'], [
+            'timer' => 600000,
+        ]);
     }
 
     public function render(): View

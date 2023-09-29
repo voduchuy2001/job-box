@@ -15,7 +15,7 @@
                                     @can('notification-edit')
                                         <span
                                             style="cursor: pointer"
-                                            wire:click="markAsReadOrUnreadNotification({{ $notification->id }})"
+                                            wire:click="markAsReadOrUnreadNotification('{{ $notification->id }}')"
                                             class="badge badge-soft-{{ $notification->read_at ? 'info' : 'warning' }}">{{ $notification->read_at ? __('Read') : __('Mark As Read') }}</span>
                                     @endcan
                                 </div>
