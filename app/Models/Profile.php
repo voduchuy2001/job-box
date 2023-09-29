@@ -13,6 +13,7 @@ class Profile extends Model
         'payload',
         'profileable_id',
         'profileable_type',
+        'type',
     ];
 
     protected $casts = [

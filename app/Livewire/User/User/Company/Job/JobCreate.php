@@ -74,7 +74,7 @@ class JobCreate extends Component
 
     public function mount(): void
     {
-        if (! Auth::user()->profile) {
+        if (! Auth::user()->companyProfile) {
             $this->redirect(CompanyProfile::class, navigate: true);
         }
 

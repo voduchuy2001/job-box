@@ -29,16 +29,6 @@
                     </li>
 
                     @auth
-                        @if(Auth::user()->hasRole('Super Admin'))
-                            <li class="nav-item">
-                                <x-link
-                                    :to="route('student-wishlist.user')"
-                                    class="nav-link {{ request()->route()->getName() == 'student-wishlist.user' ? 'active' : '' }}">{{ __('Wishlist') }}</x-link>
-                            </li>
-                        @endif
-                    @endauth
-
-                    @auth
                         @if(! Auth::user()->hasRole('Super Admin'))
                             <li class="nav-item">
                                 <x-link

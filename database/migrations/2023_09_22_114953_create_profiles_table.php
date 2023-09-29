@@ -11,6 +11,7 @@ return new class () extends Migration {
             $table->id();
             $table->morphs('profileable');
             $table->json('payload');
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

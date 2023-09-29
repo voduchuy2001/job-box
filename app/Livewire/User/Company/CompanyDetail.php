@@ -17,8 +17,8 @@ class CompanyDetail extends Component
     {
         $role = Role::where('name', 'company')->first();
         $this->company = $role->users()
-            ->has('profile')
-            ->with('profile', 'avatar')
+            ->has('companyProfile')
+            ->with('companyProfile', 'avatar')
             ->withCount('jobs')
             ->withSum('jobs', 'vacancy')
             ->findOrFail($id);

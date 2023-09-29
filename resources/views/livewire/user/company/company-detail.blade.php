@@ -18,13 +18,13 @@
                                             </div>
                                             <div class="col-md">
                                                 <div>
-                                                    <h4 class="fw-bold">{{ $company->profile->payload['name'] }}</h4>
+                                                    <h4 class="fw-bold">{{ $company->companyProfile->payload['name'] }}</h4>
                                                     <div class="hstack gap-3 flex-wrap">
-                                                        <div><i class="ri-map-pin-2-line align-bottom me-1"></i> {{ $company->profile->payload['headquarters'] }}</div>
+                                                        <div><i class="ri-map-pin-2-line align-bottom me-1"></i> {{ $company->companyProfile->payload['headquarters'] }}</div>
 
                                                         <div class="vr"></div>
 
-                                                        <div>{{ __('Founded In: :in', ['in' => $company->profile->payload['founded']]) }}</span></div>
+                                                        <div>{{ __('Founded In: :in', ['in' => $company->companyProfile->payload['founded']]) }}</span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -44,7 +44,7 @@
                             <h5 class="mb-3">{{ __('Over View') }}</h5>
 
                             <div class="text-break mb-3">
-                                {!! $company->profile->payload['description'] !!}
+                                {!! $company->companyProfile->payload['description'] !!}
                             </div>
                         </div>
                     </div>
@@ -60,17 +60,17 @@
                                     <tbody>
                                     <tr>
                                         <td class="fw-medium">{{ __('Company Name') }}</td>
-                                        <td>{{ $company->profile->payload['name'] }}</td>
+                                        <td>{{ $company->companyProfile->payload['name'] }}</td>
                                     </tr>
 
                                     <tr>
                                         <td class="fw-medium">{{ __('Founded In') }}</td>
-                                        <td><span class="badge badge-soft-success">{{ $company->profile->payload['founded'] }}</span></td>
+                                        <td><span class="badge badge-soft-success">{{ $company->companyProfile->payload['founded'] }}</span></td>
                                     </tr>
 
                                     <tr>
                                         <td class="fw-medium">{{ __('Headquarters') }}</td>
-                                        <td><i class="ri-map-pin-2-line align-bottom me-1"></i> {{ $company->profile->payload['headquarters'] }}</td>
+                                        <td><i class="ri-map-pin-2-line align-bottom me-1"></i> {{ $company->companyProfile->payload['headquarters'] }}</td>
                                     </tr>
 
                                     <tr>

@@ -17,7 +17,7 @@ class ResumeController extends Controller
             $id = $request->route('id');
             $this->user = $user = User::with([
                 'avatar',
-                'profile',
+                'studentProfile',
                 'addresses.province',
                 'addresses.district',
                 'educations',
@@ -31,7 +31,7 @@ class ResumeController extends Controller
                 'courses'
             ])->findOrFail($id);
 
-            if ($user->profile && $user->profile->payload['allowPublishing'] == 'publish'
+            if ($user->studentProfile && $user->studentProfile->payload['allowPublishing'] == 'publish'
                 || $user->id == Auth::id()) {
                 return $next($request);
             }

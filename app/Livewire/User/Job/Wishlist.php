@@ -42,11 +42,6 @@ class Wishlist extends Component
             return;
         }
 
-        if (! Auth::user()->hasRole('Student')) {
-            $this->alert('warning', trans('Only student account can do this'));
-            return;
-        }
-
         $wishlistJobIds = $this->wishlist;
 
         if (in_array($this->jobId, $wishlistJobIds)) {

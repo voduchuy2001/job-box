@@ -14,7 +14,7 @@ class JobCompany extends Component
 
     public function mount(): void
     {
-        $this->companyProfile = Job::findOrFail($this->jobId)->user->profile;
+        $this->companyProfile = Job::findOrFail($this->jobId)->user->companyProfile;
     }
 
     public function render(): View

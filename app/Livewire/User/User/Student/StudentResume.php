@@ -68,11 +68,7 @@ class StudentResume extends Component
 
     public function mount(): void
     {
-        if (! Auth::user()->hasRole('Student')) {
-            abort(403);
-        }
-
-        if (! Auth::user()->profile) {
+        if (! Auth::user()->studentProfile) {
             $this->redirect(StudentProfile::class, navigate: true);
         }
 
@@ -88,7 +84,7 @@ class StudentResume extends Component
 
         $user = User::with([
                 'avatar',
-                'profile',
+                'studentProfile',
                 'addresses.province',
                 'addresses.district',
                 'educations',
@@ -117,7 +113,7 @@ class StudentResume extends Component
 
         return response()->streamDownload(
             fn () => print($content),
-            "Resume - " . $user->profile->payload['appliedPosition'] . ' - ' . $user->name . ".pdf"
+            "Resume - " . $user->studentProfile->payload['appliedPosition'] . ' - ' . $user->name . ".pdf"
         );
     }
 

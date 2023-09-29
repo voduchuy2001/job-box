@@ -39,20 +39,13 @@ class CompanyProfile extends Component
     #[Rule('required|numeric')]
     public int $numberOfEmployee;
 
-    #[Rule('nullable|string|max:255')]
-    public mixed $socialMedialLinks;
-
     public int $step = 1;
 
     public mixed $data;
 
     public function mount(): void
     {
-        if (! Auth::user()->hasRole('Company')) {
-            abort(403);
-        }
-
-        if ($user = Auth::user()->profile) {
+        if ($user = Auth::user()->companyProfile) {
             $userData = $user->payload;
             $this->name = $userData['name'];
             $this->email = $userData['email'] ?? '';
@@ -113,8 +106,9 @@ class CompanyProfile extends Component
 
         $data = array_reduce($this->data, 'array_merge', []);
 
-        $user->profile()->updateOrCreate([], [
+        $user->companyProfile()->updateOrCreate([], [
             'payload' => $data,
+            'type' => 'Company',
         ]);
 
         $this->alert('success', 'Create Success');

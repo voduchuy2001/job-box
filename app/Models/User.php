@@ -60,10 +60,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->morphOne(Address::class, 'addressable');
     }
 
-    public function profile(): MorphOne
+    public function studentProfile(): MorphOne
     {
-        return $this->morphOne(Profile::class, 'profileable');
+        return $this->morphOne(Profile::class, 'profileable')
+            ->where('type', 'Student');
     }
+
+    public function companyProfile(): MorphOne
+    {
+        return $this->morphOne(Profile::class, 'profileable')
+            ->where('type', 'Company');
+    }
+
     public function educations(): HasMany
     {
         return $this->hasMany(Education::class, 'user_id');

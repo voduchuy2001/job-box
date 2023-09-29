@@ -42,11 +42,7 @@ class StudentProfile extends Component
 
     public function mount(): void
     {
-        if (! Auth::user()->hasRole('Student')) {
-            abort(403);
-        }
-
-        if ($user = Auth::user()->profile) {
+        if ($user = Auth::user()->studentProfile) {
             $userData = $user->payload;
             $this->email = $userData['email'];
             $this->firstName = $userData['firstName'] ?? '';
@@ -113,8 +109,9 @@ class StudentProfile extends Component
 
         $data = array_reduce($this->data, 'array_merge', []);
 
-        $user->profile()->updateOrCreate([], [
+        $user->studentProfile()->updateOrCreate([], [
             'payload' => $data,
+            'type' => 'Student',
         ]);
 
         $this->alert('success', 'Create Success');

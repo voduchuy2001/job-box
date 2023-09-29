@@ -2,48 +2,37 @@
     <div class="card-body">
         <div class="list-group list-group-fill-primary">
             @can('company-profile-create')
-                @if(! Auth::user()->hasRole('Super Admin'))
-                    <x-link
-                        :to="route('company-profile.user')"
-                        class="list-group-item list-group-item-action {{ request()->route()->getName() == 'company-profile.user' ? 'active' : '' }}">
-                        <i class="ri-building-line align-middle me-2"></i>{{ __('Company Profile') }}</x-link>
-                @endif
+                <x-link
+                    :to="route('company-profile.user')"
+                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'company-profile.user' ? 'active' : '' }}">
+                    <i class="ri-building-line align-middle me-2"></i>{{ __('Company Profile') }}</x-link>
             @endcan
 
             @can('company-job-list')
-                @if(Auth::user()->profile && ! Auth::user()->hasRole('Super Admin'))
-                    <x-link
-                        :to="route('company-job-list.user')"
-                        class="list-group-item list-group-item-action {{ in_array(request()->route()->getName(), ['company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">
-                        <i class="ri-file-2-line align-middle me-2"></i>{{ __('List Of Jobs') }}</x-link>
-
-                @endif
+                <x-link
+                    :to="route('company-job-list.user')"
+                    class="list-group-item list-group-item-action {{ in_array(request()->route()->getName(), ['company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">
+                    <i class="ri-file-2-line align-middle me-2"></i>{{ __('List Of Jobs') }}</x-link>
             @endcan
 
             @can('student-profile-create')
-                @if(! Auth::user()->hasRole('Super Admin'))
-                    <x-link
-                        :to="route('student-profile.user')"
-                        class="list-group-item list-group-item-action {{ request()->route()->getName() == 'student-profile.user' ? 'active' : '' }}">
-                        <i class="ri-user-3-line align-middle me-2"></i>{{ __('Student Profile') }}</x-link>
-                @endif
+                <x-link
+                    :to="route('student-profile.user')"
+                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'student-profile.user' ? 'active' : '' }}">
+                    <i class="ri-user-3-line align-middle me-2"></i>{{ __('Student Profile') }}</x-link>
             @endcan
 
             @can('student-resume-create')
-                @if(Auth::user()->profile && ! Auth::user()->hasRole('Super Admin'))
-                    <x-link
-                        :to="route('student-resume.user')"
-                        class="list-group-item list-group-item-action {{ request()->route()->getName() == 'student-resume.user' ? 'active' : '' }}">
-                        <i class="ri-todo-line align-middle me-2"></i>{{ __('Resume') }}</x-link>
-                @endif
+                <x-link
+                    :to="route('student-resume.user')"
+                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'student-resume.user' ? 'active' : '' }}">
+                    <i class="ri-todo-line align-middle me-2"></i>{{ __('Resume') }}</x-link>
             @endcan
 
             @can('student-job-apply')
-                @if(! Auth::user()->hasRole('Super Admin'))
-                    <x-link
-                        href="#"
-                        class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Job Applied') }}</x-link>
-                @endif
+                <x-link
+                    href="#"
+                    class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Job Applied') }}</x-link>
             @endcan
 
             @can('student-job-wishlist')
