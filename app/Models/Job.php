@@ -56,6 +56,13 @@ class Job extends Model
             ->withTimestamps();
     }
 
+    public function applications(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'applications', 'job_id', 'user_id')
+            ->withPivot(['presentation', 'status'])
+            ->withTimestamps();
+    }
+
     protected static function boot(): void
     {
         parent::boot();

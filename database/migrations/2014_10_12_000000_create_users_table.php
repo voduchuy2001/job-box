@@ -11,7 +11,6 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('status')->default('Is Active');
             $table->smallInteger('is_root')->default(0);
             $table->string('provider_id')->nullable();
             $table->string('auth_type')->nullable();

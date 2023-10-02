@@ -29,7 +29,7 @@
                     <i class="ri-todo-line align-middle me-2"></i>{{ __('Resume') }}</x-link>
             @endcan
 
-            @can('student-job-apply')
+            @can('student-job-applied')
                 <x-link
                     href="#"
                     class="list-group-item list-group-item-action"><i class="ri-database-2-line align-middle me-2"></i>{{ __('Job Applied') }}</x-link>

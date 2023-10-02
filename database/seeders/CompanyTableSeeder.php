@@ -17,7 +17,6 @@ class CompanyTableSeeder extends Seeder
             'name' => 'Cao Thi Thuy Duong',
             'email' => 'company@gmail.com',
             'password' => Hash::make('admin123'),
-            'status' => 'Is Active',
             'is_root' => 0,
             'email_verified_at' => Carbon::now(),
             'remember_token' => Str::random(10),

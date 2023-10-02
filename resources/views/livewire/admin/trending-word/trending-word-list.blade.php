@@ -37,7 +37,7 @@
 
                             <div class="d-flex mb-2">
                                 <div class="flex-grow-1">
-                                    <h5 class="mb-1 fs-15"><span class="text-primary">{{ $word->name }} <small class="text-danger">{{ __('(The number of times searched: :number)', ['number' => $word->count]) }}</small></span></h5>
+                                    <h5 class="mb-1 fs-15"><span class="text-primary">{{ $word->name }} <small class="text-info">{{ __('(Times: :times)', ['times' => $word->count]) }}</small></span></h5>
                                 </div>
                             </div>
                         </div>

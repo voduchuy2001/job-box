@@ -15,6 +15,7 @@ class ToastComponent extends Component
         return [
             "echo:company-job-create,CompanyJobCreateEvent" => 'showNotification',
             "echo:company-job-edit,CompanyJobEditEvent" => 'showNotification',
+            "echo:student-job-apply,StudentJobApplyEvent" => 'showNotification',
         ];
     }
 

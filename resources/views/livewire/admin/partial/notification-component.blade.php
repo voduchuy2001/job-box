@@ -39,13 +39,21 @@
                             </div>
                         @endforeach
 
-                        <div class="my-3 text-center view-all">
-                            <x-link
-                                :to="route('notification.index')"
-                                class="btn btn-soft-success waves-effect waves-light"> {{ trans('View More') }} <i class="ri-arrow-right-line align-middle"></i></x-link>
-                        </div>
+                        @if($notifications->count())
+                            <div class="my-3 text-center view-all">
+                                <x-link
+                                    :to="route('notification.index')"
+                                    class="btn btn-soft-success waves-effect waves-light"> {{ trans('View More') }} <i class="ri-arrow-right-line align-middle"></i></x-link>
+                            </div>
+                        @else
+                            <div class="my-3 text-center">
+                                <div class="mb-3">
+                                    <i class="ri-notification-2-line fs-22"></i>
+                                </div>
+                                <h3>{{ __('Empty Notification') }}</h3>
+                            </div>
+                        @endif
                     </div>
-
                 </div>
             </div>
         </div>

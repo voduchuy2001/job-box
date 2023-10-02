@@ -32,7 +32,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        'status',
         'is_root',
         'password',
         'provider_id',
@@ -49,6 +48,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function applications(): BelongsToMany
+    {
+        return $this->belongsToMany(Job::class, 'applications', 'user_id', 'job_id')
+            ->withPivot(['presentation', 'status'])
+            ->withTimestamps();
+    }
 
     public function addresses(): MorphMany
     {

@@ -119,7 +119,9 @@
                             </div>
 
                             <div class="mt-4 pt-2 hstack gap-2">
-                                <x-link href="#!" class="btn btn-primary w-100">{{ __('Apply Now') }}</x-link>
+                                <x-link
+                                    :to="route('job-applied.user', ['id' => $job->id])"
+                                    class="btn btn-primary w-100">{{ __('Apply Now') }}</x-link>
 
                                 <livewire:user.job.wishlist :jobId="$job->id"></livewire:user.job.wishlist>
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\Job\Detail;
 
+use App\Mail\ContactJob;
 use App\Models\Job;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
@@ -38,7 +39,7 @@ class JobContact extends Component
         $mailData = array_merge(['companyName' => $job->user->name], $validatedData);
 
         Mail::to($job->user->email)
-            ->send(new \App\Mail\ContactJob($mailData));
+            ->send(new ContactJob($mailData));
         $this->alert('success', trans('Send email success'));
         $this->reset();
     }
