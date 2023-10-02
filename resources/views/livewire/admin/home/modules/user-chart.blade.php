@@ -7,22 +7,23 @@
 @push('scripts')
     <script type="text/javascript">
         var bar = document.getElementById('userChart');
-        var labels = ['Jan', ' Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
+        var labels = {{ Js::from($labels) }};
         new Chart(bar, {
             type: 'bar',
             data: {
-                labels: {{ Js::from($labels) }},
+                labels: labels,
                 datasets: [{
-                    label: 'Current Year Users',
+                    label: `{{ __('Current Year Users') }}`,
                     backgroundColor: '#405189',
                     data: {{ Js::from($currentYearUsers) }},
-                    borderWidth: 1
+                    borderWidth: 1,
+                    hoverOffset: 4,
                 }, {
-                    label: 'Previous Year Users',
-                    backgroundColor: 'lightgray',
+                    label: `{{ __('Previous Year Users') }}`,
+                    backgroundColor: '#DEDEDF',
                     data: {{ Js::from($previousYearUsers) }},
-                    borderWidth: 1
+                    borderWidth: 1,
+                    hoverOffset: 4
                 }]
             },
             options: {

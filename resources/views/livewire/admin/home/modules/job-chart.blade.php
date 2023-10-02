@@ -7,22 +7,24 @@
 
 @push('scripts')
     <script type="text/javascript">
-        var bar = document.getElementById('jobChart');
+        var line = document.getElementById('jobChart');
         var labels = {{ Js::from($labels) }};
-        new Chart(bar, {
+        new Chart(line, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Current Year Jobs',
+                    label: `{{ __('Current Year Jobs') }}`,
                     backgroundColor: '#405189',
                     data: {{ Js::from($currentYearJobs) }},
-                    borderWidth: 1
+                    borderWidth: 1,
+                    hoverOffset: 4,
                 }, {
-                    label: 'Previous Year Jobs',
-                    backgroundColor: 'lightgray',
+                    label: `{{ __('Previous Year Jobs') }}`,
+                    backgroundColor: '#DEDEDF',
                     data: {{ Js::from($previousYearJobs) }},
-                    borderWidth: 1
+                    borderWidth: 1,
+                    hoverOffset: 4,
                 }]
             },
             options: {

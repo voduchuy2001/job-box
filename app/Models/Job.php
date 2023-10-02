@@ -88,7 +88,7 @@ class Job extends Model
         return $results->pluck('count')->toArray();
     }
 
-    public static function getLimitJobs(string $searchTerm)
+    public static function getJobsLimit(string $searchTerm)
     {
         return Job::where(function ($query) use ($searchTerm) {
             $query->where('name', 'like', '%' . $searchTerm . '%')
