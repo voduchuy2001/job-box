@@ -32,6 +32,7 @@ class StudentTableSeeder extends Seeder
             'student-profile-create',
             'student-resume-create',
             'student-job-wishlist',
+            'student-add-job-to-wishlist',
             'student-job-applied',
         ];
 

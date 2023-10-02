@@ -3,6 +3,7 @@
 namespace App\Livewire\User\Job;
 
 use App\Models\User;
+use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -12,6 +13,7 @@ use Livewire\Component;
 class Wishlist extends Component
 {
     use LivewireAlert;
+    use AuthorizesRoleOrPermission;
 
     public mixed $jobId;
 
@@ -36,6 +38,7 @@ class Wishlist extends Component
 
     public function addOrRemoveToWishList(): void
     {
+        $this->authorizeRoleOrPermission('student-add-job-to-wishlist');
         if (! Auth::user()) {
             $this->redirectRoute('login');
             toast(trans('You must login before save job'), 'warning');

@@ -28,7 +28,7 @@
                                             value="{{ $category->id }}"
                                             id="{{ $category->id }}">
                                         <label class="form-check-label" for="{{ $category->id }}">
-                                            {!! __(':categoryName :count', ['categoryName' => $category->name, 'count' => '<span class="badge bg-light text-muted">' . $category->jobs->count() . '</span>']) !!}
+                                            {!! __(':categoryName :count', ['categoryName' => $category->name, 'count' => '<span class="badge bg-light text-muted">' . $category->jobs->where('status', 'show')->count() . '</span>']) !!}
                                         </label>
                                     </div>
                                 @endforeach

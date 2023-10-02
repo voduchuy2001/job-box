@@ -28,7 +28,7 @@
                             class="nav-link menu-link {{ request()->route()->getName() == 'dashboard' ? 'active' : '' }}"
                             to="{{ route('dashboard') }}"
                         >
-                            <i class="ri-dashboard-2-line"></i><span>{{ __('Dashboard') }}</span>
+                            <i class="ri-dashboard-2-line"></i><span>{{ __('Site Health') }}</span>
                         </x-link>
                     </li>
                 @endcan
@@ -128,6 +128,16 @@
                         </a>
                     </li>
                 @endcan
+
+                <li class="nav-item">
+                    <a
+                        target="_blank"
+                        class="nav-link menu-link"
+                        href="{{ route('home') }}"
+                    >
+                        <i class="ri-settings-2-line"></i><span data-key="t-widgets">{{ __('Site Settings') }}</span>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a
