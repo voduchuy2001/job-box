@@ -33,7 +33,7 @@
                             <li class="nav-item">
                                 <x-link
                                     :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
-                                    class="nav-link {{ in_array(request()->route()->getName(), ['student-profile.user', 'student-resume.user', 'student-wishlist.user', 'user-change-password.user', 'company-profile.user', 'company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
+                                    class="nav-link {{ in_array(request()->route()->getName(), ['student-profile.user', 'student-resume.user', 'student-wishlist.user', 'student-applied-job.user', 'user-change-password.user', 'company-profile.user', 'company-job-list.user', 'company-job-create.user', 'company-job-edit.user']) ? 'active' : '' }}">{{ __('Profile') }}</x-link>
                             </li>
                         @endif
                     @endauth

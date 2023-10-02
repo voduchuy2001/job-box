@@ -58,7 +58,7 @@ class Job extends Model
 
     public function applications(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'applications', 'job_id', 'user_id')
+        return $this->belongsToMany(User::class, 'applications', 'job_id', 'student_id')
             ->withPivot(['presentation', 'status'])
             ->withTimestamps();
     }
