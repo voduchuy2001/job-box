@@ -4,6 +4,7 @@ namespace App\Livewire\User\Job;
 
 use App\Events\StudentJobApplyEvent;
 use App\Livewire\User\Home\HomePage;
+use App\Livewire\User\User\Student\StudentProfile;
 use App\Mail\ApplyJob;
 use App\Notifications\StudentJobApplyNotification;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,11 @@ class JobApplication extends Component
         $job = Job::findOrFail($id);
 
         $this->job = $job;
+
+        if (! Auth::user()->studentProfile()->count()) {
+            $this->alert('warning', trans('Completed your profile before apply job'));
+            $this->redirect(StudentProfile::class, navigate: true);
+        }
     }
 
     public function removeResume(): void
@@ -65,14 +71,14 @@ class JobApplication extends Component
 
         $mailData = [
             'email' => $user->studentProfile->payload['email'],
-            'companyName' => $this->job->user->name,
+            'companyName' => $this->job->company->name,
             'subject' => trans('Job Application for :jobTitle', ['jobTitle' => $this->job->name]),
             'presentation' => $validatedData['presentation'],
         ];
 
         Notification::send(Auth::user(), new StudentJobApplyNotification($this->job));
 
-        Mail::to($this->job->user->email)->send(new ApplyJob($mailData));
+        Mail::to($this->job->company->email)->send(new ApplyJob($mailData));
 
         broadcast(new StudentJobApplyEvent(trans('New application has been created!')));
 

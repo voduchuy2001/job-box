@@ -14,11 +14,11 @@ class Certificate extends Model
         'organization',
         'issued_on',
         'expires_on',
-        'user_id',
+        'student_id',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'student_id');
     }
 }

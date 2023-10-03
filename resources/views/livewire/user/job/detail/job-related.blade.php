@@ -9,7 +9,7 @@
 
                         <div class="avatar-sm mb-4">
                             <div class="avatar-title bg-soft-secondary rounded">
-                                <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="{{ $job->user->name }}" class="avatar-xxs" />
+                                <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="{{ $job->company->name }}" class="avatar-xxs" />
                             </div>
                         </div>
                         <x-link :to="route('job-detail', ['id' => $job->id])">

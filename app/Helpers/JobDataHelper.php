@@ -2,8 +2,6 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Facades\Auth;
-
 class JobDataHelper
 {
     public static function updateOrCreateJobData(mixed $validatedData): array
@@ -18,7 +16,7 @@ class JobDataHelper
             'experience' => $validatedData['experience'],
             'deadline_for_filing' => $validatedData['deadlineForFiling'],
             'status' => $validatedData['status'] ?? 'hide',
-            'user_id' => Auth::id(),
+            'company_id' => $validatedData['companyId'],
             'min_salary' => (int) str_replace('.', '', $validatedData['min']),
             'max_salary' => (int) str_replace('.', '', $validatedData['min']),
         ];

@@ -11,9 +11,10 @@ class Jobs extends Component
     public function render(): View
     {
         $jobs = Job::orderByDesc('created_at')
-            ->with('user')
+            ->with('company')
             ->where('status', 'show')
-            ->limit(8)->get();
+            ->limit(8)
+            ->get();
 
         return view('livewire.user.home.modules.jobs', [
             'jobs' => $jobs,

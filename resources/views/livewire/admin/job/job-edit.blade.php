@@ -30,7 +30,7 @@
 
                 <div class="col-lg-6">
                     <label class="form-label">{{ __('Category') }}</label>
-                    <select class="form-select mb-3" wire:model="category">
+                    <select class="form-select" wire:model="category">
                         <option value="">{{ __('Choose An Option') }}</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -46,7 +46,7 @@
 
                 <div class="col-lg-6">
                     <label class="form-label">{{ __('Type') }}</label>
-                    <select class="form-select mb-3" wire:model="type">
+                    <select class="form-select" wire:model="type">
                         <option value="">{{ __('Choose An Option') }}</option>
                         <option value="Full Time">{{ __('Full Time') }}</option>
                         <option value="Part Time">{{ __('Part Time') }}</option>
@@ -56,6 +56,29 @@
 
                     @error('type')
                         <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+
+                <div class="col-lg-6 my-3">
+                    <div class="d-flex align-items-center justify-content-start">
+                        <span
+                            class="link-info"
+                            style="cursor: pointer;"
+                            onclick="showModal('company')"
+                        >{{ __('Click Here To Add Company') }}</span>
+                    </div>
+
+                    @if($companyName)
+                        <div class="alert alert-secondary" role="alert">
+                            <span>{{ __('You choose company: :name', ['name' => $companyName]) }}</span>
+                        </div>
+                    @endif
+
+                    @error('companyId')
+                    <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -269,4 +292,48 @@
             </div>
         </x-form>
     </x-admin.card>
+
+    <x-admin.modal
+        id="company"
+        type="modal-md modal-dialog-centered">
+        <x-admin.modal.header>{{ __('Add Company') }}</x-admin.modal.header>
+        <x-admin.modal.body>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <input
+                            wire:model.live.debounce.1000ms="searchTerm"
+                            wire:keydown.escape="hideSuggestions"
+                            wire:keydown.tab="hideSuggestions"
+                            wire:keydown.enter="hideSuggestions"
+                            wire:keydown.arrow-up="hideSuggestions"
+                            wire:keydown.arrow-down="hideSuggestions"
+                            wire:keydown.delete="hideSuggestions"
+                            name="searchTerm"
+                            type="text"
+                            class="form-control filter-input-box"
+                            placeholder="{{ __('Find company') }}">
+                    </div>
+                </div>
+
+                <div class="col-lg-12 mt-2">
+                    <ul class="list-group">
+                        @forelse($companies as $company)
+                            <li
+                                wire:click="chooseCompany({{ $company->id }}, `{{ $company->name }}`)"
+                                style="cursor: pointer;"
+                                class="list-group-item">
+                                {!! $isSelected === $company->id ? '<i class="mdi mdi-check-bold align-middle lh-1 me-2 text-success"></i>' : '' !!} {{ $company->name }}</li>
+                        @empty
+                            <span
+                                class="text-primary"
+                                style="font-size: 13px;">
+                            {{ __('There is no data to display at the moment.') }}
+                            </span>
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+        </x-admin.modal.body>
+    </x-admin.modal>
 </div>

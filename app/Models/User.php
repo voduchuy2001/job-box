@@ -80,42 +80,42 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function educations(): HasMany
     {
-        return $this->hasMany(Education::class, 'user_id');
+        return $this->hasMany(Education::class, 'student_id');
     }
 
     public function experiences(): HasMany
     {
-        return $this->hasMany(Experience::class, 'user_id');
+        return $this->hasMany(Experience::class, 'student_id');
     }
 
     public function certificates(): HasMany
     {
-        return $this->hasMany(Certificate::class, 'user_id');
+        return $this->hasMany(Certificate::class, 'student_id');
     }
 
     public function awards(): HasMany
     {
-        return $this->hasMany(Award::class, 'user_id');
+        return $this->hasMany(Award::class, 'student_id');
     }
 
     public function projects(): HasMany
     {
-        return $this->hasMany(Project::class, 'user_id');
+        return $this->hasMany(Project::class, 'student_id');
     }
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class, 'user_id');
+        return $this->hasMany(Product::class, 'student_id');
     }
 
     public function courses(): HasMany
     {
-        return $this->hasMany(Course::class, 'user_id');
+        return $this->hasMany(Course::class, 'student_id');
     }
 
     public function socialActivities(): HasMany
     {
-        return $this->hasMany(SocialActivity::class, 'user_id');
+        return $this->hasMany(SocialActivity::class, 'student_id');
     }
 
     public function skills(): MorphMany
@@ -131,12 +131,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function jobs(): HasMany
     {
-        return $this->hasMany(Job::class, 'user_id');
+        return $this->hasMany(Job::class, 'company_id');
     }
 
     public function wishlists(): BelongsToMany
     {
-        return $this->belongsToMany(Job::class, 'wishlists', 'user_id', 'job_id')
+        return $this->belongsToMany(Job::class, 'wishlists', 'student_id', 'job_id')
             ->withTimestamps();
     }
 

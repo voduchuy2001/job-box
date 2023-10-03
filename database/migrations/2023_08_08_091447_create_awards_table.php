@@ -12,7 +12,7 @@ return new class () extends Migration {
             $table->string('name');
             $table->string('organization');
             $table->date('issued_on')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('student_id');
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@
                                             <div class="col-md-auto">
                                                 <div class="avatar-md">
                                                     <div class="avatar-title bg-white rounded-circle">
-                                                        <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->user->name }}" class="avatar-xs">
+                                                        <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->company->name }}" class="avatar-xs">
                                                     </div>
                                                 </div>
                                             </div>
@@ -22,7 +22,7 @@
                                                     <div class="hstack gap-3 flex-wrap">
                                                         <div>
                                                             <i class="ri-building-line align-bottom me-1"></i>
-                                                            {{ $job->user->name }}
+                                                            {{ $job->company->name }}
                                                         </div>
 
                                                         @if($job->addresses->count())
@@ -74,7 +74,7 @@
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Company Name') }}</td>
-                                        <td>{{ $job->user->name }}</td>
+                                        <td>{{ $job->company->name }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Location') }}</td>
@@ -132,12 +132,12 @@
                         <div class="card-body">
                             <div class="avatar-sm mx-auto">
                                 <div class="avatar-title bg-soft-warning rounded">
-                                    <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->user->name }}" class="avatar-xxs">
+                                    <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->company->name }}" class="avatar-xxs">
                                 </div>
                             </div>
                             <div class="text-center">
                                 <a href="#!">
-                                    <h5 class="mt-3">{{ $job->user->name }}</h5>
+                                    <h5 class="mt-3">{{ $job->company->name }}</h5>
                                 </a>
                             </div>
 

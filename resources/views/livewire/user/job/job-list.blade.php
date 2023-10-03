@@ -48,7 +48,7 @@
                                         type="number"
                                         id="salaryMin"
                                         name="salaryMin"
-                                        placeholder="{{ __(':min VND', ['min' => 1000000]) }}"
+                                        placeholder="{{ __(':min VND', ['min' => '1.000.000']) }}"
                                         wire:model.live.debounce.1000ms="salaryMin"
                                     />
 
@@ -59,7 +59,7 @@
                                         type="number"
                                         id="salaryMax"
                                         name="salaryMax"
-                                        placeholder="{{ __(':min VND', ['min' => 100000000]) }}"
+                                        placeholder="{{ __(':min VND', ['min' => '100.000.000']) }}"
                                         wire:model.live.debounce.1000ms="salaryMax"
                                     />
                                 </div>

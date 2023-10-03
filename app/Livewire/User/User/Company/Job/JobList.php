@@ -48,7 +48,7 @@ class JobList extends Component
     public function render(): View
     {
         $searchTerm = '%' . $this->searchTerm . '%';
-        $jobs = Job::where('user_id', Auth::id())
+        $jobs = Job::where('company_id', Auth::id())
             ->where(function ($query) use ($searchTerm) {
                 $query->where('name', 'like', $searchTerm)
                     ->orWhere('description', 'like', $searchTerm);

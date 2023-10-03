@@ -63,7 +63,7 @@ class JobList extends Component
             ->when($salaryMin, fn ($query) => $query->where('min_salary', '>=', $salaryMin))
             ->when($salaryMax, fn ($query) => $query->where(fn ($query) => $query->where('max_salary', '<=', $salaryMax)));
 
-        return $query->with('user')
+        return $query->with('company')
             ->orderByDesc('created_at')
             ->paginate($this->itemPerPage);
     }

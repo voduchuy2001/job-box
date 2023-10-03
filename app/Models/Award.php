@@ -13,11 +13,11 @@ class Award extends Model
         'name',
         'organization',
         'issued_on',
-        'user_id',
+        'student_id',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'student_id');
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\District;
 use App\Models\Job;
 use App\Models\Province;
+use App\Models\User;
 use App\Models\Ward;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -77,10 +78,27 @@ class JobEdit extends Component
 
     public mixed $job;
 
+    #[Rule('required')]
+    public mixed $companyId;
+
+    public mixed $searchTerm = '';
+
+    public mixed $isSelected;
+
+    public string $companyName;
+
+    public function chooseCompany(string|int $id, string $companyName): void
+    {
+        $this->companyId = $this->isSelected = $id;
+        $this->companyName = $companyName;
+        $this->dispatch('hiddenModal');
+    }
+
     public function mount(string|int $id): void
     {
-        $job = Job::with(['addresses.province', 'addresses.district', 'addresses.ward'])
+        $job = Job::with(['company', 'addresses.province', 'addresses.district', 'addresses.ward'])
             ->findOrFail($id);
+
         $this->job = $job;
         $this->name = $job->name;
         $this->position = $job->position;
@@ -94,6 +112,8 @@ class JobEdit extends Component
         $this->min = $job->min_salary;
         $this->max = $job->max_salary;
         $this->addresses = $job->addresses;
+        $this->companyName = $job->company->name;
+        $this->isSelected = $job->company->id;
     }
 
     public function updateJob(): void
@@ -149,9 +169,17 @@ class JobEdit extends Component
             $this->wards = Ward::where('district_id', $this->districtId)->get();
         }
 
+        $searchTerm = '%' . $this->searchTerm . '%';
+
+        $companies = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Company');
+        })->whereHas('companyProfile')
+            ->where('name', 'like', $searchTerm)->take(3)->get();
+
         return view('livewire.admin.job.job-edit', [
             'categories' => $categories,
             'provinces' => $provinces,
+            'companies' => $companies,
         ]);
     }
 }

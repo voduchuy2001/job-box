@@ -33,12 +33,12 @@ class JobContact extends Component
         $validatedData = $this->validate();
 
         $job = Job::where('id', $this->jobId)
-            ->with('user')
+            ->with('company')
             ->first();
 
-        $mailData = array_merge(['companyName' => $job->user->name], $validatedData);
+        $mailData = array_merge(['companyName' => $job->company->name], $validatedData);
 
-        Mail::to($job->user->email)
+        Mail::to($job->company->email)
             ->send(new ContactJob($mailData));
         $this->alert('success', trans('Send email success'));
         $this->reset();

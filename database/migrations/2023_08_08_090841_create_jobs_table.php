@@ -20,7 +20,7 @@ return new class () extends Migration {
             $table->bigInteger('max_salary');
             $table->string('status')->default('hide');
             $table->softDeletes();
-            $table->foreignId('user_id');
+            $table->foreignId('company_id');
             $table->foreignId('category_id');
             $table->timestamps();
         });

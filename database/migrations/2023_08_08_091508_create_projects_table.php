@@ -17,7 +17,7 @@ return new class () extends Migration {
             $table->date('start_at')->nullable();
             $table->date('end_at')->nullable();
             $table->string('description')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('student_id');
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@ return new class () extends Migration {
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('student_id');
             $table->foreignId('job_id');
             $table->timestamps();
         });

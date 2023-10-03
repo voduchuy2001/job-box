@@ -86,7 +86,7 @@ class JobEdit extends Component
         ])
             ->findOrFail($id);
 
-        if (Auth::id() != $job->user_id) {
+        if (Auth::id() != $job->company_id) {
             abort(403);
         }
 
@@ -107,6 +107,7 @@ class JobEdit extends Component
     public function updateJob(): void
     {
         $validatedData = $this->validate();
+        $validatedData['companyId'] = Auth::id();
 
         $jobData = JobDataHelper::updateOrCreateJobData($validatedData);
 

@@ -31,7 +31,7 @@ class Job extends Model
         'min_salary',
         'max_salary',
         'status',
-        'user_id',
+        'company_id',
         'category_id',
     ];
 
@@ -45,14 +45,14 @@ class Job extends Model
         return $this->morphMany(Address::class, 'addressable');
     }
 
-    public function user(): BelongsTo
+    public function company(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'company_id');
     }
 
     public function wishlists(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'wishlists', 'job_id', 'user_id')
+        return $this->belongsToMany(User::class, 'wishlists', 'job_id', 'student_id')
             ->withTimestamps();
     }
 

@@ -87,6 +87,7 @@ class JobCreate extends Component
     public function saveJob(): void
     {
         $validatedData = $this->validate();
+        $validatedData['companyId'] = Auth::id();
 
         $jobData = JobDataHelper::updateOrCreateJobData($validatedData);
 

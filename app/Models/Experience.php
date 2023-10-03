@@ -15,11 +15,11 @@ class Experience extends Model
         'start_at',
         'end_at',
         'description',
-        'user_id',
+        'student_id',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'student_id');
     }
 }
