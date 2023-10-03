@@ -28,7 +28,13 @@
                             class="nav-link {{ in_array(request()->route()->getName(), ['company-list.user', 'company-detail.user']) ? 'active' : '' }}">{{ __('Companies') }}</x-link>
                     </li>
 
-                    @auth
+                    <li class="nav-item">
+                        <x-link
+                            :to="route('student-list.user')"
+                            class="nav-link {{ request()->route()->getName() == 'student-list.user' ? 'active' : '' }}">{{ __('Employees') }}</x-link>
+                    </li>
+
+                @auth
                         @if(! Auth::user()->hasRole('Super Admin'))
                             <li class="nav-item">
                                 <x-link

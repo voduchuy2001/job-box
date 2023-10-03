@@ -15,7 +15,7 @@
                                         <div class="d-flex">
                                             <div class="avatar-sm">
                                                 <div class="avatar-title bg-soft-warning rounded">
-                                                    <img src="{{ $job->user->avatar != null ? asset($job->user->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->user->name }}}" class="avatar-xxs">
+                                                    <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->company->name }}}" class="avatar-xxs">
                                                 </div>
                                             </div>
                                             <div class="ms-3 flex-grow-1">

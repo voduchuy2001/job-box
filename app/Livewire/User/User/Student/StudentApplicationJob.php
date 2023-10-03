@@ -24,7 +24,7 @@ class StudentApplicationJob extends Component
             ->find(Auth::id());
 
         $jobs = $user->applications()
-            ->with('user')
+            ->with('company')
             ->paginate($this->itemPerPage);
 
         return view('livewire.user.user.student.student-application-job', [

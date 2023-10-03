@@ -27,6 +27,7 @@ use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobApplication;
 use App\Livewire\User\Job\JobList as UserJobList;
+use App\Livewire\User\Student\StudentList;
 use App\Livewire\User\User\Company\CompanyProfile;
 use App\Livewire\User\User\Company\Job\JobCreate as CompanyJobCreate;
 use App\Livewire\User\User\Company\Job\JobEdit as CompanyJobEdit;
@@ -102,6 +103,7 @@ Route::get('/job-application/{id}', JobApplication::class)->name('job-applied.us
 Route::get('/student-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
 Route::get('/company-list', CompanyList::class)->name('company-list.user');
 Route::get('/company-detail/{id}', CompanyDetail::class)->name('company-detail.user');
+Route::get('/student-list', StudentList::class)->name('student-list.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');

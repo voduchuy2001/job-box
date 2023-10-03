@@ -145,7 +145,9 @@ class JobCreate extends Component
         $companies = User::whereHas('roles', function ($query) {
             $query->where('name', 'Company');
         })->whereHas('companyProfile')
-            ->where('name', 'like', $searchTerm)->take(3)->get();
+            ->where('name', 'like', $searchTerm)
+            ->take(3)
+            ->get();
 
         return view('livewire.admin.job.job-create', [
             'categories' => $categories,
