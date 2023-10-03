@@ -38,8 +38,9 @@
                                     name="presentation"
                                     wire:model="presentation"
                                     id="presentation"
-                                    class="form-control bg-light border-light"
-                                    id="letter-of-recommendation" rows="4"
+                                    class="form-control"
+                                    id="letter-of-recommendation"
+                                    rows="4"
                                     placeholder="{{ __('Write a brief introduction about yourself (strengths and weaknesses) and clearly state your desire and reasons for working at this company. This is how to impress employers if you have no work experience (or your resume is not good).') }}"></textarea>
                                 </div>
                         </div>

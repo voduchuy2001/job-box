@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -41,6 +42,16 @@ class ApplyJob extends Mailable
 
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath($this->mailData['filePath'])
+                ->as($this->mailData['fileName'])
+                ->withMime('application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
+            Attachment::fromPath($this->mailData['filePath'])
+                ->as($this->mailData['fileName'])
+                ->withMime('application/msword'),
+            Attachment::fromPath($this->mailData['filePath'])
+                ->as($this->mailData['fileName'])
+                ->withMime('application/pdf'),
+        ];
     }
 }
