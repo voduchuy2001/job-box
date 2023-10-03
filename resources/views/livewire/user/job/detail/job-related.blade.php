@@ -29,7 +29,9 @@
                         </div>
 
                         <div class="mt-4 hstack gap-2">
-                            <a href="#!" class="btn btn-soft-primary w-100">{{ __('Apply Job') }}</a>
+                            <x-link
+                                :to="route('job-applied.user', ['id' => $job->id])"
+                                class="btn btn-soft-primary w-100">{{ __('Apply Job') }}</x-link>
 
                             <x-link
                                 :to="route('job-detail', ['id' => $job->id])"

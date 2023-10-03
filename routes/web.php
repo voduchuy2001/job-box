@@ -17,6 +17,7 @@ use App\Livewire\Admin\Job\JobEdit;
 use App\Livewire\Admin\Job\JobList;
 use App\Livewire\Admin\Notification\NotificationList;
 use App\Livewire\Admin\RolePermission\RoleSetting;
+use App\Livewire\Admin\Setting\SettingList;
 use App\Livewire\Admin\TrendingWord\TrendingWordList;
 use App\Livewire\Admin\User\ChangePassword;
 use App\Livewire\Admin\User\UserList;
@@ -94,6 +95,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/category', CategoryList::class)->name('category.index')->middleware('permission:category-list');
     Route::get('/trending-word', TrendingWordList::class)->name('trending-word.index')->middleware('permission:trending-word-list');
     Route::get('/notification', NotificationList::class)->name('notification.index')->middleware('permission:trending-word-list');
+    Route::get('/setting', SettingList::class)->name('setting.index')->middleware('permission:trending-word-list');
 });
 
 Route::get('/', HomePage::class)->name('home');

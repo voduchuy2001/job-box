@@ -12,7 +12,9 @@
                                         <h5 class="mt-2 mb-1">{{ $company->companyProfile->payload['name'] }}</h5>
                                     </a>
                                     <p class="text-muted mb-2">{{ __('Jobs :jobs(s)', ['jobs' => $company->jobs_count]) }}</p>
-                                    <p class="text-muted">{{ __('Founded In: :in - :headquarters', ['in' => $company->companyProfile->payload['founded'], 'headquarters' => $company->companyProfile->payload['headquarters']]) }}</p>
+                                    <p
+                                        title="{{ __('Founded: :in - :headquarters', ['in' => $company->companyProfile->payload['founded'], 'headquarters' => $company->companyProfile->payload['headquarters']]) }}"
+                                        class="text-muted text-truncate">{{ __('Founded: :in - :headquarters', ['in' => $company->companyProfile->payload['founded'], 'headquarters' => $company->companyProfile->payload['headquarters']]) }}</p>
                                     <x-link
                                         :to="route('company-detail.user', ['id' => $company->id])"
                                         class="btn btn-soft-success w-100">{{ __('View Detail') }}</x-link>
@@ -20,7 +22,9 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
 
+                <div class="row">
                     @if(! $companies->count())
                         <div class="col-lg-12">
                             <div class="card shadow-lg">
@@ -31,11 +35,11 @@
                         </div>
                     @endif
 
-                        <div class="col-lg-12 mt-4">
-                            <div class="d-flex align-items-center justify-content-center">
-                                {{ $companies->onEachSide(0)->links() }}
-                            </div>
+                    <div class="col-lg-12 mt-4">
+                        <div class="d-flex align-items-center justify-content-center">
+                            {{ $companies->onEachSide(0)->links() }}
                         </div>
+                    </div>
 
                     <div class="text-center my-2" wire:loading>
                         <span class="text-primary"><i class="mdi mdi-loading mdi-spin fs-20 align-middle me-2"></i>{{ __('Loading...') }}</span>

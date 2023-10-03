@@ -105,10 +105,6 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" data-key="comments">{{ __('Comments') }}</a>
-                                </li>
-
-                                <li class="nav-item">
                                     <x-link
                                         :to="route('job.delete')" class="nav-link {{ request()->route()->getName() == 'job.delete' ? 'active' : '' }}" data-key="jobs-delete">{{ __('Jobs Deleted') }}</x-link>
                                 </li>
@@ -130,13 +126,12 @@
                 @endcan
 
                 <li class="nav-item">
-                    <a
-                        target="_blank"
+                    <x-link
                         class="nav-link menu-link"
-                        href="{{ route('home') }}"
+                        :to="route('setting.index')"
                     >
                         <i class="ri-settings-2-line"></i><span data-key="t-widgets">{{ __('Site Settings') }}</span>
-                    </a>
+                    </x-link>
                 </li>
 
                 <li class="nav-item">

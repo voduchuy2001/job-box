@@ -13,8 +13,8 @@
                                         href="{{ route('user-resume-preview.user', ['id' => $student->id]) }}">
                                         <h5 class="mt-2 mb-1">{{ $student->studentProfile->payload['firstName'] }} {{ $student->studentProfile->payload['lastName'] }}</h5>
                                     </a>
-                                    <p class="text-muted mb-2">{{ __('Email :email', ['email' => $student->studentProfile->payload['email']]) }}</p>
-                                    <p class="text-muted">{{ __('Phone Number: :phone', ['phone' => $student->studentProfile->payload['phone']]) }}</p>
+                                    <p
+                                        class="text-muted mb-2" title="{{ $student->studentProfile->payload['email'] }}">{!! Str::limit($student->studentProfile->payload['email'], 20) !!}</p>
                                     <a
                                         target="_blank"
                                         href="{{ route('user-resume-preview.user', ['id' => $student->id]) }}"
@@ -23,7 +23,9 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
 
+                <div class="row">
                     @if(! $students->count())
                         <div class="col-lg-12">
                             <div class="card shadow-lg">
