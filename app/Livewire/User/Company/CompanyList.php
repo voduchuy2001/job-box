@@ -20,6 +20,7 @@ class CompanyList extends Component
     public function render(): View
     {
         $role = Role::where('name', 'Company')->first();
+
         $companies = $role->users()
             ->has('companyProfile')
             ->with('companyProfile', 'avatar')

@@ -46,11 +46,15 @@
                                     class="btn btn-soft-success waves-effect waves-light"> {{ trans('View More') }} <i class="ri-arrow-right-line align-middle"></i></x-link>
                             </div>
                         @else
-                            <div class="my-3 text-center">
-                                <div class="mb-3">
-                                    <i class="ri-notification-2-line fs-22"></i>
+                            <div>
+                                <div class="empty-notification-elem">
+                                    <div class="w-25 w-sm-50 pt-3 mx-auto">
+                                        <img src="{{ asset('assets/images/svg/bell.svg') }}" class="img-fluid" alt="user-pic">
+                                    </div>
+                                    <div class="text-center pb-5 mt-2">
+                                        <h6 class="fs-18 fw-semibold lh-base">{{ __('Hey! You have no any notifications') }}</h6>
+                                    </div>
                                 </div>
-                                <h3>{{ __('Empty Notification') }}</h3>
                             </div>
                         @endif
                     </div>

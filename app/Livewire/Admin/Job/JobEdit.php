@@ -81,19 +81,6 @@ class JobEdit extends Component
     #[Rule('required')]
     public mixed $companyId;
 
-    public mixed $searchTerm = '';
-
-    public mixed $isSelected;
-
-    public string $companyName;
-
-    public function chooseCompany(string|int $id, string $companyName): void
-    {
-        $this->companyId = $this->isSelected = $id;
-        $this->companyName = $companyName;
-        $this->dispatch('hiddenModal');
-    }
-
     public function mount(string|int $id): void
     {
         $job = Job::with(['company', 'addresses.province', 'addresses.district', 'addresses.ward'])
@@ -113,7 +100,7 @@ class JobEdit extends Component
         $this->max = $job->max_salary;
         $this->addresses = $job->addresses;
         $this->companyName = $job->company->name;
-        $this->isSelected = $job->company->id;
+        $this->companyId = $job->company_id;
     }
 
     public function updateJob(): void
@@ -169,12 +156,10 @@ class JobEdit extends Component
             $this->wards = Ward::where('district_id', $this->districtId)->get();
         }
 
-        $searchTerm = '%' . $this->searchTerm . '%';
-
         $companies = User::whereHas('roles', function ($query) {
             $query->where('name', 'Company');
         })->whereHas('companyProfile')
-            ->where('name', 'like', $searchTerm)->take(3)->get();
+            ->get();
 
         return view('livewire.admin.job.job-edit', [
             'categories' => $categories,

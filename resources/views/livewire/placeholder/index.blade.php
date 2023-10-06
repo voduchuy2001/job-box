@@ -1,7 +1,6 @@
 <div>
-    <div class="skeleton-loader">
-        <div class="skeleton-row"></div>
-        <div class="skeleton-row"></div>
-        <div class="skeleton-row"></div>
-    </div>
+    <span class="placeholder col-12 placeholder-lg"></span>
+    <span class="placeholder col-12 placeholder-lg"></span>
+    <span class="placeholder col-12 placeholder-lg"></span>
+    <span class="placeholder col-12 placeholder-lg"></span>
 </div>

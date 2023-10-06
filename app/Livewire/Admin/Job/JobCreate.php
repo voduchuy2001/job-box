@@ -78,19 +78,6 @@ class JobCreate extends Component
     #[Rule('required')]
     public mixed $companyId;
 
-    public mixed $searchTerm = '';
-
-    public mixed $isSelected;
-
-    public string $companyName;
-
-    public function chooseCompany(string|int $id, string $companyName): void
-    {
-        $this->companyId = $this->isSelected = $id;
-        $this->companyName = $companyName;
-        $this->dispatch('hiddenModal');
-    }
-
     public function mount(): void
     {
         if (! Category::count()) {
@@ -140,13 +127,9 @@ class JobCreate extends Component
             $this->wards = Ward::where('district_id', $this->districtId)->get();
         }
 
-        $searchTerm = '%' . $this->searchTerm . '%';
-
         $companies = User::whereHas('roles', function ($query) {
             $query->where('name', 'Company');
         })->whereHas('companyProfile')
-            ->where('name', 'like', $searchTerm)
-            ->take(3)
             ->get();
 
         return view('livewire.admin.job.job-create', [

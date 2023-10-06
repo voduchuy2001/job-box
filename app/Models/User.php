@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\ImageType;
 use App\Traits\GetYearResult;
 use App\Traits\Label;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasRoles;
     use Label;
     use GetYearResult;
+    use CanResetPassword;
 
     protected $fillable = [
         'name',
@@ -49,6 +51,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    public function avatar(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable')
+            ->where('type', '=', ImageType::Avatar);
+    }
+
     public function applications(): BelongsToMany
     {
         return $this->belongsToMany(Job::class, 'applications', 'student_id', 'job_id')
@@ -56,14 +64,20 @@ class User extends Authenticatable implements MustVerifyEmail
             ->withTimestamps();
     }
 
+    public function wishlists(): BelongsToMany
+    {
+        return $this->belongsToMany(Job::class, 'wishlists', 'student_id', 'job_id')
+            ->withTimestamps();
+    }
+
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'company_id');
+    }
+
     public function addresses(): MorphMany
     {
         return $this->morphMany(Address::class, 'addressable');
-    }
-
-    public function address(): MorphOne
-    {
-        return $this->morphOne(Address::class, 'addressable');
     }
 
     public function studentProfile(): MorphOne
@@ -121,23 +135,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function skills(): MorphMany
     {
         return $this->morphMany(Skill::class, 'skillable');
-    }
-
-    public function avatar(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable')
-            ->where('type', '=', ImageType::Avatar);
-    }
-
-    public function jobs(): HasMany
-    {
-        return $this->hasMany(Job::class, 'company_id');
-    }
-
-    public function wishlists(): BelongsToMany
-    {
-        return $this->belongsToMany(Job::class, 'wishlists', 'student_id', 'job_id')
-            ->withTimestamps();
     }
 
     public function scopeGroupByMonth(Builder $query): array
