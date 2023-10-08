@@ -156,13 +156,4 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $results->pluck('count')->toArray();
     }
-
-    public static function getUsers(int $itemPerPage, string $searchTerm)
-    {
-        return User::where('name', 'like', $searchTerm)
-            ->with('avatar')
-            ->orWhere('email', 'like', $searchTerm)
-            ->orderByDesc('created_at')
-            ->paginate($itemPerPage);
-    }
 }

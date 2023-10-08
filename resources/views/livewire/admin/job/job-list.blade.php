@@ -48,17 +48,6 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
-                    <div id="selection-element">
-                        <div class="my-n1 d-flex align-items-center text-muted">
-                            Select <div id="select-content"
-                                        class="text-body fw-semibold px-1"></div> Result <button
-                                type="button" class="btn btn-link link-danger p-0 ms-3"
-                                data-bs-toggle="modal"
-                                data-bs-target="#removeItemModal">Remove</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

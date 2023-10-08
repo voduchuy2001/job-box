@@ -23,41 +23,42 @@
     @endcan
 
     <x-admin.card>
-        <x-admin.table
-            :labels="[__('Id'), __('Name')]"
-        >
-            @foreach($roles as $key => $role)
-                <tr>
-                    <td class="fw-medium">{{ $key + 1 }}</td>
-                    <td>{{ $role->name }}</td>
-                    <td>
-                        <div class="hstack gap-3 fs-15">
-                            @can('role-edit')
-                                <span
-                                    onclick="showModal('setting-role-permission')"
-                                    wire:click="editRole({{ $role->id }})"
-                                    style="cursor: pointer" class="link-warning"><i class="ri-pencil-line"></i></span>
-                            @endcan
-                            @can('role-delete')
-                                @if($confirm == $role->id)
+        @if($roles->count())
+            <x-admin.table
+                :labels="[__('Id'), __('Name')]"
+            >
+                @foreach($roles as $key => $role)
+                    <tr>
+                        <td class="fw-medium">{{ $key + 1 }}</td>
+                        <td>{{ $role->name }}</td>
+                        <td>
+                            <div class="hstack gap-3 fs-15">
+                                @can('role-edit')
                                     <span
-                                        wire:click="deleteRole({{ $role->id }})"
-                                        style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
-                                    <span
-                                        wire:click="confirmDelete({{ $role->id }})"
-                                        style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
-                                @else
-                                    <span
-                                        wire:click="confirmDelete({{ $role->id }})"
-                                        style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
-                                @endif
-                            @endcan
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </x-admin.table>
-
+                                        onclick="showModal('setting-role-permission')"
+                                        wire:click="editRole({{ $role->id }})"
+                                        style="cursor: pointer" class="link-warning"><i class="ri-pencil-line"></i></span>
+                                @endcan
+                                @can('role-delete')
+                                    @if($confirm == $role->id)
+                                        <span
+                                            wire:click="deleteRole({{ $role->id }})"
+                                            style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                        <span
+                                            wire:click="confirmDelete({{ $role->id }})"
+                                            style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
+                                    @else
+                                        <span
+                                            wire:click="confirmDelete({{ $role->id }})"
+                                            style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
+                                    @endif
+                                @endcan
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </x-admin.table>
+        @endif
 
         @if(! $roles->count())
             <div class="mt-3">

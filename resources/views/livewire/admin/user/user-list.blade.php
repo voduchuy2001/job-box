@@ -8,6 +8,57 @@
         model="searchTerm"
     ></x-admin.input.search>
 
+    <div class="card">
+        <div class="card-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0"
+                        role="tablist">
+                        <li class="nav-item">
+                            <span
+                                wire:click="filterByType('')"
+                                style="cursor: pointer;"
+                                class="nav-link {{ $filterType == '' ? 'active' : '' }} fw-semibold"
+                                data-bs-toggle="tab"
+                                role="tab">{{ __('All') }}
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <span
+                                wire:click="filterByType('Student')"
+                                style="cursor: pointer;"
+                                class="nav-link {{ $filterType == 'Student' ? 'active' : '' }} fw-semibold"
+                                data-bs-toggle="tab"
+                                role="tab">{{ __('Student') }}
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <span
+                                wire:click="filterByType('Company')"
+                                style="cursor: pointer;"
+                                class="nav-link fw-semibold {{ $filterType == 'Company' ? 'active' : '' }}"
+                                data-bs-toggle="tab"
+                                role="tab">{{ __('Companies') }}
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <span
+                                wire:click="filterByType('Super Admin')"
+                                style="cursor: pointer;"
+                                class="nav-link fw-semibold {{ $filterType == 'Super Admin' ? 'active' : '' }}"
+                                data-bs-toggle="tab"
+                                role="tab">{{ __('Super Admin') }}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row g-4 mb-3">
         <div class="col-sm-auto">
             <div>
@@ -48,7 +99,9 @@
     </div>
 
     @if(! count($users))
-        <x-admin.empty></x-admin.empty>
+        <x-admin.card>
+            <x-admin.empty></x-admin.empty>
+        </x-admin.card>
     @endif
 
     {{ $users->onEachSide(0)->links() }}

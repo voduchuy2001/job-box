@@ -20,6 +20,13 @@ class UserList extends Component
 
     public int $itemPerPage = 20;
 
+    public string $filterType = '';
+
+    public function filterByType(string $type): void
+    {
+        $this->filterType = $type;
+    }
+
     #[On('refresh')]
     #[Layout('layouts.admin')]
     public function render(): View
@@ -27,7 +34,21 @@ class UserList extends Component
         BaseHelper::setPageTitle(trans('List Of Users'), trans('Users'));
 
         $searchTerm = '%' . $this->searchTerm . '%';
-        $users = User::getUsers($this->itemPerPage, $searchTerm);
+
+        $filterType = $this->filterType;
+
+        $users = User::where(function ($query) use ($searchTerm) {
+            $query->where('name', 'like', $searchTerm)
+                ->orWhere('email', 'like', $searchTerm);
+        })
+            ->when($filterType, function ($query, $filterType) {
+                $query->whereHas('roles', function ($query) use ($filterType) {
+                    $query->where('name', $filterType);
+                });
+            })
+            ->with('avatar')
+            ->orderByDesc('created_at')
+            ->paginate($this->itemPerPage);
 
         return view('livewire.admin.user.user-list', [
             'users' => $users,
