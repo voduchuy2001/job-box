@@ -260,6 +260,34 @@
                             </div>
                         </x-form>
                     </x-admin.card>
+
+                    <x-admin.card :header="__('Candidates Of Job')">
+                        <div class="mb-3">
+                            <ul class="list-group">
+                                @foreach($applicants as $applicant)
+                                    <li class="list-group-item list-group-item-action">
+                                        <div class="float-end">
+                                            <select wire:model="statuses.{{ $applicant->id }}" wire:change="updateStatus({{ $applicant->id }}, $event.target.value)" class="form-control">
+                                                <option value="pending">{{ __('Pending') }}</option>
+                                                <option value="reviewed">{{ __('Reviewed') }}</option>
+                                                <option value="shortlisted">{{ __('Shortlisted') }}</option>
+                                                <option value="interviewed">{{ __('Interviewed') }}</option>
+                                                <option value="offered">{{ __('Offered') }}</option>
+                                                <option value="accepted">{{ __('Accepted') }}</option>
+                                                <option value="rejected">{{ __('Rejected') }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="d-flex mb-2 align-items-center">
+                                            <div class="flex-grow-1 ms-3">
+                                                <h5 class="list-title fs-15 mb-1">{{ $applicant->studentProfile->payload['firstName'] }} {{ $applicant->studentProfile->payload['lastName'] }}</h5>
+                                                <p class="list-text mb-0 fs-12">{{ $applicant->studentProfile->payload['email'] }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </x-admin.card>
                 </div>
             </div>
         </div>

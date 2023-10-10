@@ -6,9 +6,14 @@ use Carbon\Carbon;
 
 class BaseHelper
 {
-    public static function dateFormat(string $date): string
+    public static function dateFormat(string $date, bool $haveDay = true): string
     {
         $date = Carbon::parse($date);
+
+        if (! $haveDay) {
+            return $date->format('m') . '-' . $date->format('Y');
+        }
+
         return $date->format('d') . '-' . $date->format('m') . '-' . $date->format('Y');
     }
 

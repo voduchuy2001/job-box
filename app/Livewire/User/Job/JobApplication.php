@@ -64,28 +64,35 @@ class JobApplication extends Component
 
         $user = Auth::user();
 
-        $user->applications()->attach($this->job, [
-           'status' => 'pending',
-           'presentation' => $validatedData['presentation'],
-        ]);
+        $jobId = $this->job->id;
 
-        $fileName = $validatedData['resume']->getClientOriginalName();
-        $filePath = asset($validatedData['resume']->store('upload'));
+        if (!$user->applications()->wherePivot('job_id', $jobId)->exists()) {
+            $user->applications()->attach($jobId, [
+                'status' => 'pending',
+                'presentation' => $validatedData['presentation'],
+            ]);
 
-        $mailData = [
-            'email' => $user->studentProfile->payload['email'],
-            'companyName' => $this->job->company->name,
-            'subject' => trans('Job Application for :jobTitle', ['jobTitle' => $this->job->name]),
-            'presentation' => $validatedData['presentation'],
-            'filePath' => $filePath,
-            'fileName' => $fileName,
-        ];
+            $fileName = $validatedData['resume']->getClientOriginalName();
+            $filePath = asset($validatedData['resume']->store('upload'));
 
-        Notification::send(Auth::user(), new StudentJobApplyNotification($this->job));
-        Mail::to($this->job->company->email)->send(new ApplyJob($mailData));
-        broadcast(new StudentJobApplyEvent(trans('New application has been created!')));
-        $this->alert('success', trans('Apply Success'));
-        $this->redirect(HomePage::class, navigate: true);
+            $mailData = [
+                'email' => $user->studentProfile->payload['email'],
+                'companyName' => $this->job->company->name,
+                'subject' => trans('Job Application for :jobTitle', ['jobTitle' => $this->job->name]),
+                'presentation' => $validatedData['presentation'],
+                'filePath' => $filePath,
+                'fileName' => $fileName,
+            ];
+
+            Notification::send(Auth::user(), new StudentJobApplyNotification($this->job));
+            Mail::to($this->job->company->email)->send(new ApplyJob($mailData));
+            broadcast(new StudentJobApplyEvent(trans('New application has been created!')));
+            $this->alert('success', trans('Apply Success'));
+            $this->redirect(HomePage::class, navigate: true);
+            return;
+        }
+
+        $this->alert('warning', trans('You have previously submitted your application for this position, please wait for a response'));
     }
 
     #[Layout('layouts.user')]

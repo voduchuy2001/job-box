@@ -101,7 +101,6 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 Route::get('/', HomePage::class)->name('home');
 Route::get('/job-detail/{id}', JobDetail::class)->name('job-detail');
 Route::get('/job-list', UserJobList::class)->name('job-list.user');
-Route::get('/job-application/{id}', JobApplication::class)->name('job-applied.user')->middleware('permission:student-job-applied');
 Route::get('/student-resume-preview/{id}', [ResumeController::class, '__invoke'])->name('user-resume-preview.user');
 Route::get('/company-list', CompanyList::class)->name('company-list.user');
 Route::get('/company-detail/{id}', CompanyDetail::class)->name('company-detail.user');
@@ -110,6 +109,7 @@ Route::get('/student-list', StudentList::class)->name('student-list.user');
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');
 
+    Route::get('/job-application/{id}', JobApplication::class)->name('job-applied.user')->middleware('permission:student-job-applied');
     Route::get('/student-profile', StudentProfile::class)->name('student-profile.user')->middleware('permission:student-profile-create');
     Route::get('/wishlist-job', StudentWishlistJob::class)->name('student-wishlist.user')->middleware('permission:student-job-wishlist');
     Route::get('/student-resume', StudentResume::class)->name('student-resume.user')->middleware('permission:student-resume-create');

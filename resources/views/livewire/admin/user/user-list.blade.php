@@ -40,7 +40,7 @@
                                 style="cursor: pointer;"
                                 class="nav-link fw-semibold {{ $filterType == 'Company' ? 'active' : '' }}"
                                 data-bs-toggle="tab"
-                                role="tab">{{ __('Companies') }}
+                                role="tab">{{ __('Company') }}
                             </span>
                         </li>
 
