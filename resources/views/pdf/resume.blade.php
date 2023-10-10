@@ -24,10 +24,10 @@
                             <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{ $user->studentProfile->payload['firstName'] ?? '' }} {{ $user->studentProfile->payload['lastName'] ?? '' }}</h1>
                             <div class="title mb-3">{{ $user->studentProfile->payload['appliedPosition'] ?? '' }}</div>
                             <ul class="list-unstyled">
-                                <li class="mb-2">Email contact: <a class="text-link" href="mailto:{{ $user->studentProfile->payload['email'] ?? '' }}">{{ __(':email', ['email' => $user->studentProfile->payload['email'] ?? '']) }}</a></li>
-                                <li class="mb-2">Phone number: <a class="text-link" href="tel:{{ $user->studentProfile->payload['phone'] ?? '' }}">{{ __(':phone', ['phone' => $user->studentProfile->payload['phone'] ?? '']) }}</a></li>
+                                <li class="mb-2">Email contact: <a class="text-white-50" href="mailto:{{ $user->studentProfile->payload['email'] ?? '' }}">{{ __(':email', ['email' => $user->studentProfile->payload['email'] ?? '']) }}</a></li>
+                                <li class="mb-2">Phone number: <a class="text-white-50" href="tel:{{ $user->studentProfile->payload['phone'] ?? '' }}">{{ __(':phone', ['phone' => $user->studentProfile->payload['phone'] ?? '']) }}</a></li>
                                 @if($user->addresses->count())
-                                    <li>Address: <a href="javascript:void(0)" class="text-link">{{ __(':district, :province', ['district' => $user->addresses[0]->district->name, 'province' => $user->addresses[0]->province->name]) }}</a></li>
+                                    <li>Address: <a href="javascript:void(0)" class="text-white-50">{{ __(':district, :province', ['district' => $user->addresses[0]->district->name, 'province' => $user->addresses[0]->province->name]) }}</a></li>
                                 @endif
                             </ul>
                         </div>
@@ -60,7 +60,7 @@
                                                     <h3 class="resume-position-title font-weight-bold mb-1">{{ $experience->position }}</h3>
                                                     <div class="resume-company-name ms-auto">{{ $experience->company_name }}</div>
                                                 </div>
-                                                <div class="resume-position-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($experience->start_at), 'to' => $experience->end_at ? BaseHelper::dateFormat($experience->end_at) : __('Present')]) }}</div>
+                                                <div class="resume-position-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($experience->start_at, false), 'to' => $experience->end_at ? BaseHelper::dateFormat($experience->end_at, false) : __('Present')]) }}</div>
                                             </div>
                                             <div class="resume-timeline-item-desc">
                                                 <p>{{ $experience->description }}</p>
@@ -84,7 +84,7 @@
                                                     <h3 class="resume-position-title font-weight-bold mb-1">{{ $project->name }}</h3>
                                                     <div class="resume-company-name ms-auto">{{ $project->customer }}</div>
                                                 </div>
-                                                <div class="resume-position-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($project->start_at), 'to' => $project->end_at ? BaseHelper::dateFormat($project->end_at) : __('Present')]) }}</div>
+                                                <div class="resume-position-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($project->start_at, false), 'to' => $project->end_at ? BaseHelper::dateFormat($project->end_at, false) : __('Present')]) }}</div>
                                             </div>
                                             <div class="resume-timeline-item-desc">
                                                 <p>{{ __('Number of members: :member', ['member' => $project->number_of_members]) }}</p>
@@ -108,7 +108,7 @@
                                             <div class="resume-timeline-item-header mb-2">
                                                 <div class="d-flex flex-column flex-md-row">
                                                     <h3 class="resume-position-title font-weight-bold mb-1">{{ $product->name }}</h3>
-                                                    <div class="resume-company-name ms-auto">{{ BaseHelper::dateFormat($product->completion_time) }}</div>
+                                                    <div class="resume-company-name ms-auto">{{ BaseHelper::dateFormat($product->completion_time, false) }}</div>
                                                 </div>
                                             </div>
                                             <div class="resume-timeline-item-desc">
@@ -133,7 +133,7 @@
                                         <li class="mb-2">
                                             <div class="resume-degree font-weight-bold">{{ $education->majors }}</div>
                                             <div class="resume-degree-org">{{ $education->school }}</div>
-                                            <div class="resume-degree-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($education->start_at), 'to' => $education->end_at ? BaseHelper::dateFormat($education->end_at) : __('Present')]) }}</div>
+                                            <div class="resume-degree-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($education->start_at, false), 'to' => $education->end_at ? BaseHelper::dateFormat($education->end_at, false) : __('Present')]) }}</div>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -166,7 +166,7 @@
                                     @foreach($user->awards as $award)
                                         <li class="mb-2">
                                             <div class="resume-degree font-weight-bold">{{ $award->name  }}</div>
-                                            <div class="resume-degree-time">{{ __('Organization: :organization (:issueOn)', ['organization' => $award->organization, 'issueOn' => BaseHelper::dateFormat($award->issued_on)]) }}</div>
+                                            <div class="resume-degree-time">{{ __('Organization: :organization (:issueOn)', ['organization' => $award->organization, 'issueOn' => BaseHelper::dateFormat($award->issued_on, false)]) }}</div>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -196,7 +196,7 @@
                                 <ul class="list-unstyled resume-lang-list">
                                     @foreach($user->courses as $course)
                                         <li class="mb-2">
-                                            <span class="resume-lang-name font-weight-bold">{{ $course->name }}</span> <small class="text-muted font-weight-normal">({{ __(':from - :to', ['from' => BaseHelper::dateFormat($course->start_at), 'to' => $course->end_at ? BaseHelper::dateFormat($course->end_at) : __('Present')]) }})</small>
+                                            <span class="resume-lang-name font-weight-bold">{{ $course->name }}</span> <small class="text-muted font-weight-normal">({{ __(':from - :to', ['from' => BaseHelper::dateFormat($course->start_at, false), 'to' => $course->end_at ? BaseHelper::dateFormat($course->end_at, false) : __('Present')]) }})</small>
                                             <div class="resume-degree-org">{{ $course->organization }}</div>
                                         </li>
                                     @endforeach

@@ -17,14 +17,14 @@
                                                         <span class="step-title me-2">
                                                             <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step :step', ['step' => 1]) }}
                                                         </span>
-                                                {{ __('Infomation') }}
+                                                {{ __('Information') }}
                                             </span>
 
                                             <span class="nav-link {{ $step === 2 ? 'active' : '' }} {{ $step > 2 ? 'done' : '' }}">
                                                         <span class="step-title me-2">
                                                             <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step :step', ['step' => 3]) }}
                                                         </span>
-                                                {{ __('Trình bày') }}
+                                                {{ __('Present') }}
                                             </span>
 
                                             <span class="nav-link {{ $step === 3 ? 'active' : '' }} {{ $step > 3 ? 'done' : '' }}">
