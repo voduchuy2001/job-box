@@ -111,7 +111,7 @@ class CompanyProfile extends Component
             'type' => 'Company',
         ]);
 
-        $this->alert('success', 'Create Success');
+        $this->alert('success', trans('Create Success'));
         $this->redirect(JobList::class, navigate: true);
     }
 

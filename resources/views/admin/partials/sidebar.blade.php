@@ -83,7 +83,7 @@
                             class="nav-link menu-link {{ request()->route()->getName() == 'trending-word.index' ? 'active' : '' }}"
                             to="{{ route('trending-word.index') }}"
                         >
-                            <i class="ri-file-word-line"></i><span>{{ __('Trending Word') }}</span>
+                            <i class="ri-file-word-line"></i><span>{{ __('Trending Words') }}</span>
                         </x-link>
                     </li>
                 @endcan

@@ -285,6 +285,10 @@
                                         </div>
                                     </li>
                                 @endforeach
+
+                                @if(! $applicants->count())
+                                    <x-admin.empty></x-admin.empty>
+                                @endif
                             </ul>
                         </div>
                     </x-admin.card>

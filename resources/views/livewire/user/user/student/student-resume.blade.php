@@ -11,7 +11,6 @@
                         <div class="card-body">
                             <div class="text-center">
                                 <livewire:admin.user.modules.avatar :user="$user"></livewire:admin.user.modules.avatar>
-                                <h5 class="fs-16 mb-1">{{ Auth::user()->name }}</h5>
                                 <span class="d-flex align-items-center">
                                     <span class="flex-grow-1 ms-2">
                                         <button

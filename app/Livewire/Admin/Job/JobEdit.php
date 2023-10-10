@@ -142,7 +142,7 @@ class JobEdit extends Component
     #[Layout('layouts.admin')]
     public function render(): View
     {
-        BaseHelper::setPageTitle(trans('Edit Jobs'), trans('Jobs'));
+        BaseHelper::setPageTitle(trans('Edit Job'), trans('Jobs'));
 
         $categories = Category::orderByDesc('created_at')->get();
 

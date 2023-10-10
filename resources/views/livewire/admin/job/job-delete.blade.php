@@ -33,7 +33,7 @@
                                           style="cursor: pointer;"
                                           wire:click="reverseJob({{ $job->id }})"
                                           class="badge badge-soft-warning"
-                                    >{{ __('Reverse') }}</span>
+                                    >{{ __('Retrieve') }}</span>
                                 <span
                                     wire:click="deleteJob({{ $job->id }})"
                                     style="cursor: pointer"

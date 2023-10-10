@@ -263,5 +263,11 @@
     "Trending Keywords:": "Trending Keywords:",
     "Find your job...": "Find your job...",
     "Work Inquiry from :name": "Work Inquiry from :name",
+    "You can get your exact coordinates from: :here": "You can get your exact coordinates from: :here",
+    "Enter longitude": "Enter longitude",
+    "Enter latitude": "Enter latitude",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude",
+    "Apply Now": "Apply Now",
     "Click here to show permissions": "Click here to show permissions"
 }

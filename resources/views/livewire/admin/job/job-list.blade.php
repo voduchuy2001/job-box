@@ -42,7 +42,7 @@
                                 style="cursor: pointer;"
                                 class="nav-link fw-semibold {{ $filterType == 'hide' ? 'active' : '' }}"
                                 data-bs-toggle="tab"
-                                role="tab">{{ __('Hide') }}<span
+                                role="tab">{{ __('Hidden') }}<span
                                     class="badge badge-soft-danger align-middle rounded-pill ms-1"> {{ $hiddenJobs }}</span>
                             </span>
                         </li>

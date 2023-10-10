@@ -15,23 +15,23 @@
                                         <div class="nav flex-column custom-nav nav-pills">
                                             <span class="nav-link {{ $step === 1 ? 'active' : '' }} {{ $step > 1 ? 'done' : '' }}">
                                                         <span class="step-title me-2">
-                                                            <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step 1') }}
+                                                            <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step :step', ['step' => 1]) }}
                                                         </span>
-                                                {{ __('Basic') }}
+                                                {{ __('Contact') }}
                                             </span>
 
                                             <span class="nav-link {{ $step === 2 ? 'active' : '' }} {{ $step > 2 ? 'done' : '' }}">
                                                         <span class="step-title me-2">
-                                                            <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step 2') }}
+                                                            <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step :step', ['step' => 2]) }}
                                                         </span>
-                                                {{ __('Info') }}
+                                                {{ __('Description') }}
                                             </span>
 
                                             <span class="nav-link {{ $step === 3 ? 'active' : '' }} {{ $step > 3 ? 'done' : '' }}">
                                                         <span class="step-title me-2">
-                                                            <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step 3') }}
+                                                            <i class="ri-close-circle-fill step-icon me-2"></i> {{ __('Step :step', ['step' => 3]) }}
                                                         </span>
-                                                {{ __('Finish') }}
+                                                {{ __('Finished') }}
                                             </span>
                                         </div>
                                     </div>
@@ -42,7 +42,7 @@
                                                 <div class="tab-pane fade {{ $step === 1 ? 'show active' : '' }}">
                                                     <div>
                                                         <h5>{{ __('Your Company Info') }}</h5>
-                                                        <p class="text-muted">{{ __('Fill all information below') }}</p>
+                                                        <p class="text-muted">{{ __('The information below will be provided publicly to everyone') }}</p>
                                                     </div>
 
                                                     <div>
@@ -111,7 +111,7 @@
                                                 <div class="tab-pane fade {{ $step === 2 ? 'show active' : '' }}">
                                                     <div>
                                                         <h5>{{ __('Your Company Info')  }}</h5>
-                                                        <p class="text-muted">{{ __('Fill all information below') }}</p>
+                                                        <p class="text-muted">{{ __('The information below will be provided publicly to everyone') }}</p>
                                                     </div>
 
                                                     <div>
@@ -175,7 +175,7 @@
                                                         <div class="mb-4">
                                                             <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>
                                                         </div>
-                                                        <h5>{{ __('Your Profile is Completed !') }}</h5>
+                                                        <h5>{{ __('Your Profile Is Completed!') }}</h5>
                                                     </div>
 
                                                     <div class="d-flex align-items-start gap-3 mt-4">

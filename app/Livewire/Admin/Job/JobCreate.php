@@ -112,7 +112,7 @@ class JobCreate extends Component
     #[Layout('layouts.admin')]
     public function render(): View
     {
-        BaseHelper::setPageTitle(trans('Create Jobs'), trans('Jobs'));
+        BaseHelper::setPageTitle(trans('Create Job'), trans('Jobs'));
 
         $categories = Category::orderByDesc('created_at')
             ->get();
