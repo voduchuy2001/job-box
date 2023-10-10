@@ -31,7 +31,7 @@
                     <li class="nav-item">
                         <x-link
                             :to="route('student-list.user')"
-                            class="nav-link {{ request()->route()->getName() == 'student-list.user' ? 'active' : '' }}">{{ __('Employees') }}</x-link>
+                            class="nav-link {{ request()->route()->getName() == 'student-list.user' ? 'active' : '' }}">{{ __('Candidates') }}</x-link>
                     </li>
 
                 @auth

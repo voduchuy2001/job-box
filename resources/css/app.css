@@ -20,14 +20,3 @@
         height: 550px;
     }
 }
-
-.file-upload {
-    display: flex;
-    width: 100%;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-    border: #000000 dashed 1px;
-    cursor: pointer;
-    border-radius: 0.25rem;
-}

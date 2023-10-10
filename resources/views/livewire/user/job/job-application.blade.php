@@ -1,51 +1,43 @@
 <div>
     <div class="page-content">
         <div class="container-fluid">
-            <div class="row">
-                <x-admin.card>
-                    <x-form wire:submit.prevent="applyJob">
-                        <div class="row mb-4">
-                            <div class="col-lg-6 mb-2">
-                                <label for="resume" class="file-upload">{{ __('Click Here To Browser File') }}</label>
+            <x-admin.card>
+                <x-form wire:submit.prevent="applyJob">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div
+                                wire:ignore
+                                x-data
+                                x-init="
+                                                        FilePond.create($refs.input);
+                                                        FilePond.setOptions({
+                                                            allowMultiple: false,
+                                                            server: {
+                                                                process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
+                                                                    @this.upload('resume', file, load, error, progress)
+
+                                                                },
+                                                                revert: (filename, load) => {
+                                                                    @this.removeUpload('resume', filename, load)
+                                                                },
+                                                            },
+                                                        });
+                                                        ">
+                                <label>{{ __('Upload Your Resume') }}</label>
                                 <input
-                                    hidden
-                                    id="resume"
-                                    name="resume"
-                                    wire:model="resume"
                                     type="file"
-                                    accept=".doc,.docx,.pdf"
-                                    class="form-control" />
-
-                                @error('resume')
-                                    <span class="text-danger">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-
-                                @if($fileName)
-                                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                        <strong> {{ $fileName }}</strong>
-                                        <button
-                                            wire:click="removeResume"
-                                            type="button"
-                                            class="btn-close"></button>
-                                    </div>
-                                @endif
+                                    x-ref="input"
+                                    wire:model="resume">
                             </div>
 
-                            <div class="col-lg-6">
-                                <textarea
-                                    name="presentation"
-                                    wire:model="presentation"
-                                    id="presentation"
-                                    class="form-control"
-                                    id="letter-of-recommendation"
-                                    rows="4"
-                                    placeholder="{{ __('Write a brief introduction about yourself (strengths and weaknesses) and clearly state your desire and reasons for working at this company. This is how to impress employers if you have no work experience (or your resume is not good).') }}"></textarea>
-                                </div>
+                            @error('resume')
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-8">
                             <div class="alert alert-warning alert-border-left" role="alert">
                                 <i class="ri-alert-line me-3 align-middle"></i> <strong>{{ __('Attention') }}</strong>
                                 <ol>
@@ -63,9 +55,9 @@
                                     class="btn btn-primary">{{ __('Apply Job') }}</x-button>
                             </div>
                         </div>
-                    </x-form>
-                </x-admin.card>
-            </div>
+                    </div>
+                </x-form>
+            </x-admin.card>
         </div>
     </div>
 </div>

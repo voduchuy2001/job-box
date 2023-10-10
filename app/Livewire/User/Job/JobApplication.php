@@ -47,17 +47,6 @@ class JobApplication extends Component
         }
     }
 
-    public function removeResume(): void
-    {
-        $this->fileName = '';
-        $this->resume = '';
-    }
-
-    public function updatedResume(): void
-    {
-        $this->fileName = $this->resume->getClientOriginalName();
-    }
-
     public function applyJob(): void
     {
         $validatedData = $this->validate();
