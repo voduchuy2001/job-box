@@ -52,40 +52,37 @@
             <div class="col-lg-7 ms-lg-auto">
                 <div class="row">
                     <div class="col-sm-4 mt-4">
-                        <h5 class="text-white mb-0">Company</h5>
+                        <h5 class="text-white mb-0">{{ __('About Us') }}</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><a href="pages-profile.html">About Us</a></li>
-                                <li><a href="pages-gallery.html">Gallery</a></li>
-                                <li><a href="pages-team.html">Team</a></li>
-                                <li><a href="pages-pricing.html">Pricing</a></li>
-                                <li><a href="pages-timeline.html">Timeline</a></li>
+                                <li><x-link :to="route('job-list.user')">{{ __('Term & Conditions') }}</x-link></li>
+                                <li><x-link :to="route('job-list.user')">{{ __('Policy') }}</x-link></li>
                             </ul>
                         </div>
                     </div>
+
                     <div class="col-sm-4 mt-4">
-                        <h5 class="text-white mb-0">For Jobs</h5>
+                        <h5 class="text-white mb-0">{{ __('Support') }}</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><a href="apps-job-lists.html">Job List</a></li>
-                                <li><a href="apps-job-application.html">Application</a></li>
-                                <li><a href="apps-job-new.html">New Job</a></li>
-                                <li><a href="apps-job-companies-lists.html">Company List</a></li>
+                                <li><x-link :to="route('faq-list.user')">{{ __('FAQs') }}</x-link></li>
+                                <li><x-link :to="route('student-list.user')">{{ __('Contact') }}</x-link></li>
                             </ul>
                         </div>
                     </div>
+
                     <div class="col-sm-4 mt-4">
-                        <h5 class="text-white mb-0">Support</h5>
+                        <h5 class="text-white mb-0">{{ __('For Jobs') }}</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><a href="pages-faqs.html">FAQ</a></li>
-                                <li><a href="pages-faqs.html">Contact</a></li>
+                                <li><x-link :to="route('job-list.user')">{{ __('Job List') }}</x-link></li>
+                                <li><x-link :to="route('company-list.user')">{{ __('Companies') }}</x-link></li>
+                                <li><x-link :to="route('student-list.user')">{{ __('Candidates') }}</x-link></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </footer>

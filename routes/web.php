@@ -27,6 +27,7 @@ use App\Livewire\Admin\User\UserList;
 use App\Livewire\Admin\User\UserProfile as AdminUserProfile;
 use App\Livewire\User\Company\CompanyDetail;
 use App\Livewire\User\Company\CompanyList;
+use App\Livewire\User\FAQ\FAQList as UserFAQList;
 use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobApplication;
@@ -111,6 +112,7 @@ Route::get('/student-resume-preview/{id}', [ResumeController::class, '__invoke']
 Route::get('/company-list', CompanyList::class)->name('company-list.user');
 Route::get('/company-detail/{id}', CompanyDetail::class)->name('company-detail.user');
 Route::get('/student-list', StudentList::class)->name('student-list.user');
+Route::get('/faq-list', UserFAQList::class)->name('faq-list.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');
