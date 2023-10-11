@@ -12,4 +12,11 @@ class Setting extends Model
         'name',
         'payload',
     ];
+
+    public static function getSettingByName(string $name)
+    {
+        return self::where('name', $name)
+            ->pluck('payload')
+            ->firstOrFail();
+    }
 }

@@ -1,62 +1,90 @@
 <div>
     <x-admin.card>
-        <div class="d-flex align-items-center">
-            <div class="profile-user position-relative d-inline-block mx-auto mb-4">
-                <img
-                    src="{{ asset('assets/images/users/avatar-1.jpg') }}"
-                    class="rounded-circle avatar-xl img-thumbnail user-profile-image"
-                    alt="user-profile-image">
-                <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
-                    <x-admin.input
-                        class="profile-img-file-input"
-                        id="profile-img-file-input"
-                        type="file"
-                        accept="image/*"
-                        name="avatar"
-                        model="avatar"
-                    ></x-admin.input>
+        <livewire:admin.setting.modules.logo-component></livewire:admin.setting.modules.logo-component>
 
-                    <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
-                    <span class="avatar-title rounded-circle bg-light text-body">
-                        <i class="ri-camera-fill"></i>
-                    </span>
-                    </label>
+        <x-form wire:submit.prevent="saveSettings">
+            <div class="row">
+                <div class="col-lg-12">
+                    <x-admin.input
+                        name="phoneNumber"
+                        model="phoneNumber"
+                        id="phoneNumber"
+                        :label="__('Phone Number')"
+                        :placeholder="__('Enter phone number')"
+                        class="form-control"></x-admin.input>
+                </div>
+
+
+                <div class="col-lg-12">
+                    <x-admin.input
+                        name="siteName"
+                        model="siteName"
+                        id="siteName"
+                        :label="__('Site Name')"
+                        :placeholder="__('Enter site name')"
+                        class="form-control"></x-admin.input>
+                </div>
+
+                <div class="col-lg-12">
+                    <x-admin.input.textarea
+                        name="siteDescription"
+                        model="siteDescription"
+                        id="siteDescription"
+                        :label="__('Site Description')"
+                        :placeholder="__('Enter site description')"
+                        rows="3"
+                        class="form-control"></x-admin.input.textarea>
+                </div>
+
+                <div class="col-lg-12">
+                    <x-admin.input.textarea
+                        name="siteSlogan"
+                        model="siteSlogan"
+                        id="siteSlogan"
+                        :label="__('Site Slogan')"
+                        :placeholder="__('Enter site slogan')"
+                        rows="3"
+                        class="form-control"></x-admin.input.textarea>
+                </div>
+
+                <div class="col-lg-12">
+                    <x-admin.input
+                        name="email"
+                        model="email"
+                        id="email"
+                        :label="__('Email')"
+                        :placeholder="__('Enter email')"
+                        class="form-control"></x-admin.input>
+                </div>
+
+                <div class="col-lg-12">
+                    <x-admin.input
+                        name="youtube"
+                        model="youtube"
+                        id="youtube"
+                        :label="__('Youtube')"
+                        :placeholder="__('Enter link')"
+                        class="form-control"></x-admin.input>
+                </div>
+
+                <div class="col-lg-12">
+                    <x-admin.input
+                        name="facebook"
+                        model="facebook"
+                        id="facebook"
+                        :label="__('Facebook')"
+                        :placeholder="__('Enter link')"
+                        class="form-control"></x-admin.input>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <x-admin.input
-                    name="siteName"
-                    model="siteName"
-                    id="siteName"
-                    :label="__('Site Name')"
-                    :placeholder="__('Enter site name')"
-                    class="form-control"></x-admin.input>
-            </div>
 
             <div class="col-lg-12">
-                <x-admin.input.textarea
-                    name="siteDescription"
-                    model="siteDescription"
-                    id="siteDescription"
-                    :label="__('Site Description')"
-                    :placeholder="__('Enter site description')"
-                    rows="3"
-                    class="form-control"></x-admin.input.textarea>
+                <div class="hstack gap-2 justify-content-end">
+                    <x-button
+                        type="submit"
+                        class="btn btn-primary">{{ __('Save Data') }}</x-button>
+                </div>
             </div>
-
-            <div class="col-lg-12">
-                <x-admin.input.textarea
-                    name="siteSlogan"
-                    model="siteSlogan"
-                    id="siteSlogan"
-                    :label="__('Site Slogan')"
-                    :placeholder="__('Enter site slogan')"
-                    rows="3"
-                    class="form-control"></x-admin.input.textarea>
-            </div>
-        </div>
+        </x-form>
     </x-admin.card>
 </div>

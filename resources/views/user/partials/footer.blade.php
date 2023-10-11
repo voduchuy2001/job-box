@@ -4,44 +4,43 @@
             <div class="col-lg-4 mt-4">
                 <div>
                     <div>
-                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo light" height="17" />
+                        <img src="{{ asset($settings['logo']) }}" alt="logo light" height="17" />
                     </div>
                     <div class="mt-4 fs-13">
-                        <p>Premium Multipurpose Admin & Dashboard Template</p>
-                        <p>You can build any type of web application like eCommerce, CRM, CMS, Project management apps, Admin Panels, etc using Velzon.</p>
+                        <p>{{ $settings['siteSlogan'] }}</p>
                         <ul class="list-inline mb-0 footer-social-link">
                             <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="avatar-xs d-block">
+                                <a
+                                    target="_blank"
+                                    href="{{ $settings['facebook'] }}" class="avatar-xs d-block">
                                     <div class="avatar-title rounded-circle">
                                         <i class="ri-facebook-fill"></i>
                                     </div>
                                 </a>
                             </li>
+
                             <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="avatar-xs d-block">
+                                <a
+                                    target="_blank"
+                                    href="{{ $settings['youtube'] }}" class="avatar-xs d-block">
                                     <div class="avatar-title rounded-circle">
-                                        <i class="ri-github-fill"></i>
+                                        <i class="ri-youtube-fill"></i>
                                     </div>
                                 </a>
                             </li>
+
                             <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="avatar-xs d-block">
-                                    <div class="avatar-title rounded-circle">
-                                        <i class="ri-linkedin-fill"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="avatar-xs d-block">
+                                <a
+                                    href="mailto:{{ $settings['email'] }}" class="avatar-xs d-block">
                                     <div class="avatar-title rounded-circle">
                                         <i class="ri-google-fill"></i>
                                     </div>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="avatar-xs d-block">
+                                <a href="tel:{{ $settings['phoneNumber'] }}" class="avatar-xs d-block">
                                     <div class="avatar-title rounded-circle">
-                                        <i class="ri-dribbble-line"></i>
+                                        <i class="ri-phone-line"></i>
                                     </div>
                                 </a>
                             </li>

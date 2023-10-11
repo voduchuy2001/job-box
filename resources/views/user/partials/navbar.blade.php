@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
         <div class="container-fluid custom-container">
             <x-link :to="route('home')" class="navbar-brand">
-                <img src="{{ asset('assets/images/logo-dark.png') }}" class="card-logo card-logo-dark" alt="logo dark" height="17">
+                <img src="{{ asset($settings['logo']) }}" class="card-logo card-logo-dark" alt="logo dark" height="17">
             </x-link>
             <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="mdi mdi-menu"></i>
