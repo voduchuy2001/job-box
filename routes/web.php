@@ -10,6 +10,9 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
 use App\Http\Controllers\User\ResumeController;
 use App\Livewire\Admin\Category\CategoryList;
+use App\Livewire\Admin\FAQ\FAQCreate;
+use App\Livewire\Admin\FAQ\FAQEdit;
+use App\Livewire\Admin\FAQ\FAQList;
 use App\Livewire\Admin\Home\Dashboard;
 use App\Livewire\Admin\Job\JobCreate;
 use App\Livewire\Admin\Job\JobDelete;
@@ -95,7 +98,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/category', CategoryList::class)->name('category.index')->middleware('permission:category-list');
     Route::get('/trending-word', TrendingWordList::class)->name('trending-word.index')->middleware('permission:trending-word-list');
     Route::get('/notification', NotificationList::class)->name('notification.index')->middleware('permission:trending-word-list');
-    Route::get('/setting', SettingList::class)->name('setting.index')->middleware('permission:trending-word-list');
+    Route::get('/setting', SettingList::class)->name('setting.index')->middleware('permission:site-settings');
+    Route::get('/faq', FAQList::class)->name('faq.index')->middleware('permission:faq-list');
+    Route::get('/faq-create', FAQCreate::class)->name('faq.create')->middleware('permission:faq-create');
+    Route::get('/faq-edit/{id}', FAQEdit::class)->name('faq.edit')->middleware('permission:faq-edit');
 });
 
 Route::get('/', HomePage::class)->name('home');

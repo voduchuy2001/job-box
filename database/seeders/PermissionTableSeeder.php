@@ -10,6 +10,7 @@ class PermissionTableSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
+            'site-settings',
             'dashboard',
             'media-file',
             'permission-user-edit',
@@ -32,6 +33,10 @@ class PermissionTableSeeder extends Seeder
             'job-edit',
             'job-delete',
             'job-reverse',
+            'faq-list',
+            'faq-edit',
+            'faq-create',
+            'faq-delete',
             'company-profile-create',
             'company-job-list',
             'company-job-create',

@@ -88,6 +88,17 @@
                     </li>
                 @endcan
 
+                @can('faq-list')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link {{ request()->route()->getName() == 'trending-word.index' ? 'active' : '' }}"
+                            to="{{ route('faq.index') }}"
+                        >
+                            <i class="ri-file-word-line"></i><span>{{ __('FAQs') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
+
                 @can('job-list')
                     <li class="nav-item">
                         <a class="nav-link menu-link {{ request()->routeIs('job.*') ? 'active' : '' }}"
@@ -125,14 +136,16 @@
                     </li>
                 @endcan
 
-                <li class="nav-item">
-                    <x-link
-                        class="nav-link menu-link"
-                        :to="route('setting.index')"
-                    >
-                        <i class="ri-settings-2-line"></i><span data-key="t-widgets">{{ __('Site Settings') }}</span>
-                    </x-link>
-                </li>
+                @can('site-settings')
+                    <li class="nav-item">
+                        <x-link
+                            class="nav-link menu-link"
+                            :to="route('setting.index')"
+                        >
+                            <i class="ri-settings-2-line"></i><span data-key="t-widgets">{{ __('Site Settings') }}</span>
+                        </x-link>
+                    </li>
+                @endcan
 
                 <li class="nav-item">
                     <a
