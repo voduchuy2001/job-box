@@ -55,8 +55,8 @@
                         <h5 class="text-white mb-0">{{ __('About Us') }}</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><x-link :to="route('job-list.user')">{{ __('Term & Conditions') }}</x-link></li>
-                                <li><x-link :to="route('job-list.user')">{{ __('Policy') }}</x-link></li>
+                                <li><x-link :to="route('term-and-condition.user')">{{ __('Term & Conditions') }}</x-link></li>
+                                <li><x-link :to="route('privacy-policy.user')">{{ __('Privacy Policy') }}</x-link></li>
                             </ul>
                         </div>
                     </div>

@@ -138,12 +138,13 @@
 
                 @can('site-settings')
                     <li class="nav-item">
-                        <x-link
+                        <a
+                            target="_blank"
                             class="nav-link menu-link"
-                            :to="route('setting.index')"
+                            href="{{ route('setting.index') }}"
                         >
                             <i class="ri-settings-2-line"></i><span data-key="t-widgets">{{ __('Site Settings') }}</span>
-                        </x-link>
+                        </a>
                     </li>
                 @endcan
 

@@ -4,6 +4,7 @@
     'model' => null,
     'label' => null,
     'value' => null,
+    'placeholder' => null,
     ])
 
 <div>
@@ -14,7 +15,7 @@
             name="{{ $name }}"
             model="{{ $model }}"
             value="{{ $value }}"
-            placeholder="{{ __('Enter content') }}"
+            placeholder="{{ $placeholder ?? __('Enter content') }}"
             wire:ignore
         ></x-admin.input.textarea>
     </div>
@@ -26,7 +27,7 @@
     @enderror
 </div>
 
-@pushonce('scripts')
+@push('scripts')
     <script type="text/javascript">
         tinymce.remove();
 
@@ -85,4 +86,4 @@
             });
         }
     </script>
-@endpushonce
+@endpush

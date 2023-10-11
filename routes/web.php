@@ -32,7 +32,9 @@ use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
 use App\Livewire\User\Job\JobApplication;
 use App\Livewire\User\Job\JobList as UserJobList;
+use App\Livewire\User\PrivacyPolicy\PrivacyPolicyComponent;
 use App\Livewire\User\Student\StudentList;
+use App\Livewire\User\TermAndCondition\TermAndConditionComponent;
 use App\Livewire\User\User\Company\CompanyProfile;
 use App\Livewire\User\User\Company\Job\JobCreate as CompanyJobCreate;
 use App\Livewire\User\User\Company\Job\JobEdit as CompanyJobEdit;
@@ -113,6 +115,8 @@ Route::get('/company-list', CompanyList::class)->name('company-list.user');
 Route::get('/company-detail/{id}', CompanyDetail::class)->name('company-detail.user');
 Route::get('/student-list', StudentList::class)->name('student-list.user');
 Route::get('/faq-list', UserFAQList::class)->name('faq-list.user');
+Route::get('/term-and-conditions', TermAndConditionComponent::class)->name('term-and-condition.user');
+Route::get('/privacy-policy', PrivacyPolicyComponent::class)->name('privacy-policy.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');

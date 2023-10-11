@@ -32,7 +32,7 @@
                         id="siteDescription"
                         :label="__('Site Description')"
                         :placeholder="__('Enter site description')"
-                        rows="3"
+                        rows="7"
                         class="form-control"></x-admin.input.textarea>
                 </div>
 
@@ -43,7 +43,7 @@
                         id="siteSlogan"
                         :label="__('Site Slogan')"
                         :placeholder="__('Enter site slogan')"
-                        rows="3"
+                        rows="7"
                         class="form-control"></x-admin.input.textarea>
                 </div>
 
