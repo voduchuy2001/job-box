@@ -91,10 +91,10 @@
                 @can('faq-list')
                     <li class="nav-item">
                         <x-link
-                            class="nav-link menu-link {{ request()->route()->getName() == 'trending-word.index' ? 'active' : '' }}"
+                            class="nav-link menu-link {{ request()->routeIs('faq.*') ? 'active' : '' }}"
                             to="{{ route('faq.index') }}"
                         >
-                            <i class="ri-file-word-line"></i><span>{{ __('FAQs') }}</span>
+                            <i class="ri-question-line"></i><span>{{ __('FAQs') }}</span>
                         </x-link>
                     </li>
                 @endcan

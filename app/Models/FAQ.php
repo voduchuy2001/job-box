@@ -11,5 +11,6 @@ class FAQ extends Model
     protected $fillable = [
         'question',
         'answer',
+        'category_name',
     ];
 }

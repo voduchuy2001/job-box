@@ -14,6 +14,9 @@ class FAQCreate extends Component
 {
     use LivewireAlert;
 
+    #[Rule('required|in:General Questions,Manage Account,Privacy & Security')]
+    public string $categoryName;
+
     #[Rule('required|string|min:10|max:255')]
     public string $question;
 
@@ -27,6 +30,7 @@ class FAQCreate extends Component
         FAQ::create([
             'question' => $validatedData['question'],
             'answer' => $validatedData['answer'],
+            'category_name' => $validatedData['categoryName'],
         ]);
 
         $this->alert('success', trans('Create success'));

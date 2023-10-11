@@ -12,13 +12,13 @@ class FAQList extends Component
     #[Layout('layouts.user')]
     public function render(): View
     {
-        $faqs = FAQ::orderByDesc('created_at')->get();
-        $numCols = 3;
-        $chunkSize = round($faqs->count() / $numCols);
-        $faqsChunks = $faqs->chunk($chunkSize);
+        $faqs = FAQ::orderBy('category_name')
+            ->orderByDesc('created_at')
+            ->get()
+            ->groupBy('category_name');
 
         return view('livewire.user.faq.faq-list', [
-            'faqsChunks' => $faqsChunks,
+            'faqs' => $faqs,
         ]);
     }
 }

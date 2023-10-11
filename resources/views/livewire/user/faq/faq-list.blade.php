@@ -1,3 +1,11 @@
+@php
+    $categoryIcons = [
+        'General Questions' => 'ri-question-line',
+        'Manage Account' => 'ri-user-settings-line',
+        'Privacy & Security' => 'ri-shield-keyhole-line',
+    ];
+@endphp
+
 <div>
     <div class="page-content">
         <div class="container-fluid">
@@ -20,27 +28,36 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        @foreach ($faqsChunks as $faqsChunk)
+                    <div class="row justify-content-evenly">
+                        @foreach ($faqs as $category => $categoryFaqs)
                             <div class="col-lg-4">
-                                @foreach ($faqsChunk as $faq)
-                                    <div class="mt-3">
-                                        <div class="accordion accordion-border-box" id="faq-accordion-{{ $loop->parent->index }}-{{ $loop->index }}">
+                                <div class="mt-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="flex-shrink-0 me-1">
+                                            <i class="{{ $categoryIcons[$category] }} fs-24 align-middle text-success me-1"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="fs-16 mb-0 fw-semibold">{{ $category }}</h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion accordion-border-box" id="{{ Str::slug($category) }}-accordion">
+                                        @foreach ($categoryFaqs as $faq)
                                             <div class="accordion-item">
-                                                <h2 class="accordion-header" id="faq-heading-{{ $loop->parent->index }}-{{ $loop->index }}">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-{{ $loop->parent->index }}-{{ $loop->index }}" aria-expanded="false" aria-controls="faq-collapse-{{ $loop->parent->index }}-{{ $loop->index }}">
+                                                <h2 class="accordion-header" id="{{ Str::slug($category) }}-heading{{ $loop->index }}">
+                                                    <button class="accordion-button {{ $loop->first ? '' : 'collapsed' }}" type="button" data-bs-toggle="collapse" data-bs-target="#{{ Str::slug($category) }}-collapse{{ $loop->index }}" aria-expanded="{{ $loop->first ? 'true' : 'false' }}" aria-controls="{{ Str::slug($category) }}-collapse{{ $loop->index }}">
                                                         {{ $faq->question }}
                                                     </button>
                                                 </h2>
-                                                <div id="faq-collapse-{{ $loop->parent->index }}-{{ $loop->index }}" class="accordion-collapse collapse" aria-labelledby="faq-heading-{{ $loop->parent->index }}-{{ $loop->index }}" data-bs-parent="#faq-accordion-{{ $loop->parent->index }}-{{ $loop->index }}">
+                                                <div id="{{ Str::slug($category) }}-collapse{{ $loop->index }}" class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}" aria-labelledby="{{ Str::slug($category) }}-heading{{ $loop->index }}" data-bs-parent="#{{ Str::slug($category) }}-accordion">
                                                     <div class="accordion-body">
                                                         {{ $faq->answer }}
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
                         @endforeach
                     </div>

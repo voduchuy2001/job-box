@@ -4,7 +4,23 @@
     <x-admin.card>
         <x-form wire:submit.prevent="saveFAQ">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
+                    <label class="form-label">{{ __('Category') }}</label>
+                    <select class="form-select" wire:model="categoryName">
+                        <option value="">{{ __('Choose An Option') }}</option>
+                        <option value="General Questions">{{ __('General Questions') }}</option>
+                        <option value="Manage Account">{{ __('Manage Account') }}</option>
+                        <option value="Privacy & Security">{{ __('Privacy & Security') }}</option>
+                    </select>
+
+                    @error('categoryName')
+                    <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-lg-6">
                     <x-admin.input
                         :label="__('Question')"
                         class="form-control"
@@ -23,7 +39,7 @@
                         id="answer"
                         :label="__('Answer')"
                         :placeholder="__('Enter answer')"
-                        rows="3"
+                        rows="7"
                         class="form-control"></x-admin.input.textarea>
                 </div>
 

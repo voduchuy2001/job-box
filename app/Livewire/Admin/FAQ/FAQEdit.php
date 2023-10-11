@@ -14,6 +14,9 @@ class FAQEdit extends Component
 {
     use LivewireAlert;
 
+    #[Rule('required|in:General Questions,Manage Account,Privacy & Security')]
+    public string $categoryName;
+
     #[Rule('required|string|min:10|max:255')]
     public string $question;
 
@@ -27,6 +30,7 @@ class FAQEdit extends Component
         $this->faq = $faq = FAQ::findOrFail($id);
         $this->question = $faq->question;
         $this->answer = $faq->answer;
+        $this->categoryName = $faq->category_name;
     }
 
     public function updateFAQ(): void
@@ -36,6 +40,7 @@ class FAQEdit extends Component
         $this->faq->update([
             'question' => $validatedData['question'],
             'answer' => $validatedData['answer'],
+            'categoryName' => $validatedData['categoryName'],
         ]);
 
         $this->alert('success', trans('Update success'));
