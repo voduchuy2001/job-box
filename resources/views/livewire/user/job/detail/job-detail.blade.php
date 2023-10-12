@@ -22,7 +22,7 @@
                                                     <div class="hstack gap-3 flex-wrap">
                                                         <div>
                                                             <i class="ri-building-line align-bottom me-1"></i>
-                                                            {{ $job->company->name }}
+                                                            {{ $job->company->companyProfile->payload['name'] }}
                                                         </div>
 
                                                         @if($job->addresses->count())
@@ -74,7 +74,7 @@
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Company Name') }}</td>
-                                        <td>{{ $job->company->name }}</td>
+                                        <td>{{ $job->company->companyProfile->payload['name'] }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Location') }}</td>
@@ -137,9 +137,10 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="#!">
-                                    <h5 class="mt-3">{{ $job->company->name }}</h5>
-                                </a>
+                                <x-link
+                                    :to="route('company-detail.user', ['id' => $job->company->id])">
+                                    <h5 class="mt-3">{{ $job->company->companyProfile->payload['name'] }}</h5>
+                                </x-link>
                             </div>
 
                             <livewire:user.job.detail.job-company :jobId="$job->id"></livewire:user.job.detail.job-company>

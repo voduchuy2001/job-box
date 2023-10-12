@@ -30,7 +30,7 @@ class JobApplication extends Component
 
     public mixed $fileName;
 
-    #[Rule('nullable|string|max:2048')]
+    #[Rule('required|string|max:2048')]
     public string $presentation;
 
     public mixed $job;
@@ -66,7 +66,7 @@ class JobApplication extends Component
 
             $mailData = [
                 'email' => $user->studentProfile->payload['email'],
-                'companyName' => $this->job->company->name,
+                'companyName' => $this->job->company->companyProfile->payload['name'],
                 'subject' => trans('Job Application for :jobTitle', ['jobTitle' => $this->job->name]),
                 'presentation' => $validatedData['presentation'],
                 'filePath' => $filePath,

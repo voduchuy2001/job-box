@@ -66,7 +66,7 @@
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
                                 <li><x-link :to="route('faq-list.user')">{{ __('FAQs') }}</x-link></li>
-                                <li><x-link :to="route('student-list.user')">{{ __('Contact') }}</x-link></li>
+                                <li><x-link :to="route('contact-us.user')">{{ __('Contact') }}</x-link></li>
                             </ul>
                         </div>
                     </div>

@@ -27,6 +27,7 @@ use App\Livewire\Admin\User\UserList;
 use App\Livewire\Admin\User\UserProfile as AdminUserProfile;
 use App\Livewire\User\Company\CompanyDetail;
 use App\Livewire\User\Company\CompanyList;
+use App\Livewire\User\Contact\ContactComponent;
 use App\Livewire\User\FAQ\FAQList as UserFAQList;
 use App\Livewire\User\Home\HomePage;
 use App\Livewire\User\Job\Detail\JobDetail;
@@ -117,6 +118,7 @@ Route::get('/student-list', StudentList::class)->name('student-list.user');
 Route::get('/faq-list', UserFAQList::class)->name('faq-list.user');
 Route::get('/term-and-conditions', TermAndConditionComponent::class)->name('term-and-condition.user');
 Route::get('/privacy-policy', PrivacyPolicyComponent::class)->name('privacy-policy.user');
+Route::get('/contact-us', ContactComponent::class)->name('contact-us.user');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');
