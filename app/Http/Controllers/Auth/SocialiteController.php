@@ -24,7 +24,7 @@ class SocialiteController extends Controller
 
     protected function catchError(string $provider): bool
     {
-        if (! in_array($provider, ['github', 'google'])) {
+        if (! in_array($provider, ['github', 'google', 'facebook'])) {
             return false;
         }
 
