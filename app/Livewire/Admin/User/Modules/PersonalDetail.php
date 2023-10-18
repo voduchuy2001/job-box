@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\User\Modules;
 
+use App\Helpers\BaseHelper;
 use App\Models\User;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -13,14 +14,14 @@ class PersonalDetail extends Component
 
     public User $user;
 
-    public string $name;
+    public string $createdAt;
 
     public string $email;
 
     public function mount(): void
     {
         $this->email = $this->user->email;
-        $this->name = $this->user->name;
+        $this->createdAt = BaseHelper::dateFormat($this->user->created_at);
     }
 
     public function render(): View

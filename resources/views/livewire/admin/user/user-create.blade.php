@@ -3,18 +3,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <x-admin.input
-                    :label="__('Name')"
-                    class="form-control"
-                    type="text"
-                    id="name"
-                    name="name"
-                    model="name"
-                    placeholder="{{ __('Enter name') }}"
-                ></x-admin.input>
-            </div>
-
-            <div class="col-lg-12">
-                <x-admin.input
                     :label="__('Email')"
                     class="form-control"
                     type="email"

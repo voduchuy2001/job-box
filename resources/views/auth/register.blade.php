@@ -19,17 +19,6 @@
                                     <div class="mt-4">
                                         <x-form method="POST" action="{{ route('register') }}">
                                             <x-admin.input
-                                                label="{{ __('Name') }}"
-                                                class="form-control"
-                                                type="text"
-                                                name="name"
-                                                model="name"
-                                                id="name"
-                                                placeholder="{{ __('Enter your name') }}"
-                                                required
-                                            ></x-admin.input>
-
-                                            <x-admin.input
                                                 label="{{ __('Email') }}"
                                                 class="form-control"
                                                 type="email"

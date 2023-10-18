@@ -18,9 +18,6 @@ class UserCreate extends Component
     #[Rule('required|string|email|unique:users,email')]
     public string $email;
 
-    #[Rule('required|string|max:32')]
-    public string $name;
-
     #[Rule('required|string|min:6|max:32')]
     public string $password;
 
@@ -33,7 +30,6 @@ class UserCreate extends Component
         $validatedData = $this->validate();
 
         User::create([
-            'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);

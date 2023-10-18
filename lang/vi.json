@@ -387,6 +387,20 @@
     "Enter headquarters": "Trụ sở chính",
     "Enter number of employee": "Số lượng nhân viên",
     "Enter phone": "Thêm số điện thoại",
-    "Enter applied position": "Vị trí ứng tuyển"
-
+    "Enter applied position": "Vị trí ứng tuyển",
+    "Phone Number": "Số Điện Thoại",
+    "Clears the application cache": "Xóa bộ nhớ đệm ứng dụng",
+    "Clear the cached data in the application, including the cache for configuration files, views, and other cached data. It is typically used after making changes to the application's configuration or views to ensure that the latest changes are reflected in the application.": "Xóa dữ liệu được lưu trong bộ nhớ đệm trong ứng dụng, bao gồm bộ đệm cho tệp cấu hình, chế độ xem và dữ liệu được lưu trong bộ nhớ đệm khác. Nó thường được sử dụng sau khi thực hiện các thay đổi đối với cấu hình hoặc chế độ xem của ứng dụng để đảm bảo rằng những thay đổi mới nhất được phản ánh trong ứng dụng.",
+    "Clear the log of authentication attempts and activities. It removes all records from the authentication log, providing a clean slate for monitoring future authentication events. This can be useful for security and auditing purposes, allowing the system to maintain a manageable log size.": "Xóa nhật ký các lần thử và hoạt động xác thực. Nó xóa tất cả các bản ghi khỏi nhật ký xác thực, cung cấp một phương tiện chặn rõ ràng để theo dõi các sự kiện xác thực trong tương lai. Điều này có thể hữu ích cho mục đích bảo mật và kiểm tra, cho phép hệ thống duy trì kích thước nhật ký có thể quản lý được.",
+    "Privacy Policy": "Chính sách bảo mật",
+    "Term And Conditions": "Điều khoản và điều kiện",
+    "FAQs": "Những Câu Hỏi Thường Gặp",
+    "Add FAQ": "Thêm Những Câu Hỏi Thường Gặp",
+    "Question": "Câu Hỏi",
+    "Enter question": "Thêm câu hỏi",
+    "Answer": "Câu trả lời",
+    "Enter answer": "Thêm câu trả lời",
+    "Enter term and conditions": "Thêm điều khoản và điều kiện",
+    "Enter privacy policy": "Thêm chính sách bảo mật",
+    "Read": "Đã Đọc"
 }

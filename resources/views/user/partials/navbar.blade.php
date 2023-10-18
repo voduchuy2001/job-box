@@ -62,14 +62,14 @@
                                 :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
                                 class="btn btn-soft-primary">
                                 <i class="ri-user-3-line align-bottom me-1"></i>
-                                {{ __('Hello :name', ['name' => Auth::user()->name]) }}</x-link>
+                                {{ __('Hello :name', ['name' => Auth::user()->email]) }}</x-link>
                         @else
                             <a
                                 target="_blank"
                                 href="{{ route('dashboard') }}"
                                 class="btn btn-soft-primary">
                                 <i class="ri-user-3-line align-bottom me-1"></i>
-                                {{ __('Hello :name', ['name' => Auth::user()->name]) }}</a>
+                                {{ __('Hello :name', ['name' => Auth::user()->email]) }}</a>
                         @endif
                     @endauth
                 </div>

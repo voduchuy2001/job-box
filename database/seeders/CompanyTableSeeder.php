@@ -14,7 +14,7 @@ class CompanyTableSeeder extends Seeder
     public function run(): void
     {
         $user = User::create([
-            'name' => 'Cao Thi Thuy Duong',
+            'name' => 'Company',
             'email' => 'company@gmail.com',
             'password' => Hash::make('admin123'),
             'is_root' => 0,

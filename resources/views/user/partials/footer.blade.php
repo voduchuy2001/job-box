@@ -55,7 +55,7 @@
                         <h5 class="text-white mb-0">{{ __('About Us') }}</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><x-link :to="route('term-and-condition.user')">{{ __('Term & Conditions') }}</x-link></li>
+                                <li><x-link :to="route('term-and-condition.user')">{{ __('Term And Conditions') }}</x-link></li>
                                 <li><x-link :to="route('privacy-policy.user')">{{ __('Privacy Policy') }}</x-link></li>
                             </ul>
                         </div>
@@ -75,7 +75,7 @@
                         <h5 class="text-white mb-0">{{ __('For Jobs') }}</h5>
                         <div class="text-muted mt-3">
                             <ul class="list-unstyled ff-secondary footer-list">
-                                <li><x-link :to="route('job-list.user')">{{ __('Job List') }}</x-link></li>
+                                <li><x-link :to="route('job-list.user')">{{ __('List Of Jobs') }}</x-link></li>
                                 <li><x-link :to="route('company-list.user')">{{ __('Companies') }}</x-link></li>
                                 <li><x-link :to="route('student-list.user')">{{ __('Candidates') }}</x-link></li>
                             </ul>

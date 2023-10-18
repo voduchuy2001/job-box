@@ -14,7 +14,7 @@ class StudentTableSeeder extends Seeder
     public function run(): void
     {
         $user = User::create([
-            'name' => 'Tran Minh Tri',
+            'name' => 'Student',
             'email' => 'student@gmail.com',
             'password' => Hash::make('admin123'),
             'is_root' => 0,

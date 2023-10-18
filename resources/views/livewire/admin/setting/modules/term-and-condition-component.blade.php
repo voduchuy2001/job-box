@@ -2,14 +2,14 @@
     <x-form wire:submit.prevent=saveTermAndCondition>
         <div class="col-lg-12">
             <x-admin.editor
-                :label="__('Term And Condition')"
+                :label="__('Term And Conditions')"
                 class="form-control"
                 type="text"
                 id="termAndCondition"
                 name="termAndCondition"
                 model="termAndCondition"
                 rows="7"
-                placeholder="{{ __('Enter term and condition') }}"
+                placeholder="{{ __('Enter term and conditions') }}"
             >
             </x-admin.editor>
 

@@ -20,15 +20,14 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{ Auth::user()->avatar === null ? asset('assets/images/users/avatar-1.jpg') : asset(Auth::user()->avatar->url) }}" alt="{{ Auth::user()->name }}">
+                            <img class="rounded-circle header-profile-user" src="{{ Auth::user()->avatar === null ? asset('assets/images/users/avatar-1.jpg') : asset(Auth::user()->avatar->url) }}" alt="{{ Auth::user()->email }}">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{{ Auth::user()->email }}</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->email }}</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <h6 class="dropdown-header">{{ __('Welcome :name!', ['name' => Auth::user()->name]) }}</h6>
+                        <h6 class="dropdown-header">{{ __('Welcome :name!', ['name' => Auth::user()->email]) }}</h6>
                         <x-link
                             class="dropdown-item"
                             :to="route('user-change-password.index')"><i class="mdi mdi-account-key-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Change Password') }}</span></x-link>
