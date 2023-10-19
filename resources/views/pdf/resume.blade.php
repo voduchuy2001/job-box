@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="{{ asset('assets/js/all.min.js') }}"></script>
-    <link href="{{ asset('assets/css/resume.css') }}" rel="stylesheet">
+    <script src="{{ public_path('assets/js/all.min.js') }}"></script>
+    <link href="{{ public_path('assets/css/resume.css') }}" rel="stylesheet">
     @vite(['resources/js/app.js'])
 </head>
 
