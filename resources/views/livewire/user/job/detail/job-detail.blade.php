@@ -108,7 +108,7 @@
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Salary') }}</td>
-                                        <td>{{ __(':min - :max', ['min' => BaseHelper::moneyFormatForHumans($job->min_salary), 'max' => BaseHelper::moneyFormatForHumans($job->max_salary)]) }}</td>
+                                        <td>{{ __(':min - :max', ['min' => $job->min_salary > 0 ? BaseHelper::moneyFormatForHumans($job->min_salary) : __('N/A'), 'max' => $job->max_salary ? BaseHelper::moneyFormatForHumans($job->max_salary) : __('N/A')]) }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-medium">{{ __('Experience') }}</td>

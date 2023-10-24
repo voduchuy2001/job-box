@@ -17,32 +17,18 @@
                     label: `{{ __('Current Year Jobs') }}`,
                     backgroundColor: '#405189',
                     data: {{ Js::from($currentYearJobs) }},
-                    borderWidth: 1,
+                    borderWidth: 2,
                     hoverOffset: 4,
+                    borderColor: '#405189',
                 }, {
                     label: `{{ __('Previous Year Jobs') }}`,
                     backgroundColor: '#DEDEDF',
                     data: {{ Js::from($previousYearJobs) }},
-                    borderWidth: 1,
+                    borderWidth: 2,
                     hoverOffset: 4,
+                    borderColor: '#DEDEDF'
                 }]
             },
-            options: {
-                animations: {
-                    tension: {
-                        duration: 1000,
-                        easing: 'linear',
-                        from: 1,
-                        to: 0,
-                        loop: true
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
         });
     </script>
 @endpush

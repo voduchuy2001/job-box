@@ -67,10 +67,10 @@ class JobEdit extends Component
     #[Rule('required|date_format:Y-m-d|after_or_equal:today')]
     public string $deadlineForFiling;
 
-    #[Rule('required')]
+    #[Rule('nullable')]
     public string $min;
 
-    #[Rule('required|gte:min')]
+    #[Rule('nullable|gte:min')]
     public string $max;
 
     public mixed $addresses = [];

@@ -16,8 +16,8 @@ return new class () extends Migration {
             $table->bigInteger('vacancy');
             $table->date('deadline_for_filing');
             $table->string('type');
-            $table->bigInteger('min_salary');
-            $table->bigInteger('max_salary');
+            $table->bigInteger('min_salary')->nullable();
+            $table->bigInteger('max_salary')->nullable();
             $table->string('status')->default('hide');
             $table->softDeletes();
             $table->foreignId('company_id');

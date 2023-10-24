@@ -68,10 +68,10 @@ class JobEdit extends Component
     #[Rule('required')]
     public string $min;
 
-    #[Rule('required|gte:min')]
+    #[Rule('nullable|gte:min')]
     public string $max;
 
-    #[Rule('required|string|in:show,hide')]
+    #[Rule('nullable|string|in:show,hide')]
     public string $status;
 
     public mixed $addresses = [];
