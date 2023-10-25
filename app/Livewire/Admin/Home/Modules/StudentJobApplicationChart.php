@@ -18,6 +18,7 @@ class StudentJobApplicationChart extends Component
             ->where('type', 'Student')
             ->where('applications.status', 'accepted')
             ->groupBy('course')
+            ->orderBy('course')
             ->get();
 
         $rejectedStudents = DB::table('profiles')
@@ -26,6 +27,7 @@ class StudentJobApplicationChart extends Component
             ->where('type', 'Student')
             ->where('applications.status', 'rejected')
             ->groupBy('course')
+            ->orderBy('course')
             ->get();
 
         return [
@@ -38,8 +40,31 @@ class StudentJobApplicationChart extends Component
     {
         $studentJobApplications = $this->getStudentsByCourseWithApprovedAndRejectedApplications();
 
+        $acceptedStudentJobCounts = $studentJobApplications['accepted_students']
+            ->pluck('total_students')
+            ->toArray();
+        $acceptedStudentJobLabels = $studentJobApplications['accepted_students']
+            ->pluck('course')
+            ->map(function ($label) {
+                return str_replace('"', '', $label);
+            })
+            ->toArray();
+
+        $rejectedStudentJobCounts = $studentJobApplications['rejected_students']
+            ->pluck('total_students')
+            ->toArray();
+        $rejectedStudentJobLabels = $studentJobApplications['rejected_students']
+            ->pluck('course')
+            ->map(function ($label) {
+                return str_replace('"', '', $label);
+            })
+            ->toArray();
+
         return view('livewire.admin.home.modules.student-job-application-chart', [
-            'studentJobApplications' => $studentJobApplications,
+            'acceptedStudentJobCounts' => $acceptedStudentJobCounts,
+            'acceptedStudentJobLabels' => $acceptedStudentJobLabels,
+            'rejectedStudentJobCounts' => $rejectedStudentJobCounts,
+            'rejectedStudentJobLabels' => $rejectedStudentJobLabels,
         ]);
     }
 }

@@ -1,29 +1,52 @@
 <div>
-    <x-admin.card>
-        <div class="row align-items-end justify-content-end">
-            <div class="col-lg-2 mb-3">
-                <select wire:model.live="course" class="form-select">
-                    <option value="course">{{ $course }}</option>
-                </select>
-            </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <x-admin.card>
+                <canvas id="studentAcceptedJobApplicationChart"></canvas>
+            </x-admin.card>
         </div>
 
-        <canvas id="studentJobApplicationChart"></canvas>
-    </x-admin.card>
+        <div class="col-lg-6">
+            <x-admin.card>
+                <canvas id="studentRejectedJobApplicationChart"></canvas>
+            </x-admin.card>
+        </div>
+    </div>
 </div>
 
 @push('scripts')
     <script type="text/javascript">
-        var line = document.getElementById('studentJobApplicationChart');
-        {{--var labels = {{ Js::from($labels) }};--}}
-        {{--var data = {{ Js::from($counts) }};--}}
+        var line = document.getElementById('studentAcceptedJobApplicationChart');
+        var labels = {{ Js::from($acceptedStudentJobLabels) }};
+        var data = {{ Js::from($acceptedStudentJobCounts) }};
 
-        var appliedJobChart = new Chart(line, {
+        var studentAcceptedJobApplicationChart = new Chart(line, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: `{{ __('Total Number Of Student Applications By Year') }}`,
+                    label: `{{ __('Total Number Of Accepted Job Applications By Course') }}`,
+                    backgroundColor: '#405189',
+                    data: data,
+                    borderWidth: 2,
+                    hoverOffset: 4,
+                    borderColor: '#405189'
+                }]
+            },
+        });
+    </script>
+
+    <script type="text/javascript">
+        var line = document.getElementById('studentRejectedJobApplicationChart');
+        var labels = {{ Js::from($rejectedStudentJobLabels) }};
+        var data = {{ Js::from($rejectedStudentJobCounts) }};
+
+        var studentRejectedJobApplicationChart = new Chart(line, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: `{{ __('Total Number Of Rejected Job Applications By Course') }}`,
                     backgroundColor: '#405189',
                     data: data,
                     borderWidth: 2,

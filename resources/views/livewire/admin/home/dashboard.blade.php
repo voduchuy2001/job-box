@@ -19,11 +19,11 @@
         </div>
 
         <div class="col-lg-12">
-            <livewire:admin.home.modules.application-chart wire:key="applicationChart"></livewire:admin.home.modules.application-chart>
+            <livewire:admin.home.modules.student-job-application-chart wire:key="studentJobApplicationChart"></livewire:admin.home.modules.student-job-application-chart>
         </div>
 
         <div class="col-lg-12">
-            <livewire:admin.home.modules.student-job-application-chart wire:key="studentJobApplicationChart"></livewire:admin.home.modules.student-job-application-chart>
+            <livewire:admin.home.modules.application-chart wire:key="applicationChart"></livewire:admin.home.modules.application-chart>
         </div>
     </div>
 </div>

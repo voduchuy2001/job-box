@@ -406,5 +406,7 @@
     "Top 10 Companies With The Highest Number Of Job Postings": "Top 10 công ty có số lượng tin tuyển dụng cao nhất",
     "Total Number Of Job Applications By Year": "Tổng Số Đơn Xin Việc Theo Năm",
     "Accepted": "Đã Chấp Nhân",
-    "Rejected": "Đã Từ Chối"
+    "Rejected": "Đã Từ Chối",
+    "Total Number Of Rejected Job Applications By Course": "Tổng Số Đơn Xin Việc Bị Từ Chối Theo Khóa Học",
+    "Total Number Of Accepted Job Applications By Course": "Tổng Số Đơn Xin Việc Được Chấp Nhận Theo Khóa Học"
 }
