@@ -60,6 +60,12 @@
                                 </div>
                             </div>
                         @endforeach
+
+                        @if(! $faqs->count())
+                            <div class="col-lg-12">
+                                <x-admin.empty></x-admin.empty>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

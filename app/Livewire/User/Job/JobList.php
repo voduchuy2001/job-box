@@ -37,6 +37,10 @@ class JobList extends Component
     public function mount(): void
     {
         $this->categories = Category::orderByDesc('created_at')
+            ->withCount(['jobs' => function ($query) {
+                $query->where('status', 'show');
+            }])
+            ->having('jobs_count', '>', 0)
             ->with('jobs')
             ->get();
     }

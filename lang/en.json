@@ -88,7 +88,7 @@
     "Create success": "Create success",
     "Update success": "Update success",
     "Delete success :name": "Delete success :name",
-    "No data available": "No data available",
+    "Data unavailable.": "Data unavailable.",
     "There is no data to display at the moment.": "There is no data to display at the moment.",
     "Personal Detail": "Personal Detail",
     "Full Name": "Full Name",

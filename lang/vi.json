@@ -88,7 +88,7 @@
     "Create success": "Thêm mới thành công",
     "Update success": "Cập nhật thành công",
     "Delete success :name": "Xóa :name thành công",
-    "No data available": "Không có dữ liệu",
+    "Data unavailable.": "Không có dữ liệu",
     "There is no data to display at the moment.": "Không có dữ liệu để hiển thị vào lúc này.",
     "Personal Detail": "Chi tiết cá nhân",
     "Full Name": "Họ và tên",

@@ -1,6 +1,7 @@
 <div>
-    <span class="placeholder col-12 placeholder-lg"></span>
-    <span class="placeholder col-12 placeholder-lg"></span>
-    <span class="placeholder col-12 placeholder-lg"></span>
-    <span class="placeholder col-12 placeholder-lg"></span>
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 </div>

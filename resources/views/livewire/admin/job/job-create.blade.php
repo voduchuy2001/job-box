@@ -70,7 +70,7 @@
                         wire:model="companyId">
                         <option value="">{{ __('Choose An Option') }}</option>
                         @foreach($companies as $company)
-                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                            <option value="{{ $company->id }}">{{ $company->companyProfile->payload['name'] }}</option>
                         @endforeach
                     </select>
 

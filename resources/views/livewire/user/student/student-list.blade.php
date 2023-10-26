@@ -27,12 +27,8 @@
 
                 <div class="row">
                     @if(! $students->count())
-                        <div class="col-lg-12">
-                            <div class="card shadow-lg">
-                                <div class="card-body">
-                                    <x-admin.empty></x-admin.empty>
-                                </div>
-                            </div>
+                        <div class="col-lg-12 py-4">
+                            <x-admin.empty></x-admin.empty>
                         </div>
                     @endif
 

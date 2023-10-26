@@ -43,7 +43,7 @@
                         <livewire:admin.user.modules.job-company :userId="$user->id" wire:key="job"></livewire:admin.user.modules.job-company>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <livewire:admin.user.modules.job-month-company :userId="$user->id" wire:key="jobMonth"></livewire:admin.user.modules.job-month-company>
                     </div>
                 </div>

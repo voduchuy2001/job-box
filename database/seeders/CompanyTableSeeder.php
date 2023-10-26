@@ -14,8 +14,7 @@ class CompanyTableSeeder extends Seeder
     public function run(): void
     {
         $user = User::create([
-            'name' => 'Company',
-            'email' => 'company@gmail.com',
+            'email' => 'hr@vnpt.com',
             'password' => Hash::make('admin123'),
             'is_root' => 0,
             'email_verified_at' => Carbon::now(),

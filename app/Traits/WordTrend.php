@@ -9,7 +9,7 @@ trait WordTrend
     public function createTrendingWords(string $searchTerm): void
     {
         $filePath = storage_path('app/public/files/blacklist.json');
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             $filePath = storage_path('app/blacklist.json');
         }
 
