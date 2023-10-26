@@ -10,11 +10,12 @@
                     name="houseNumber"
                     model="houseNumber"
                     placeholder="{{ __('Enter house number') }}"
+                    :require="false"
                 ></x-admin.input>
             </div>
 
             <div class="col-lg-6">
-                <label class="form-label">{{ __('Provinces') }}</label>
+                <label class="form-label">{{ __('Provinces') }} <span class="text-danger">*</span></label>
                 <select class="form-select" wire:model.live="provinceId">
                     @if(! $provinceId)
                         <option value="">{{ __('Choose Your Province') }}</option>
@@ -32,7 +33,7 @@
             </div>
 
             <div class="col-lg-6">
-                <label class="form-label">{{ __('Districts') }}</label>
+                <label class="form-label">{{ __('Districts') }} <span class="text-danger">*</span></label>
                 <select class="form-select" wire:model.live="districtId">
                     @if(! $districtId)
                         <option value="">{{ __('Choose A District') }}</option>
@@ -50,7 +51,7 @@
             </div>
 
             <div class="col-lg-6 mb-3">
-                <label class="form-label">{{ __('Wards') }}</label>
+                <label class="form-label">{{ __('Wards') }} <span class="text-danger">*</span></label>
                 <select class="form-select" wire:model.live="wardId">
                     @if(! $wardId)
                         <option value="">{{ __('Choose A Ward') }}</option>

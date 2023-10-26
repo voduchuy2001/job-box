@@ -64,6 +64,7 @@
                         id="youtube"
                         :label="__('Youtube')"
                         :placeholder="__('Enter link')"
+                        :require="false"
                         class="form-control"></x-admin.input>
                 </div>
 
@@ -74,6 +75,7 @@
                         id="facebook"
                         :label="__('Facebook')"
                         :placeholder="__('Enter link')"
+                        :require="false"
                         class="form-control"></x-admin.input>
                 </div>
             </div>

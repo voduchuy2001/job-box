@@ -44,7 +44,7 @@
                         <div class="col-sm-auto">
                             <div>
                                 <a
-                                    href="{{ route('login') }}"
+                                    href="{{ route('register') }}"
                                     class="btn bg-gradient btn-danger">{{ __('Create Free Account') }}</a>
                             </div>
                         </div>

@@ -36,6 +36,16 @@
 
                 </div>
             </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            2023 © {{ $settings['siteName'] }}.
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 

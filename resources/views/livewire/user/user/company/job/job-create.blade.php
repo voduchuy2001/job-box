@@ -34,9 +34,9 @@
                                     ></x-admin.input>
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <label class="form-label">{{ __('Category') }}</label>
-                                    <select class="form-select mb-3" wire:model="category">
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label">{{ __('Category') }} <span class="text-danger">*</span></label>
+                                    <select class="form-select" wire:model="category">
                                         <option value="">{{ __('Choose An Option') }}</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -50,9 +50,9 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <label class="form-label">{{ __('Type') }}</label>
-                                    <select class="form-select mb-3" wire:model="type">
+                                <div class="col-lg-6 mb-3">
+                                    <label class="form-label">{{ __('Type') }} <span class="text-danger">*</span></label>
+                                    <select class="form-select" wire:model="type">
                                         <option value="">{{ __('Choose An Option') }}</option>
                                         <option value="Full Time">{{ __('Full Time') }}</option>
                                         <option value="Part Time">{{ __('Part Time') }}</option>
@@ -93,9 +93,9 @@
                                     ></x-admin.input>
                                 </div>
 
-                                <div class="col-lg-4">
-                                    <label class="form-label">{{ __('Experiences') }}</label>
-                                    <select class="form-select mb-3" wire:model="experience">
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label">{{ __('Experiences') }} <span class="text-danger">*</span></label>
+                                    <select class="form-select" wire:model="experience">
                                         <option value="">{{ __('Choose An Option') }}</option>
                                         <option value="0">{{ __('0 Year') }}</option>
                                         <option value="1">{{ __('1 Year') }}</option>
@@ -132,6 +132,7 @@
                                         placeholder="{{ __('Enter min (VND)') }}"
                                         x-mask:dynamic="$money($input, ',')"
                                         x-data
+                                        :require="false"
                                     ></x-admin.input>
                                 </div>
 
@@ -145,11 +146,12 @@
                                         placeholder="{{ __('Enter max (VND)') }}"
                                         x-mask:dynamic="$money($input, ',')"
                                         x-data
+                                        :require="false"
                                     ></x-admin.input>
                                 </div>
 
-                                <div class="col-lg-4">
-                                    <label class="form-label">{{ __('Provinces') }}</label>
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label">{{ __('Provinces') }} <span class="text-danger">*</span></label>
                                     <select class="form-select" wire:model.live="provinceId">
                                         @if(! $provinceId)
                                             <option value="">{{ __('Choose Your Province') }}</option>
@@ -161,13 +163,13 @@
 
                                     @error('provinceId')
                                     <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
+                                        {{ $message }}
+                                    </span>
                                     @enderror
                                 </div>
 
-                                <div class="col-lg-4">
-                                    <label class="form-label">{{ __('Districts') }}</label>
+                                <div class="col-lg-4 mb-3">
+                                    <label class="form-label">{{ __('Districts') }} <span class="text-danger">*</span></label>
                                     <select class="form-select" wire:model.live="districtId">
                                         @if(! $districtId)
                                             <option value="">{{ __('Choose A District') }}</option>
@@ -179,13 +181,13 @@
 
                                     @error('districtId')
                                     <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
+                                        {{ $message }}
+                                    </span>
                                     @enderror
                                 </div>
 
                                 <div class="col-lg-4 mb-3">
-                                    <label class="form-label">{{ __('Wards') }}</label>
+                                    <label class="form-label">{{ __('Wards') }} <span class="text-danger">*</span></label>
                                     <select class="form-select" wire:model.live="wardId">
                                         @if(! $wardId)
                                             <option value="">{{ __('Choose A Ward') }}</option>
@@ -227,9 +229,9 @@
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
-                                        <span class="text-primary">
-                                            {!! __('You can get your exact coordinates from: :here', ['here' => '<a class="link-info" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">click here</a>']) !!}
-                                        </span>
+                                    <span class="text-primary">
+                                        {!! __('You can get your exact coordinates from: :here', ['here' => '<a class="link-info" href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">click here</a>']) !!}
+                                    </span>
                                 </div>
 
                                 <div class="col-lg-12">

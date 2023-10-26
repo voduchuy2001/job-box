@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <label class="form-label">{{ __('Category') }}</label>
+                    <label class="form-label">{{ __('Category') }} <span class="text-danger">*</span></label>
                     <select class="form-select" wire:model="category">
                         <option value="">{{ __('Choose An Option') }}</option>
                         @foreach($categories as $category)
@@ -38,14 +38,14 @@
                     </select>
 
                     @error('category')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 
                 <div class="col-lg-6">
-                    <label class="form-label">{{ __('Type') }}</label>
+                    <label class="form-label">{{ __('Type') }} <span class="text-danger">*</span></label>
                     <select class="form-select" wire:model="type">
                         <option value="">{{ __('Choose An Option') }}</option>
                         <option value="Full Time">{{ __('Full Time') }}</option>
@@ -55,15 +55,14 @@
                     </select>
 
                     @error('type')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 
-
                 <div class="col-lg-6 my-3">
-                    <label class="form-label">{{ __('Job Of Company') }}</label>
+                    <label class="form-label">{{ __('Job Of Company') }} <span class="text-danger">*</span></label>
                     <select
                         class="form-control"
                         name="companyId"
@@ -77,8 +76,8 @@
 
                     @error('companyId')
                     <span class="text-danger">
-                                {{ $message }}
-                            </span>
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 
@@ -109,7 +108,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <label class="form-label">{{ __('Experiences') }}</label>
+                    <label class="form-label">{{ __('Experiences') }} <span class="text-danger">*</span></label>
                     <select class="form-select mb-3" wire:model="experience">
                         <option value="">{{ __('Choose An Option') }}</option>
                         <option value="0">{{ __('0 Year') }}</option>
@@ -120,9 +119,9 @@
                     </select>
 
                     @error('experience')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 
@@ -147,6 +146,7 @@
                         placeholder="{{ __('Enter min (VND)') }}"
                         x-mask:dynamic="$money($input, ',')"
                         x-data
+                        :require="false"
                     ></x-admin.input>
                 </div>
 
@@ -160,11 +160,12 @@
                         placeholder="{{ __('Enter max (VND)') }}"
                         x-mask:dynamic="$money($input, ',')"
                         x-data
+                        :require="false"
                     ></x-admin.input>
                 </div>
 
                 <div class="col-lg-4">
-                    <label class="form-label">{{ __('Status') }}</label>
+                    <label class="form-label">{{ __('Status') }} <span class="text-danger">*</span></label>
                     <select class="form-select mb-3" wire:model="status">
                         <option value="">{{ __('Choose An Option') }}</option>
                         <option value="show">{{ __('Show') }}</option>
@@ -172,14 +173,14 @@
                     </select>
 
                     @error('status')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 
                 <div class="col-lg-4">
-                    <label class="form-label">{{ __('Provinces') }}</label>
+                    <label class="form-label">{{ __('Provinces') }} <span class="text-danger">*</span></label>
                     <select class="form-select" wire:model.live="provinceId">
                         @if(! $provinceId)
                             <option value="">{{ __('Choose Your Province') }}</option>
@@ -190,14 +191,14 @@
                     </select>
 
                     @error('provinceId')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 
                 <div class="col-lg-4">
-                    <label class="form-label">{{ __('Districts') }}</label>
+                    <label class="form-label">{{ __('Districts') }} <span class="text-danger">*</span></label>
                     <select class="form-select" wire:model.live="districtId">
                         @if(! $districtId)
                             <option value="">{{ __('Choose A District') }}</option>
@@ -208,14 +209,14 @@
                     </select>
 
                     @error('districtId')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 
                 <div class="col-lg-4 mb-3">
-                    <label class="form-label">{{ __('Wards') }}</label>
+                    <label class="form-label">{{ __('Wards') }} <span class="text-danger">*</span></label>
                     <select class="form-select" wire:model.live="wardId">
                         @if(! $wardId)
                             <option value="">{{ __('Choose A Ward') }}</option>
@@ -226,9 +227,9 @@
                     </select>
 
                     @error('wardId')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
 

@@ -3,10 +3,11 @@
     'model' => null,
     'name' => null,
     'id' => null,
+    'require' => true,
     ])
 
 <div class="mb-3">
-    @if($label) <label for="{{ $id }}" class="form-label">{{ $label }}</label> @endif
+    @if($label) <label for="{{ $id }}" class="form-label">{{ $label }} @if($require === true) <span class="text-danger">*</span> @endif</label> @endif
     <input
         class="form-control datepicker"
         @if($id) id="{{ $id }}" @endif

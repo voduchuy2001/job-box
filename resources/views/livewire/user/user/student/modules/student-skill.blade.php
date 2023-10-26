@@ -23,6 +23,7 @@
                     model="description"
                     placeholder="{{ __('Enter description') }}"
                     rows="7"
+                    :require="false"
                 ></x-admin.input.textarea>
             </div>
 

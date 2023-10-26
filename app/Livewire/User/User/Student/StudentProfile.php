@@ -62,7 +62,7 @@ class StudentProfile extends Component
         switch ($step) {
             case 1:
                 $validatedData = $this->validate([
-                    'firstName' => 'nullable|string|max:32',
+                    'firstName' => 'required|string|max:32',
                     'lastName' => 'required|string|min:2|max:32',
                     'studentId' => ['required', 'string', 'min:2', 'max:8', 'starts_with:B,C,b,c'],
                     'major' => 'required|string|min:2|max:32',

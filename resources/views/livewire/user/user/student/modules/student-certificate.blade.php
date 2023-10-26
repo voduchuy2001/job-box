@@ -52,6 +52,7 @@
                         name="expiresOn"
                         model="expiresOn"
                         id="expiresOn"
+                        :require="false"
                     ></x-admin.datepicker>
                 </div>
             @endif

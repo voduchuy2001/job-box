@@ -7,10 +7,11 @@
     'name' => null,
     'id' => null,
     'value' => null,
+    'require' => true,
     ])
 
 <div>
-    @if($label) <label for="firstName" class="form-label">{{ $label }}</label> @endif
+    @if($label) <label for="firstName" class="form-label">{{ $label }} @if($require === true) <span class="text-danger">*</span> @endif</label> @endif
     <input
         type="{{ $type }}"
         @if($class) class="{{ $class }} @error($model) is-invalid @enderror" @endif

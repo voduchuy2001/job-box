@@ -16,16 +16,16 @@ class SiteInformationComponent extends Component
     use WithFileUploads;
     use LivewireAlert;
 
-    #[Rule('string|max:255')]
+    #[Rule('required|string|max:255')]
     public string $siteName;
 
-    #[Rule('string|max:255')]
+    #[Rule('required|string|max:255')]
     public string $siteDescription;
 
     #[Rule('string|max:255')]
     public string $siteSlogan;
 
-    #[Rule('email|max:255')]
+    #[Rule('required|email|max:255')]
     public string $email;
 
     #[Rule('string|max:255')]
@@ -34,7 +34,7 @@ class SiteInformationComponent extends Component
     #[Rule('string|max:255')]
     public string $facebook;
 
-    #[Rule('numeric')]
+    #[Rule('required|numeric')]
     public string $phoneNumber;
 
     public function mount(): void

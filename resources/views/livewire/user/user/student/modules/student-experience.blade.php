@@ -53,6 +53,7 @@
                         name="endAt"
                         model="endAt"
                         id="endAt"
+                        :require="false"
                     ></x-admin.datepicker>
                 </div>
             @endif
@@ -67,6 +68,7 @@
                     model="description"
                     placeholder="{{ __('Enter description') }}"
                     rows="7"
+                    :require="false"
                 ></x-admin.input.textarea>
             </div>
 

@@ -8,43 +8,6 @@
                     </div>
                     <div class="mt-4 fs-13">
                         <p>{{ $settings['siteSlogan'] }}</p>
-                        <ul class="list-inline mb-0 footer-social-link">
-                            <li class="list-inline-item">
-                                <a
-                                    target="_blank"
-                                    href="{{ $settings['facebook'] }}" class="avatar-xs d-block">
-                                    <div class="avatar-title rounded-circle">
-                                        <i class="ri-facebook-fill"></i>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="list-inline-item">
-                                <a
-                                    target="_blank"
-                                    href="{{ $settings['youtube'] }}" class="avatar-xs d-block">
-                                    <div class="avatar-title rounded-circle">
-                                        <i class="ri-youtube-fill"></i>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="list-inline-item">
-                                <a
-                                    href="mailto:{{ $settings['email'] }}" class="avatar-xs d-block">
-                                    <div class="avatar-title rounded-circle">
-                                        <i class="ri-google-fill"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="tel:{{ $settings['phoneNumber'] }}" class="avatar-xs d-block">
-                                    <div class="avatar-title rounded-circle">
-                                        <i class="ri-phone-line"></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -81,6 +44,67 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center text-sm-start align-items-center mt-5">
+            <div class="col-sm-6">
+
+                <div>
+                    <p class="copy-rights mb-0">
+                        2023 © {{ $settings['siteName'] }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="text-sm-end mt-3 mt-sm-0">
+                    <ul class="list-inline mb-0 footer-social-link">
+                        @if($settings['facebook'])
+                            <li class="list-inline-item">
+                                <a
+                                    target="_blank"
+                                    href="{{ $settings['facebook'] }}" class="avatar-xs d-block">
+                                    <div class="avatar-title rounded-circle">
+                                        <i class="ri-facebook-fill"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if($settings['youtube'])
+                            <li class="list-inline-item">
+                                <a
+                                    target="_blank"
+                                    href="{{ $settings['youtube'] }}" class="avatar-xs d-block">
+                                    <div class="avatar-title rounded-circle">
+                                        <i class="ri-youtube-fill"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if($settings['email'])
+                            <li class="list-inline-item">
+                                <a
+                                    href="mailto:{{ $settings['email'] }}" class="avatar-xs d-block">
+                                    <div class="avatar-title rounded-circle">
+                                        <i class="ri-google-fill"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        @endif
+
+                        @if($settings['phoneNumber'])
+                            <li class="list-inline-item">
+                                <a href="tel:{{ $settings['phoneNumber'] }}" class="avatar-xs d-block">
+                                    <div class="avatar-title rounded-circle">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
                 </div>
             </div>
         </div>

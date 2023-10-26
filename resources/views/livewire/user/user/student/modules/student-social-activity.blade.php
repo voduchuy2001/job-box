@@ -52,6 +52,7 @@
                         name="endAt"
                         model="endAt"
                         id="endAt"
+                        :require="false"
                     ></x-admin.datepicker>
                 </div>
             @endif

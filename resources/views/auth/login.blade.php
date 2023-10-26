@@ -77,7 +77,7 @@
 
                                         <div class="mt-4 text-center">
                                             <div class="signin-other-title">
-                                                <h5 class="fs-13 mb-4 title">{{ __('Sign In With') }}</h5>
+                                                <h5 class="fs-13 mb-4 title">{{ __('Continue With') }}</h5>
                                             </div>
 
                                             <div>
