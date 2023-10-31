@@ -9,7 +9,6 @@
     <title>{{ $settings['siteName'] }}</title>
     <meta name="description" content="{{ $settings['siteDescription'] }}">
 
-    {!! RecaptchaV3::initJs() !!}
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
@@ -17,8 +16,6 @@
     @livewireStyles
 </head>
 <body>
-    @include('sweetalert::alert')
-
     <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
         <div class="bg-overlay"></div>
 

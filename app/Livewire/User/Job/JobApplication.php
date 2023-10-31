@@ -50,9 +50,7 @@ class JobApplication extends Component
     public function applyJob(): void
     {
         $validatedData = $this->validate();
-
         $user = Auth::user();
-
         $jobId = $this->job->id;
 
         if (!$user->applications()->wherePivot('job_id', $jobId)->exists()) {
@@ -62,7 +60,7 @@ class JobApplication extends Component
             ]);
 
             $fileName = $validatedData['resume']->getClientOriginalName();
-            $filePath = asset($validatedData['resume']->store('upload'));
+            $filePath = $validatedData['resume']->getRealPath();
 
             $mailData = [
                 'email' => $user->studentProfile->payload['email'],

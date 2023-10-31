@@ -42,8 +42,6 @@
                                                 hidden
                                             ></x-admin.input>
 
-                                            {!! RecaptchaV3::field('email_reset_password') !!}
-
                                             <div class="mt-4">
                                                 <x-button
                                                     class="btn btn-success w-100"
