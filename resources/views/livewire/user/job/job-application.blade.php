@@ -63,7 +63,7 @@
                                         <div class="flex-grow-1 ms-2 text-info">
                                             <h5 class="card-title mb-1">{{ $job->name }}</h5>
                                             <p class="text-muted mb-1">{{ $job->position }}</p>
-                                            <h6 class="mb-1">{{ __(':min - :max', ['min' => BaseHelper::moneyFormatForHumans($job->min_salary), 'max' => BaseHelper::moneyFormatForHumans($job->max_salary)]) }}</h6>
+                                            <h6 class="mb-1">{{ __(':min - :max', ['min' => $job->min_salary > 0 ? BaseHelper::moneyFormatForHumans($job->min_salary) : __('N/A'), 'max' => $job->max_salary ? BaseHelper::moneyFormatForHumans($job->max_salary) : __('N/A')]) }}</h6>
                                         </div>
                                     </div>
                                 </div>

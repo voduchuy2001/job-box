@@ -59,8 +59,6 @@
                                                 hidden
                                             ></x-admin.input>
 
-                                            {!! RecaptchaV3::field('register') !!}
-
                                             <div class="mt-4">
                                                 <x-button
                                                     class="btn btn-success w-100"

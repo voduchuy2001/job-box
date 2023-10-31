@@ -54,8 +54,6 @@
                                                 hidden
                                             ></x-admin.input>
 
-                                            {!! RecaptchaV3::field('login') !!}
-
                                             <div class="form-check">
                                                 <input
                                                     class="form-check-input"
