@@ -48,7 +48,7 @@
                                                     class="badge badge-soft-danger">{{ __('Delete') }}</span>
                                             </div>
                                         </div>
-                                        <h6 class="text-muted mb-0">{{ __('From :from to :to', ['from' => BaseHelper::moneyFormat($job->min_salary), 'to' => BaseHelper::moneyFormat($job->max_salary)]) }}</h6>
+                                        <h6 class="text-muted mb-0">{{ __(':min - :max', ['min' => $job->min_salary > 0 ? BaseHelper::moneyFormatForHumans($job->min_salary) : __('N/A'), 'max' => $job->max_salary ? BaseHelper::moneyFormatForHumans($job->max_salary) : __('N/A')]) }}</h6>
                                     </div>
                                     <div class="card-body border-top border-top-dashed">
                                         <div class="d-flex">

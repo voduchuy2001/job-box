@@ -28,7 +28,7 @@
                     ></x-admin.input>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-6 mb-3">
                     <label class="form-label">{{ __('Category') }} <span class="text-danger">*</span></label>
                     <select class="form-select" wire:model="category">
                         <option value="">{{ __('Choose An Option') }}</option>
@@ -70,7 +70,7 @@
                         wire:model="companyId">
                         <option value="">{{ __('Choose An Option') }}</option>
                         @foreach($companies as $company)
-                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                            <option value="{{ $company->id }}">{{ $company->companyProfile->payload['name'] }}</option>
                         @endforeach
                     </select>
 

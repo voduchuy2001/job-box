@@ -101,6 +101,7 @@ class CategoryList extends Component
 
         $searchTerm = '%' . $this->searchTerm . '%';
         $categories = Category::where('name', 'like', $searchTerm)
+            ->withCount('jobs')
             ->orderByDesc('created_at')
             ->paginate($this->itemPerPage);
 

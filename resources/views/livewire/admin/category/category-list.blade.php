@@ -57,7 +57,7 @@
                             <div class="mt-auto">
                                 <div class="d-flex mb-2">
                                     <div class="flex-shrink-0">
-                                        <div><i class="ri-list-check align-bottom me-1 text-muted"></i> {{ __(':count Jobs', ['count' => $category->jobs()->count()]) }}</div>
+                                        <div><i class="ri-list-check align-bottom me-1 text-muted"></i> {{ __(':count Jobs', ['count' => $category->jobs_count]) }}</div>
                                     </div>
                                 </div>
                             </div>

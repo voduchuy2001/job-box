@@ -15,8 +15,6 @@
 </head>
 
 <body>
-    @include('sweetalert::alert')
-
     @yield('content')
 
     <div class="auth-page-wrapper py-5 d-flex justify-content-center align-items-center min-vh-100">
@@ -37,7 +35,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
