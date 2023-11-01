@@ -7,7 +7,7 @@
                         <div class="col mt-4">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="{{ $student->avatar != null ? asset($student->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="" class="avatar-md rounded-circle object-cover mt-n5 img-thumbnail border-light mx-auto d-block">
+                                    <img src="{{ $student->avatar != null ? asset($student->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="" class="avatar-md rounded-circle object-cover mt-n5 img-thumbnail border-light mx-auto d-block">
                                     <a
                                         target="_blank"
                                         href="{{ route('user-resume-preview.user', ['id' => $student->id]) }}">

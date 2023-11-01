@@ -51,7 +51,7 @@
                                                 </h2>
                                                 <div id="{{ Str::slug($category) }}-collapse{{ $loop->index }}" class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}" aria-labelledby="{{ Str::slug($category) }}-heading{{ $loop->index }}" data-bs-parent="#{{ Str::slug($category) }}-accordion">
                                                     <div class="accordion-body">
-                                                        {{ $faq->answer }}
+                                                        {!! $faq->answer !!}
                                                     </div>
                                                 </div>
                                             </div>

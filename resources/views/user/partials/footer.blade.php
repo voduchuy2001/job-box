@@ -1,10 +1,10 @@
-<footer class="custom-footer bg-dark py-5 position-relative">
+<footer class="custom-footer bg-dark py-2 position-relative">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 mt-4">
                 <div>
                     <div>
-                        <img src="{{ asset($settings['logo']) }}" alt="logo light" height="17" />
+                        <img src="{{ asset($settings['logo']) }}" alt="logo light" height="50" />
                     </div>
                     <div class="mt-4 fs-13">
                         <p>{{ $settings['siteSlogan'] }}</p>

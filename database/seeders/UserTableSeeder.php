@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
     {
         $user = User::create([
             'name' => 'Supper Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'jobbox@gmail.com',
             'password' => Hash::make('admin123'),
             'is_root' => 1,
             'email_verified_at' => Carbon::now(),

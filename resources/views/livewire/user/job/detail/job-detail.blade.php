@@ -12,7 +12,7 @@
                                             <div class="col-md-auto">
                                                 <div class="avatar-md">
                                                     <div class="avatar-title bg-white rounded-circle">
-                                                        <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->company->name }}" class="avatar-xs">
+                                                        <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="{{ $job->company->name }}" class="avatar-xs">
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,7 +131,7 @@
                         <div class="card-body">
                             <div class="avatar-sm mx-auto">
                                 <div class="avatar-title bg-soft-warning rounded">
-                                    <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->company->name }}" class="avatar-xxs">
+                                    <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="{{ $job->company->name }}" class="avatar-xxs">
                                 </div>
                             </div>
                             <div class="text-center">

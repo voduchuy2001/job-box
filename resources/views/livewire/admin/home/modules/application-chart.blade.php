@@ -1,7 +1,7 @@
 <div>
     <x-admin.card>
         <div class="row">
-            <div class="col-lg-2 mb-3">
+            <div class="col-lg-2 mb-2">
                 <select wire:model.live="status" class="form-select-sm">
                     <option value="accepted">{{ __('Accepted') }}</option>
                     <option value="rejected">{{ __('Rejected') }}</option>

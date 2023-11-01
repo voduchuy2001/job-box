@@ -10,8 +10,12 @@
             <livewire:admin.home.modules.user-chart wire:key="userChart"></livewire:admin.home.modules.user-chart>
         </div>
 
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <livewire:admin.home.modules.company-chart wire:key="companyChart"></livewire:admin.home.modules.company-chart>
+        </div>
+
+        <div class="col-lg-8">
+            <livewire:admin.home.modules.authentication-log-chart wire:key="authenticationLogChart"></livewire:admin.home.modules.authentication-log-chart>
         </div>
 
         <div class="col-lg-4">
@@ -22,7 +26,7 @@
             <livewire:admin.home.modules.student-job-application-chart wire:key="studentJobApplicationChart"></livewire:admin.home.modules.student-job-application-chart>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <livewire:admin.home.modules.application-chart wire:key="applicationChart"></livewire:admin.home.modules.application-chart>
         </div>
     </div>

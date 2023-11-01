@@ -33,14 +33,14 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <x-admin.input.textarea
+                    <x-admin.editor
                         name="answer"
                         model="answer"
                         id="answer"
                         :label="__('Answer')"
                         :placeholder="__('Enter answer')"
                         rows="7"
-                        class="form-control"></x-admin.input.textarea>
+                        class="form-control"></x-admin.editor>
                 </div>
 
                 <div class="col-lg-12">

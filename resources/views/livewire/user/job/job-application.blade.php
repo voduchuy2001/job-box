@@ -58,7 +58,7 @@
                                     <i class="ri-information-line me-3 align-middle"></i> <strong>{{ __('Job Information') }}</strong>
                                     <div class="d-flex my-3 align-items-center">
                                         <div class="flex-shrink-0">
-                                            <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="{{ $job->company->name }}" title="{{ $job->company->companyProfile->payload['name'] }}" class="avatar-sm rounded-circle">
+                                            <img src="{{ $job->company->avatar != null ? asset($job->company->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="{{ $job->company->name }}" title="{{ $job->company->companyProfile->payload['name'] }}" class="avatar-sm rounded-circle">
                                         </div>
                                         <div class="flex-grow-1 ms-2 text-info">
                                             <h5 class="card-title mb-1">{{ $job->name }}</h5>

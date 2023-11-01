@@ -12,7 +12,7 @@
                                             <div class="col-md-auto">
                                                 <div class="avatar-md">
                                                     <div class="avatar-title bg-white rounded-circle">
-                                                        <img src="{{ $company->avatar != null ? asset($company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" class="avatar-xs">
+                                                        <img src="{{ $company->avatar != null ? asset($company->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" class="avatar-xs">
                                                     </div>
                                                 </div>
                                             </div>
@@ -80,6 +80,37 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <h5 class="mb-3">{{ __('Jobs Of Company') }}</h5>
+
+                    <div class="row">
+                        @foreach($jobs as $job)
+                            <div class="col-lg-6" wire:key="job-list-{{ $job->id }}">
+                                <livewire:user.job.job-item :job="$job" wire:key="job-item-{{ $job->id }}"></livewire:user.job.job-item>
+                            </div>
+                        @endforeach
+
+                        @if(! $jobs->count())
+                            <div class="col-lg-12 py-4">
+                                <x-admin.empty></x-admin.empty>
+                            </div>
+                        @endif
+
+                        <div class="col-lg-12 d-flex gap-3 justify-content-center align-items-center">
+                            @if ($currentPage > 1)
+                                <button class="btn btn-outline-primary w-25" wire:click="previousPage">
+                                    <span class="icon-on"><i class="ri-arrow-left-line align-bottom me-1"></i> </span>
+                                    {{ __('Previous') }}</button>
+                            @endif
+
+                            @if ($jobs->count() >= $perPage)
+                                <button class="btn btn-outline-primary w-25" wire:click="nextPage">
+                                    {{ __('Next') }} <span class="icon-on"> <i class="ri-arrow-right-line align-bottom me-1"></i></span></button>
+                            @endif
                         </div>
                     </div>
                 </div>

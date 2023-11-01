@@ -7,7 +7,7 @@
                         <div class="col mt-4">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="{{ $company->avatar != null ? asset($company->avatar->url) : asset('assets/images/users/avatar-10.jpg') }}" alt="" class="avatar-md rounded-circle object-cover mt-n5 img-thumbnail border-light mx-auto d-block">
+                                    <img src="{{ $company->avatar != null ? asset($company->avatar->url) : asset('assets/images/users/avatar-1.jpg') }}" alt="" class="avatar-md rounded-circle object-cover mt-n5 img-thumbnail border-light mx-auto d-block">
                                     <x-link :to="route('company-detail.user', ['id' => $company->id])">
                                         <h5 class="mt-2 mb-1">{{ $company->companyProfile->payload['name'] }}</h5>
                                     </x-link>
