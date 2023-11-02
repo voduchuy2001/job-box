@@ -2,6 +2,10 @@
     @include('admin.partials.page-title')
 
     <div class="row">
+        <div class="col-lg-12">
+            <livewire:admin.home.modules.statistics-component wire:key="statisticsComponent"></livewire:admin.home.modules.statistics-component>
+        </div>
+
         <div class="col-lg-6">
             <livewire:admin.home.modules.job-chart wire:key="jobChart"></livewire:admin.home.modules.job-chart>
         </div>

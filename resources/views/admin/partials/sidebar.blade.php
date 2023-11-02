@@ -4,7 +4,7 @@
             to="{{ route('dashboard') }}"
             class="logo logo-light">
             <span class="logo-lg">
-                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="50">
+                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="25">
             </span>
         </x-link>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -63,6 +63,31 @@
                     </li>
                 @endcan
 
+                @can('job-list')
+                    <li class="nav-item">
+                        <a class="nav-link menu-link {{ request()->routeIs('job.*') ? 'active' : '' }}"
+                           href="#jobs"
+                           data-bs-toggle="collapse"
+                           role="button"
+                           aria-expanded="false"
+                           aria-controls="sidebarTables">
+                            <i class="ri-file-2-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="jobs">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <x-link :to="route('job.index')" class="nav-link {{ request()->route()->getName() == 'job.index' ? 'active' : '' }}" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
+                                </li>
+
+                                <li class="nav-item">
+                                    <x-link
+                                        :to="route('job.delete')" class="nav-link {{ request()->route()->getName() == 'job.delete' ? 'active' : '' }}" data-key="jobs-delete">{{ __('Jobs Deleted') }}</x-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endcan
+
                 @can('category-list')
                     <li class="nav-item">
                         <x-link
@@ -93,31 +118,6 @@
                         >
                             <i class="ri-question-line"></i><span>{{ __('FAQs') }}</span>
                         </x-link>
-                    </li>
-                @endcan
-
-                @can('job-list')
-                    <li class="nav-item">
-                        <a class="nav-link menu-link {{ request()->routeIs('job.*') ? 'active' : '' }}"
-                           href="#jobs"
-                           data-bs-toggle="collapse"
-                           role="button"
-                           aria-expanded="false"
-                           aria-controls="sidebarTables">
-                            <i class="ri-file-2-line"></i> <span data-key="t-tables">{{ __('Jobs') }}</span>
-                        </a>
-                        <div class="collapse menu-dropdown" id="jobs">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <x-link :to="route('job.index')" class="nav-link {{ request()->route()->getName() == 'job.index' ? 'active' : '' }}" data-key="job-list">{{ __('List Of Jobs') }}</x-link>
-                                </li>
-
-                                <li class="nav-item">
-                                    <x-link
-                                        :to="route('job.delete')" class="nav-link {{ request()->route()->getName() == 'job.delete' ? 'active' : '' }}" data-key="jobs-delete">{{ __('Jobs Deleted') }}</x-link>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                 @endcan
 

@@ -8,7 +8,7 @@
 
     <title>@yield('title')</title>
 
-    <script src="{{ asset('assets/js/layout.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
@@ -35,6 +35,8 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('assets/js/layout.js') }}"></script>
 </body>
 
 </html>

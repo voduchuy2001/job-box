@@ -9,6 +9,7 @@
     <title>{{ $settings['siteName'] }}</title>
     <meta name="description" content="{{ $settings['siteDescription'] }}">
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />

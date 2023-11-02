@@ -4,7 +4,7 @@
             <div class="col-lg-4 mt-4">
                 <div>
                     <div>
-                        <img src="{{ asset($settings['logo']) }}" alt="logo light" height="50" />
+                        <img src="{{ asset($settings['logo']) }}" alt="logo light" height="20" />
                     </div>
                     <div class="mt-4 fs-13">
                         <p>{{ $settings['siteSlogan'] }}</p>
@@ -58,8 +58,8 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="text-sm-end mt-3 mt-sm-0">
-                    <ul class="list-inline mb-0 footer-social-link">
+                <div class="text-sm-end mt-sm-0">
+                    <ul class="list-inline mb-3 footer-social-link">
                         @if($settings['facebook'])
                             <li class="list-inline-item">
                                 <a
