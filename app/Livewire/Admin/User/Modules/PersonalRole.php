@@ -39,6 +39,7 @@ class PersonalRole extends Component
         }
 
         $this->user->syncRoles($validatedData);
+        $this->dispatch('refresh');
         $this->alert('success', trans('Update success!'));
     }
 
