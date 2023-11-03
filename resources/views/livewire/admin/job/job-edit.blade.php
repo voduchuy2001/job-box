@@ -291,4 +291,8 @@
             </div>
         </x-form>
     </x-admin.card>
+
+    <div>
+        <livewire:user.user.company.job.job-candidate wire:key="jobCandidate" :job="$job"></livewire:user.user.company.job.job-candidate>
+    </div>
 </div>

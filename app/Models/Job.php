@@ -71,6 +71,7 @@ class Job extends Model
             if ($job->isForceDeleting()) {
                 $job->addresses()->delete();
                 $job->wishlists()->detach();
+                $job->applications()->detach();
             }
         });
     }

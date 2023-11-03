@@ -77,10 +77,6 @@ class JobEdit extends Component
 
     public mixed $job;
 
-    public mixed $applicants;
-
-    public array $statuses = [];
-
     public function mount(string|int $id): void
     {
         $job = Job::with([
@@ -92,12 +88,6 @@ class JobEdit extends Component
 
         if (Auth::id() != $job->company_id) {
             abort(403);
-        }
-
-        $this->applicants = $job->applications;
-
-        foreach ($this->applicants as $applicant) {
-            $this->statuses[$applicant->id] = $applicant->pivot->status;
         }
 
         $this->job = $job;
@@ -151,13 +141,6 @@ class JobEdit extends Component
         }
 
         $this->alert('warning', trans('Can not delete all addresses'));
-    }
-
-    public function updateStatus(string|int $id): void
-    {
-        $newStatus = $this->statuses[$id] ?? 'pending';
-        $this->job->applications()->updateExistingPivot($id, ['status' => $newStatus], false);
-        $this->alert('success', trans('Update success'));
     }
 
     #[On('refresh')]

@@ -85,7 +85,14 @@
                             <div class="hstack gap-2 justify-content-end">
                                 <x-button
                                     type="submit"
-                                    class="btn btn-primary">{{ __('Apply Job') }}</x-button>
+                                    class="btn btn-primary">
+                                    <i wire:loading
+                                       wire:target="applyJob"
+                                       class="mdi mdi-loading mdi-spin align-middle me-2"></i>
+                                    <i wire:loading.attr="hidden"
+                                       wire:target="applyJob"
+                                       class="ri-download-2-line align-bottom me-1"></i>
+                                    {{ __('Apply Job') }}</x-button>
                             </div>
                         </div>
                     </div>

@@ -2,63 +2,39 @@
 
 namespace App\Livewire\Admin\Home\Modules;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class StudentJobApplicationChart extends Component
 {
-    public string $course = 'K49';
-
-    public function getStudentsByCourseWithApprovedAndRejectedApplications(): array
+    public function getStudentsByCourseWithStatus($status): Collection
     {
-        $acceptedStudents = DB::table('profiles')
-            ->join('applications', 'profiles.id', '=', 'applications.student_id')
+        return DB::table('users')
+            ->join('profiles', function ($join) {
+                $join->on('users.id', '=', 'profiles.profileable_id')
+                    ->where('profiles.profileable_type', '=', 'App\\Models\\User')
+                    ->where('profiles.type', 'Student');
+            })
+            ->join('applications', 'users.id', '=', 'applications.student_id')
             ->select(DB::raw('payload->"$.course" as course'), DB::raw('COUNT(DISTINCT profiles.id) as total_students'))
-            ->where('type', 'Student')
-            ->where('applications.status', 'accepted')
+            ->where('applications.status', $status)
             ->groupBy('course')
             ->orderBy('course')
             ->get();
-
-        $rejectedStudents = DB::table('profiles')
-            ->join('applications', 'profiles.id', '=', 'applications.student_id')
-            ->select(DB::raw('payload->"$.course" as course'), DB::raw('COUNT(DISTINCT profiles.id) as total_students'))
-            ->where('type', 'Student')
-            ->where('applications.status', 'rejected')
-            ->groupBy('course')
-            ->orderBy('course')
-            ->get();
-
-        return [
-            'accepted_students' => $acceptedStudents,
-            'rejected_students' => $rejectedStudents,
-        ];
     }
 
     public function render(): View
     {
-        $studentJobApplications = $this->getStudentsByCourseWithApprovedAndRejectedApplications();
+        $acceptedStudents = $this->getStudentsByCourseWithStatus('accepted');
+        $rejectedStudents = $this->getStudentsByCourseWithStatus('rejected');
 
-        $acceptedStudentJobCounts = $studentJobApplications['accepted_students']
-            ->pluck('total_students')
-            ->toArray();
-        $acceptedStudentJobLabels = $studentJobApplications['accepted_students']
-            ->pluck('course')
-            ->map(function ($label) {
-                return str_replace('"', '', $label);
-            })
-            ->toArray();
+        $acceptedStudentJobCounts = $acceptedStudents->pluck('total_students')->toArray();
+        $acceptedStudentJobLabels = $acceptedStudents->pluck('course')->map(fn ($label) => str_replace('"', '', $label))->toArray();
 
-        $rejectedStudentJobCounts = $studentJobApplications['rejected_students']
-            ->pluck('total_students')
-            ->toArray();
-        $rejectedStudentJobLabels = $studentJobApplications['rejected_students']
-            ->pluck('course')
-            ->map(function ($label) {
-                return str_replace('"', '', $label);
-            })
-            ->toArray();
+        $rejectedStudentJobCounts = $rejectedStudents->pluck('total_students')->toArray();
+        $rejectedStudentJobLabels = $rejectedStudents->pluck('course')->map(fn ($label) => str_replace('"', '', $label))->toArray();
 
         return view('livewire.admin.home.modules.student-job-application-chart', [
             'acceptedStudentJobCounts' => $acceptedStudentJobCounts,
