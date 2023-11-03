@@ -27,10 +27,23 @@
                                             class="badge badge-soft-warning">{{ __('Edit') }}</span>
                                     @endcan
                                     @can('trending-word-delete')
-                                        <span
-                                            style="cursor: pointer"
-                                            wire:click="deleteTrendingWord({{ $word->id }})"
-                                            class="badge badge-soft-danger">{{ __('Delete') }}</span>
+                                        <div class="d-inline" x-data="{ confirmDelete:false }">
+                                            <span
+                                                x-show="!confirmDelete" x-on:click="confirmDelete=true"
+                                                style="cursor: pointer"
+                                                class="badge badge-soft-danger">{{ __('Delete') }}</span>
+
+                                            <span
+                                                x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                                wire:click="deleteTrendingWord({{ $word->id }})"
+                                                style="cursor: pointer"
+                                                class="badge badge-soft-danger">{{ __('Yes') }}</span>
+
+                                            <span
+                                                x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                                style="cursor: pointer"
+                                                class="badge badge-soft-info">{{ __('No') }}</span>
+                                        </div>
                                     @endcan
                                 </div>
                             </div>

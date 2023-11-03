@@ -19,7 +19,7 @@
                         <div class="flex-grow-1 ms-3">
                             <h5 class="list-title fs-15 mb-1">{{ $applicant->studentProfile->payload['firstName'] }} {{ $applicant->studentProfile->payload['lastName'] }}</h5>
                             <p class="list-text mb-0 fs-12">{{ $applicant->studentProfile->payload['email'] }}</p>
-                            <p class="list-text fs-12">{{ __('Course :course, Major :major', ['course' => $applicant->studentProfile->payload['course'], 'major' => $applicant->studentProfile->payload['major']]) }}</p>
+                            <p class="list-text fs-12">{{ __('Course: :course, Major: :major', ['course' => $applicant->studentProfile->payload['course'], 'major' => $applicant->studentProfile->payload['major']]) }}</p>
                         </div>
                     </div>
                 </li>

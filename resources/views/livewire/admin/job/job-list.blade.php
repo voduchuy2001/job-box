@@ -75,15 +75,28 @@
                                 <h5 title="{{ $job->name }}" class="fs-15 mb-1 rex">{!! Str::limit($job->name, 30) !!}</h5>
                             </div>
                             <div class="d-inline-block">
-                                    <span class="badge badge-soft-warning">
+                                <span class="badge badge-soft-warning">
                                     <x-link
                                         :to="route('job.edit', ['id' => $job->id])"
                                         class="link-warning"
                                     >{{ __('Edit') }}</x-link></span>
-                                <span
-                                    wire:click="deleteJob({{ $job->id }})"
-                                    style="cursor: pointer"
-                                    class="badge badge-soft-danger">{{ __('Delete') }}</span>
+                                <div class="d-inline" x-data="{ confirmDelete:false }">
+                                    <span
+                                        x-show="!confirmDelete" x-on:click="confirmDelete=true"
+                                        style="cursor: pointer"
+                                        class="badge badge-soft-danger">{{ __('Delete') }}</span>
+
+                                    <span
+                                        x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                        wire:click="deleteJob({{ $job->id }})"
+                                        style="cursor: pointer"
+                                        class="badge badge-soft-danger">{{ __('Yes') }}</span>
+
+                                    <span
+                                        x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                        style="cursor: pointer"
+                                        class="badge badge-soft-info">{{ __('No') }}</span>
+                                </div>
                             </div>
                         </div>
                         <h6 class="text-muted mb-0">{{ __(':min - :max', ['min' => $job->min_salary > 0 ? BaseHelper::moneyFormatForHumans($job->min_salary) : __('N/A'), 'max' => $job->max_salary ? BaseHelper::moneyFormatForHumans($job->max_salary) : __('N/A')]) }}</h6>

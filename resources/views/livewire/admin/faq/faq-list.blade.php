@@ -32,13 +32,26 @@
                                     <p class="text-muted mb-4">{{ __('Updated :updatedAt', ['updatedAt' =>  BaseHelper::dateFormatForHumans($faq->updated_at)]) }}</p>
                                 </div>
                                 <div class="flex-shrink-0">
-                                        <x-link
-                                            :to="route('faq.edit', ['id' => $faq->id])"
-                                            class="badge badge-soft-warning link-warning">{{ __('Edit') }}</x-link>
+                                    <x-link
+                                        :to="route('faq.edit', ['id' => $faq->id])"
+                                        class="badge badge-soft-warning link-warning">{{ __('Edit') }}</x-link>
+                                    <div class="d-inline" x-data="{ confirmDelete:false }">
                                         <span
-                                            wire:click="deleteFAQ({{ $faq->id }})"
+                                            x-show="!confirmDelete" x-on:click="confirmDelete=true"
                                             style="cursor: pointer"
                                             class="badge badge-soft-danger">{{ __('Delete') }}</span>
+
+                                        <span
+                                            x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                            wire:click="deleteFAQ({{ $faq->id }})"
+                                            style="cursor: pointer"
+                                            class="badge badge-soft-danger">{{ __('Yes') }}</span>
+
+                                        <span
+                                            x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                            style="cursor: pointer"
+                                            class="badge badge-soft-info">{{ __('No') }}</span>
+                                    </div>
                                 </div>
                             </div>
 

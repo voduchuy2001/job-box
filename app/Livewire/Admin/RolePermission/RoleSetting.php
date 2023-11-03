@@ -26,8 +26,6 @@ class RoleSetting extends Component
 
     public int $itemPerPage = 20;
 
-    public mixed $confirm = null;
-
     #[Rule('required|string|min:2|max:32|unique:roles', onUpdate: false)]
     public string $name;
 
@@ -66,11 +64,6 @@ class RoleSetting extends Component
         $this->resetForm();
         $this->dispatch('hiddenModal');
         $this->dispatch('refresh');
-    }
-
-    public function confirmDelete(int|string $id): void
-    {
-        $this->confirm = $this->confirm === $id ? null : $id;
     }
 
     public function deleteRole(string|int $id): void

@@ -30,10 +30,6 @@ class StudentResume extends Component
 
     public mixed $user;
 
-    public mixed $confirm = null;
-
-    public mixed $confirmType = null;
-
     public mixed $limits = [
         'addresses' => 3,
         'educations' => 3,
@@ -47,23 +43,10 @@ class StudentResume extends Component
         'socialActivities' => 3,
     ];
 
-    public bool $show = false;
-
-    public function showPermission(): void
-    {
-        $this->show = !$this->show;
-    }
-
     public function loadMore(string $component): void
     {
         $this->limits[$component] += 3;
         $this->dispatch('refresh');
-    }
-
-    public function confirmDelete(int|string $id, string $type): void
-    {
-        $this->confirm = $this->confirm === $id ? null : $id;
-        $this->confirmType = $type;
     }
 
     public function mount(): void

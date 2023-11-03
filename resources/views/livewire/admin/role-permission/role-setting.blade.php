@@ -40,18 +40,23 @@
                                         style="cursor: pointer" class="link-warning"><i class="ri-pencil-line"></i></span>
                                 @endcan
                                 @can('role-delete')
-                                    @if($confirm == $role->id)
+                                    <div class="d-inline" x-data="{ confirmDelete:false }">
                                         <span
+                                            x-show="!confirmDelete" x-on:click="confirmDelete=true"
+                                            style="cursor: pointer"
+                                            class="text-danger"><i class="ri-delete-bin-2-line"></i></span>
+
+                                        <span
+                                            x-show="confirmDelete" x-on:click="confirmDelete=false"
                                             wire:click="deleteRole({{ $role->id }})"
-                                            style="cursor: pointer" class="link-danger"><i class="ri-check-line"></i></span>
+                                            style="cursor: pointer"
+                                            class="text-danger"><i class="ri-check-line"></i></span>
+
                                         <span
-                                            wire:click="confirmDelete({{ $role->id }})"
-                                            style="cursor: pointer" class="link-warning"><i class="ri-close-line"></i></span>
-                                    @else
-                                        <span
-                                            wire:click="confirmDelete({{ $role->id }})"
-                                            style="cursor: pointer" class="link-danger"><i class="ri-delete-bin-line"></i></span>
-                                    @endif
+                                            x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                            style="cursor: pointer"
+                                            class="text-info"><i class="ri-close-line"></i></span>
+                                    </div>
                                 @endcan
                             </div>
                         </td>
@@ -90,7 +95,7 @@
 
                     <div class="mb-3">
                         <div class="row">
-                            @foreach($permissions as $key => $permission)
+                            @foreach($permissions as $permission)
                                 <div class="col-lg-4">
                                     <div class="form-check">
                                         <input

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin\User\Modules;
 
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -24,18 +23,9 @@ class JobCompany extends Component
             ->map
             ->count;
 
-        $totalCount = User::where('id', $this->userId)
-            ->withCount('jobs')
-            ->value('jobs_count');
-
-        $acceptCount = $jobStatusCounts->get('accepted', 0);
-
-        $acceptPercentage = ($totalCount > 0) ? round(($acceptCount / $totalCount) * 100, 2) : 0;
-        $rejectPercentage = $acceptPercentage ? (100 - $acceptPercentage) : 0;
-
         return view('livewire.admin.user.modules.job-company', [
-            'acceptPercentage' => $acceptPercentage,
-            'rejectPercentage' => $rejectPercentage,
+            'acceptedJob' => $jobStatusCounts->get('accepted'),
+            'rejectedJob' => $jobStatusCounts->get('rejected'),
         ]);
     }
 }

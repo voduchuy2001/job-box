@@ -29,15 +29,28 @@
                                 <h5 title="{{ $job->name }}" class="fs-15 mb-1 rex">{!! Str::limit($job->name, 30) !!}</h5>
                             </div>
                             <div class="d-inline-block">
-                                    <span class="badge badge-soft-warning"
-                                          style="cursor: pointer;"
-                                          wire:click="reverseJob({{ $job->id }})"
-                                          class="badge badge-soft-warning"
+                                <span class="badge badge-soft-warning"
+                                      style="cursor: pointer;"
+                                      wire:click="reverseJob({{ $job->id }})"
+                                      class="badge badge-soft-warning"
                                     >{{ __('Retrieve') }}</span>
-                                <span
-                                    wire:click="deleteJob({{ $job->id }})"
-                                    style="cursor: pointer"
-                                    class="badge badge-soft-danger">{{ __('Delete') }}</span>
+                                <div class="d-inline" x-data="{ confirmDelete:false }">
+                                    <span
+                                        x-show="!confirmDelete" x-on:click="confirmDelete=true"
+                                        style="cursor: pointer"
+                                        class="badge badge-soft-danger">{{ __('Delete') }}</span>
+
+                                    <span
+                                        x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                        wire:click="deleteJob({{ $job->id }})"
+                                        style="cursor: pointer"
+                                        class="badge badge-soft-danger">{{ __('Yes') }}</span>
+
+                                    <span
+                                        x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                        style="cursor: pointer"
+                                        class="badge badge-soft-info">{{ __('No') }}</span>
+                                </div>
                             </div>
                         </div>
                         <h6 class="text-muted mb-0">{{ __('From :from to :to', ['from' => BaseHelper::moneyFormat($job->min_salary), 'to' => BaseHelper::moneyFormat($job->max_salary)]) }}</h6>

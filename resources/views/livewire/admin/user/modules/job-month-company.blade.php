@@ -13,7 +13,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: `{{ __('Number Of Jobs Monthly') }}`,
+                    label: `{{ __('Number Of Monthly Jobs In The Current Year') }}`,
                     backgroundColor: '#405189',
                     data: {{ Js::from($data) }},
                     borderWidth: 1,

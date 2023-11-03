@@ -13,8 +13,8 @@
             data: {
                 labels: ['Accepted', 'Rejected'],
                 datasets: [{
-                    label: `{{ __('Application Acceptance Rate') }}`,
-                    data: [{{ Js::from($acceptPercentage) }}, {{ Js::from($rejectPercentage) }}],
+                    label: `{{ __('Number Of Accepted/Rejected Jobs') }}`,
+                    data: [{{ Js::from($acceptedJob) }}, {{ Js::from($rejectedJob) }}],
                     borderWidth: 1,
                     hoverOffset: 4
                 }]
