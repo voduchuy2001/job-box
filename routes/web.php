@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\Auth\TwoFactorAuthenticationController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Lang\LanguageController;
 use App\Http\Controllers\User\ResumeController;
@@ -82,6 +83,14 @@ Route::get('email/verify', [VerificationController::class, 'show'])->name('verif
 Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 Route::get('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 
+Route::group(['prefix' => '2fa'], function () {
+    Route::get('/', [TwoFactorAuthenticationController::class, 'show2faForm'])->name('show2faForm');
+    Route::post('/generate-secret', [TwoFactorAuthenticationController::class, 'generate2faSecret'])->name('generate2faSecret');
+    Route::post('/enable-2fa', [TwoFactorAuthenticationController::class, 'enable2fa'])->name('enable2fa');
+    Route::post('/disable-2fa', [TwoFactorAuthenticationController::class, 'disable2fa'])->name('disable2fa');
+    Route::post('/2fa-verify', [TwoFactorAuthenticationController::class, 'verify2fa'])->name('verify2fa')->middleware('2fa');
+});
+
 Route::get('auth/{provider}/redirect', [SocialiteController::class, 'redirect'])->name('socialite.redirect');
 Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback'])->name('socialite.callback');
 
@@ -89,7 +98,7 @@ Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback'])
 Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('language.__invoke');
 
 /* Admin */
-Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'verified']], function () {
+Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'verified', '2fa']], function () {
     Route::get('/', Dashboard::class)->name('dashboard')->middleware('permission:dashboard');
     Route::get('/role-permission', RoleSetting::class)->name('role-permission')->middleware('permission:role-permission');
     Route::get('/user-profile/{id}', AdminUserProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');
