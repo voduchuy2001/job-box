@@ -89,7 +89,7 @@ Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback'])
 Route::get('lang/{locale}', [LanguageController::class, '__invoke'])->name('language.__invoke');
 
 /* Admin */
-Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'verified']], function () {
     Route::get('/', Dashboard::class)->name('dashboard')->middleware('permission:dashboard');
     Route::get('/role-permission', RoleSetting::class)->name('role-permission')->middleware('permission:role-permission');
     Route::get('/user-profile/{id}', AdminUserProfile::class)->name('user-edit.profile')->middleware('permission:user-edit');

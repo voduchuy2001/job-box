@@ -61,6 +61,11 @@ class TrendingWordList extends Component
         $this->dispatch('refresh');
     }
 
+    public function updatedSearchTerm(): void
+    {
+        $this->resetPage();
+    }
+
     #[On('refresh')]
     #[Layout('layouts.admin')]
     public function render(): View

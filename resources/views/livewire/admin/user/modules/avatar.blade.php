@@ -16,9 +16,9 @@
 
             <label
                 for="profile-img-file-input" class="profile-photo-edit avatar-xs">
-                                    <span class="avatar-title rounded-circle bg-light text-body">
-                                        <i class="ri-camera-fill"></i>
-                                    </span>
+                <span class="avatar-title rounded-circle bg-light text-body">
+                    <i class="ri-camera-fill"></i>
+                </span>
             </label>
         </div>
     </div>

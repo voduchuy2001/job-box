@@ -19,7 +19,7 @@ class JobList extends Component
     use WithPagination;
     use WordTrend;
 
-    public int $itemPerPage = 12;
+    public int $itemPerPage = 10;
 
     public mixed $categories = [];
 
@@ -70,6 +70,31 @@ class JobList extends Component
         return $query->with('company')
             ->orderByDesc('created_at')
             ->paginate($this->itemPerPage);
+    }
+
+    public function updatedSearchTerm(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedFilterByCategory(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedFilterByType(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedSalaryMax(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedSalaryMin(): void
+    {
+        $this->resetPage();
     }
 
     #[Layout('layouts.user')]

@@ -91,7 +91,7 @@
                                        class="mdi mdi-loading mdi-spin align-middle me-2"></i>
                                     <i wire:loading.attr="hidden"
                                        wire:target="applyJob"
-                                       class="ri-download-2-line align-bottom me-1"></i>
+                                       class="ri-mail-send-line align-bottom me-1"></i>
                                     {{ __('Apply Job') }}</x-button>
                             </div>
                         </div>

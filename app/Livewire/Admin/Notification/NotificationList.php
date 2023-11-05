@@ -45,6 +45,13 @@ class NotificationList extends Component
         $this->dispatch('refresh');
     }
 
+    public function deleteNotification(string|int $id): void
+    {
+        $notification = Notification::findOrFail($id);
+        $notification->delete();
+        $this->alert('success', trans('Delete success'));
+    }
+
     #[On('refresh')]
     #[Layout('layouts.admin')]
     public function render(): View

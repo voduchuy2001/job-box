@@ -18,6 +18,24 @@
                                             wire:click="markAsReadOrUnreadNotification('{{ $notification->id }}')"
                                             class="badge badge-soft-{{ $notification->read_at ? 'info' : 'warning' }}">{{ $notification->read_at ? __('Read') : __('Mark As Read') }}</span>
                                     @endcan
+
+                                    <div class="d-inline" x-data="{ confirmDelete:false }">
+                                        <span
+                                            x-show="!confirmDelete" x-on:click="confirmDelete=true"
+                                            style="cursor: pointer"
+                                            class="badge badge-soft-danger">{{ __('Delete') }}</span>
+
+                                            <span
+                                                x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                                wire:click="deleteNotification('{{ $notification->id }}')"
+                                                style="cursor: pointer"
+                                                class="badge badge-soft-danger">{{ __('Yes') }}</span>
+
+                                            <span
+                                                x-show="confirmDelete" x-on:click="confirmDelete=false"
+                                                style="cursor: pointer"
+                                                class="badge badge-soft-info">{{ __('No') }}</span>
+                                        </div>
                                 </div>
                             </div>
 

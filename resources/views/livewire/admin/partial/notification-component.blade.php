@@ -2,7 +2,7 @@
     <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
         <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
             <i class='bx bx-bell fs-22'></i>
-            <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">{{ $unread }}<span class="visually-hidden">unread messages</span></span>
+            <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">{{ $unread > 99 ? trans('99+') : $unread }}<span class="visually-hidden">unread messages</span></span>
         </button>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
 
@@ -39,13 +39,14 @@
                             </div>
                         @endforeach
 
-                        @if($notifications->count())
+                        @if($notifications->count() > 7)
                             <div class="my-3 text-center view-all">
                                 <x-link
                                     :to="route('notification.index')"
                                     class="btn btn-soft-success waves-effect waves-light"> {{ trans('View More') }} <i class="ri-arrow-right-line align-middle"></i></x-link>
                             </div>
-                        @else
+                        @endif
+                        @if(! $notifications->count())
                             <div>
                                 <div class="empty-notification-elem">
                                     <div class="w-25 w-sm-50 pt-3 mx-auto">

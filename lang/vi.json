@@ -436,5 +436,10 @@
     "Internship": "Thực Tập",
     "Number Of Monthly Jobs In The Current Year": "Số Công Việc Hàng Tháng Trong Năm Hiện Tại",
     "Number Of Accepted/Rejected Jobs": "Số Lượng Công Việc Được Chấp Nhận/Từ Chối",
-    "Course: :course, Major: :major": "Khóa: :course, Chuyên Ngành: :major"
+    "Course: :course, Major: :major": "Khóa: :course, Chuyên Ngành: :major",
+    "Total Accepted": "Tổng số đã chấp nhận",
+    "Total Rejected": "Tổng số bị từ chối",
+    "Verified": "Đã Xác Thực",
+    "Unverified Account": "Tài Khoản Chưa Được Xác Minh",
+    "This action will delete all notifications in your system. Please note that this action is irreversible, and all notifications will be permanently lost.": "Hành động này sẽ xóa tất cả thông báo trong hệ thống của bạn. Xin lưu ý rằng hành động này không thể thay đổi được và tất cả thông báo sẽ bị mất vĩnh viễn."
 }

@@ -1,9 +1,6 @@
 <div>
     <div class="position-relative mx-n4 mt-n4">
         <div class="profile-wid-bg profile-setting-img">
-            <img
-                src="{{ asset('assets/images/profile-bg.jpg') }}"
-                class="profile-wid-img" alt="{{ $user->name }}">
         </div>
     </div>
 

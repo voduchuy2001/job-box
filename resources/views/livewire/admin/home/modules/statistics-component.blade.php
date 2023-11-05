@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <p class="fw-medium text-muted mb-0">{{ __('Accepted') }}</p>
+                            <p class="fw-medium text-muted mb-0">{{ __('Total Accepted') }}</p>
                             <h2 class="mt-4 ff-secondary fw-semibold"><span>{{ BaseHelper::numberFormatForHumans($acceptedJobCounts) }}</span></h2>
                         </div>
                         <div>
@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <p class="fw-medium text-muted mb-0">{{ __('Rejected') }}</p>
+                            <p class="fw-medium text-muted mb-0">{{ __('Total Rejected') }}</p>
                             <h2 class="mt-4 ff-secondary fw-semibold"><span>{{ BaseHelper::numberFormatForHumans($rejectedJobCounts) }}</span></h2>
                         </div>
                         <div>

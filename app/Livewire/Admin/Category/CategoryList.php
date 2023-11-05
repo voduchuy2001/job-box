@@ -37,6 +37,11 @@ class CategoryList extends Component
         $this->isEdit = false;
     }
 
+    public function updatedSearchTerm(): void
+    {
+        $this->resetPage();
+    }
+
     public function saveCategory(): void
     {
         $this->authorizeRoleOrPermission('category-create');

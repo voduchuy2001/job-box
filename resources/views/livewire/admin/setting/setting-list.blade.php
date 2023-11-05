@@ -3,7 +3,9 @@
 
     <div class="row">
         <div class="col-lg-4">
-            <livewire:admin.setting.modules.site-information-component  wire:key="siteInformation"></livewire:admin.setting.modules.site-information-component>
+            <livewire:admin.setting.modules.site-information-component wire:key="siteInformation"></livewire:admin.setting.modules.site-information-component>
+
+            <livewire:admin.setting.modules.notification-component wire:key="notificationComponent"></livewire:admin.setting.modules.notification-component>
         </div>
 
         <div class="col-lg-8">

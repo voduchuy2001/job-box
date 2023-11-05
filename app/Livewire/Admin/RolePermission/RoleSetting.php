@@ -83,6 +83,11 @@ class RoleSetting extends Component
         $this->confirm = false;
     }
 
+    public function updatedSearchTerm(): void
+    {
+        $this->resetPage();
+    }
+
     public function editRole(string|int $id): void
     {
         $this->isEdit = true;
