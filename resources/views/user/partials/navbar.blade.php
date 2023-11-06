@@ -46,12 +46,6 @@
                 </ul>
 
                 <div>
-                    @if(app()->getLocale() == 'vi')
-                        <a class="fw-medium text-decoration-none text-dark" href="{{ route('language.__invoke', ['locale' => 'en']) }}">{{ __('English') }}</a>
-                    @else
-                        <a class="fw-medium text-decoration-none text-dark" href="{{ route('language.__invoke', ['locale' => 'vi']) }}">{{ __('Tiếng Việt') }}</a>
-                    @endif
-
                     @unless(Auth::check())
                         <a href="{{ route('login') }}" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i>{{ __('Login & Register') }}</a>
                     @endunless
@@ -72,6 +66,12 @@
                                 {{ __('Hello :name', ['name' => Auth::user()->email]) }}</a>
                         @endif
                     @endauth
+
+                    @if(app()->getLocale() == 'vi')
+                        <a class="fw-medium text-decoration-none text-dark" href="{{ route('language.__invoke', ['locale' => 'en']) }}">{{ __('English') }}</a>
+                    @else
+                        <a class="fw-medium text-decoration-none text-dark" href="{{ route('language.__invoke', ['locale' => 'vi']) }}">{{ __('Tiếng Việt') }}</a>
+                    @endif
                 </div>
             </div>
         </div>
