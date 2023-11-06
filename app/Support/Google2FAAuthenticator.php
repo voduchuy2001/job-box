@@ -7,9 +7,9 @@ use PragmaRX\Google2FALaravel\Support\Authenticator;
 
 class Google2FAAuthenticator extends Authenticator
 {
-    protected function canPassWithoutCheckingOTP()
+    protected function canPassWithoutCheckingOTP(): bool
     {
-        if(! $this->getUser()->twoFactorAuthentication->count()) {
+        if(! $this->getUser()->twoFactorAuthentication) {
             return true;
         }
 
@@ -30,5 +30,4 @@ class Google2FAAuthenticator extends Authenticator
 
         return $secret;
     }
-
 }

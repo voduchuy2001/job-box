@@ -60,6 +60,14 @@
         </x-form>
 
         <div class="mt-4 mb-3 border-bottom pb-2">
+            <h5 class="card-title">{{ __('Two Factor Authentication') }}</h5>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <a href="{{ route('show2faForm') }}" class="link-danger" target="_blank"><strong>{{ __('Click Here To Setting 2FA') }}</strong></a>
+        </div>
+
+        <div class="mt-4 mb-3 border-bottom pb-2">
             <h5 class="card-title">{{ __('Login History') }}</h5>
         </div>
         @foreach(Auth::user()->authentications as $log)

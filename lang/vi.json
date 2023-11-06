@@ -441,5 +441,21 @@
     "Total Rejected": "Tổng số bị từ chối",
     "Verified": "Đã Xác Thực",
     "Unverified Account": "Tài Khoản Chưa Được Xác Minh",
-    "This action will delete all notifications in your system. Please note that this action is irreversible, and all notifications will be permanently lost.": "Hành động này sẽ xóa tất cả thông báo trong hệ thống của bạn. Xin lưu ý rằng hành động này không thể thay đổi được và tất cả thông báo sẽ bị mất vĩnh viễn."
+    "This action will delete all notifications in your system. Please note that this action is irreversible, and all notifications will be permanently lost.": "Hành động này sẽ xóa tất cả thông báo trong hệ thống của bạn. Xin lưu ý rằng hành động này không thể thay đổi được và tất cả thông báo sẽ bị mất vĩnh viễn.",
+    "Two Factor Authentication": "Xác thực hai yếu tố",
+    "Two factor authentication (2FA) strengthens access security by requiring two methods (also referred to as factors) to verify your identity. Two factor authentication protects against phishing, social engineering and password brute force attacks and secures your logins from attackers exploiting weak or stolen credentials.": "Xác thực hai yếu tố (2FA) tăng cường bảo mật truy cập bằng cách yêu cầu hai phương pháp (còn được gọi là các yếu tố) để xác minh danh tính của bạn. Xác thực hai yếu tố bảo vệ chống lại các cuộc tấn công lừa đảo, kỹ thuật xã hội và tấn công vũ phu bằng mật khẩu, đồng thời bảo vệ thông tin đăng nhập của bạn khỏi những kẻ tấn công khai thác thông tin xác thực yếu hoặc bị đánh cắp.",
+    "To Enable Two Factor Authentication on your Account, you need to do following steps": "Để kích hoạt xác thực hai yếu tố trên tài khoản của bạn, bạn cần thực hiện các bước sau",
+    "Click on Generate Secret Button , To Generate a Unique secret QR code for your profile": "Nhấp vào nút Tạo bí mật, để tạo mã QR bí mật duy nhất cho hồ sơ của bạn",
+    "Verify the OTP from Google Authenticator Mobile App": "Xác minh OTP từ ứng dụng di động Google Authenticator",
+    "2FA is Currently Enabled for your account.": "2FA hiện đã được Bật cho tài khoản của bạn.",
+    "If you are looking to disable Two Factor Authentication. Please confirm your password and Click Disable 2FA Button.": "Nếu bạn đang muốn tắt Xác thực hai yếu tố. Vui lòng xác nhận mật khẩu của bạn và nhấp vào nút Tắt 2FA.",
+    "Current Password": "Mật Khẩu Hiện Tại",
+    "Enter current password": "Nhập mật khẩu hiện tại",
+    "Disable 2FA": "Tắt 2FA",
+    "1. Scan this barcode with your Google Authenticator App:": "1. Quét mã vạch này bằng Ứng dụng Google Authenticator của bạn:",
+    "2. Enter the pin the code to Enable 2FA": "2. Nhập mã pin để Kích hoạt 2FA",
+    "Authenticator Code": "Mã Xác Thực",
+    "Enable 2FA": "Kích Hoạt 2FA",
+    "Enter authenticator code": "Nhập mã xác thực",
+    "Generate Secret Key to Enable 2FA": "Tạo Khóa Bí Mật Để Kích Hoạt 2FA"
 }

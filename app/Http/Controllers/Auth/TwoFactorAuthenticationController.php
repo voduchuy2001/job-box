@@ -47,7 +47,7 @@ class TwoFactorAuthenticationController extends Controller
     {
         $google2fa = new Google2FA();
 
-        TwoFactorAuthentication::firstOrNew(
+        TwoFactorAuthentication::updateOrCreate(
             [
             'user_id' => Auth::id(),
         ],

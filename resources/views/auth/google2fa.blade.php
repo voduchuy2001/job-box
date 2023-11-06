@@ -39,6 +39,7 @@
                                                     class="form-control"
                                                     id="one_time_password"
                                                     name="one_time_password"
+                                                    :placeholder="__('Enter one time password')"
                                                     required
                                                 ></x-admin.input>
                                             </div>

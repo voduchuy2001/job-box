@@ -44,10 +44,12 @@
                                                     <form class="form-horizontal" method="POST" action="{{ route('generate2faSecret') }}">
                                                         {{ csrf_field() }}
                                                         <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-4">
-                                                                <x-button type="submit" class="btn btn-primary">
-                                                                    {{ __('Generate Secret Key to Enable 2FA') }}
-                                                                </x-button>
+                                                            <div class="col-md-12 col-md-offset-4">
+                                                                <div class="hstack gap-2 justify-content-end">
+                                                                    <x-button type="submit" class="btn btn-primary">
+                                                                        {{ __('Generate Secret Key to Enable 2FA') }}
+                                                                    </x-button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -55,18 +57,19 @@
                                                     <strong>{{ __('1. Scan this barcode with your Google Authenticator App:') }}</strong><br/>
                                                     {!! $data['google2fa_url'] !!}
                                                     <br/><br/>
-                                                    <strong>{{ __('2.Enter the pin the code to Enable 2FA') }}</strong><br/><br/>
+                                                    <strong>{{ __('2. Enter the pin the code to Enable 2FA') }}</strong><br/><br/>
                                                     <form class="form-horizontal" method="POST" action="{{ route('enable2fa') }}">
-                                                        {{ csrf_field() }}
+                                                        @csrf
 
                                                         <div class="form-group">
-                                                            <div class="col-md-6">
+                                                            <div class="col-lg-12">
                                                                 <x-admin.input
                                                                     :label="__('Authenticator Code')"
                                                                     id="verify-code"
                                                                     type="password"
                                                                     class="form-control"
                                                                     name="verify-code"
+                                                                    :placeholder="__('Enter authenticator code')"
                                                                     required></x-admin.input>
 
                                                                 @if ($errors->has('verify-code'))
@@ -77,10 +80,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <div class="col-md-6 col-md-offset-4">
-                                                                <x-button type="submit" class="btn btn-primary">
-                                                                    {{ __('Enable 2FA') }}
-                                                                </x-button>
+                                                            <div class="col-lg-12 col-md-offset-4">
+                                                                <div class="hstack gap-2 justify-content-end">
+                                                                    <x-button type="submit" class="btn btn-primary">
+                                                                        {{ __('Enable 2FA') }}
+                                                                    </x-button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -90,14 +95,17 @@
                                                     </div>
                                                     <p>{{ __('If you are looking to disable Two Factor Authentication. Please confirm your password and Click Disable 2FA Button.') }}</p>
                                                     <form class="form-horizontal" method="POST" action="{{ route('disable2fa') }}">
+                                                        @csrf
+
                                                         <div class="form-group">
-                                                            <div class="col-md-12">
+                                                            <div class="col-lg-12">
                                                                 <x-admin.input
                                                                     :label="__('Current Password')"
                                                                     id="current-password"
                                                                     type="password"
                                                                     class="form-control"
                                                                     name="current-password"
+                                                                    :placeholder="__('Enter current password')"
                                                                     required></x-admin.input>
 
                                                                 @if ($errors->has('current-password'))
@@ -107,11 +115,14 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 col-md-offset-5">
-                                                            {{ csrf_field() }}
-                                                            <x-button
-                                                                type="submit"
-                                                                class="btn btn-primary ">{{ __('Disable 2FA') }}</x-button>
+                                                        <div class="col-lg-12 col-md-offset-5">
+                                                            @csrf
+
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <x-button
+                                                                    type="submit"
+                                                                    class="btn btn-primary ">{{ __('Disable 2FA') }}</x-button>
+                                                            </div>
                                                         </div>
                                                     </form>
                                                 @endif
