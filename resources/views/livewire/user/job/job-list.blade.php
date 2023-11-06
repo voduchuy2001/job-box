@@ -9,7 +9,7 @@
                                 <input
                                     id="searchTerm"
                                     name="searchTerm"
-                                    wire:model.live.debounce.1000ms="searchTerm"
+                                    wire:model.live.debounce.500ms="searchTerm"
                                     class="form-control"
                                     placeholder="{{ __('Find your job...') }}" />
                             </div>

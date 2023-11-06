@@ -47,6 +47,7 @@ class NotificationList extends Component
 
     public function deleteNotification(string|int $id): void
     {
+        $this->authorizeRoleOrPermission('site-settings');
         $notification = Notification::findOrFail($id);
         $notification->delete();
         $this->alert('success', trans('Delete success'));

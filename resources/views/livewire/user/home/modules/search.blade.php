@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div>
                     <input
-                        wire:model.live.debounce.1000ms="searchTerm"
+                        wire:model.live.debounce.500ms="searchTerm"
                         wire:keydown.escape="hideSuggestions"
                         wire:keydown.tab="hideSuggestions"
                         wire:keydown.enter="hideSuggestions"
