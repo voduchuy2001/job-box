@@ -8,9 +8,9 @@ trait WordTrend
 {
     public function createTrendingWords(string $searchTerm): void
     {
-        $filePath = storage_path('app/public/files/blacklist.json');
+        $filePath = __DIR__ . '/../../storage/app/public/files/blacklist.json';
         if (! file_exists($filePath)) {
-            $filePath = storage_path('app/blacklist.json');
+            $filePath = __DIR__ . '/../../storage/app/blacklist.json';
         }
 
         $blacklistKeywords = json_decode(file_get_contents($filePath), true) ?? [];
