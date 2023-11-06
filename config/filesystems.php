@@ -49,6 +49,7 @@ return [
             'root' => storage_path('app/upload'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+            'throw' => false,
         ],
 
         's3' => [
