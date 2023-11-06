@@ -129,7 +129,7 @@ Route::get('/term-and-conditions', TermAndConditionComponent::class)->name('term
 Route::get('/privacy-policy', PrivacyPolicyComponent::class)->name('privacy-policy.user');
 Route::get('/contact-us', ContactComponent::class)->name('contact-us.user');
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth', 'verified', '2fa']], function () {
     Route::get('/user-change-password', UserChangePassword::class)->name('user-change-password.user')->middleware('password.confirm:password.confirm,1');
 
     Route::get('/job-application/{id}', JobApplication::class)->name('job-applied.user')->middleware('permission:student-job-applied');

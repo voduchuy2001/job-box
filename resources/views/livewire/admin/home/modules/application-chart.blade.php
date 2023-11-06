@@ -15,12 +15,12 @@
 
 @push('scripts')
     <script type="text/javascript">
-        var line = document.getElementById('appliedJobChart');
+        var bar = document.getElementById('appliedJobChart');
         var labels = {{ Js::from($labels) }};
         var data = {{ Js::from($counts) }};
 
-        var appliedJobChart = new Chart(line, {
-            type: 'line',
+        var appliedJobChart = new Chart(bar, {
+            type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
