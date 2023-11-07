@@ -22,7 +22,7 @@
                                         <i class="ri-mail-send-line"></i>
                                     </div>
                                 </div>
-                                <h5 class="fs-15 lh-base mb-0">{{ __('Work Inquiry from :name', ['name' => 'JobBox']) }}</h5>
+                                <h5 class="fs-15 lh-base mb-0">{{ __('Work Inquiry from :name', ['name' => $settings['siteName']]) }}</h5>
                             </div>
                         </div>
 
@@ -126,7 +126,7 @@
                             </h1>
 
                             <h6 class="fs-17 mb-2">{{ __('Find Job') }}</h6>
-                            <p class="text-muted mb-0 fs-15">{{ __('Search for your dream jobs :name', ['name' => 'JobBox']) }}</p>
+                            <p class="text-muted mb-0 fs-15">{{ __('Search for your dream jobs :name', ['name' => $settings['siteName']]) }}</p>
                         </div>
                     </div>
                 </div>

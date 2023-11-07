@@ -457,5 +457,8 @@
     "Authenticator Code": "Mã Xác Thực",
     "Enable 2FA": "Kích Hoạt 2FA",
     "Enter authenticator code": "Nhập mã xác thực",
-    "Generate Secret Key to Enable 2FA": "Tạo Khóa Bí Mật Để Kích Hoạt 2FA"
+    "Generate Secret Key to Enable 2FA": "Tạo Khóa Bí Mật Để Kích Hoạt 2FA",
+    "General Questions": "Câu Hỏi Chung",
+    "Manage Account": "Quản Lý Tài Khoản",
+    "Privacy & Security": "Quyền Riêng Tư & Bảo Mật"
 }

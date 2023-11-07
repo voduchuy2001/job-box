@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -17,31 +16,61 @@ class LogoComponent extends Component
     use WithFileUploads;
     use LivewireAlert;
 
-    #[Rule('nullable|image|max:2048')]
-    public mixed $logo = null;
+    public mixed $logoLight = null;
+
+    public mixed $logoDark = null;
 
     public mixed $setting;
 
     #[On('refresh')]
     public function mount(): void
     {
-        $this->setting = $setting = Setting::getSettingByName('logo');
-        $this->logo = $setting;
+        $this->setting = $logoLight = Setting::getSettingByName('logoLight');
+        $this->logoLight = $logoLight;
+        $this->logoDark = Setting::getSettingByName('logoDark');
     }
 
-    public function updatedLogo(): void
+    public function updatedLogoLight(): void
     {
-        $validatedData = $this->validate();
+        $validatedData = $this->validate([
+            'logoLight' => 'nullable|image|max:2048',
+        ]);
 
-        if (! $validatedData['logo']) {
+        if (! $validatedData['logoLight']) {
             return;
         }
 
         if ($this->setting) {
             File::delete($this->setting);
-            $logoUrl = $validatedData['logo']->store('upload');
+            $logoUrl = $validatedData['logoLight']->store('upload');
             Setting::updateOrCreate([
-                'name' => 'logo',
+                'name' => 'logoLight',
+            ], [
+                'payload' => $logoUrl,
+            ]);
+
+            Artisan::call('cache:clear');
+            $this->alert('success', trans('Update success'));
+        }
+
+        $this->dispatch('refresh');
+    }
+
+    public function updatedLogoDark(): void
+    {
+        $validatedData = $this->validate([
+            'logoDark' => 'nullable|image|max:2048',
+        ]);
+
+        if (! $validatedData['logoDark']) {
+            return;
+        }
+
+        if ($this->setting) {
+            File::delete($this->setting);
+            $logoUrl = $validatedData['logoDark']->store('upload');
+            Setting::updateOrCreate([
+                'name' => 'logoDark',
             ], [
                 'payload' => $logoUrl,
             ]);

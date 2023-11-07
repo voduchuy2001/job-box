@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
         <div class="container-fluid custom-container">
             <x-link :to="route('home')" class="navbar-brand">
-                <img src="{{ asset($settings['logo']) }}" class="card-logo card-logo-dark" alt="logo dark" height="20">
+                <img src="{{ asset($settings['logoLight']) }}" class="card-logo card-logo-dark" alt="logo dark" height="20">
             </x-link>
             <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="mdi mdi-menu"></i>
@@ -54,23 +54,27 @@
                         @if(! Auth::user()->hasRole('Super Admin'))
                             <x-link
                                 :to="Auth::user()->hasRole('Company') ? route('company-profile.user') : route('student-profile.user')"
-                                class="btn btn-soft-primary">
+                                class="btn btn-primary">
                                 <i class="ri-user-3-line align-bottom me-1"></i>
                                 {{ __('Hello :name', ['name' => Auth::user()->email]) }}</x-link>
                         @else
                             <a
                                 target="_blank"
                                 href="{{ route('dashboard') }}"
-                                class="btn btn-soft-primary">
+                                class="btn btn-primary">
                                 <i class="ri-user-3-line align-bottom me-1"></i>
                                 {{ __('Hello :name', ['name' => Auth::user()->email]) }}</a>
                         @endif
                     @endauth
 
                     @if(app()->getLocale() == 'vi')
-                        <a class="fw-medium text-decoration-none text-dark" href="{{ route('language.__invoke', ['locale' => 'en']) }}">{{ __('English') }}</a>
+                        <a href="{{ route('language.__invoke', ['locale' => 'en']) }}">
+                            <img src="{{ asset('assets/images/us.png') }}" class="rounded" height="35" width="40" alt="United State" title="English">
+                        </a>
                     @else
-                        <a class="fw-medium text-decoration-none text-dark" href="{{ route('language.__invoke', ['locale' => 'vi']) }}">{{ __('Tiếng Việt') }}</a>
+                        <a href="{{ route('language.__invoke', ['locale' => 'vi']) }}">
+                            <img src="{{ asset('assets/images/vn.png') }}" class="rounded" height="35" width="40" alt="Viet Nam" title="Tiếng Việt">
+                        </a>
                     @endif
                 </div>
             </div>

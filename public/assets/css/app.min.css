@@ -15657,7 +15657,7 @@ span.flatpickr-weekday {
     left: 0;
 }
 .navbar-landing {
-    padding: 10px 0;
+    padding: 5px 0;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
@@ -16105,12 +16105,12 @@ span.flatpickr-weekday {
 @media (max-width: 991.98px) {
     .job-navbar {
         background-color: var(--vz-card-bg-custom);
-        padding: 16px 0;
+        padding: 10px 0;
     }
 }
 .job-hero-section {
     position: relative;
-    padding: 120px 0;
+    padding: 100px 0;
     overflow-x: hidden;
 }
 .job-panel-filter {

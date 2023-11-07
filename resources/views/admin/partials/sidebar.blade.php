@@ -4,7 +4,7 @@
             to="{{ route('dashboard') }}"
             class="logo logo-light">
             <span class="logo-lg">
-                <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="25">
+                <img src="{{ asset($settings['logoDark']) }}" alt="" height="25">
             </span>
         </x-link>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">

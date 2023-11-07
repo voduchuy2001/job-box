@@ -20,7 +20,7 @@
                 <div class="py-2 ps-2">
                     <div data-simplebar style="max-height: 300px;" class="pe-2">
                         @foreach($notifications as $notification)
-                            <div class="text-reset notification-item d-block dropdown-item position-relative">
+                            <div class="text-reset notification-item d-block dropdown-item position-relative {{ $notification->read_at != null ? '' : 'disabled shadow' }}">
                                 <div class="d-flex">
                                     <div class="flex-1">
                                         <x-link

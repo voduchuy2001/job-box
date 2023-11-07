@@ -4,7 +4,7 @@
             <div class="col-lg-4 mt-4">
                 <div>
                     <div>
-                        <img src="{{ asset($settings['logo']) }}" alt="logo light" height="20" />
+                        <img src="{{ asset($settings['logoDark']) }}" alt="logo light" height="20" />
                     </div>
                     <div class="mt-4 fs-13">
                         <p>{{ $settings['siteSlogan'] }}</p>

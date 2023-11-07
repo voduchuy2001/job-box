@@ -43,9 +43,12 @@
                                                     required
                                                 ></x-admin.input>
                                             </div>
-                                            <x-button
-                                                class="btn btn-primary"
-                                                type="submit">{{ __('Authenticate') }}</x-button>
+
+                                            <div class="hstack gap-2 justify-content-end">
+                                                <x-button
+                                                    class="btn btn-primary"
+                                                    type="submit">{{ __('Authenticate') }}</x-button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

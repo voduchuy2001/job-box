@@ -65,7 +65,13 @@ class SettingTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'logo',
+                'name' => 'logoLight',
+                'payload' => 'upload/hCroUAekyY90Fj3WaoVsJpyuFAoHaz6RNS8NZRUf.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'logoDark',
                 'payload' => 'upload/hCroUAekyY90Fj3WaoVsJpyuFAoHaz6RNS8NZRUf.png',
                 'created_at' => now(),
                 'updated_at' => now(),
