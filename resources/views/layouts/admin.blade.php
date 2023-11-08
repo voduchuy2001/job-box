@@ -16,7 +16,7 @@
     <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <script src="{{ asset('assets/libs/tinymce/js/tinymce/tinymce.min.js') }}"></script>
     <script data-navigate-track src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script data-navigate-track src="{{ asset('assets/js/chart.js') }}"></script>
+    <script data-navigate-track src="{{ asset('assets/js/apexcharts.js') }}"></script>
     <script data-navigate-track src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script data-navigate-track src="{{ asset('assets/libs/flatpickr/flatpickr.js') }}"></script>
     @stack('styles')

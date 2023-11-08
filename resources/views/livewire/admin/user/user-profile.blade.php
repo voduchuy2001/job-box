@@ -36,11 +36,11 @@
 
             @if($user->hasRole('Company'))
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <livewire:admin.user.modules.job-company :userId="$user->id" wire:key="job"></livewire:admin.user.modules.job-company>
                     </div>
 
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <livewire:admin.user.modules.job-month-company :userId="$user->id" wire:key="jobMonth"></livewire:admin.user.modules.job-month-company>
                     </div>
                 </div>
