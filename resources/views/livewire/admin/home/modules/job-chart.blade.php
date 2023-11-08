@@ -1,33 +1,32 @@
 <div>
-    <x-admin.card>
-        <canvas id="jobChart"></canvas>
-    </x-admin.card>
+    <x-admin.chart
+        id="jobChart"
+        :options='[
+            "series" => [
+                [
+                    "name" => __("Current Year Jobs"),
+                    "data" => $currentYearJobs
+                ],
+                [
+                    "name" => __("Previous Year Jobs"),
+                    "data" => $previousYearJobs
+                ],
+            ],
+            "dataLabels" => [
+                "enabled" => false,
+            ],
+            "xaxis" => [
+                "categories" => $labels
+            ],
+            "chart" => [
+                "type" => "area",
+            ],
+            "title" => [
+                "text" => __("Compare The Number Of Jobs Posted With The Previous Year"),
+            ],
+            "noData" => [
+                "text" => __("There is no data to display at the moment.")
+            ],
+        ]'
+    ></x-admin.chart>
 </div>
-
-@push('scripts')
-    <script type="text/javascript">
-        var line = document.getElementById('jobChart');
-        var labels = {{ Js::from($labels) }};
-        new Chart(line, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: `{{ __('Current Year Jobs') }}`,
-                    backgroundColor: '#405189',
-                    data: {{ Js::from($currentYearJobs) }},
-                    borderWidth: 2,
-                    hoverOffset: 4,
-                    borderColor: '#405189',
-                }, {
-                    label: `{{ __('Previous Year Jobs') }}`,
-                    backgroundColor: '#DEDEDF',
-                    data: {{ Js::from($previousYearJobs) }},
-                    borderWidth: 2,
-                    hoverOffset: 4,
-                    borderColor: '#DEDEDF'
-                }]
-            },
-        });
-    </script>
-@endpush

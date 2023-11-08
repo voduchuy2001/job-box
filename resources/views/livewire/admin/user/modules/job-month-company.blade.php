@@ -1,41 +1,25 @@
 <div>
-    <x-admin.card>
-        <canvas id="userChart"></canvas>
-    </x-admin.card>
+    <x-admin.chart
+        id="jobOfCompanyByMonthly"
+        :options="[
+            'chart' => [
+                'type' => 'bar'
+            ],
+            'series' => [
+               [
+                    'name' => __('By Month'),
+                    'data' => $data
+               ]
+            ],
+            'xaxis' => [
+                'categories' => $labels
+            ],
+            'title' => [
+                'text' => __('Number Of Monthly Jobs In The Current Year'),
+            ],
+            'noData' => [
+                'text' => __('There is no data to display at the moment.')
+            ]
+        ]"
+    ></x-admin.chart>
 </div>
-
-@push('scripts')
-    <script type="text/javascript">
-        var bar = document.getElementById('userChart');
-        var labels = {{ Js::from($labels) }};
-        new Chart(bar, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: `{{ __('Number Of Monthly Jobs In The Current Year') }}`,
-                    backgroundColor: '#405189',
-                    data: {{ Js::from($data) }},
-                    borderWidth: 1,
-                    hoverOffset: 4,
-                }]
-            },
-            options: {
-                animations: {
-                    tension: {
-                        duration: 1000,
-                        easing: 'linear',
-                        from: 1,
-                        to: 0,
-                        loop: true
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-@endpush

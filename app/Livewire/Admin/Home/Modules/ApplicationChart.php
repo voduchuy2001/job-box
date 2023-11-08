@@ -8,18 +8,16 @@ use Livewire\Component;
 
 class ApplicationChart extends Component
 {
-    public mixed $status = 'accepted';
-
-    protected function getApplicationData(): array
+    protected function getApplicationData(string $status): array
     {
         $query = DB::table('applications')
             ->select(DB::raw('YEAR(created_at) AS year'), DB::raw('COUNT(*) AS total_applications'))
             ->groupBy(DB::raw('YEAR(created_at)'));
 
-        $query->when($this->status === 'accepted', function ($query) {
+        $query->when($status === 'accepted', function ($query) {
             $query->where('status', 'accepted');
         })
-            ->when($this->status === 'rejected', function ($query) {
+            ->when($status === 'rejected', function ($query) {
                 $query->where('status', 'rejected');
             });
 
@@ -36,22 +34,16 @@ class ApplicationChart extends Component
         ];
     }
 
-    public function updatedStatus(): array
-    {
-        $query = $this->getApplicationData();
-
-        $this->dispatch('refreshAppliedJobChart', $query);
-
-        return $query;
-    }
-
     public function render(): View
     {
-        $chartData = $this->getApplicationData();
+        $applyJobAcceptedChart = $this->getApplicationData('accepted');
+        $applyJobRejectedChart = $this->getApplicationData('rejected');
 
         return view('livewire.admin.home.modules.application-chart', [
-            'labels' => $chartData['labels'],
-            'counts' => $chartData['counts'],
+            'acceptedLabels' => $applyJobAcceptedChart['labels'],
+            'acceptedData' => $applyJobAcceptedChart['counts'],
+            'rejectedLabels' => $applyJobRejectedChart['labels'],
+            'rejectedData' => $applyJobRejectedChart['counts'],
         ]);
     }
 }

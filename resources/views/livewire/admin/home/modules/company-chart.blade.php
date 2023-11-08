@@ -1,41 +1,25 @@
 <div>
-    <x-admin.card>
-        <canvas id="companyChart"></canvas>
-    </x-admin.card>
+    <x-admin.chart
+        id="companyChart"
+        :options="[
+            'chart' => [
+                'type' => 'bar'
+                ],
+            'series' => [
+                [
+                    'name' => __('Number Of Job Postings'),
+                    'data' => $jobCounts
+                ]
+            ],
+            'xaxis' => [
+                'categories' => $companyNames
+                ],
+            'title' => [
+                'text' => __('Top 10 Companies With The Highest Number Of Job Postings')
+            ],
+            'noData' => [
+                'text' => __('There is no data to display at the moment.')
+            ],
+        ]"
+    ></x-admin.chart>
 </div>
-
-@push('scripts')
-    <script type="text/javascript">
-        var bar = document.getElementById('companyChart');
-        var labels = {{ Js::from($companyNames) }};
-        new Chart(bar, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: `{{ __('Top 10 Companies With The Highest Number Of Job Postings') }}`,
-                    backgroundColor: '#405189',
-                    data: {{ Js::from($jobCounts) }},
-                    borderWidth: 1,
-                    hoverOffset: 4,
-                }]
-            },
-            options: {
-                animations: {
-                    tension: {
-                        duration: 1000,
-                        easing: 'linear',
-                        from: 1,
-                        to: 0,
-                        loop: true
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-@endpush

@@ -1,47 +1,32 @@
 <div>
-    <x-admin.card>
-        <canvas id="userChart"></canvas>
-    </x-admin.card>
+    <x-admin.chart
+        id="userChart"
+        :options='[
+            "series" => [
+                [
+                    "name" => __("Current Year Users"),
+                    "data" => $currentYearUsers
+                ],
+                [
+                    "name" => __("Previous Year Users"),
+                    "data" => $previousYearUsers
+                ],
+            ],
+            "chart" => [
+                "type" => "area",
+            ],
+            "dataLabels" => [
+                "enabled" => false,
+            ],
+            "xaxis" => [
+                "categories" => $labels
+            ],
+             "title" => [
+                "text" => __("Compare The Number Of Users With The Previous Year"),
+            ],
+            "noData" => [
+                "text" => __("There is no data to display at the moment.")
+            ],
+        ]'
+    ></x-admin.chart>
 </div>
-
-@push('scripts')
-    <script type="text/javascript">
-        var bar = document.getElementById('userChart');
-        var labels = {{ Js::from($labels) }};
-        new Chart(bar, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: `{{ __('Current Year Users') }}`,
-                    backgroundColor: '#405189',
-                    data: {{ Js::from($currentYearUsers) }},
-                    borderWidth: 1,
-                    hoverOffset: 4,
-                }, {
-                    label: `{{ __('Previous Year Users') }}`,
-                    backgroundColor: '#DEDEDF',
-                    data: {{ Js::from($previousYearUsers) }},
-                    borderWidth: 1,
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                animations: {
-                    tension: {
-                        duration: 1000,
-                        easing: 'linear',
-                        from: 1,
-                        to: 0,
-                        loop: true
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-@endpush

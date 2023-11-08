@@ -1,24 +1,26 @@
 <div>
-    <x-admin.card>
-        <canvas id="companyJobChart"></canvas>
-    </x-admin.card>
+    <div>
+        <x-admin.chart
+            id="jobOfCompanyChart"
+            :options="[
+            'series' => [
+                $acceptedJob ?? 0,
+                $rejectedJob ?? 0,
+            ],
+            'chart' => [
+                'type' => 'pie'
+                ],
+            'labels' => [
+                __('Accepted'),
+                __('Rejected'),
+            ],
+            'title' => [
+                'text' => __('Number Of Accepted/Rejected Jobs'),
+            ],
+            'noData' => [
+                'text' => __('There is no data to display at the moment.')
+            ],
+        ]"
+        ></x-admin.chart>
+    </div>
 </div>
-
-
-@push('scripts')
-    <script type="text/javascript">
-        var pie = document.getElementById('companyJobChart');
-        new Chart(pie, {
-            type: 'pie',
-            data: {
-                labels: ['Accepted', 'Rejected'],
-                datasets: [{
-                    label: `{{ __('Number Of Accepted/Rejected Jobs') }}`,
-                    data: [{{ Js::from($acceptedJob) }}, {{ Js::from($rejectedJob) }}],
-                    borderWidth: 1,
-                    hoverOffset: 4
-                }]
-            },
-        });
-    </script>
-@endpush
