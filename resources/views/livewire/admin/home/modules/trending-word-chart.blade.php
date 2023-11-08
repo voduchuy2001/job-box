@@ -4,7 +4,6 @@
     </x-admin.card>
 </div>
 
-
 @push('scripts')
     <script type="text/javascript">
         var bar = document.getElementById('trendingWordChart');

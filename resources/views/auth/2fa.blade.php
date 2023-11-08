@@ -53,7 +53,7 @@
                                                             </div>
                                                         </div>
                                                     </form>
-                                                @elseif(! $data['user']->twoFactorAuthentication->google2fa_enable)
+                                                @elseif(! $data['user']->twoFactorAuthentication->is_enable)
                                                     <strong>{{ __('1. Scan this barcode with your Google Authenticator App:') }}</strong><br/>
                                                     {!! $data['google2fa_url'] !!}
                                                     <br/><br/>
@@ -89,7 +89,7 @@
                                                             </div>
                                                         </div>
                                                     </form>
-                                                @elseif($data['user']->twoFactorAuthentication->google2fa_enable)
+                                                @elseif($data['user']->twoFactorAuthentication->is_enable)
                                                     <div class="alert alert-success">
                                                         {{ __('2FA is Currently Enabled for your account.') }}
                                                     </div>

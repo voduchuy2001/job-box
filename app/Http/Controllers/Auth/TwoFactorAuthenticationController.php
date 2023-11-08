@@ -29,7 +29,7 @@ class TwoFactorAuthenticationController extends Controller
             $google2faUrl = $google2fa->getQRCodeInline(
                 'Job Box',
                 $user->email,
-                $user->twoFactorAuthentication->google2fa_secret
+                $user->twoFactorAuthentication->secret_key
             );
         }
 
@@ -52,8 +52,8 @@ class TwoFactorAuthenticationController extends Controller
             'user_id' => Auth::id(),
         ],
             [
-            'google2fa_enable' => 0,
-            'google2fa_secret' => $google2fa->generateSecretKey(),
+            'is_enable' => 0,
+            'secret_key' => $google2fa->generateSecretKey(),
         ]
         );
 
@@ -68,14 +68,14 @@ class TwoFactorAuthenticationController extends Controller
 
         $google2fa = app('pragmarx.google2fa');
         $secret = $request->input('verify-code');
-        $valid = $google2fa->verifyKey($user->twoFactorAuthentication->google2fa_secret, $secret);
+        $valid = $google2fa->verifyKey($user->twoFactorAuthentication->secret_key, $secret);
         if(! $valid) {
             return redirect()
                 ->route('show2faForm')
                 ->with('error', trans('Invalid Verification Code, Please try again.'));
         }
 
-        $user->twoFactorAuthentication->google2fa_enable = 1;
+        $user->twoFactorAuthentication->is_enable = 1;
         $user->twoFactorAuthentication->save();
 
         return redirect()
@@ -94,7 +94,7 @@ class TwoFactorAuthenticationController extends Controller
         }
 
         $user = Auth::user();
-        $user->twoFactorAuthentication->google2fa_enable = 0;
+        $user->twoFactorAuthentication->is_enable = 0;
         $user->twoFactorAuthentication->save();
 
         return redirect()

@@ -12,9 +12,9 @@ return new class () extends Migration {
     {
         Schema::create('two_factor_authentications', function (Blueprint $table) {
             $table->id();
+            $table->boolean('is_enable')->default(false);
+            $table->string('secret_key')->nullable();
             $table->foreignId('user_id');
-            $table->boolean('google2fa_enable')->default(false);
-            $table->string('google2fa_secret')->nullable();
             $table->timestamps();
         });
     }

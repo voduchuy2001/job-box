@@ -11,8 +11,8 @@ class TwoFactorAuthentication extends Model
 
     protected $fillable = [
         'user_id',
-        'google2fa_enable',
-        'google2fa_secret',
+        'is_enable',
+        'secret_key',
     ];
 
     public function user(): BelongsTo

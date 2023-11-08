@@ -14,7 +14,7 @@ class Google2FAAuthenticator extends Authenticator
         }
 
         return
-            ! $this->getUser()->twoFactorAuthentication->google2fa_enable ||
+            ! $this->getUser()->twoFactorAuthentication->is_enable ||
             ! $this->isEnabled() ||
             $this->noUserIsAuthenticated() ||
             $this->twoFactorAuthStillValid();
