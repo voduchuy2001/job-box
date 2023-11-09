@@ -3,7 +3,7 @@
         <div class="toast-container position-fixed p-2" style="z-index: 1500000" id="toast">
             <div class="toast show fade">
                 <div class="toast-header">
-                    <img src="{{ $settings['logoLight'] }}" class="rounded me-2"
+                    <img src="{{ asset($settings['logoLight']) }}" class="rounded me-2"
                          alt="{{ $settings['siteName'] }}" height="20">
                     <strong class="me-auto"></strong>
                     <small></small>
