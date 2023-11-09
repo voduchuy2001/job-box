@@ -10,7 +10,7 @@ class ToastComponent extends Component
 {
     use LivewireAlert;
 
-    public string $message;
+    public string $message = '';
 
     public function getListeners(): array
     {

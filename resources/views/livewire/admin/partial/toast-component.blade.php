@@ -16,9 +16,3 @@
         </div>
     @endif
 </div>
-
-@push('scripts')
-    <script type="text/javascript">
-        document.title = 'You have new notification'
-    </script>
-@endpush
