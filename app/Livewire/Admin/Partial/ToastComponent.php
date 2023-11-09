@@ -10,20 +10,20 @@ class ToastComponent extends Component
 {
     use LivewireAlert;
 
+    public string $message;
+
     public function getListeners(): array
     {
         return [
-            "echo:company-job-create,CompanyJobCreateEvent" => 'showNotification',
-            "echo:company-job-edit,CompanyJobEditEvent" => 'showNotification',
-            "echo:student-job-apply,StudentJobApplyEvent" => 'showNotification',
+            'echo:company-job-create,CompanyJobCreateEvent' => 'showNotification',
+            'echo:company-job-edit,CompanyJobEditEvent' => 'showNotification',
+            'echo:student-job-apply,StudentJobApplyEvent' => 'showNotification',
         ];
     }
 
     public function showNotification(mixed $event): void
     {
-        $this->alert('success', $event['message'], [
-            'timer' => 600000,
-        ]);
+        $this->message = $event['message'];
     }
 
     public function render(): View

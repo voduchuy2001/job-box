@@ -62,10 +62,10 @@
     <div class="row g-4 mb-3">
         <div class="col-sm-auto">
             <div>
-                <x-button
+                <button
                     type="button"
                     onclick="showModal('setting-user')"
-                    class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add User') }}</x-button>
+                    class="btn btn-primary"><i class="ri-add-line align-bottom me-1"></i>{{ __('Add User') }}</button>
             </div>
         </div>
     </div>

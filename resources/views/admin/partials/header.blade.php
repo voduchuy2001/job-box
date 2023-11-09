@@ -16,10 +16,6 @@
                     <livewire:admin.partial.notification-component wire:key="adminNotificationComponent"></livewire:admin.partial.notification-component>
                 </div>
 
-                <div>
-                    <livewire:admin.partial.toast-component wire:key="adminToastComponent"></livewire:admin.partial.toast-component>
-                </div>
-
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">

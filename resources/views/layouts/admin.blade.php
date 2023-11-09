@@ -29,6 +29,10 @@
 
         @include('admin.partials.sidebar')
 
+        <div>
+            <livewire:admin.partial.toast-component wire:key="adminToastComponent"></livewire:admin.partial.toast-component>
+        </div>
+
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
