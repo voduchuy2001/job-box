@@ -25,8 +25,10 @@ class ApplicationChart extends Component
             ->limit(10)
             ->get();
 
-        $labels = $latestApplications->pluck('year');
-        $counts = $latestApplications->pluck('total_applications');
+        $labels = $latestApplications->pluck('year')
+            ->toArray();
+        $counts = $latestApplications->pluck('total_applications')
+            ->toArray();
 
         return [
             'labels' => $labels,
