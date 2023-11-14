@@ -3,6 +3,5 @@
 
     {{ $presentation }}
 
-    {{ __('Best regards,') }}
-    {{ config('app.name') }}
+    {{ __('Best regards') }}
 </x-mail::message>

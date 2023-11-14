@@ -5,5 +5,5 @@
     {{ $message }}
 
     {{ __('Best regards,') }}
-    {{ config('app.name') }}
+    {{ $name }}
 </x-mail::message>
