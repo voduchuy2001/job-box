@@ -7,7 +7,7 @@
                wire:target="clearNotification"
                wire:loading.attr="disabled"
                class="mdi mdi-loading mdi-spin align-middle me-2"></i>
-            <span class="flex-grow-1">{{ __('Clear Notification') }}</span>
+            <span class="flex-grow-1">{{ __('Clear Notifications') }}</span>
         </button>
 
         <div class="row">

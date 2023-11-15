@@ -29,7 +29,7 @@
                                             <h6 class="mt-0 mb-1 fs-13 fw-semibold">{{ $notification->data['name'] }}</h6>
                                         </x-link>
                                         <div class="fs-13 text-muted">
-                                            <p class="mb-1">{{ $notification->type == 'App\Notifications\CompanyJobEditNotification' ? trans('Has been updated 🔔') : trans('Has been added 🔔') }} {{ $notification->read_at != null ? trans('New notification') : trans('Read Notification') }}</p>
+                                            <p class="mb-1">{{ $notification->type == 'App\Notifications\CompanyJobEditNotification' ? trans('Has been updated 🔔') : trans('Has been added 🔔') }} {{ $notification->read_at != null ? trans('New notification') : trans('Read notification') }}</p>
                                         </div>
                                         <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
                                             <span><i class="mdi mdi-clock-outline"></i> {{ BaseHelper::dateFormatForHumans($notification->created_at) }}</span>

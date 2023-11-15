@@ -470,5 +470,13 @@
     "Generate Secret Key to Enable 2FA": "Tạo Khóa Bí Mật Để Kích Hoạt 2FA",
     "General Questions": "Câu Hỏi Chung",
     "Manage Account": "Quản Lý Tài Khoản",
-    "Privacy & Security": "Quyền Riêng Tư & Bảo Mật"
+    "Privacy & Security": "Quyền Riêng Tư & Bảo Mật",
+    "Logo For Light Background": "Logo Dành Cho Nền Sáng",
+    "Logo For Dark Background": "Logo Dành Cho Nền Tối",
+    "Clear Notifications": "Xóa Thông Báo",
+    "Clears the application notifications": "Xóa thông báo ứng dụng",
+    "Click Here To Setting 2FA": "Bấm Vào Đây Để Thiết Lập 2FA",
+    "Has been updated \uD83D\uDD14": "Đã được cập nhật \uD83D\uDD14",
+    "Read notification": "Thông báo đã đọc",
+    "New notification": "Thông báo mới"
 }

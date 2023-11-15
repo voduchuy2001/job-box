@@ -10,12 +10,11 @@ class Categories extends Component
 {
     public function render(): View
     {
-        $categories = Category::orderByDesc('created_at')
+        $categories = Category::orderByDesc('jobs_count')
             ->withCount(['jobs' => function ($query) {
                 $query->where('status', 'show');
             }])
             ->having('jobs_count', '>', 0)
-            ->with('jobs')
             ->limit(7)
             ->get();
 
