@@ -18,7 +18,6 @@
 
                                     <div class="mt-4">
                                         <x-form method="POST" action="{{ route('login') }}">
-
                                             <x-admin.input
                                                 label="{{ __('Email') }}"
                                                 class="form-control"

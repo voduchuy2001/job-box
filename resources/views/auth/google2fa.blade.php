@@ -31,7 +31,8 @@
                                         {{ __('Enter the pin from Google Authenticator app:') }}<br/><br/>
 
                                         <form class="form-horizontal" action="{{ route('verify2fa') }}" method="POST">
-                                            {{ csrf_field() }}
+                                            @csrf
+
                                             <div class="form-group">
                                                 <x-admin.input
                                                     :label="__('One Time Password')"
