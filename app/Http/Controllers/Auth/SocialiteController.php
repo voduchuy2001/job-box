@@ -40,7 +40,6 @@ class SocialiteController extends Controller
                 'email' => $socialAccount->getEmail(),
             ], [
                 'email' => $socialAccount->getEmail(),
-                'name' => $socialAccount->getName(),
                 'provider_id' => $socialAccount->getId(),
                 'auth_type' => $provider,
                 'status' => 'Is Active',

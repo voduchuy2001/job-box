@@ -33,7 +33,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use CanResetPassword;
 
     protected $fillable = [
-        'name',
         'email',
         'is_root',
         'password',

@@ -43,8 +43,7 @@ class UserList extends Component
         $filterType = $this->filterType;
 
         $users = User::where(function ($query) use ($searchTerm) {
-            $query->where('name', 'like', $searchTerm)
-                ->orWhere('email', 'like', $searchTerm);
+            $query->where('email', 'like', $searchTerm);
         })
             ->when($filterType, function ($query, $filterType) {
                 $query->whereHas('roles', function ($query) use ($filterType) {
