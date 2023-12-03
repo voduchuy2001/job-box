@@ -27,44 +27,48 @@
                         </div>
 
                         <div class="card p-3 rounded shadow-lg application-box">
-                            <h5 class="fs-15 lh-base mb-3">Applications</h5>
+                            <h5 class="fs-15 lh-base mb-3">{{ __('Candidates') }}</h5>
                             <div class="avatar-group">
-                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
+                                <x-link :to="route('student-list.user')" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                     <div class="avatar-xs">
                                         <img src="{{ asset('assets/images/users/avatar-3.jpg') }}" alt="" class="rounded-circle img-fluid">
                                     </div>
-                                </a>
-                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
+                                </x-link>
+
+                                <x-link :to="route('student-list.user')" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
                                     <div class="avatar-xs">
                                         <div class="avatar-title rounded-circle bg-danger">
                                             S
                                         </div>
                                     </div>
-                                </a>
-                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
+                                </x-link>
+
+                                <x-link :to="route('student-list.user')" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
                                     <div class="avatar-xs">
                                         <img src="{{ asset('assets/images/users/avatar-10.jpg') }}" alt="" class="rounded-circle img-fluid">
                                     </div>
-                                </a>
-                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top">
+                                </x-link>
+
+                                <x-link :to="route('student-list.user')" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top">
                                     <div class="avatar-xs">
                                         <div class="avatar-title rounded-circle bg-success">
                                             Z
                                         </div>
                                     </div>
-                                </a>
-                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
+                                </x-link>
+
+                                <x-link :to="route('student-list.user')" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                     <div class="avatar-xs">
                                         <img src="{{ asset('assets/images/users/avatar-9.jpg') }}" alt="" class="rounded-circle img-fluid">
                                     </div>
-                                </a>
-                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="More Appliances">
+                                </x-link>
+                                <x-link :to="route('student-list.user')" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="More Appliances">
                                     <div class="avatar-xs">
                                         <div class="avatar-title fs-13 rounded-circle bg-light border-dashed border text-primary">
                                             2k+
                                         </div>
                                     </div>
-                                </a>
+                                </x-link>
                             </div>
                         </div>
                         <img src="{{ asset('assets/images/job-profile2.png') }}" alt="" class="user-img">
