@@ -18,7 +18,7 @@ class CompanyDetail extends Component
 
     public ?int $currentPage = 1;
 
-    public int $perPage = 10;
+    public int $perPage = 4;
 
     public function mount(string|int $id): void
     {
