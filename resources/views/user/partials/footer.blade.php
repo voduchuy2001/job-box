@@ -9,6 +9,8 @@
                     <div class="mt-4 fs-13">
                         <p>{{ $settings['siteSlogan'] }}</p>
                     </div>
+
+                    <div class="fb-page" data-href="https://web.facebook.com/jobx.co" data-tabs="timeline" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://web.facebook.com/jobx.co" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/jobx.co">Job Box</a></blockquote></div>
                 </div>
             </div>
 

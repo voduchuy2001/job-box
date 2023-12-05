@@ -87,9 +87,9 @@
                                                 <div class="resume-position-time">{{ __(':from - :to', ['from' => BaseHelper::dateFormat($project->start_at, false), 'to' => $project->end_at ? BaseHelper::dateFormat($project->end_at, false) : __('Present')]) }}</div>
                                             </div>
                                             <div class="resume-timeline-item-desc">
-                                                <p>{{ __('Number of members: :member', ['member' => $project->number_of_members]) }}</p>
+                                                <p>{{ __('Number Of Members: :member', ['member' => $project->number_of_members]) }}</p>
                                                 <p>{{ $project->description }}</p>
-                                                <h4 class="resume-timeline-item-desc-heading font-weight-bold">{{ __('Technologies used: :technology', ['technology' => $project->technology]) }}</h4>
+                                                <h4 class="resume-timeline-item-desc-heading font-weight-bold">{{ __('Tech Stack: :technology', ['technology' => $project->technology]) }}</h4>
                                             </div>
                                         </article>
                                     @endforeach

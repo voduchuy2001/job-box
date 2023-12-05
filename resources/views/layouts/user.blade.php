@@ -63,9 +63,7 @@
 
     @persist('facebook-messenger-chat-plugin')
         <div id="fb-root"></div>
-
-        <div id="fb-customer-chat" class="fb-customerchat">
-        </div>
+        <div id="fb-customer-chat" class="fb-customerchat"></div>
 
         <script>
             var chatbox = document.getElementById('fb-customer-chat');
@@ -91,6 +89,14 @@
         </script>
     @endpersist
 
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&appId=305103102314059" nonce="nwPrgoPH"></script>
+    <script>
+        document.addEventListener('livewire:navigated', () => {
+            if (typeof FB !== 'undefined') {
+                FB.XFBML.parse();
+            }
+        })
+    </script>
     <script src="{{ asset('assets/js/sweetalert2@11.js') }}"></script>
     <x-livewire-alert::scripts />
     <script data-navigate-once src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -54,6 +54,14 @@
                             <div class="text-break mb-3">
                                 {!! $job->description !!}
                             </div>
+
+                            <div>
+                                <div class="fb-like" data-href="{{ route('job-detail', ['id' => $job->id]) }}" data-share="true"></div>
+                            </div>
+
+                            <div>
+                                <div class="fb-comments" data-href="{{ route('job-detail', ['id' => $job->id]) }}" data-width="100%" data-numposts="5"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +93,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-medium">{{ __('Time') }}</td>
+                                        <td class="fw-medium">{{ __('Type') }}</td>
                                         <td><span class="badge badge-soft-success">{{ $job->type }}</span></td>
                                     </tr>
                                     <tr>
@@ -122,7 +130,7 @@
                                     href="{{ route('job-applied.user', ['id' => $job->id]) }}"
                                     class="btn btn-primary w-100">{{ __('Apply Now') }}</a>
 
-                                <livewire:user.job.wishlist :jobId="$job->id"></livewire:user.job.wishlist>
+                                <livewire:user.job.wishlist :jobId="$job->id" wire:key="jobWishlist"></livewire:user.job.wishlist>
                             </div>
                         </div>
                     </div>
@@ -141,13 +149,13 @@
                                 </x-link>
                             </div>
 
-                            <livewire:user.job.detail.job-company :jobId="$job->id"></livewire:user.job.detail.job-company>
+                            <livewire:user.job.detail.job-company :jobId="$job->id" wire:key="jobCompany"></livewire:user.job.detail.job-company>
                         </div>
                     </div>
 
-                    <livewire:user.job.detail.job-map :jobId="$job->id"></livewire:user.job.detail.job-map>
+                    <livewire:user.job.detail.job-map :jobId="$job->id" wire:key="jobMap"></livewire:user.job.detail.job-map>
 
-                    <livewire:user.job.detail.job-contact :jobId="$job->id"></livewire:user.job.detail.job-contact>
+                    <livewire:user.job.detail.job-contact :jobId="$job->id" wire:key="jobContact"></livewire:user.job.detail.job-contact>
                 </div>
             </div>
 
@@ -165,7 +173,7 @@
                     </div>
                 </div>
 
-                <livewire:user.job.detail.job-related :job="$job" lazy></livewire:user.job.detail.job-related>
+                <livewire:user.job.detail.job-related :job="$job" lazy wire:key="jobDetailJobRelated"></livewire:user.job.detail.job-related>
 
             </div>
         </div>
