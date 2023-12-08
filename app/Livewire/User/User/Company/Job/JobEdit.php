@@ -19,6 +19,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class JobEdit extends Component
 {
@@ -112,6 +113,14 @@ class JobEdit extends Component
         $jobData = JobDataHelper::updateOrCreateJobData($validatedData);
 
         $this->job->update($jobData);
+
+        $text = trans('One job has been updated!');
+
+        Telegram::sendMessage([
+            'chat_id' => env('TELEGRAM_GROUP_ID', ''),
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);
 
         if ($validatedData['provinceId']) {
             $this->job->addresses()->create([

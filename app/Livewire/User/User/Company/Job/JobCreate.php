@@ -18,6 +18,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class JobCreate extends Component
 {
@@ -92,6 +93,14 @@ class JobCreate extends Component
         $jobData = JobDataHelper::updateOrCreateJobData($validatedData);
 
         $job = Job::create($jobData);
+
+        $text = trans('One job has been created!');
+
+        Telegram::sendMessage([
+            'chat_id' => env('TELEGRAM_GROUP_ID', ''),
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);
 
         if ($validatedData['provinceId']) {
             $job->addresses()->create([
