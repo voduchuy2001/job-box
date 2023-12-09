@@ -114,12 +114,12 @@ class JobEdit extends Component
 
         $this->job->update($jobData);
 
-        $text = trans('One job has been updated!');
+        $textMessage = trans(':job has been updated! 🔔', ['job' => $this->job->name]);
 
         Telegram::sendMessage([
-            'chat_id' => env('TELEGRAM_GROUP_ID', ''),
+            'chat_id' => env('TELEGRAM_GROUP_ID'),
             'parse_mode' => 'HTML',
-            'text' => $text
+            'text' => $textMessage
         ]);
 
         if ($validatedData['provinceId']) {

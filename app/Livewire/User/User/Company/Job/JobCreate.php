@@ -94,12 +94,12 @@ class JobCreate extends Component
 
         $job = Job::create($jobData);
 
-        $text = trans('One job has been created!');
+        $textMessage = trans(':job has been created! 🔔', ['job' => $job->name]);
 
         Telegram::sendMessage([
-            'chat_id' => env('TELEGRAM_GROUP_ID', ''),
+            'chat_id' => env('TELEGRAM_GROUP_ID'),
             'parse_mode' => 'HTML',
-            'text' => $text
+            'text' => $textMessage
         ]);
 
         if ($validatedData['provinceId']) {
