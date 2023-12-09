@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class JobCandidate extends Component
 {
@@ -63,6 +64,13 @@ class JobCandidate extends Component
     {
         $newStatus = $this->statuses[$id] ?? 'pending';
         $this->job->applications()->updateExistingPivot($id, ['status' => $newStatus], false);
+        $textMessage = trans(':job has been updated! 🔔', ['job' => $this->job->name]);
+
+        Telegram::sendMessage([
+            'chat_id' => env('TELEGRAM_GROUP_ID'),
+            'parse_mode' => 'HTML',
+            'text' => $textMessage
+        ]);
         $this->alert('success', trans('Update success'));
         $this->dispatch('refresh');
     }
