@@ -110,7 +110,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'verified', '2fa']]
     Route::get('/job-delete', JobDelete::class)->name('job.delete')->middleware('permission:job-delete');
     Route::get('/category', CategoryList::class)->name('category.index')->middleware('permission:category-list');
     Route::get('/trending-word', TrendingWordList::class)->name('trending-word.index')->middleware('permission:trending-word-list');
-    Route::get('/notification', NotificationList::class)->name('notification.index')->middleware('permission:trending-word-list');
+    Route::get('/notification', NotificationList::class)->name('notification.index')->middleware('permission:notification-list');
     Route::get('/setting', SettingList::class)->name('setting.index')->middleware('permission:site-settings');
     Route::get('/faq', FAQList::class)->name('faq.index')->middleware('permission:faq-list');
     Route::get('/faq-create', FAQCreate::class)->name('faq.create')->middleware('permission:faq-create');

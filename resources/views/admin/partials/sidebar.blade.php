@@ -88,7 +88,7 @@
                     </li>
                 @endcan
 
-                @can('category-list')
+                @can('notification-list')
                     <li class="nav-item">
                         <x-link
                             class="nav-link menu-link {{ request()->route()->getName() == 'notification.index' ? 'active' : '' }}"

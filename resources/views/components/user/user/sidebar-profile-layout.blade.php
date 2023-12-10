@@ -41,9 +41,11 @@
                     class="list-group-item list-group-item-action {{ request()->route()->getName() == 'student-wishlist.user' ? 'active' : '' }}"><i class="ri-heart-2-line align-middle me-2"></i>{{ __('Wishlist Jobs') }}</x-link>
             @endcan
 
-            <x-link
-                :to="route('user-change-password.user')"
-                class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-change-password.user' ? 'active' : '' }}"><i class="ri-shield-check-line align-middle me-2"></i>{{ __('Change Password') }}</x-link>
+            @if(! Auth::user()->auth_type)
+                <x-link
+                    :to="route('user-change-password.user')"
+                    class="list-group-item list-group-item-action {{ request()->route()->getName() == 'user-change-password.user' ? 'active' : '' }}"><i class="ri-shield-check-line align-middle me-2"></i>{{ __('Change Password') }}</x-link>
+            @endif
 
             <a
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
