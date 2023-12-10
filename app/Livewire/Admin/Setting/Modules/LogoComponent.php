@@ -36,7 +36,7 @@ class LogoComponent extends Component
             'logoLight' => 'nullable|image|max:2048',
         ]);
 
-        if (! $validatedData['logoLight']) {
+        if (!$validatedData['logoLight']) {
             return;
         }
 
@@ -62,7 +62,7 @@ class LogoComponent extends Component
             'logoDark' => 'nullable|image|max:2048',
         ]);
 
-        if (! $validatedData['logoDark']) {
+        if (!$validatedData['logoDark']) {
             return;
         }
 

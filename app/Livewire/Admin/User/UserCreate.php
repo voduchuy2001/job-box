@@ -7,7 +7,7 @@ use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class UserCreate extends Component
@@ -15,13 +15,13 @@ class UserCreate extends Component
     use LivewireAlert;
     use AuthorizesRoleOrPermission;
 
-    #[Rule('required|string|email|unique:users,email')]
+    #[Validate('required|string|email|unique:users,email')]
     public string $email;
 
-    #[Rule('required|string|min:6|max:32')]
+    #[Validate('required|string|min:6|max:32')]
     public string $password;
 
-    #[Rule('required|string|same:password')]
+    #[Validate('required|string|same:password')]
     public string $passwordConfirmation;
 
     public function saveUser(): void

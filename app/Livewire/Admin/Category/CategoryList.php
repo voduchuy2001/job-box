@@ -9,8 +9,8 @@ use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -29,7 +29,7 @@ class CategoryList extends Component
 
     public bool $isEdit = false;
 
-    #[Rule('required|string|min:3|max:32|unique:categories', onUpdate: false)]
+    #[Validate('required|string|min:3|max:32|unique:categories', onUpdate: false)]
     public string $name;
 
     public function changeType(): void
@@ -88,7 +88,7 @@ class CategoryList extends Component
         $this->authorizeRoleOrPermission('category-delete');
         $category = Category::findOrFail($id);
 
-        if (! $category->jobs()->count()) {
+        if (!$category->jobs()->count()) {
             $category->delete();
             $this->alert('success', trans('Delete success :name', ['name' => $category->name]));
             $this->dispatch('refresh');

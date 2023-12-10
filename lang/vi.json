@@ -480,5 +480,8 @@
     "Read notification": "Thông báo đã đọc",
     "New notification": "Thông báo mới",
     "New User": "Thêm Người Dùng Mới",
-    "Add User": "Thêm Người Dùng"
+    "Add User": "Thêm Người Dùng",
+    "Private": "Riêng Tư",
+    "Show": "Cho Phép Xuất Bản",
+    "Hide": "Ẩn Đi"
 }

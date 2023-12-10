@@ -7,7 +7,7 @@ use App\Repositories\SettingRepository;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,25 +16,25 @@ class SiteInformationComponent extends Component
     use WithFileUploads;
     use LivewireAlert;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $siteName;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $siteDescription;
 
-    #[Rule('string|max:255')]
+    #[Validate('string|max:255')]
     public string $siteSlogan;
 
-    #[Rule('required|email|max:255')]
+    #[Validate('required|email|max:255')]
     public string $email;
 
-    #[Rule('string|max:255')]
+    #[Validate('string|max:255')]
     public string $youtube;
 
-    #[Rule('string|max:255')]
+    #[Validate('string|max:255')]
     public string $facebook;
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public string $phoneNumber;
 
     public function mount(): void

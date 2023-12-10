@@ -5,7 +5,7 @@ namespace App\Livewire\Admin\User\Modules;
 use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
@@ -16,7 +16,7 @@ class PersonalRole extends Component
 
     public mixed $user;
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public mixed $userHasRoles = [];
 
     public function mount(): void

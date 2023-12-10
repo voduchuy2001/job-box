@@ -6,7 +6,7 @@ use App\Livewire\User\User\Student\StudentResume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class StudentProject extends Component
@@ -17,28 +17,28 @@ class StudentProject extends Component
 
     public mixed $toggle = null;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $name;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $customer;
 
-    #[Rule('required|int')]
+    #[Validate('required|int')]
     public int $numberOfMembers;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $technology;
 
-    #[Rule('required|date_format:Y-m-d|before_or_equal:today')]
+    #[Validate('required|date_format:Y-m-d|before_or_equal:today')]
     public string $startAt;
 
-    #[Rule('nullable|date_format:Y-m-d|after_or_equal:startAt')]
+    #[Validate('nullable|date_format:Y-m-d|after_or_equal:startAt')]
     public string $endAt;
 
-    #[Rule('required|string|max:1024')]
+    #[Validate('required|string|max:1024')]
     public string $description;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public string $position;
 
     public function updatedToggle(): void
@@ -48,7 +48,7 @@ class StudentProject extends Component
 
     public function mount(): void
     {
-        if (! Auth::check()) {
+        if (!Auth::check()) {
             $this->redirect(StudentResume::class, navigate: true);
         }
     }

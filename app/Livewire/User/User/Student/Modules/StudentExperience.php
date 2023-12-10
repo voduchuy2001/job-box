@@ -6,7 +6,7 @@ use App\Livewire\User\User\Student\StudentResume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class StudentExperience extends Component
@@ -15,19 +15,19 @@ class StudentExperience extends Component
 
     public mixed $user;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $companyName;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $position;
 
-    #[Rule('required|date_format:Y-m-d|before_or_equal:today')]
+    #[Validate('required|date_format:Y-m-d|before_or_equal:today')]
     public string $startAt;
 
-    #[Rule('nullable|date_format:Y-m-d|after_or_equal:startAt')]
+    #[Validate('nullable|date_format:Y-m-d|after_or_equal:startAt')]
     public string $endAt;
 
-    #[Rule('nullable|string|max:1024')]
+    #[Validate('nullable|string|max:1024')]
     public string $description;
 
     public mixed $toggle = null;
@@ -39,7 +39,7 @@ class StudentExperience extends Component
 
     public function mount(): void
     {
-        if (! Auth::check()) {
+        if (!Auth::check()) {
             $this->redirect(StudentResume::class, navigate: true);
         }
     }

@@ -170,9 +170,8 @@
                                                             <div class="col-6">
                                                                 <label class="form-label">{{ __('Allow Publishing') }}</label>
                                                                 <select class="form-select" wire:model="allowPublishing">
-                                                                    <option value="">{{ __('Choose An Option') }}</option>
                                                                     <option value="publish">{{ __('Publish') }}</option>
-                                                                    <option value="unPublish">{{ __('Un Publish') }}</option>
+                                                                    <option value="unPublish">{{ __('Private') }}</option>
                                                                 </select>
 
                                                                 @error('allowPublishing')

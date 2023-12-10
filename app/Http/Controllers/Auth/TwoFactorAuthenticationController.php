@@ -69,7 +69,7 @@ class TwoFactorAuthenticationController extends Controller
         $google2fa = app('pragmarx.google2fa');
         $secret = $request->input('verify-code');
         $valid = $google2fa->verifyKey($user->twoFactorAuthentication->secret_key, $secret);
-        if(! $valid) {
+        if(!$valid) {
             return redirect()
                 ->route('show2faForm')
                 ->with('error', trans('Invalid Verification Code, Please try again.'));
@@ -87,7 +87,7 @@ class TwoFactorAuthenticationController extends Controller
     {
         $validatedData = $request->validated();
 
-        if (! (Hash::check($validatedData['current-password'], Auth::user()->password))) {
+        if (!(Hash::check($validatedData['current-password'], Auth::user()->password))) {
             return redirect()
                 ->back()
                 ->with('error', trans('Your  password does not matches with your account password. Please try again.'));

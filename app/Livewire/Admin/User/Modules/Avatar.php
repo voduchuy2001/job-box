@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -18,7 +18,7 @@ class Avatar extends Component
 
     public mixed $user;
 
-    #[Rule('nullable|image|max:2048')]
+    #[Validate('nullable|image|max:2048')]
     public mixed $avatar = null;
 
     #[On('refresh')]
@@ -33,7 +33,7 @@ class Avatar extends Component
     {
         $validatedData = $this->validate();
 
-        if (! $validatedData['avatar']) {
+        if (!$validatedData['avatar']) {
             return;
         }
 

@@ -14,14 +14,14 @@ trait Label
 
         foreach ($currentYearResults as $result) {
             $month = $months[$result->month];
-            if (! in_array($month, $labels)) {
+            if (!in_array($month, $labels)) {
                 $labels[] = $month;
             }
         }
 
         foreach ($previousYearResults as $result) {
             $month = $months[$result->month];
-            if (! in_array($month, $labels)) {
+            if (!in_array($month, $labels)) {
                 $labels[] = $month;
             }
         }

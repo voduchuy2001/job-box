@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Job;
@@ -25,12 +25,12 @@ class JobApplication extends Component
     use WithFileUploads;
     use LivewireAlert;
 
-    #[Rule('required|file|mimes:pdf,docx,doc|max:4096')]
+    #[Validate('required|file|mimes:pdf,docx,doc|max:4096')]
     public mixed $resume = '';
 
     public mixed $fileName;
 
-    #[Rule('required|string|max:2048')]
+    #[Validate('required|string|max:2048')]
     public string $presentation;
 
     public mixed $job;
@@ -41,7 +41,7 @@ class JobApplication extends Component
 
         $this->job = $job;
 
-        if (! Auth::user()->studentProfile()->count()) {
+        if (!Auth::user()->studentProfile()->count()) {
             $this->alert('warning', trans('Completed your profile before apply job'));
             $this->redirect(StudentProfile::class, navigate: true);
         }

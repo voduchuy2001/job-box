@@ -10,7 +10,7 @@ class BaseHelper
     {
         $date = Carbon::parse($date);
 
-        if (! $haveDay) {
+        if (!$haveDay) {
             return $date->format('m') . '-' . $date->format('Y');
         }
 

@@ -6,7 +6,7 @@ use App\Livewire\User\User\Student\StudentResume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class StudentSkill extends Component
@@ -15,15 +15,15 @@ class StudentSkill extends Component
 
     public mixed $user;
 
-    #[Rule('required|string|max:255')]
+    #[Validate('required|string|max:255')]
     public string $name;
 
-    #[Rule('nullable|string|max:1024')]
+    #[Validate('nullable|string|max:1024')]
     public string $description;
 
     public function mount(): void
     {
-        if (! Auth::check()) {
+        if (!Auth::check()) {
             $this->redirect(StudentResume::class, navigate: true);
         }
     }

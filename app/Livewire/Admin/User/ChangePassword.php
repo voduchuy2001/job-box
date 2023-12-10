@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 #[Title('Change Password')]
@@ -16,13 +16,13 @@ class ChangePassword extends Component
 {
     use LivewireAlert;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $oldPassword;
 
-    #[Rule('required|string|min:6|max:32')]
+    #[Validate('required|string|min:6|max:32')]
     public string|null $password;
 
-    #[Rule('same:password')]
+    #[Validate('same:password')]
     public string|null $confirmPassword;
 
     public function updatePassword(): void
@@ -35,7 +35,7 @@ class ChangePassword extends Component
             return;
         }
 
-        if (! Hash::check($validatedData['oldPassword'], Auth::user()->password)) {
+        if (!Hash::check($validatedData['oldPassword'], Auth::user()->password)) {
             $this->alert('warning', trans('Old password does not match!'));
             $this->reset();
             return;

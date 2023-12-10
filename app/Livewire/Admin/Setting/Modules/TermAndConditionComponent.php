@@ -7,14 +7,14 @@ use App\Repositories\SettingRepository;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class TermAndConditionComponent extends Component
 {
     use LivewireAlert;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public string $termAndCondition;
 
     public function mount(): void

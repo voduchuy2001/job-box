@@ -7,7 +7,7 @@ use App\Traits\AuthorizesRoleOrPermission;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
 
@@ -18,7 +18,7 @@ class PersonalPermission extends Component
 
     public User $user;
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public mixed $userHasPermissions = [];
 
     #[On('refresh')]

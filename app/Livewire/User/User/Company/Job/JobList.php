@@ -29,7 +29,7 @@ class JobList extends Component
 
     public function mount(): void
     {
-        if (! Auth::user()->companyProfile) {
+        if (!Auth::user()->companyProfile) {
             $this->redirect(CompanyProfile::class, navigate: true);
         }
     }

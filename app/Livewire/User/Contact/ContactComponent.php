@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 #[Title('Liên Hệ Với Chúng Tôi')]
@@ -17,16 +17,16 @@ class ContactComponent extends Component
 {
     use LivewireAlert;
 
-    #[Rule('required|string|max:32')]
+    #[Validate('required|string|max:32')]
     public string $name;
 
-    #[Rule('required|string|email')]
+    #[Validate('required|string|email')]
     public string $email;
 
-    #[Rule('required|max:255')]
+    #[Validate('required|max:255')]
     public string $subject;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public string $message;
 
     public function sendContact(): void

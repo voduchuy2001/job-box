@@ -84,11 +84,11 @@ class StudentProfile extends Component
                 return false;
         }
 
-        if (! empty($validatedData)) {
+        if (!empty($validatedData)) {
             $this->data[$step] = $validatedData;
         }
 
-        return ! empty($validatedData);
+        return !empty($validatedData);
     }
 
     public function updateStep(bool $isNext): void

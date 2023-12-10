@@ -9,13 +9,13 @@ class Google2FAAuthenticator extends Authenticator
 {
     protected function canPassWithoutCheckingOTP(): bool
     {
-        if(! $this->getUser()->twoFactorAuthentication) {
+        if(!$this->getUser()->twoFactorAuthentication) {
             return true;
         }
 
         return
-            ! $this->getUser()->twoFactorAuthentication->is_enable ||
-            ! $this->isEnabled() ||
+            !$this->getUser()->twoFactorAuthentication->is_enable ||
+            !$this->isEnabled() ||
             $this->noUserIsAuthenticated() ||
             $this->twoFactorAuthStillValid();
     }

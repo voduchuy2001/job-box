@@ -24,7 +24,7 @@ class Wishlist extends Component
     #[On('refresh')]
     public function mount(): void
     {
-        if (! Auth::user()) {
+        if (!Auth::user()) {
             $this->wishlist = [];
             return;
         }
@@ -39,7 +39,7 @@ class Wishlist extends Component
     public function addOrRemoveToWishList(): void
     {
         $this->authorizeRoleOrPermission('student-add-job-to-wishlist');
-        if (! Auth::user()) {
+        if (!Auth::user()) {
             $this->redirectRoute('login');
             toast(trans('You must login before save job'), 'warning');
             return;

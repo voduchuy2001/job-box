@@ -47,7 +47,7 @@ class JobList extends Component
 
     private function queryFilterJob(): LengthAwarePaginator
     {
-        if (! is_string($this->searchTerm)) {
+        if (!is_string($this->searchTerm)) {
             $this->searchTerm = 'Is Array';
         }
 

@@ -10,7 +10,7 @@ class LanguageController extends Controller
 {
     public function __invoke(string $locale): RedirectResponse
     {
-        if (! in_array($locale, ['en', 'vi'])) {
+        if (!in_array($locale, ['en', 'vi'])) {
             abort(404);
         }
 

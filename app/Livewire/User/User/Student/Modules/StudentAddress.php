@@ -9,32 +9,32 @@ use App\Models\Ward;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class StudentAddress extends Component
 {
     use LivewireAlert;
 
-    #[Rule('nullable|string|max:255')]
+    #[Validate('nullable|string|max:255')]
     public string $houseNumber = '';
 
-    #[Rule('required|integer')]
+    #[Validate('required|integer')]
     public string|null $provinceId;
 
     public mixed $districts = [];
 
-    #[Rule('required|integer')]
+    #[Validate('required|integer')]
     public string|null $districtId;
 
     public mixed $wards = [];
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string|null $wardId;
 
     public function mount(): void
     {
-        if (! Auth::check()) {
+        if (!Auth::check()) {
             $this->redirect(StudentResume::class, navigate: true);
         }
     }
@@ -61,11 +61,11 @@ class StudentAddress extends Component
     {
         $provinces = Province::all();
 
-        if (! empty($this->provinceId)) {
+        if (!empty($this->provinceId)) {
             $this->districts = $districts =  District::where('province_id', $this->provinceId)->get();
         }
 
-        if (! empty($this->districtId)) {
+        if (!empty($this->districtId)) {
             $this->wards = Ward::where('district_id', $this->districtId)->get();
         }
 

@@ -17,7 +17,7 @@ use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
@@ -25,53 +25,53 @@ class JobEdit extends Component
 {
     use LivewireAlert;
 
-    #[Rule('nullable|required_with:districtId,wardId')]
+    #[Validate('nullable|required_with:districtId,wardId')]
     public string|null $provinceId;
 
     public mixed $districts = [];
 
-    #[Rule('required_with:provinceId')]
+    #[Validate('required_with:provinceId')]
     public string|null $districtId;
 
     public mixed $wards = [];
 
-    #[Rule('required_with:districtId')]
+    #[Validate('required_with:districtId')]
     public string|null $wardId;
 
-    #[Rule('required_with:provinceId|max:255|numeric|nullable')]
+    #[Validate('required_with:provinceId|max:255|numeric|nullable')]
     public string $longitude;
 
-    #[Rule('required_with:provinceId|max:255|numeric|nullable')]
+    #[Validate('required_with:provinceId|max:255|numeric|nullable')]
     public string $latitude;
 
-    #[Rule('required|string|max:125')]
+    #[Validate('required|string|max:125')]
     public string $name;
 
-    #[Rule('required|string|max:50')]
+    #[Validate('required|string|max:50')]
     public string $position;
 
-    #[Rule('required|integer')]
+    #[Validate('required|integer')]
     public string $category;
 
-    #[Rule('required|string|in:Full Time,Part Time,Freelance,Internship')]
+    #[Validate('required|string|in:Full Time,Part Time,Freelance,Internship')]
     public string $type;
 
-    #[Rule('required|min:30|string')]
+    #[Validate('required|min:30|string')]
     public string $description;
 
-    #[Rule('required|integer')]
+    #[Validate('required|integer')]
     public string $vacancy;
 
-    #[Rule('required|string|in:0,1,2,3,more')]
+    #[Validate('required|string|in:0,1,2,3,more')]
     public string $experience;
 
-    #[Rule('required|date_format:Y-m-d|after_or_equal:today')]
+    #[Validate('required|date_format:Y-m-d|after_or_equal:today')]
     public string $deadlineForFiling;
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public string $min;
 
-    #[Rule('nullable|gte:min')]
+    #[Validate('nullable|gte:min')]
     public string $max;
 
     public mixed $addresses = [];
@@ -160,11 +160,11 @@ class JobEdit extends Component
 
         $provinces = Province::all();
 
-        if (! empty($this->provinceId)) {
+        if (!empty($this->provinceId)) {
             $this->districts = District::where('province_id', $this->provinceId)->get();
         }
 
-        if (! empty($this->districtId)) {
+        if (!empty($this->districtId)) {
             $this->wards = Ward::where('district_id', $this->districtId)->get();
         }
 

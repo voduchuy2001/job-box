@@ -7,20 +7,20 @@ use App\Models\FAQ;
 use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class FAQCreate extends Component
 {
     use LivewireAlert;
 
-    #[Rule('required|in:General Questions,Manage Account,Privacy & Security')]
+    #[Validate('required|in:General Questions,Manage Account,Privacy & Security')]
     public string $categoryName;
 
-    #[Rule('required|string|min:10|max:255')]
+    #[Validate('required|string|min:10|max:255')]
     public string $question;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public string $answer;
 
     public function saveFAQ(): void

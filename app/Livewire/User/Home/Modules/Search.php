@@ -25,7 +25,7 @@ class Search extends Component
 
     public function search(): void
     {
-        if (! empty($this->searchTerm)) {
+        if (!empty($this->searchTerm)) {
             $this->jobs = Job::getJobsLimit($this->searchTerm);
 
             $this->createTrendingWords($this->searchTerm);

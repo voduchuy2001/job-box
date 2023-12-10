@@ -8,8 +8,8 @@ use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Permission;
@@ -26,10 +26,10 @@ class RoleSetting extends Component
 
     public int $itemPerPage = 20;
 
-    #[Rule('required|string|min:2|max:32|unique:roles', onUpdate: false)]
+    #[Validate('required|string|min:2|max:32|unique:roles', onUpdate: false)]
     public string $name;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public mixed $roleHasPermissions = [];
 
     public bool $isEdit = false;
@@ -71,7 +71,7 @@ class RoleSetting extends Component
         $this->authorizeRoleOrPermission('role-delete');
         $role = Role::findOrFail($id);
 
-        if (! in_array($role->name, ['Super Admin', 'Company', 'Student'])) {
+        if (!in_array($role->name, ['Super Admin', 'Company', 'Student'])) {
             $role->delete();
 
             $this->alert('success', trans('Delete success :name', ['name' => $role->name]));
@@ -105,7 +105,7 @@ class RoleSetting extends Component
             'roleHasPermissions' => 'nullable',
         ]);
 
-        if (! in_array($this->role->name, ['Super Admin', 'Company', 'Student'])) {
+        if (!in_array($this->role->name, ['Super Admin', 'Company', 'Student'])) {
             $this->role->update([
                 'name' => $validatedData['name'],
             ]);

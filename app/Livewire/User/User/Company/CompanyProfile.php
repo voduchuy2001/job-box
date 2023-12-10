@@ -9,8 +9,8 @@ use Illuminate\View\View;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 #[Title('Trang Cá Nhân')]
@@ -18,25 +18,25 @@ class CompanyProfile extends Component
 {
     use LivewireAlert;
 
-    #[Rule('required|string|max:50')]
+    #[Validate('required|string|max:50')]
     public string $name;
 
-    #[Rule('required|email')]
+    #[Validate('required|email')]
     public string $email;
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public string $phone;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public string $description;
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public string $founded;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public string $headquarters;
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public int $numberOfEmployee;
 
     public int $step = 1;
@@ -81,11 +81,11 @@ class CompanyProfile extends Component
                 return false;
         }
 
-        if (! empty($validatedData)) {
+        if (!empty($validatedData)) {
             $this->data[$step] = $validatedData;
         }
 
-        return ! empty($validatedData);
+        return !empty($validatedData);
     }
 
     public function updateStep(bool $isNext): void

@@ -51,7 +51,7 @@ class StudentResume extends Component
 
     public function mount(): void
     {
-        if (! Auth::user()->studentProfile) {
+        if (!Auth::user()->studentProfile) {
             $this->redirect(StudentProfile::class, navigate: true);
         }
 

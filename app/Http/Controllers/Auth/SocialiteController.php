@@ -15,7 +15,7 @@ class SocialiteController extends Controller
 {
     public function redirect(string $provider): RedirectResponse
     {
-        if (! $this->catchError($provider)) {
+        if (!$this->catchError($provider)) {
             abort(404, trans('Page Not Found'));
         }
 
@@ -24,7 +24,7 @@ class SocialiteController extends Controller
 
     protected function catchError(string $provider): bool
     {
-        if (! in_array($provider, ['github', 'google', 'facebook'])) {
+        if (!in_array($provider, ['github', 'google', 'facebook'])) {
             return false;
         }
 
