@@ -420,7 +420,6 @@
     "By Year": "Theo Năm",
     "Job Information": "Thông Tin Việc Làm",
     "Attention": "Chú ý",
-    "Candidates should choose to apply using CV Online.": "Ứng viên nên lựa chọn nộp hồ sơ qua CV Online.",
     "For the best experience, you should use popular browsers like Google Chrome or Firefox.": "Để có trải nghiệm tốt nhất, bạn nên sử dụng các trình duyệt phổ biến như Google Chrome hoặc Firefox.",
     "Please always be careful during the job search process and proactively research company information and job positions before applying.": "Hãy luôn cẩn thận trong quá trình tìm việc và chủ động tìm hiểu thông tin công ty, vị trí việc làm trước khi ứng tuyển.",
     "Upload Your Resume": "Tải lên sơ yếu lý lịch của bạn",
@@ -483,5 +482,6 @@
     "Add User": "Thêm Người Dùng",
     "Private": "Riêng Tư",
     "Show": "Cho Phép Xuất Bản",
-    "Hide": "Ẩn Đi"
+    "Hide": "Ẩn Đi",
+    "Add Education": "Thêm Học Vấn"
 }

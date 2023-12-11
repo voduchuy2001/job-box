@@ -73,7 +73,6 @@
                                 <div class="alert alert-warning alert-border-left" role="alert">
                                     <i class="ri-alert-line me-3 align-middle"></i> <strong>{{ __('Attention') }}</strong>
                                     <ol>
-                                        <li>{{ __('Candidates should choose to apply using CV Online.') }}</li>
                                         <li>{{ __('For the best experience, you should use popular browsers like Google Chrome or Firefox.') }}</li>
                                         <li>{{ __('Please always be careful during the job search process and proactively research company information and job positions before applying.') }}</li>
                                     </ol>
