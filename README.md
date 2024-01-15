@@ -1,66 +1,36 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Home page
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/88e094f5-8fd4-4b6e-b16b-4b3911de527d)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Job list
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/9d36ab93-a82a-4738-bacb-361f6d7e5a10)
 
-## About Laravel
+## Admin dashboard
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/4acafdce-e966-409f-b6e8-ec35ebc6ad6b)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Multi role permissions
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/aae156bc-9d3c-4eae-b181-8a77b9b1aefe)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Student personal
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/3e4dfbb3-a023-497a-9876-fd4e280054d6)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Company personal
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/8fb906a4-90fe-4b1b-804b-f5ae60b5e29d)
 
-## Learning Laravel
+## 2FA
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/2edef285-d70d-4d51-b7bf-efa9c17d57a5)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Telegram bot
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/ba967654-ac8b-44c9-84fc-a6bc3f3f8226)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Multi-language
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/8f2a017b-49fb-4064-ac44-724c09bfadd2)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Realtime notification
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/eb470e7d-3aea-4f93-9896-12d74998f0df)
 
-## Laravel Sponsors
+## Email notification
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/9fed4584-764e-4efe-ab2d-6de4521bb980)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Ensure data tight
+![image](https://github.com/voduchuy2001/job-box/assets/108045338/b19fff03-8c65-428c-b674-7e2b0f291d61)
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
