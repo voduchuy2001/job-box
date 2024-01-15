@@ -1,6 +1,11 @@
 ## Home page
 ![image](https://github.com/voduchuy2001/job-box/assets/108045338/88e094f5-8fd4-4b6e-b16b-4b3911de527d)
 
+## Mobile
+<p align="center">
+  <img src="https://github.com/voduchuy2001/job-box/assets/108045338/1ec8993d-ab34-400c-b53f-06829a0c9ca0" alt="Mobile"/>
+</p>
+
 ## Job list
 ![image](https://github.com/voduchuy2001/job-box/assets/108045338/9d36ab93-a82a-4738-bacb-361f6d7e5a10)
 
